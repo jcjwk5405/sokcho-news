@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>설악시민뉴스</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d0d;--ink2:#2a2a2a;--ink3:#555;--ink4:#888;
+  --paper:#f7f5f0;--paper2:#fff;--paper3:#efefeb;
+  --red:#b91c1c;--navy:#1e3a5f;--gold:#b5862a;
+  --border:#d4d0c8;--border2:#e8e4db;--col:1100px;
+  --c1:#1e3a5f;--c2:#0f6e56;--c3:#534ab7;--c4:#854f0b;--c5:#a32d2d;--c6:#27500a;
+}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);font-size:15px;line-height:1.7;min-height:100vh}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit}
+img{max-width:100%;display:block}
+
+/* ── TOP ── */
+.topbar{background:var(--ink);color:rgba(255,255,255,.5);font-size:11px;padding:5px 16px;display:flex;justify-content:space-between;align-items:center}
+.topbar a{color:rgba(255,255,255,.5);margin-left:14px}
+.topbar a:hover{color:#fff}
+
+/* ── MAST ── */
+.mast-wrap{background:var(--paper2);border-bottom:1px solid var(--border)}
+.mast{max-width:var(--col);margin:0 auto;padding:18px 16px 0;display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:14px;border-bottom:3px double var(--ink)}
+.mast-l .title{font-family:'Noto Serif KR',serif;font-size:48px;font-weight:900;letter-spacing:-2px;line-height:1;color:var(--ink)}
+.mast-l .title span{color:var(--red)}
+.mast-l .sub{font-size:10px;color:var(--ink4);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.mast-r{text-align:right}
+.mast-r .motto{font-family:'Noto Serif KR',serif;font-size:13px;color:var(--ink3);font-style:italic;line-height:1.5}
+.mast-r .issue{font-size:11px;color:var(--ink4);margin-top:4px}
+
+/* ── NAV ── */
+.nav-wrap{background:var(--ink);position:sticky;top:0;z-index:200}
+.nav-inner{max-width:var(--col);margin:0 auto;display:flex;overflow-x:auto}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-inner a{display:block;padding:11px 15px;color:rgba(255,255,255,.7);font-size:12px;font-weight:500;white-space:nowrap;transition:.15s;letter-spacing:.3px}
+.nav-inner a:hover,.nav-inner a.on{color:#fff;background:rgba(255,255,255,.08)}
+.nav-inner a.on{border-bottom:2px solid var(--gold)}
+.nav-inner a.edit-btn{margin-left:auto;background:var(--red);color:#fff;font-weight:700;font-size:11px;letter-spacing:.5px}
+.nav-inner a.edit-btn:hover{background:#991b1b}
+
+/* ── TICKER ── */
+.ticker{background:var(--red);color:#fff;font-size:11px;padding:6px 0;overflow:hidden;display:flex}
+.ticker-tag{background:rgba(0,0,0,.3);padding:0 14px;font-weight:700;font-size:10px;letter-spacing:1.5px;display:flex;align-items:center;white-space:nowrap}
+.ticker-scroll{flex:1;overflow:hidden;padding:0 12px}
+.ticker-inner{display:flex;gap:48px;animation:tick 45s linear infinite;white-space:nowrap}
+.ticker-inner span::before{content:'◆ ';opacity:.6;font-size:8px}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── LAYOUT ── */
+.container{max-width:var(--col);margin:0 auto;padding:0 16px}
+.main-grid{display:grid;grid-template-columns:1fr 290px;gap:36px;padding:28px 0 60px}
+.content-col{min-width:0}
+.sidebar-col{min-width:0}
+
+/* ── SEC LABEL ── */
+.sec-lbl{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.sec-lbl h2{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700}
+.sec-badge{font-size:9px;font-weight:700;padding:2px 7px;letter-spacing:1px}
+.sec-lbl .count{font-size:11px;color:var(--ink4);margin-left:auto}
+
+/* ── HERO ── */
+.hero{border:1px solid var(--border);margin-bottom:22px;cursor:pointer;background:var(--paper2);transition:.15s}
+.hero:hover{box-shadow:0 4px 20px rgba(0,0,0,.09)}
+.hero-img{height:180px;display:flex;align-items:flex-end;padding:16px;position:relative;overflow:hidden}
+.hero-img-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1e3a5f,#2d5a8e)}
+.hero-img-label{background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;letter-spacing:1px;position:relative;z-index:1}
+.hero-body{padding:20px}
+.hero-cat{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.hero-title{font-family:'Noto Serif KR',serif;font-size:24px;font-weight:700;line-height:1.4;margin-bottom:10px;color:var(--ink)}
+.hero-excerpt{font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:14px}
+.hero-meta{font-size:11px;color:var(--ink4);padding-top:12px;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
+.read-more{color:var(--red);font-weight:700;font-size:12px}
+
+/* ── QUOTE ── */
+.quote-banner{background:var(--navy);padding:18px 22px;margin-bottom:22px}
+.quote-banner small{font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.4);display:block;margin-bottom:8px;text-transform:uppercase}
+.quote-banner blockquote{font-family:'Noto Serif KR',serif;font-size:17px;line-height:1.65;color:#fff;border-left:3px solid var(--gold);padding-left:14px}
+.quote-banner .by{font-size:11px;color:rgba(255,255,255,.35);margin-top:10px}
+
+/* ── ART LIST ── */
+.art-list{margin-bottom:8px}
+.art-item{background:var(--paper2);border:1px solid var(--border2);padding:14px 16px;margin-bottom:8px;cursor:pointer;transition:.15s;display:flex;gap:14px}
+.art-item:hover{border-color:var(--border);background:var(--paper3)}
+.art-item-body{flex:1;min-width:0}
+.art-item .cat{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.art-item .title{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:700;line-height:1.45;margin-bottom:6px;color:var(--ink)}
+.art-item .excerpt{font-size:13px;color:var(--ink3);line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.art-item .meta{font-size:11px;color:var(--ink4);margin-top:7px;display:flex;gap:10px}
+.art-type{display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border:1px solid currentColor;letter-spacing:.5px;vertical-align:middle;margin-right:4px;border-radius:0}
+.art-icon{width:72px;height:72px;flex-shrink:0;background:var(--paper3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:24px}
+.more-btn{display:block;text-align:center;font-size:12px;color:var(--navy);padding:9px;border:1px solid var(--border);background:var(--paper2);width:100%;margin-bottom:22px;transition:.15s}
+.more-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.sec-divider{margin-bottom:24px}
+
+/* ── NOTIF (소식) ── */
+.notif-item{background:var(--paper2);border:1px solid var(--border2);border-left:3px solid var(--gold);padding:10px 14px;margin-bottom:8px;cursor:pointer;transition:.15s}
+.notif-item:hover{background:var(--paper3)}
+.notif-tag{font-size:9px;font-weight:700;color:var(--gold);letter-spacing:1px;display:block;margin-bottom:3px}
+.notif-text{font-size:13px;color:var(--ink2);line-height:1.5}
+.notif-date{font-size:11px;color:var(--ink4);margin-top:4px}
+
+/* ── SIDEBAR ── */
+.side-box{border:1px solid var(--border);margin-bottom:20px;background:var(--paper2)}
+.side-hd{background:var(--ink);color:#fff;padding:8px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.side-body{padding:14px}
+.poll-q{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;margin-bottom:12px;line-height:1.5;color:var(--ink)}
+.p-row{margin-bottom:10px}
+.p-lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--ink3);margin-bottom:3px}
+.p-pct{font-weight:700;color:var(--ink)}
+.p-bar{height:6px;background:var(--border2);border-radius:0;overflow:hidden}
+.p-fill{height:100%;transition:width 1.2s ease}
+.f1{background:var(--navy)}.f2{background:var(--gold)}.f3{background:var(--red)}.f4{background:#aaa}
+.poll-note{font-size:10px;color:var(--ink4);margin-top:10px;padding-top:10px;border-top:1px solid var(--border2);line-height:1.6}
+.recent-li{list-style:none}
+.recent-li li{padding:9px 0;border-bottom:1px solid var(--border2);font-size:12px;line-height:1.5;cursor:pointer}
+.recent-li li:hover{color:var(--red)}
+.recent-li li:last-child{border:none}
+.r-cat{font-size:9px;font-weight:700;color:var(--red);display:block;letter-spacing:1px;margin-bottom:2px}
+
+/* ── MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;overflow-y:auto;padding:20px 16px}
+.modal-bg.on{display:flex;align-items:flex-start;justify-content:center}
+.modal{background:var(--paper2);max-width:700px;width:100%;border-top:4px solid var(--navy);margin:auto}
+.modal-hd{padding:22px 26px 16px;border-bottom:1px solid var(--border2)}
+.modal-cat{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
+.modal-title{font-family:'Noto Serif KR',serif;font-size:24px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.modal-meta{font-size:11px;color:var(--ink4);display:flex;justify-content:space-between}
+.modal-body{padding:20px 26px 28px;font-size:15px;line-height:1.9;color:var(--ink2)}
+.modal-body p{margin-bottom:14px}
+.modal-body strong{color:var(--ink)}
+.m-close{float:right;background:none;border:1px solid var(--border);padding:3px 12px;font-size:11px;color:var(--ink3);margin-top:2px}
+.m-close:hover{background:var(--ink);color:#fff}
+
+/* ── LOGIN ── */
+.login-wrap{background:var(--paper2);max-width:400px;width:100%;border-top:4px solid var(--navy);margin:auto;padding:32px}
+.login-title{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;margin-bottom:6px}
+.login-desc{font-size:13px;color:var(--ink4);margin-bottom:20px;line-height:1.6}
+.mode-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.mode-btn{padding:11px;font-size:12px;font-weight:700;border:2px solid var(--border);background:var(--paper2);color:var(--ink3);transition:.15s;text-align:center}
+.mode-btn.on.admin{border-color:var(--navy);background:var(--navy);color:#fff}
+.mode-btn.on.editor{border-color:var(--gold);background:var(--gold);color:#fff}
+.mode-desc{font-size:11px;padding:9px 12px;margin-bottom:14px;line-height:1.7;border-left:3px solid var(--navy);background:var(--paper3)}
+.mode-desc.editor{border-left-color:var(--gold)}
+.lbl{display:block;font-size:10px;color:var(--ink4);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.pw-inp{width:100%;border:1px solid var(--border);padding:10px 12px;font-size:16px;font-family:inherit;outline:none;margin-bottom:12px;background:var(--paper2);color:var(--ink)}
+.pw-inp:focus{border-color:var(--navy)}
+.btn-row{display:flex;gap:8px}
+.btn{padding:10px 20px;font-size:13px;font-weight:700;border:none;transition:.15s}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:#152d4a}
+.btn-gray{background:#888;color:#fff}
+.btn-gray:hover{background:#666}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#991b1b}
+.btn-green{background:#166534;color:#fff}
+.btn-green:hover{background:#14532d}
+.btn-gold{background:var(--gold);color:#fff}
+.pw-err{color:var(--red);font-size:12px;margin-top:6px;display:none}
+
+/* ── EDITOR ── */
+.ep{display:none;position:fixed;inset:0;background:#111;z-index:2000;overflow-y:auto}
+.ep.on{display:block}
+.ep-top{background:#0a0a0a;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #2a2a2a;position:sticky;top:0;z-index:10}
+.ep-top h1{font-size:14px;font-weight:700;color:#fff}
+.ep-mode{font-size:10px;font-weight:700;padding:2px 8px;letter-spacing:1px}
+.ep-status{font-size:11px;color:#555;font-family:monospace}
+.ep-close{background:none;border:1px solid #444;color:#aaa;padding:6px 16px;font-size:11px;font-weight:700}
+.ep-close:hover{background:#333;color:#fff}
+.ep-inner{max-width:900px;margin:0 auto;padding:20px}
+.ep-tabs{display:flex;border-bottom:1px solid #333;margin-bottom:18px;flex-wrap:wrap;gap:0}
+.ep-tab{background:none;border:none;color:#555;padding:10px 16px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:.15s;border-bottom:2px solid transparent}
+.ep-tab.on{color:#fff;border-bottom-color:var(--red)}
+.ep-tab:hover{color:#ccc}
+.ep-sec{display:none}.ep-sec.on{display:block}
+.ep-box{background:#1a1a1a;border:1px solid #2a2a2a;margin-bottom:16px}
+.ep-hd{background:#111;padding:10px 16px;font-size:11px;font-weight:700;color:#888;letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.ep-hd button{background:none;border:1px solid #444;color:#888;padding:3px 10px;font-size:10px}
+.ep-hd button:hover{background:#333;color:#fff}
+.ep-bd{padding:16px}
+.ep-lbl{display:block;font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.ep-input,.ep-sel,.ep-ta{width:100%;background:#0d0d0d;border:1px solid #2a2a2a;color:#ccc;padding:9px 12px;font-size:14px;font-family:inherit;margin-bottom:12px;outline:none}
+.ep-input:focus,.ep-ta:focus{border-color:#444}
+.ep-ta{resize:vertical;min-height:80px}
+.ep-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ep-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.ep-out{background:#0a0a0a;border:1px solid #1e1e1e;padding:14px;min-height:100px;font-size:13px;color:#bbb;line-height:1.75;white-space:pre-wrap;max-height:260px;overflow-y:auto;margin-bottom:12px;font-family:'Noto Sans KR',sans-serif}
+.ep-hint{font-size:11px;color:#555;line-height:1.6;margin-bottom:10px}
+.tmpl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.tmpl-btn{background:#1e1e1e;border:1px solid #2a2a2a;color:#888;padding:9px 12px;font-size:12px;font-weight:700;transition:.15s;text-align:left}
+.tmpl-btn:hover,.tmpl-btn.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.ep-art-list{max-height:360px;overflow-y:auto}
+.ep-art-item{background:#111;border:1px solid #1e1e1e;padding:10px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ep-art-info{flex:1;min-width:0}
+.ep-art-title{font-size:12px;color:#bbb;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ep-art-meta{font-size:10px;color:#555;margin-top:2px}
+.ep-art-btns{display:flex;gap:4px;flex-shrink:0}
+.sm-btn{background:none;border:1px solid #333;color:#777;padding:3px 9px;font-size:10px;transition:.15s}
+.sm-btn:hover{background:#333;color:#fff}
+.sm-btn.hero-on{background:var(--gold);border-color:var(--gold);color:#000}
+.sm-btn.del:hover{background:var(--red);border-color:var(--red);color:#fff}
+.ep-divider{border:none;border-top:1px solid #222;margin:14px 0}
+.p-edit-row{display:grid;grid-template-columns:2fr 80px 100px;gap:8px;margin-bottom:8px;align-items:end}
+.p-edit-row .ep-input,.p-edit-row .ep-sel{margin-bottom:0}
+.danger-zone{background:#1a0808;border:1px solid #3d1515;padding:14px;margin-top:4px}
+.danger-title{font-size:11px;font-weight:700;color:#ff6b6b;margin-bottom:10px;letter-spacing:1px;text-transform:uppercase}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.4);padding:32px 20px;border-top:3px solid var(--gold);margin-top:20px}
+.ft-grid{max-width:var(--col);margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin-bottom:24px}
+.ft-title{font-family:'Noto Serif KR',serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:8px}
+.ft-title span{color:var(--gold)}
+.ft-desc{font-size:12px;line-height:1.8}
+.ft-h{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.ft-links{list-style:none}
+.ft-links li{margin-bottom:5px;font-size:12px}
+.ft-links a:hover{color:var(--gold)}
+.ft-bottom{max-width:var(--col);margin:0 auto;border-top:1px solid rgba(255,255,255,.1);padding-top:16px;display:flex;justify-content:space-between;font-size:10px}
+.reg{color:rgba(255,255,255,.25);line-height:1.8}
+
+/* ── RESPONSIVE ── */
+@media(max-width:720px){
+  body{font-size:16px}
+  .mast{flex-direction:column;gap:10px;align-items:flex-start}
+  .mast-l .title{font-size:34px}
+  .mast-r{text-align:left}
+  .main-grid{grid-template-columns:1fr;gap:0}
+  .sidebar-col{padding:0 0 32px}
+  .hero-title{font-size:20px}
+  .ft-grid{grid-template-columns:1fr}
+  .nav-inner a{padding:13px 13px;font-size:13px}
+  .ep-row2,.ep-row3{grid-template-columns:1fr}
+  .tmpl-grid{grid-template-columns:1fr}
+  .ep-input,.ep-sel,.ep-ta{font-size:16px;padding:12px 14px}
+  .art-icon{display:none}
+  .p-edit-row{grid-template-columns:1fr 80px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span id="hd-date"></span>
+  <div>
+    <a href="mailto:seorakcitizennews@gmail.com">기사제보</a>
+    <a href="#">구독</a>
+    <a href="#" onclick="showLogin();return false">편집실</a>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="mast-wrap">
+<div class="mast container">
+  <div class="mast-l">
+    <div class="title">설악시민<span>뉴스</span></div>
+    <div class="sub">Seorak Citizens' News — seorakcitizennews.kr</div>
+  </div>
+  <div class="mast-r">
+    <div class="motto" id="site-motto">"속초가 바뀌려면 시민이 알아야 한다"<br>사실은 엄격하게, 판단은 소신 있게</div>
+    <div class="issue" id="hd-issue"></div>
+  </div>
+</div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+<div class="nav-inner" id="nav">
+  <a href="#" class="on" data-sec="all">전체</a>
+  <a href="#" data-sec="s1">① 지방자치 제언</a>
+  <a href="#" data-sec="s2">② 속초 현안</a>
+  <a href="#" data-sec="s3">③ 뉴스 브리핑</a>
+  <a href="#" data-sec="s4">④ 여론 동향</a>
+  <a href="#" data-sec="s5">⑤ 미디어 비평</a>
+  <a href="#" data-sec="s6">⑥ 소식·알림</a>
+  <a href="#" class="edit-btn" onclick="showLogin();return false">✏ 편집실</a>
+</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-tag">속보</div><div class="ticker-scroll"><div class="ticker-inner" id="ticker-el"></div></div></div>
+
+<!-- MAIN -->
+<div class="container">
+<div class="main-grid">
+  <main class="content-col" id="content-col"><!-- rendered by JS --></main>
+  <aside class="sidebar-col">
+    <div class="side-box"><div class="side-hd">📊 여론조사 현황</div><div class="side-body" id="poll-side"></div></div>
+    <div class="side-box"><div class="side-hd">📰 최신 기사</div><div class="side-body"><ul class="recent-li" id="recent-side"></ul></div></div>
+    <div class="side-box"><div class="side-hd"># 편집 원칙</div><div class="side-body" style="font-size:12px;color:var(--ink3);line-height:1.85">이 신문은 <strong>중립을 표방하지 않습니다.</strong><br>민주주의·법치·속초 시민의 실질적 이익을 기준으로 판단합니다.<br><span style="color:var(--ink4);font-size:11px">사실은 엄격하게 검증하되,<br>판단은 편집인의 소신으로 전합니다.</span></div></div>
+  </aside>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="ft-grid">
+  <div><div class="ft-title">설악시민<span>뉴스</span></div><p class="ft-desc">속초 지방자치 발전과 시민의 알 권리를 위한 독립 인터넷신문</p></div>
+  <div><div class="ft-h">섹션</div><ul class="ft-links"><li><a href="#">① 지방자치발전을 위한 제언</a></li><li><a href="#">② 속초 현안 분석</a></li><li><a href="#">③ 주간 뉴스 브리핑</a></li><li><a href="#">④ 여론 동향</a></li><li><a href="#">⑤ 미디어 비평과 논평</a></li><li><a href="#">⑥ 소식과 알림</a></li></ul></div>
+  <div><div class="ft-h">안내</div><ul class="ft-links"><li><a href="mailto:seorakcitizennews@gmail.com">기사 제보</a></li><li><a href="#">개인정보처리방침</a></li></ul></div>
+</div>
+<div class="ft-bottom">
+  <div class="reg" id="ft-reg">등록번호: 강원 아XXXXX | 발행인·편집인: 김준철 | 발행소: 강원특별자치도 속초시 설악동<br>seorakcitizennews@gmail.com | seorakcitizennews.kr</div>
+  <div>© 2026 설악시민뉴스</div>
+</div>
+</footer>
+
+<!-- ARTICLE MODAL -->
+<div class="modal-bg" id="art-modal" onclick="if(event.target===this)closeMod()">
+<div class="modal">
+  <div class="modal-hd">
+    <button class="m-close" onclick="closeMod()">✕ 닫기</button>
+    <div class="modal-cat" id="mod-cat"></div>
+    <div class="modal-title" id="mod-title"></div>
+    <div class="modal-meta"><span id="mod-meta"></span><span id="mod-type"></span></div>
+  </div>
+  <div class="modal-body" id="mod-body"></div>
+</div>
+</div>
+
+<!-- LOGIN -->
+<div class="modal-bg" id="login-modal">
+<div class="login-wrap">
+  <div class="login-title">설악시민뉴스 편집실</div>
+  <div class="login-desc">모드를 선택하고 비밀번호를 입력하세요.</div>
+  <div class="mode-btns">
+    <button class="mode-btn on admin" id="btn-admin" onclick="selMode('admin')">🔑 관리자 모드</button>
+    <button class="mode-btn editor" id="btn-editor" onclick="selMode('editor')">✏ 편집자 모드</button>
+  </div>
+  <div class="mode-desc" id="mode-desc">관리자 — 기사 작성·관리·삭제, 여론조사, 설정, 비밀번호 변경</div>
+  <label class="lbl">비밀번호</label>
+  <input type="password" class="pw-inp" id="pw-in" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()">
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="doLogin()">로그인</button>
+    <button class="btn btn-gray" onclick="closeLogin()">취소</button>
+  </div>
+  <div class="pw-err" id="pw-err">비밀번호가 맞지 않습니다.</div>
+</div>
+</div>
+
+<!-- EDITOR PANEL -->
+<div class="ep" id="ep">
+<div class="ep-top">
+  <div style="display:flex;align-items:center;gap:10px">
+    <h1>✏ 설악시민뉴스 편집실</h1>
+    <span class="ep-mode" id="ep-mode-badge"></span>
+  </div>
+  <div style="display:flex;align-items:center;gap:14px">
+    <span class="ep-status" id="ep-status">준비</span>
+    <button class="ep-close" onclick="closeEp()">✕ 닫기</button>
+  </div>
+</div>
+<div class="ep-inner">
+  <div class="ep-tabs" id="ep-tabs">
+    <button class="ep-tab on" onclick="epTab('write')">기사 작성</button>
+    <button class="ep-tab admin-tab" onclick="epTab('manage')">기사 관리</button>
+    <button class="ep-tab admin-tab" onclick="epTab('poll')">여론조사</button>
+    <button class="ep-tab admin-tab" onclick="epTab('quote')">편집인 단상</button>
+    <button class="ep-tab admin-tab" onclick="epTab('ticker')">속보 티커</button>
+    <button class="ep-tab admin-tab" onclick="epTab('settings')">⚙ 설정</button>
+  </div>
+
+  <!-- 기사 작성 -->
+  <div class="ep-sec on" id="ep-write">
+    <div class="ep-box">
+      <div class="ep-hd"><span>STEP 1 — 분析틀 선택 후 AI 초안 생성</span></div>
+      <div class="ep-bd">
+        <div class="tmpl-grid">
+          <button class="tmpl-btn on" onclick="selTmpl(this,'s1')">🔴 ① 지방자치발전을 위한 제언</button>
+          <button class="tmpl-btn" onclick="selTmpl(this,'s2')">🟢 ② 속초 현안 분석</button>
+          <button class="tmpl-btn" onclick="selTmpl(this,'s3')">🔵 ③ 주간 뉴스 브리핑</button>
+          <button class="tmpl-btn" onclick="selTmpl(this,'s4')">🟡 ④ 여론 동향</button>
+          <button class="tmpl-btn" onclick="selTmpl(this,'s5')">🟣 ⑤ 미디어 비평과 논평</button>
+          <button class="tmpl-btn" onclick="selTmpl(this,'s6')">⚪ ⑥ 소식·알림</button>
+        </div>
+        <label class="ep-lbl">핵심 자료·메모·수치 입력 (붙여넣기 가능)</label>
+        <textarea class="ep-ta" id="raw-in" rows="4" placeholder="예) 속초시 2025년 수의계약 현황: 전체 계약 중 41%. 강원도 평균 23%. 특정 업체 반복 수주 의혹..."></textarea>
+        <div class="ep-row2">
+          <div><label class="ep-lbl">기사 유형</label>
+          <select class="ep-sel" id="type-sel"><option>보도</option><option>분析</option><option selected>논평</option></select></div>
+          <div><label class="ep-lbl">분량</label>
+          <select class="ep-sel" id="len-sel"><option>단신(300자)</option><option selected>보통(600자)</option><option>심층(1200자)</option></select></div>
+        </div>
+        <button class="btn btn-red" onclick="genAI()">🤖 AI 초안 생성</button>
+        <button class="btn btn-gray" style="margin-left:8px" onclick="clearDraft()">초기화</button>
+      </div>
+    </div>
+    <div class="ep-box">
+      <div class="ep-hd"><span>STEP 2 — AI 초안 확인</span><button onclick="copyOut()">복사</button></div>
+      <div class="ep-bd"><div class="ep-out" id="ai-out" style="color:#555;font-style:italic">분析틀 선택 → 자료 입력 → AI 초안 생성을 누르세요.</div></div>
+    </div>
+    <div class="ep-box">
+      <div class="ep-hd"><span>STEP 3 — 기사 정보 입력 및 발행</span></div>
+      <div class="ep-bd">
+        <div class="ep-row2">
+          <div><label class="ep-lbl">제목</label><input class="ep-input" id="a-title" placeholder="기사 제목"></div>
+          <div><label class="ep-lbl">섹션</label>
+          <select class="ep-sel" id="a-sec">
+            <option value="s1">① 지방자치발전을 위한 제언</option>
+            <option value="s2">② 속초 현안 분석</option>
+            <option value="s3">③ 주간 뉴스 브리핑</option>
+            <option value="s4">④ 여론 동향</option>
+            <option value="s5">⑤ 미디어 비평과 논평</option>
+            <option value="s6">⑥ 소식·알림</option>
+          </select></div>
+        </div>
+        <label class="ep-lbl">본문 (&lt;p&gt;태그로 문단 구분, AI초안에서 복사·수정)</label>
+        <textarea class="ep-ta" id="a-body" rows="6" placeholder="<p>본문 첫 단락...</p>&#10;<p>두 번째 단락...</p>"></textarea>
+        <label class="ep-lbl">요약 (카드 목록에 표시)</label>
+        <input class="ep-input" id="a-excerpt" placeholder="1~2문장 요약">
+        <div class="ep-row3">
+          <div><label class="ep-lbl">필자</label><input class="ep-input" id="a-author" placeholder="편집인"></div>
+          <div><label class="ep-lbl">발행 유형</label>
+          <select class="ep-sel" id="a-type"><option>보도</option><option>분析</option><option>논평</option></select></div>
+          <div style="display:flex;align-items:flex-end;padding-bottom:12px">
+            <label style="font-size:12px;color:#aaa;display:flex;align-items:center;gap:6px;cursor:pointer">
+              <input type="checkbox" id="a-hero"> 히어로 기사 지정
+            </label>
+          </div>
+        </div>
+        <button class="btn btn-green" onclick="publish()">✅ 발행</button>
+        <button class="btn btn-gray" style="margin-left:8px" onclick="clearForm()">양식 초기화</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 기사 관리 -->
+  <div class="ep-sec" id="ep-manage">
+    <div class="ep-box">
+      <div class="ep-hd"><span>발행된 기사 목록 (최신순)</span><button onclick="renderManage()">새로고침</button></div>
+      <div class="ep-bd"><div class="ep-art-list" id="manage-list"></div></div>
+    </div>
+  </div>
+
+  <!-- 여론조사 -->
+  <div class="ep-sec" id="ep-poll">
+    <div class="ep-box">
+      <div class="ep-hd"><span>여론조사 위젯</span></div>
+      <div class="ep-bd">
+        <label class="ep-lbl">조사 제목</label>
+        <input class="ep-input" id="poll-title">
+        <hr class="ep-divider">
+        <label class="ep-lbl">항목 (라벨 / % / 색상)</label>
+        <div id="poll-rows"></div>
+        <button class="btn btn-primary" style="font-size:12px;padding:7px 14px;margin-bottom:12px" onclick="addPRow()">+ 항목 추가</button>
+        <hr class="ep-divider">
+        <label class="ep-lbl">조사 개요</label>
+        <textarea class="ep-ta" id="poll-note" rows="3" placeholder="조사기관: 한국갤럽&#10;조사일: 2026.05.16&#10;표본: 1,000명 / 오차: ±3.1%p"></textarea>
+        <label class="ep-lbl">AI 해설 메모</label>
+        <textarea class="ep-ta" id="poll-memo" rows="2" placeholder="전주 대비 변화, 특이사항..."></textarea>
+        <button class="btn btn-red" onclick="genPollAI()" style="margin-bottom:8px">🤖 AI 해설 생성</button>
+        <div class="ep-out" id="poll-ai-out" style="display:none"></div>
+        <hr class="ep-divider">
+        <button class="btn btn-green" onclick="savePoll()">✅ 위젯 저장</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 편집인 단상 -->
+  <div class="ep-sec" id="ep-quote">
+    <div class="ep-box">
+      <div class="ep-hd"><span>편집인 단상</span></div>
+      <div class="ep-bd">
+        <label class="ep-lbl">인용문</label>
+        <textarea class="ep-ta" id="q-text" rows="3"></textarea>
+        <label class="ep-lbl">출처·날짜</label>
+        <input class="ep-input" id="q-by">
+        <button class="btn btn-green" onclick="saveQuote()">✅ 저장</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 티커 -->
+  <div class="ep-sec" id="ep-ticker">
+    <div class="ep-box">
+      <div class="ep-hd"><span>속보 티커 (한 줄에 하나씩)</span></div>
+      <div class="ep-bd">
+        <textarea class="ep-ta" id="ticker-in" rows="6"></textarea>
+        <button class="btn btn-green" onclick="saveTicker()">✅ 저장</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 설정 (관리자 전용) -->
+  <div class="ep-sec" id="ep-settings">
+    <div class="ep-box">
+      <div class="ep-hd"><span>🔑 비밀번호 변경</span></div>
+      <div class="ep-bd">
+        <div class="ep-row2">
+          <div>
+            <label class="ep-lbl">관리자 새 비밀번호</label>
+            <input class="ep-input" id="new-adm" type="password" placeholder="새 비밀번호">
+            <label class="ep-lbl">확인</label>
+            <input class="ep-input" id="new-adm2" type="password" placeholder="다시 입력">
+            <button class="btn btn-primary" style="font-size:12px;padding:8px 16px" onclick="changePw('admin')">관리자 변경</button>
+          </div>
+          <div>
+            <label class="ep-lbl">편집자 새 비밀번호</label>
+            <input class="ep-input" id="new-ed" type="password" placeholder="새 비밀번호">
+            <label class="ep-lbl">확인</label>
+            <input class="ep-input" id="new-ed2" type="password" placeholder="다시 입력">
+            <button class="btn btn-gold" style="font-size:12px;padding:8px 16px" onclick="changePw('editor')">편집자 변경</button>
+          </div>
+        </div>
+        <div id="pw-msg" style="font-size:12px;margin-top:8px"></div>
+      </div>
+    </div>
+    <div class="ep-box">
+      <div class="ep-hd"><span>🗞 신문 기본 정보</span></div>
+      <div class="ep-bd">
+        <div class="ep-row2">
+          <div><label class="ep-lbl">슬로건(모토)</label><input class="ep-input" id="s-motto"></div>
+          <div><label class="ep-lbl">등록 정보</label><input class="ep-input" id="s-reg"></div>
+        </div>
+        <button class="btn btn-green" onclick="saveSiteInfo()">✅ 저장</button>
+      </div>
+    </div>
+    <div class="ep-box">
+      <div class="ep-hd"><span style="color:#ff6b6b">⚠ 위험 구역</span></div>
+      <div class="ep-bd">
+        <div class="danger-zone">
+          <div class="danger-title">되돌릴 수 없는 작업입니다</div>
+          <button class="btn" style="background:#7f1d1d;color:#fff;font-size:12px;padding:8px 16px;margin-right:8px" onclick="resetArts()">기사 전체 초기화</button>
+          <button class="btn" style="background:#1a0808;color:#ff6b6b;border:1px solid #3d1515;font-size:12px;padding:8px 16px" onclick="resetAll()">공장 초기화 (전체)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /ep-inner -->
+</div><!-- /ep -->
+
+<script>
+// ── STATE ──
+let S = {
+  pws: { admin:'sokcho2026', editor:'sokcho1234' },
+  articles: [],
+  poll: {
+    title:'대통령 직무수행 평가 (2026년 5월 3주차)',
+    rows:[
+      {label:'긍정',pct:32,cls:'f1'},
+      {label:'부정',pct:52,cls:'f3'},
+      {label:'모름/무응답',pct:16,cls:'f4'}
+    ],
+    note:'조사기관: 한국갤럽\n조사일: 2026.05.16\n표본: 전국 만18세이상 1,000명\n오차: ±3.1%p (95% 신뢰수준)'
+  },
+  quote: {
+    text:'"속초의 문제는 능력 있는 사람이 없는 게 아니다. 능력 있는 사람이 오지 않는 구조가 문제다."',
+    by:'— 설악시민뉴스 창간사 | 2026년 5월'
+  },
+  ticker: ['설악시민뉴스 창간 — 속초 정치문화 감시 독립 미디어 출범','한국갤럽 주간조사 최신 결과 업데이트','속초시 수의계약 비율 강원도 내 최고 수준 확인','청초호 워터프런트 개발 10년째 표류'],
+  site: { motto:'"속초가 바뀌려면 시민이 알아야 한다"<br>사실은 엄격하게, 판단은 소신 있게', reg:'등록번호: 강원 아XXXXX | 발행인·편집인: 김준철 | 발행소: 강원특별자치도 속초시 설악동<br>seorakcitizennews@gmail.com | seorakcitizennews.kr' },
+  expanded: {},
+  curSec: 'all',
+  curTmpl: 's1',
+  curMode: 'admin'
+};
+
+const SECS = {
+  s1:{name:'지방자치발전을 위한 제언',short:'지방자치 제언',color:'--c1',badge:'bg:#dbeafe;color:#1e3a8a',icon:'🏛'},
+  s2:{name:'속초 현안 분석',short:'속초 현안',color:'--c2',badge:'bg:#dcfce7;color:#14532d',icon:'🔍'},
+  s3:{name:'주간 뉴스 브리핑',short:'뉴스 브리핑',color:'--c3',badge:'bg:#ede9fe;color:#3730a3',icon:'📰'},
+  s4:{name:'여론 동향',short:'여론 동향',color:'--c4',badge:'bg:#fef3c7;color:#78350f',icon:'📊'},
+  s5:{name:'미디어 비평과 논평',short:'미디어 비평',color:'--c5',badge:'bg:#fee2e2;color:#991b1b',icon:'✒'},
+  s6:{name:'소식과 알림',short:'소식·알림',color:'--c6',badge:'bg:#dcfce7;color:#14532d',icon:'📢'}
+};
+
+const TMPL = {
+  s1:`당신은 속초 지역 독립 언론 '설악시민뉴스' 편집인입니다. 편집 철학: 중립 비표방, 민주주의·법치·속초 시민 이익 기준, 연고정치·이권카르텔 비판.
+
+분析틀 — 지방자치발전을 위한 제언:
+①구체적 사실·데이터 제시 ②구조적 원인 분석(누가·어떻게·왜) ③시민 생활 영향 ④편집인의 구체적 제언과 대안
+
+[분량]으로 [유형] 형식, HTML <p> 태그 문단 구분:`,
+  s2:`당신은 속초 지역 독립 언론 '설악시민뉴스' 편집인입니다.
+
+분析틀 — 속초 현안 분析:
+①현안의 현황과 규모 ②해결 안 되는 구조·정치적 원인 ③타 지역 성공 사례·전문가 의견 ④편집인의 구체적 대안 제시
+
+[분량]으로 [유형] 형식, HTML <p> 태그:`,
+  s3:`당신은 속초 지역 독립 언론 '설악시민뉴스' 편집인입니다. 한국 정치·경제·사회 동향을 속초 시민 관점에서 해설하는 주간 브리핑입니다.
+
+분析틀 — 주간 뉴스 브리핑:
+①핵심 이슈 4~5건 항목화 ②각 이슈 핵심 2~3문장 ③강원·속초 관련 시사점 ④다음 주 주목 포인트
+
+[분량]으로 [유형] 형식, HTML <p><strong>태그:`,
+  s4:`당신은 정치학·여론조사 전문가이자 '설악시민뉴스' 편집인입니다. 갤럽·NBS 여론조사를 전문적으로 분析·해설합니다.
+
+분析틀 — 여론 동향:
+①핵심 수치 요약 ②전주 대비 추세·변화 ③통계적 의미·해석 주의사항 ④속초·강원 정치적 시사점 ⑤다음 조사 주목 포인트
+
+[분량]으로 [유형] 형식, HTML <p> 태그:`,
+  s5:`당신은 속초 지역 독립 언론 '설악시민뉴스' 편집인입니다. 조선·동아·중앙·한겨레·경향 5개 매체 사설·논설을 분析하고 한 주간 한국 사회 흐름 총평을 작성합니다.
+
+분析틀 — 미디어 비평과 논평:
+①조선·동아·중앙 핵심 주장 요약 ②한겨레·경향 핵심 주장 요약 ③진보·보수 논점 차이 ④사실·논리적 타당성 검토 ⑤이번 주 한국 사회 흐름 편집인 총평
+
+[분량]으로 [유형] 형식, HTML <p> 태그:`,
+  s6:`당신은 속초 지역 독립 언론 '설악시민뉴스' 편집인입니다.
+
+분析틀 — 소식과 알림:
+①공지 내용 핵심 요약 ②시민 생활 관련성 ③문의·신청 방법 안내
+
+[분량]으로 [유형] 형식, HTML <p> 태그:`
+};
+
+function seed(){
+  S.articles = [
+    {id:1,sec:'s1',title:'[논평] 속초 수의계약 41% — 강원도 평균의 1.8배, 구조적 원인 3가지',excerpt:'2023~2025년 속초시 수의계약 비율 41%. 강원도 평균 23%를 크게 웃도는 배경과 특정 업체 반복 수주 패턴을 분析했다.',body:'<p>2023년부터 2025년까지 속초시가 발주한 공사·용역·물품 계약 중 수의계약 비율이 41%에 달하는 것으로 나타났다. 강원특별자치도 내 18개 시·군 평균인 23%를 크게 웃도는 수치다.</p><p>원인은 세 가지로 정리된다. 첫째, 소규모 공사 분할 발주 관행이다. 경쟁입찰 의무 기준을 피하기 위해 하나의 사업을 여러 건으로 쪼개는 방식이 반복된다. 둘째, 특정 업체와의 반복 수주 패턴이다. 동일 업체가 3년간 10건 이상 수의계약을 체결한 사례가 확인됐다. 셋째, 내부 견제 기능의 부재다. 시의회 예산 심의 과정에서 이 문제가 한 번도 공식 의제로 다뤄지지 않았다.</p><p>편집인은 속초시장이 즉각 전수 감사를 지시해야 한다고 본다. 투명한 계약 행정은 선택이 아니라 의무다.</p>',author:'편집인',type:'논평',date:new Date().toLocaleDateString('ko-KR'),hero:true},
+    {id:2,sec:'s3',title:'[보도] 이번 주 한국 정치·경제 핵심 5선 — 추경·금리·지지율',excerpt:'국회 추경 공방, 한국은행 금리 동결, 여야 지지율 격차 축소 등 이번 주 놓치면 안 될 뉴스 5건.',body:'<p><strong>① 국회 추경 공방</strong> — 여야가 추가경정예산안 처리를 놓고 충돌. 규모와 용처 이견 지속.</p><p><strong>② 한국은행 금리 동결</strong> — 금통위, 3.25% 유지. 내수 불확실성 이유 제시.</p><p><strong>③ 여야 지지율 격차 축소</strong> — 갤럽 주간조사에서 3%p로 좁혀져. 무당층 확대 추세.</p><p><strong>④ 강원도 예산 자립도</strong> — 전국 최하위권 유지. 국비 의존도 개선 시급.</p><p><strong>⑤ 속초 관광객 감소</strong> — 전년 대비 8% 감소. 엔저 효과 약화 분석.</p>',author:'편집위원회',type:'보도',date:new Date().toLocaleDateString('ko-KR'),hero:false},
+    {id:3,sec:'s4',title:'[分析] 부정 52%, 3주 연속 상승 — 갤럽 5월 3주차 여론 動向',excerpt:'대통령 직무 부정 평가 52%, 전주 대비 3%p 상승. 무당층 확대 속 정치적 불확실성 심화.',body:'<p>한국갤럽이 발표한 5월 3주차 주간 여론조사에서 대통령 직무수행 부정 평가가 52%로 나타났다. 전주 대비 3%p 상승으로 3주 연속 악화세다.</p><p>긍정 평가는 32%, 모름·무응답은 16%였다. 특이할 점은 무당층 비율이 지속적으로 늘고 있다는 점이다. 이는 기존 지지층의 이탈보다 새로운 유동층이 형성되고 있음을 시사한다.</p><p>강원·속초 지역 유권자 입장에서 이 수치의 의미는 크다. 내년 지방선거를 앞두고 중앙 정치 불신이 지방 선거에 영향을 미칠 가능성이 높아지고 있다.</p>',author:'편집인',type:'분析',date:new Date().toLocaleDateString('ko-KR'),hero:false},
+    {id:4,sec:'s5',title:'[논평] 이번 주 사설 총평 — 경제 위기 진단은 일치, 처방은 극명히 갈렸다',excerpt:'5개 매체 모두 경제 위기를 인정했으나 해법은 규제완화 對 내수진작으로 양분됐다. 편집인 총평.',body:'<p>이번 주 조선일보·동아일보·중앙일보는 규제 완화와 기업 투자 활성화를 해법으로 제시했다. 경제 둔화의 원인을 공급 측 장애물에서 찾는 시각이다.</p><p>반면 한겨레와 경향신문은 내수 진작과 불평등 해소를 우선 과제로 꼽았다. 소득 양극화가 소비를 억제하고 있다는 수요 측 진단이다.</p><p>편집인의 판단은 이렇다. 두 처방 모두 속초 같은 지방 소도시의 현실을 제대로 반영하지 못하고 있다. 규제 완화의 혜택은 대도시 자본에 집중되고, 내수 진작 정책도 수도권 중심으로 설계된다. 지방 분권과 지역 경제 자립이 빠진 경제 논쟁은 반쪽짜리다.</p>',author:'편집인',type:'논평',date:new Date().toLocaleDateString('ko-KR'),hero:false},
+    {id:5,sec:'s2',title:'[分析] 청초호 워터프런트 개발, 왜 10년째 표류하나',excerpt:'천혜의 수변 자원을 보유하고도 개발 계획이 구체화되지 못하는 구조적 원인과 대안을 분析한다.',body:'<p>청초호와 속초해수욕장을 연결하는 약 3km 수변 공간은 국내에서 보기 드문 석호-바다 연계 관광 자산이다. 2016년 수립된 기본계획은 10년이 지나도록 핵심 사업이 시행 단계에 진입하지 못하고 있다.</p><p>표면적 이유는 토지 소유권 분산과 예산 부족이다. 그러나 본질적 원인은 이 사업으로 이익을 얻을 수 있는 세력과 현상 유지를 원하는 기득권 사이의 충돌이다.</p><p>대안은 명확하다. 광역 행정 체계를 활용한 E-CASG 동해안 협력 프레임워크 안에서 국비를 확보하고, 민간 투자 유치를 위한 구체적인 토지 수용 로드맵을 마련해야 한다.</p>',author:'편집인',type:'분析',date:new Date().toLocaleDateString('ko-KR'),hero:false},
+    {id:6,sec:'s6',title:'속초시 2026년 상반기 예산안 주민공청회 개최',excerpt:'속초시가 2026년 상반기 추경예산안에 대한 주민공청회를 개최합니다.',body:'<p>속초시는 2026년 상반기 추가경정예산안에 대한 주민공청회를 다음과 같이 개최합니다.</p><p>일시: 2026년 5월 20일(화) 오후 2시 / 장소: 속초시청 대회의실 / 문의: 속초시 예산담당관실 033-639-2024</p>',author:'속초시청 공보',type:'보도',date:new Date().toLocaleDateString('ko-KR'),hero:false}
+  ];
+}
+
+// ── STORAGE ──
+async function loadS(){
+  try{const r=await window.storage.get('scn3');if(r&&r.value){const p=JSON.parse(r.value);S={...S,...p};}}catch(e){}
+  if(!S.articles||!S.articles.length)seed();
+  render();
+}
+async function saveS(){try{await window.storage.set('scn3',JSON.stringify(S));}catch(e){}}
+
+// ── RENDER ──
+function render(){
+  renderDate(); renderContent(); renderPollSide(); renderRecent(); renderQuoteBanner(); renderTicker();
+  if(S.site.motto)document.getElementById('site-motto').innerHTML=S.site.motto;
+  if(S.site.reg)document.getElementById('ft-reg').innerHTML=S.site.reg;
+}
+
+function renderDate(){
+  const d=new Date();
+  document.getElementById('hd-date').textContent=d.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
+  document.getElementById('hd-issue').textContent='창간호 | Vol.1';
+}
+
+function renderContent(){
+  const col=document.getElementById('content-col');
+  const sec=S.curSec;
+
+  // hero
+  const heroArt=S.articles.find(a=>a.hero&&(sec==='all'||a.sec===sec));
+  let html='';
+  if(heroArt){
+    const si=SECS[heroArt.sec];
+    html+=`<div class="hero" onclick="openMod(${heroArt.id})">
+      <div class="hero-img"><div class="hero-img-bg"></div><div class="hero-img-label">${si.short}</div></div>
+      <div class="hero-body">
+        <div class="hero-cat" style="color:var(${si.color})">${si.name}</div>
+        <div class="hero-title"><span class="art-type" style="color:var(${si.color})">${heroArt.type}</span> ${heroArt.title}</div>
+        <div class="hero-excerpt">${heroArt.excerpt}</div>
+        <div class="hero-meta"><span>${heroArt.author} | ${heroArt.date}</span><span class="read-more">기사 읽기 →</span></div>
+      </div>
+    </div>`;
+  }
+
+  // quote
+  html+=`<div class="quote-banner"><small>편집인 단상</small><blockquote id="qb-text">${S.quote.text}</blockquote><div class="by" id="qb-by">${S.quote.by}</div></div>`;
+
+  // sections
+  const secOrder=sec==='all'?['s1','s2','s3','s4','s5','s6']:[sec];
+  secOrder.forEach(sk=>{
+    const si=SECS[sk];
+    const arts=S.articles.filter(a=>a.sec===sk&&!a.hero);
+    if(!arts.length&&sec!=='all')return;
+    const shown=S.expanded[sk]?arts:arts.slice(0,2);
+    html+=`<div class="sec-divider">
+      <div class="sec-lbl">
+        <h2>${si.name}</h2>
+        <span class="sec-badge" style="${si.badge}">${arts.length}건</span>
+        <span class="count">${sk==='s4'?'매주 금요일':''}${sk==='s3'?'매주 월요일':''}</span>
+      </div>
+      <div class="art-list">`;
+
+    if(sk==='s6'){
+      shown.forEach(a=>{
+        html+=`<div class="notif-item" onclick="openMod(${a.id})">
+          <span class="notif-tag">${a.type}</span>
+          <div class="notif-text">${a.title}</div>
+          <div class="notif-date">${a.author} | ${a.date}</div>
+        </div>`;
+      });
+    } else {
+      shown.forEach(a=>{
+        html+=`<div class="art-item" onclick="openMod(${a.id})">
+          <div class="art-item-body">
+            <div class="art-cat" style="color:var(${si.color})">${si.short}</div>
+            <div class="title"><span class="art-type" style="color:var(${si.color})">${a.type}</span>${a.title}</div>
+            <div class="excerpt">${a.excerpt}</div>
+            <div class="meta"><span>${a.author}</span><span>${a.date}</span></div>
+          </div>
+          <div class="art-icon">${si.icon}</div>
+        </div>`;
+      });
+    }
+
+    html+='</div>';
+    if(arts.length>2){
+      if(!S.expanded[sk])
+        html+=`<button class="more-btn" onclick="expand('${sk}')">이전 기사 더 보기 (${arts.length-2}건) ▾</button>`;
+      else
+        html+=`<button class="more-btn" onclick="collapse('${sk}')">접기 ▴</button>`;
+    }
+    html+='</div>';
+  });
+
+  col.innerHTML=html;
+}
+
+function expand(sk){S.expanded[sk]=true;renderContent();}
+function collapse(sk){delete S.expanded[sk];renderContent();}
+
+function renderPollSide(){
+  const p=S.poll;
+  let h=`<div class="poll-q">${p.title}</div>`;
+  p.rows.forEach(r=>{h+=`<div class="p-row"><div class="p-lbl"><span>${r.label}</span><span class="p-pct">${r.pct}%</span></div><div class="p-bar"><div class="p-fill ${r.cls}" style="width:${r.pct}%"></div></div></div>`;});
+  h+=`<div class="poll-note">${p.note.replace(/\n/g,'<br>')}</div>`;
+  document.getElementById('poll-side').innerHTML=h;
+}
+
+function renderRecent(){
+  document.getElementById('recent-side').innerHTML=[...S.articles].reverse().slice(0,6).map(a=>`<li onclick="openMod(${a.id})"><span class="r-cat">${SECS[a.sec].short}</span>${a.title}</li>`).join('');
+}
+
+function renderQuoteBanner(){
+  const qbt=document.getElementById('qb-text');
+  const qbb=document.getElementById('qb-by');
+  if(qbt)qbt.innerHTML=S.quote.text;
+  if(qbb)qbb.textContent=S.quote.by;
+}
+
+function renderTicker(){
+  const t=[...S.ticker,...S.ticker];
+  document.getElementById('ticker-el').innerHTML=t.map(s=>`<span>${s}</span>`).join('');
+}
+
+// ── NAV ──
+document.querySelectorAll('#nav a[data-sec]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelectorAll('#nav a[data-sec]').forEach(x=>x.classList.remove('on'));
+    a.classList.add('on');
+    S.curSec=a.dataset.sec;
+    S.expanded={};
+    renderContent();
+  });
+});
+
+// ── MODAL ──
+function openMod(id){
+  const a=S.articles.find(x=>x.id===id);if(!a)return;
+  const si=SECS[a.sec];
+  document.getElementById('mod-cat').textContent=si.name;
+  document.getElementById('mod-cat').style.color=`var(${si.color})`;
+  document.getElementById('mod-title').textContent=a.title;
+  document.getElementById('mod-meta').textContent=`${a.author} | ${a.date}`;
+  document.getElementById('mod-type').innerHTML=`<span class="art-type" style="color:var(${si.color})">${a.type}</span>`;
+  document.getElementById('mod-body').innerHTML=a.body;
+  document.getElementById('art-modal').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeMod(){document.getElementById('art-modal').classList.remove('on');document.body.style.overflow='';}
+
+// ── LOGIN ──
+let curMode='admin';
+function selMode(m){
+  curMode=m;
+  document.getElementById('btn-admin').className='mode-btn'+(m==='admin'?' on admin':'');
+  document.getElementById('btn-editor').className='mode-btn editor'+(m==='editor'?' on':'');
+  document.getElementById('mode-desc').textContent=m==='admin'
+    ?'관리자 — 기사 작성·관리·삭제, 여론조사, 설정, 비밀번호 변경'
+    :'편집자 — 기사 작성 및 발행만 가능. 관리·설정 기능 제한.';
+  document.getElementById('mode-desc').className='mode-desc'+(m==='editor'?' editor':'');
+}
+function showLogin(){document.getElementById('login-modal').classList.add('on');setTimeout(()=>document.getElementById('pw-in').focus(),100);}
+function closeLogin(){document.getElementById('login-modal').classList.remove('on');document.getElementById('pw-in').value='';document.getElementById('pw-err').style.display='none';}
+function doLogin(){
+  const v=document.getElementById('pw-in').value;
+  if(v===S.pws.admin&&curMode==='admin'){closeLogin();openEp('admin');}
+  else if(v===S.pws.editor&&curMode==='editor'){closeLogin();openEp('editor');}
+  else{document.getElementById('pw-err').style.display='block';}
+}
+
+// ── EDITOR ──
+function openEp(mode){
+  S.curMode=mode;
+  document.getElementById('ep').classList.add('on');
+  document.body.style.overflow='hidden';
+  const badge=document.getElementById('ep-mode-badge');
+  if(mode==='admin'){badge.textContent='관리자';badge.style.cssText='background:var(--navy);color:#fff;';}
+  else{badge.textContent='편집자';badge.style.cssText='background:var(--gold);color:#000;';}
+  document.querySelectorAll('.admin-tab').forEach(t=>{t.style.display=mode==='admin'?'':'none';});
+  renderManage();loadPoll();loadQuote();loadTicker();loadSettings();
+  epTab('write');
+}
+function closeEp(){document.getElementById('ep').classList.remove('on');document.body.style.overflow='';render();}
+function epTab(t){
+  const tabs={write:'ep-write',manage:'ep-manage',poll:'ep-poll',quote:'ep-quote',ticker:'ep-ticker',settings:'ep-settings'};
+  document.querySelectorAll('.ep-tab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.ep-sec').forEach(s=>s.classList.remove('on'));
+  const tabBtns=Array.from(document.querySelectorAll('.ep-tab'));
+  const idx={write:0,manage:1,poll:2,quote:3,ticker:4,settings:5}[t];
+  if(tabBtns[idx])tabBtns[idx].classList.add('on');
+  const sec=document.getElementById(tabs[t]);
+  if(sec)sec.classList.add('on');
+  if(t==='manage')renderManage();
+}
+function setStatus(m){document.getElementById('ep-status').textContent=m;setTimeout(()=>document.getElementById('ep-status').textContent='준비',3000);}
+
+// ── TEMPLATE ──
+function selTmpl(btn,sk){
+  document.querySelectorAll('.tmpl-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  S.curTmpl=sk;
+  document.getElementById('a-sec').value=sk;
+}
+
+async function genAI(){
+  const raw=document.getElementById('raw-in').value.trim();
+  if(!raw){alert('자료를 입력하세요.');return;}
+  const type=document.getElementById('type-sel').value;
+  const len=document.getElementById('len-sel').value;
+  const prompt=TMPL[S.curTmpl].replace('[분량]',len).replace('[유형]',type)+'\n\n'+raw;
+  const out=document.getElementById('ai-out');
+  out.style.color='#555';out.style.fontStyle='italic';out.textContent='AI가 분析틀에 따라 초안을 작성하고 있습니다...';
+  setStatus('AI 생성 중...');
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    const data=await res.json();
+    const text=data.content?.find(c=>c.type==='text')?.text||'생성 실패';
+    out.style.color='#ccc';out.style.fontStyle='normal';out.innerHTML=text;
+    document.getElementById('a-body').value=text;
+    setStatus('초안 생성 완료');
+  }catch(e){out.textContent='오류: '+e.message;setStatus('오류');}
+}
+function clearDraft(){document.getElementById('raw-in').value='';const o=document.getElementById('ai-out');o.style.color='#555';o.style.fontStyle='italic';o.textContent='분析틀 선택 → 자료 입력 → AI 초안 생성을 누르세요.';}
+function copyOut(){navigator.clipboard?.writeText(document.getElementById('ai-out').innerText).then(()=>alert('복사됐습니다.'));}
+function clearForm(){['a-title','a-body','a-author','a-excerpt'].forEach(id=>document.getElementById(id).value='');document.getElementById('a-hero').checked=false;}
+
+function publish(){
+  const title=document.getElementById('a-title').value.trim();
+  const body=document.getElementById('a-body').value.trim();
+  if(!title||!body){alert('제목과 본문을 입력하세요.');return;}
+  const hero=document.getElementById('a-hero').checked;
+  if(hero)S.articles.forEach(a=>a.hero=false);
+  S.articles.push({
+    id:Date.now(),
+    sec:document.getElementById('a-sec').value,
+    title,
+    body:body.includes('<p>')?body:body.split('\n').filter(Boolean).map(s=>`<p>${s}</p>`).join(''),
+    excerpt:document.getElementById('a-excerpt').value||title.slice(0,60)+'…',
+    author:document.getElementById('a-author').value||'편집인',
+    type:document.getElementById('a-type').value,
+    date:new Date().toLocaleDateString('ko-KR'),
+    hero
+  });
+  saveS();clearForm();clearDraft();setStatus('발행 완료');alert('발행됐습니다.');
+}
+
+// ── MANAGE ──
+function renderManage(){
+  document.getElementById('manage-list').innerHTML=[...S.articles].reverse().map(a=>`
+    <div class="ep-art-item">
+      <div class="ep-art-info">
+        <div class="ep-art-meta">${SECS[a.sec].short} | ${a.type} | ${a.date}</div>
+        <div class="ep-art-title">${a.hero?'⭐ ':''}${a.title}</div>
+      </div>
+      <div class="ep-art-btns">
+        <button class="sm-btn ${a.hero?'hero-on':''}" onclick="toggleHero(${a.id})">${a.hero?'히어로':'히어로 지정'}</button>
+        <button class="sm-btn del" onclick="delArt(${a.id})">삭제</button>
+      </div>
+    </div>`).join('');
+}
+function toggleHero(id){S.articles.forEach(a=>a.hero=false);const a=S.articles.find(x=>x.id===id);if(a)a.hero=true;saveS();renderManage();}
+function delArt(id){if(!confirm('삭제하시겠습니까?'))return;S.articles=S.articles.filter(a=>a.id!==id);saveS();renderManage();}
+
+// ── POLL ──
+function loadPoll(){
+  document.getElementById('poll-title').value=S.poll.title||'';
+  document.getElementById('poll-note').value=S.poll.note||'';
+  document.getElementById('poll-rows').innerHTML='';
+  S.poll.rows.forEach(r=>addPRow(r.label,r.pct,r.cls));
+}
+function addPRow(label='',pct='',cls='f1'){
+  const d=document.createElement('div');d.className='p-edit-row';
+  d.innerHTML=`<input class="ep-input" placeholder="항목명" value="${label}" style="margin-bottom:0">
+    <input class="ep-input" type="number" min="0" max="100" placeholder="%" value="${pct}" style="margin-bottom:0">
+    <select class="ep-sel" style="margin-bottom:0">
+      <option value="f1" ${cls==='f1'?'selected':''}>네이비</option>
+      <option value="f2" ${cls==='f2'?'selected':''}>골드</option>
+      <option value="f3" ${cls==='f3'?'selected':''}>레드</option>
+      <option value="f4" ${cls==='f4'?'selected':''}>회색</option>
+    </select>`;
+  document.getElementById('poll-rows').appendChild(d);
+}
+function getPRows(){return Array.from(document.querySelectorAll('.p-edit-row')).map(r=>{const is=r.querySelectorAll('input,select');return{label:is[0].value,pct:parseInt(is[1].value)||0,cls:is[2].value};});}
+async function genPollAI(){
+  const title=document.getElementById('poll-title').value;
+  const memo=document.getElementById('poll-memo').value;
+  const rows=getPRows();
+  if(!title){alert('조사 제목을 입력하세요.');return;}
+  const prompt=`정치학·여론조사 전문가로서 아래 조사 결과에 대해 150자 내외 간결한 해설을 순수 텍스트로 작성하세요.\n조사명: ${title}\n결과: ${rows.map(r=>r.label+' '+r.pct+'%').join(', ')}\n메모: ${memo}`;
+  const out=document.getElementById('poll-ai-out');out.style.display='block';out.textContent='AI 해설 생성 중...';
+  try{const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,messages:[{role:'user',content:prompt}]})});const data=await res.json();out.textContent=data.content?.find(c=>c.type==='text')?.text||'실패';}catch(e){out.textContent='오류';}
+}
+function savePoll(){
+  S.poll={title:document.getElementById('poll-title').value,rows:getPRows(),note:document.getElementById('poll-note').value};
+  saveS();renderPollSide();setStatus('여론조사 저장');alert('저장됐습니다.');
+}
+
+// ── QUOTE ──
+function loadQuote(){document.getElementById('q-text').value=S.quote.text;document.getElementById('q-by').value=S.quote.by;}
+function saveQuote(){S.quote={text:document.getElementById('q-text').value,by:document.getElementById('q-by').value};saveS();renderQuoteBanner();setStatus('단상 저장');alert('저장됐습니다.');}
+
+// ── TICKER ──
+function loadTicker(){document.getElementById('ticker-in').value=S.ticker.join('\n');}
+function saveTicker(){S.ticker=document.getElementById('ticker-in').value.split('\n').filter(Boolean);saveS();renderTicker();setStatus('티커 저장');alert('저장됐습니다.');}
+
+// ── SETTINGS ──
+function loadSettings(){
+  document.getElementById('s-motto').value=S.site.motto||'';
+  document.getElementById('s-reg').value=S.site.reg||'';
+}
+function changePw(role){
+  const n=document.getElementById('new-'+role[0]+'dm'+(role==='admin'?'':''))||document.getElementById(role==='admin'?'new-adm':'new-ed');
+  const n2=document.getElementById(role==='admin'?'new-adm2':'new-ed2');
+  if(!n||!n.value){alert('비밀번호를 입력하세요.');return;}
+  if(n.value!==n2.value){alert('비밀번호가 일치하지 않습니다.');return;}
+  S.pws[role]=n.value;saveS();
+  document.getElementById('pw-msg').textContent='변경됐습니다.';
+  document.getElementById('pw-msg').style.color='#4ade80';
+  n.value='';n2.value='';
+}
+function saveSiteInfo(){
+  S.site.motto=document.getElementById('s-motto').value;
+  S.site.reg=document.getElementById('s-reg').value;
+  saveS();
+  if(S.site.motto)document.getElementById('site-motto').innerHTML=S.site.motto;
+  if(S.site.reg)document.getElementById('ft-reg').innerHTML=S.site.reg;
+  setStatus('사이트 정보 저장');alert('저장됐습니다.');
+}
+function resetArts(){if(!confirm('기사를 모두 삭제하시겠습니까?'))return;S.articles=[];seed();saveS();render();alert('초기화됐습니다.');}
+function resetAll(){if(!confirm('전체 데이터를 초기화하시겠습니까?'))return;try{window.storage.delete('scn3');}catch(e){}location.reload();}
+
+// 비밀번호 변경 버튼 함수 수정
+function changePw(role){
+  const n=document.getElementById(role==='admin'?'new-adm':'new-ed');
+  const n2=document.getElementById(role==='admin'?'new-adm2':'new-ed2');
+  if(!n.value){alert('비밀번호를 입력하세요.');return;}
+  if(n.value!==n2.value){alert('비밀번호가 일치하지 않습니다.');return;}
+  S.pws[role]=n.value;saveS();
+  const msg=document.getElementById('pw-msg');
+  msg.textContent=(role==='admin'?'관리자':'편집자')+' 비밀번호가 변경됐습니다.';
+  msg.style.color='#4ade80';
+  n.value='';n2.value='';
+}
+
+// ── INIT ──
+loadS();
+</script>
+</body>
+</html>
