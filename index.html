@@ -39,6 +39,7 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
+/* ── TOPBAR ── */
 .topbar {
   background: var(--navy-dark);
   color: rgba(255,255,255,0.6);
@@ -52,6 +53,7 @@ a { text-decoration: none; color: inherit; }
 .topbar-links a { color: rgba(255,255,255,0.6); }
 .topbar-links a:hover { color: var(--gold-light); }
 
+/* ── MASTHEAD ── */
 .masthead {
   background: var(--navy);
   padding: 20px 16px 16px;
@@ -81,6 +83,7 @@ a { text-decoration: none; color: inherit; }
   margin-top: 4px;
 }
 
+/* ── NAV ── */
 nav {
   background: var(--navy-mid);
   position: sticky;
@@ -108,7 +111,9 @@ nav li a {
   transition: all 0.2s;
   position: relative;
 }
-nav li a:hover, nav li a.active { color: #fff; }
+nav li a:hover, nav li a.active {
+  color: #fff;
+}
 nav li a.active::after {
   content: '';
   position: absolute;
@@ -124,6 +129,7 @@ nav li a.active::after {
   margin-top: 1px;
 }
 
+/* ── TICKER ── */
 .ticker {
   background: var(--red);
   color: #fff;
@@ -155,6 +161,7 @@ nav li a.active::after {
   100% { transform: translateX(-50%); }
 }
 
+/* ── SECTIONS ── */
 .section {
   background: var(--bg-white);
   margin: 0 0 8px 0;
@@ -175,7 +182,11 @@ nav li a.active::after {
   background: #fafafa;
 }
 .section-header:hover { background: #f0f0f0; }
-.section-title { display: flex; align-items: center; gap: 10px; }
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .section-title h2 {
   font-family: 'Noto Serif KR', serif;
   font-size: 15px;
@@ -194,13 +205,32 @@ nav li a.active::after {
 .section-title .s-badge.gold { background: var(--gold); }
 .section-title .s-badge.red { background: var(--red); }
 .section-title .s-badge.green { background: var(--green); }
-.section-desc { font-size: 10px; color: var(--text-light); font-weight: 300; }
-.toggle-icon { font-size: 16px; color: var(--text-light); transition: transform 0.3s; flex-shrink: 0; }
+.section-desc {
+  font-size: 10px;
+  color: var(--text-light);
+  font-weight: 300;
+}
+.toggle-icon {
+  font-size: 16px;
+  color: var(--text-light);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
 .section.collapsed .toggle-icon { transform: rotate(-90deg); }
-.section-body { padding: 16px; transition: all 0.3s; overflow: hidden; }
-.section.collapsed .section-body { display: none; }
+.section-body {
+  padding: 16px;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+.section.collapsed .section-body {
+  display: none;
+}
 
-.article { padding: 14px 0; border-bottom: 1px solid var(--border); }
+/* ── ARTICLE ── */
+.article {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
 .article:last-child { border-bottom: none; padding-bottom: 0; }
 .article:first-child { padding-top: 0; }
 .article-cat {
@@ -222,7 +252,11 @@ nav li a.active::after {
   color: var(--text-dark);
   margin-bottom: 8px;
 }
-.article-body { font-size: 14px; color: var(--text-mid); line-height: 1.85; }
+.article-body {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.85;
+}
 .article-body p { margin-bottom: 10px; }
 .article-body p:last-child { margin-bottom: 0; }
 .article-meta {
@@ -235,6 +269,7 @@ nav li a.active::after {
   border-top: 1px dashed var(--border);
 }
 
+/* ── EDITOR LETTER ── */
 .editor-letter {
   background: var(--navy);
   color: #fff;
@@ -249,7 +284,11 @@ nav li a.active::after {
   font-weight: 700;
   margin-bottom: 10px;
 }
-.editor-letter-body { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.85); }
+.editor-letter-body {
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.85);
+}
 .editor-letter-body p { margin-bottom: 10px; }
 .editor-letter-sig {
   margin-top: 14px;
@@ -257,20 +296,9 @@ nav li a.active::after {
   color: rgba(255,255,255,0.5);
   text-align: right;
 }
-.editor-letter-copyable {
-  margin-top: 14px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  padding: 8px 14px;
-  font-size: 11px;
-  color: rgba(255,255,255,0.6);
-  cursor: pointer;
-  text-align: center;
-  border-radius: 2px;
-  display: inline-block;
-}
-.editor-letter-copyable:hover { background: rgba(255,255,255,0.15); }
 
+
+/* ── CHART / DATA VIZ ── */
 .chart-wrap {
   margin: 14px 0;
   background: #f8f8f8;
@@ -278,9 +306,20 @@ nav li a.active::after {
   padding: 16px;
   border-radius: 2px;
 }
-.chart-title { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 12px; letter-spacing: 0.3px; }
-.chart-source { font-size: 10px; color: var(--text-light); margin-top: 10px; }
+.chart-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
+.chart-source {
+  font-size: 10px;
+  color: var(--text-light);
+  margin-top: 10px;
+}
 
+/* Bar chart */
 .bar-item { margin-bottom: 10px; }
 .bar-label-row {
   display: flex;
@@ -291,7 +330,11 @@ nav li a.active::after {
 }
 .bar-pct { font-weight: 700; color: var(--navy); }
 .bar-track { height: 10px; background: #e0e0e0; border-radius: 3px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 3px; transition: width 1.2s ease; }
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1.2s ease;
+}
 .bar-fill.navy { background: var(--navy); }
 .bar-fill.gold { background: var(--gold); }
 .bar-fill.red { background: var(--red); }
@@ -300,7 +343,13 @@ nav li a.active::after {
 .bar-fill.gray { background: #999; }
 .bar-fill.lightblue { background: #5dade2; }
 
-.donut-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+/* Donut / Pie summary */
+.donut-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
 .donut-item {
   flex: 1;
   min-width: 80px;
@@ -322,12 +371,27 @@ nav li a.active::after {
 .donut-val.gold { color: var(--gold); }
 .donut-val.green { color: var(--green); }
 .donut-val.gray { color: #999; }
-.donut-label { font-size: 11px; color: var(--text-light); line-height: 1.4; }
+.donut-label {
+  font-size: 11px;
+  color: var(--text-light);
+  line-height: 1.4;
+}
 
-.trend-chart { position: relative; height: 80px; margin: 10px 0; }
+/* Timeline/trend */
+.trend-chart {
+  position: relative;
+  height: 80px;
+  margin: 10px 0;
+}
 .trend-svg { width: 100%; height: 100%; }
 
-.data-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 10px 0; }
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 10px 0;
+}
 .data-table th {
   background: var(--navy);
   color: #fff;
@@ -336,11 +400,16 @@ nav li a.active::after {
   font-weight: 500;
   font-size: 11px;
 }
-.data-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--text-mid); }
+.data-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-mid);
+}
 .data-table tr:nth-child(even) td { background: #f9f9f9; }
 .data-table .highlight { color: var(--red); font-weight: 700; }
 .data-table .positive { color: var(--green); font-weight: 700; }
 
+/* Opinion quote */
 .opinion-block {
   border-left: 3px solid var(--gold);
   padding: 12px 16px;
@@ -354,8 +423,13 @@ nav li a.active::after {
   line-height: 1.7;
   color: var(--text-dark);
 }
-.opinion-attribution { font-size: 11px; color: var(--text-light); margin-top: 8px; }
+.opinion-attribution {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 8px;
+}
 
+/* Newspaper list items */
 .paper-row {
   display: flex;
   justify-content: space-between;
@@ -365,17 +439,45 @@ nav li a.active::after {
   gap: 10px;
 }
 .paper-row:last-child { border-bottom: none; }
-.paper-name { font-size: 11px; font-weight: 700; color: var(--navy); min-width: 55px; }
-.paper-summary { font-size: 13px; color: var(--text-mid); line-height: 1.6; flex: 1; }
-.paper-tag { font-size: 10px; padding: 2px 7px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
+.paper-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy);
+  min-width: 55px;
+}
+.paper-summary {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  flex: 1;
+}
+.paper-tag {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 .paper-tag.con { background: #fdecea; color: var(--red); }
 .paper-tag.pro { background: #e8f4fd; color: var(--blue-chart); }
 .paper-tag.neutral { background: #f0f0f0; color: #666; }
 
-.notice-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+/* Notice list */
+.notice-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
 .notice-item:last-child { border-bottom: none; }
-.notice-item .n-title { font-size: 14px; font-weight: 500; color: var(--text-dark); margin-bottom: 3px; }
-.notice-item .n-meta { font-size: 11px; color: var(--text-light); }
+.notice-item .n-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 3px;
+}
+.notice-item .n-meta {
+  font-size: 11px;
+  color: var(--text-light);
+}
 .notice-badge {
   display: inline-block;
   background: var(--navy);
@@ -388,21 +490,10 @@ nav li a.active::after {
 }
 .notice-badge.new { background: var(--red); }
 
-.copy-btn {
-  display: inline-block;
-  margin-top: 12px;
-  background: none;
-  border: 1px solid var(--border);
-  padding: 5px 14px;
-  font-size: 11px;
-  color: var(--text-light);
-  cursor: pointer;
-  font-family: inherit;
-  border-radius: 2px;
-  transition: all 0.2s;
-}
-.copy-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
 
+
+
+/* Week badge */
 .week-info {
   background: #f0f4ff;
   border: 1px solid #c5d3f0;
@@ -416,17 +507,7 @@ nav li a.active::after {
 }
 .week-info span { font-weight: 700; }
 
-.auto-updated-badge {
-  display: inline-block;
-  background: #e8f5e9;
-  color: #2e7d32;
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  margin-left: 6px;
-  border: 1px solid #a5d6a7;
-}
-
+/* ── FOOTER ── */
 footer {
   background: var(--navy-dark);
   color: rgba(255,255,255,0.45);
@@ -435,9 +516,19 @@ footer {
   font-size: 12px;
   line-height: 1.8;
 }
-.footer-logo { font-family: 'Noto Serif KR', serif; font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+.footer-logo {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+}
 .footer-logo span { color: var(--gold); }
-.footer-principle { color: rgba(255,255,255,0.55); margin-bottom: 14px; font-size: 11px; }
+.footer-principle {
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 14px;
+  font-size: 11px;
+}
 .footer-rule {
   font-size: 11px;
   color: rgba(255,255,255,0.35);
@@ -446,29 +537,17 @@ footer {
   margin-top: 14px;
 }
 
-.toast {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
-  background: var(--navy);
-  color: #fff;
-  padding: 10px 22px;
-  font-size: 13px;
-  border-radius: 4px;
-  z-index: 999;
-  transition: transform 0.3s ease;
-  white-space: nowrap;
-  border-bottom: 2px solid var(--gold);
-}
-.toast.show { transform: translateX(-50%) translateY(0); }
 
+
+
+/* ── RESPONSIVE TWEAKS ── */
 @media (max-width: 480px) {
   .masthead-logo { font-size: 32px; }
   .article-title { font-size: 16px; }
   .donut-val { font-size: 22px; }
 }
 
+/* ── PUBLISH SCHEDULE BADGE ── */
 .schedule-strip {
   background: var(--navy-mid);
   padding: 8px 16px;
@@ -488,8 +567,19 @@ footer {
   border-radius: 3px;
   border-top: 2px solid rgba(255,255,255,0.2);
 }
-.sch-day { font-size: 10px; color: var(--gold); font-weight: 700; letter-spacing: 0.5px; }
-.sch-content { font-size: 9px; color: rgba(255,255,255,0.6); text-align: center; margin-top: 2px; line-height: 1.4; }
+.sch-day {
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.sch-content {
+  font-size: 9px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  margin-top: 2px;
+  line-height: 1.4;
+}
 </style>
 </head>
 <body>
@@ -556,7 +646,6 @@ footer {
   <div class="ticker-label">속보</div>
   <div class="ticker-scroll">
     <div class="ticker-inner">
-      <!-- AUTO:TICKER:START -->
       <span>속초시민뉴스 창간… 자유·정의·사랑의 시민언론 출범</span>
       <span>속초시의회, 2026년 2차 정례회 개회… 예산심의 착수</span>
       <span>청초호 주변 개발계획 주민공청회 5월 중 예정</span>
@@ -567,13 +656,12 @@ footer {
       <span>청초호 주변 개발계획 주민공청회 5월 중 예정</span>
       <span>6·4 지방선거 속초시장 후보 경선 일정 확정</span>
       <span>속초시 재정자립도 전국 기초단체 하위 20% 수준 확인</span>
-      <!-- AUTO:TICKER:END -->
     </div>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════ -->
-<!-- 1. 편집자 레터 (MANUAL) -->
+<!-- 1. 편집자 레터 -->
 <!-- ══════════════════════════════════════ -->
 <div class="section" id="s-letter">
   <div class="section-header" onclick="toggleSection('s-letter')">
@@ -587,7 +675,6 @@ footer {
     </div>
   </div>
   <div class="section-body">
-    <!-- MANUAL:편집자레터:START -->
     <div class="editor-letter">
       <div class="editor-letter-label">창간사</div>
       <div class="editor-letter-body">
@@ -597,15 +684,12 @@ footer {
         <p>시민 여러분의 제보와 참여가 이 신문을 만듭니다. 함께 더 나은 속초를 만들어 갑시다.</p>
       </div>
       <div class="editor-letter-sig">— 편집장 김준철 | 전 이레리서치 대표 · 2026년 5월 창간호</div>
-      <button class="editor-letter-copyable" onclick="copyText('editor-text')">📋 전문 복사하기</button>
     </div>
-    <div id="editor-text" style="display:none;">속초시민뉴스가 오늘 창간합니다. 우리는 자유 민주주의, 시장 자본주의, 정의와 사랑을 편집의 원칙으로 삼습니다. 속초는 설악산과 청초호, 동해를 품은 천혜의 도시입니다. 그러나 수십 년간 연고정치와 이권 카르텔이 도시의 잠재력을 가로막아 왔습니다. 속초시민뉴스는 이 구조를 직시하고, 시민의 알 권리를 지키는 독립 언론으로 자리 잡겠습니다. 우리는 어떤 정파에도 속하지 않습니다. — 편집장 김준철 | 2026년 5월 창간호</div>
-    <!-- MANUAL:편집자레터:END -->
   </div>
 </div>
 
 <!-- ══════════════════════════════════════ -->
-<!-- 2. 풍향계 (AUTO) -->
+<!-- 2. 풍향계 -->
 <!-- ══════════════════════════════════════ -->
 <div class="section gold-border" id="s-punghyang">
   <div class="section-header" onclick="toggleSection('s-punghyang')">
@@ -619,11 +703,11 @@ footer {
     </div>
   </div>
   <div class="section-body">
-    <!-- AUTO:풍향계:START -->
     <div class="week-info">
       <div>분석 기간: <span>2026.04.28 ~ 2026.05.02</span></div>
       <div>분석 대상: <span>5개 중앙지 사설 총 24편</span></div>
     </div>
+
     <div class="article">
       <div class="article-cat gold">주간 사설 분석 요약</div>
       <div class="article-title">이번 주 논조: 지방선거·경제 양극화·AI 규제 삼파전</div>
@@ -631,6 +715,8 @@ footer {
         <p>이번 주 주요 5개 신문 사설의 핵심 의제는 ①6·4 지방선거 후보 검증 ②수출 호조와 내수 침체의 경제 양극화 ③AI·플랫폼 규제 입법 논쟁으로 압축된다. 보수·진보 지면 간 논조 차이는 경제 정책보다 선거 공방에서 가장 뚜렷하게 갈렸다.</p>
       </div>
     </div>
+
+    <!-- 신문별 논조 -->
     <div class="chart-wrap">
       <div class="chart-title">📰 신문별 주간 주요 사설 논조</div>
       <div class="paper-row">
@@ -658,10 +744,12 @@ footer {
         <div class="paper-summary">플랫폼 노동자 보호 입법 촉구, 대기업 규제 강화 주장</div>
         <span class="paper-tag pro">진보</span>
       </div>
-      <div class="chart-source">* AI 자동 분석 | Claude API 활용</div>
+      <div class="chart-source">* AI 자동 분석 | Claude API 활용 | 논조 분류는 해당 사설의 주요 주장 기준</div>
     </div>
+
+    <!-- 주제별 온도계 -->
     <div class="chart-wrap">
-      <div class="chart-title">🌡 주간 핵심 의제 관심도</div>
+      <div class="chart-title">🌡 주간 핵심 의제 관심도 (5개 신문 사설 언급 빈도)</div>
       <div class="bar-item">
         <div class="bar-label-row"><span>지방선거 후보 검증</span><span class="bar-pct">92%</span></div>
         <div class="bar-track"><div class="bar-fill navy" style="width:92%"></div></div>
@@ -678,19 +766,20 @@ footer {
         <div class="bar-label-row"><span>대북·안보</span><span class="bar-pct">54%</span></div>
         <div class="bar-track"><div class="bar-fill red" style="width:54%"></div></div>
       </div>
-      <div class="chart-source">* 5개 신문 사설 분석 | Claude API</div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>지방재정 자립</span><span class="bar-pct">46%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:46%"></div></div>
+      </div>
+      <div class="chart-source">* 5개 신문 사설 총 24편 분석 | 2026.04.28~05.02</div>
     </div>
     <div class="article-meta">
-      <span>AI 자동 분석 (Claude API)</span><span id="punghyang-date">매주 월요일 업데이트</span>
+      <span>AI 자동 분석 (Claude API)</span><span>매주 월요일 업데이트</span>
     </div>
-    <button class="copy-btn" onclick="copySection('punghyang-copy')">📋 풍향계 전문 복사</button>
-    <div id="punghyang-copy" style="display:none;">【속초시민뉴스 풍향계】이번 주 5개 신문 사설 분석. AI 자동 작성.</div>
-    <!-- AUTO:풍향계:END -->
   </div>
 </div>
 
 <!-- ══════════════════════════════════════ -->
-<!-- 3. 주요 뉴스 (AUTO) -->
+<!-- 3. 주요 뉴스 -->
 <!-- ══════════════════════════════════════ -->
 <div class="section red-border" id="s-news">
   <div class="section-header" onclick="toggleSection('s-news')">
@@ -704,33 +793,37 @@ footer {
     </div>
   </div>
   <div class="section-body">
-    <!-- AUTO:주요뉴스:START -->
+
+    <!-- 전국 뉴스 -->
     <div class="article">
       <div class="article-cat">전국 주요 뉴스</div>
       <div class="article-title">이번 주 전국: 지방선거 D-34, 경기 양극화, AI입법</div>
       <div class="article-body">
-        <p><strong>① 6·4 지방선거 D-34</strong> 각 당 공천이 마무리 단계에 접어들었다. 여야 모두 '인물론'을 내세우고 있으나 정작 정책 검증은 미흡하다는 비판이 높다.</p>
-        <p><strong>② 수출 호조, 내수 침체</strong> 4월 수출은 반도체 호황에 힘입어 전년 대비 12.3% 증가했으나, 소비자심리지수는 3개월 연속 하락세다.</p>
-        <p><strong>③ AI 규제 입법 공방</strong> 국회 AI특위에서 사전 규제냐 사후 규제냐를 놓고 여야가 맞서고 있다.</p>
+        <p><strong>① 6·4 지방선거 D-34</strong> 각 당 공천이 마무리 단계에 접어들었다. 여야 모두 '인물론'을 내세우고 있으나 정작 정책 검증은 미흡하다는 비판이 높다. 선관위는 허위 공약·네거티브 선거운동 집중 감시를 예고했다.</p>
+        <p><strong>② 수출 호조, 내수 침체</strong> 4월 수출은 반도체 호황에 힘입어 전년 대비 12.3% 증가했으나, 소비자심리지수는 3개월 연속 하락세다. '나 홀로 수출 성장'의 한계가 재차 드러났다.</p>
+        <p><strong>③ AI 규제 입법 공방</strong> 국회 AI특위에서 사전 규제냐 사후 규제냐를 놓고 여야가 맞서고 있다. 글로벌 AI 기업들은 국내 규제 강도에 따른 투자 재검토 가능성을 시사했다.</p>
       </div>
       <div class="article-meta">
-        <span>연합뉴스 수집 후 AI 편집</span><span id="news-national-date">2026.05.01</span>
+        <span>연합뉴스 API 수집 후 편집</span><span>2026.05.01</span>
       </div>
     </div>
+
     <div class="article">
       <div class="article-cat red">속초 주요 뉴스</div>
       <div class="article-title">이번 주 속초: 수의계약·선거·관광소득</div>
       <div class="article-body">
-        <p><strong>① 수의계약 비율 강원 최고</strong> 2023~2025년 속초시 발주 계약 중 수의계약 비율이 41%로 강원도 평균(23%)의 두 배에 육박한 것으로 나타났다.</p>
-        <p><strong>② 시장 후보 경선 일정 확정</strong> 민주당 경선은 5월 20일, 국민의힘은 5월 22일로 확정됐다.</p>
-        <p><strong>③ 관광객 1,000만, 주민소득 체감 18%</strong> 연간 1,000만 관광객에도 불구하고 지역 주민 중 관광 호황을 체감한다는 응답이 18%에 그쳤다.</p>
+        <p><strong>① 수의계약 비율 강원 최고</strong> 2023~2025년 속초시 발주 계약 중 수의계약 비율이 41%로 강원도 평균(23%)의 두 배에 육박한 것으로 나타났다. 시민단체들이 감사원 감사를 요청했다.</p>
+        <p><strong>② 시장 후보 경선 일정 확정</strong> 민주당 경선은 5월 20일, 국민의힘은 5월 22일로 확정됐다. 두 당 모두 복수 후보가 출마를 선언한 상태다.</p>
+        <p><strong>③ 관광객 1,000만, 주민소득 체감 18%</strong> 연간 1,000만 관광객에도 불구하고 지역 주민 중 관광 호황을 체감한다는 응답이 18%에 그쳤다. 수익의 역외 유출 구조 개선이 시급하다는 지적이다.</p>
       </div>
       <div class="article-meta">
-        <span>강원일보·강원도민일보 수집 후 AI 편집</span><span id="news-sokcho-date">2026.05.01</span>
+        <span>강원일보·강원도민일보 수집 후 편집</span><span>2026.05.01</span>
       </div>
     </div>
+
+    <!-- 속초 뉴스 요약 차트 -->
     <div class="chart-wrap">
-      <div class="chart-title">📊 이번 주 속초 이슈 중요도</div>
+      <div class="chart-title">📊 이번 주 속초 이슈 중요도 (편집부 평가)</div>
       <div class="bar-item">
         <div class="bar-label-row"><span>수의계약 투명성 문제</span><span class="bar-pct">★★★★★</span></div>
         <div class="bar-track"><div class="bar-fill red" style="width:100%"></div></div>
@@ -743,14 +836,17 @@ footer {
         <div class="bar-label-row"><span>관광소득 역외유출</span><span class="bar-pct">★★★★☆</span></div>
         <div class="bar-track"><div class="bar-fill gold" style="width:80%"></div></div>
       </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>청초호 개발 공청회</span><span class="bar-pct">★★★☆☆</span></div>
+        <div class="bar-track"><div class="bar-fill blue" style="width:60%"></div></div>
+      </div>
       <div class="chart-source">* 편집부 자체 평가 기준 | 5점 만점</div>
     </div>
-    <!-- AUTO:주요뉴스:END -->
   </div>
 </div>
 
 <!-- ══════════════════════════════════════ -->
-<!-- 4. 금요 칼럼 (MANUAL) -->
+<!-- 4. 금요 칼럼 -->
 <!-- ══════════════════════════════════════ -->
 <div class="section gold-border" id="s-column">
   <div class="section-header" onclick="toggleSection('s-column')">
@@ -764,7 +860,6 @@ footer {
     </div>
   </div>
   <div class="section-body">
-    <!-- MANUAL:금요칼럼:START -->
     <div class="article">
       <div class="article-cat gold">이번 주 칼럼 | 2026.05.01</div>
       <div class="article-title">지방자치 30년, 속초가 아직 풀지 못한 숙제</div>
@@ -774,21 +869,18 @@ footer {
           <div class="opinion-attribution">— 이번 호 금요 칼럼 중에서</div>
         </div>
         <p>1995년 지방자치가 부활한 지 30년이 지났다. 그러나 속초를 포함한 많은 소도시에서 지방자치는 여전히 완성되지 않은 실험이다. 선출된 지방권력을 견제하는 제도는 갖춰졌지만, 그 제도를 작동시키는 시민 문화는 아직 성숙하지 못했다.</p>
-        <p>지방의회는 집행부에 대한 감시 기능을 상실한 채 '거수기'로 전락한 경우가 적지 않다. 속초시의회 윤리특위가 2년째 개점휴업 상태인 것은 하나의 상징이다. 시민들이 이 사실을 모른다면, 문제는 제도가 아니라 정보의 부재다.</p>
-        <p>다가오는 6·4 지방선거는 속초 시민들에게 단순한 투표 이상의 의미를 갖는다. 자치는 4년에 한 번 투표장에 가는 것으로 완성되지 않는다.</p>
+        <p>지방의회는 집행부에 대한 감시 기능을 상실한 채 '거수기'로 전락한 경우가 적지 않다. 속초시의회 윤리특위가 2년째 개점휴업 상태인 것은 하나의 상징이다. 시민들이 이 사실을 모른다면, 문제는 제도가 아니라 정보의 부재다. 속초시민뉴스가 존재해야 하는 이유가 바로 여기에 있다.</p>
+        <p>다가오는 6·4 지방선거는 속초 시민들에게 단순한 투표 이상의 의미를 갖는다. 누가 시장이 되느냐보다, 시민들이 어떤 기준으로 시장을 평가하고 감시할 것인지가 더 중요하다. 자치는 4년에 한 번 투표장에 가는 것으로 완성되지 않는다.</p>
       </div>
       <div class="article-meta">
         <span>외부 기고 | 속초시 전 주민자치위원장</span><span>2026.05.02</span>
       </div>
-      <button class="copy-btn" onclick="copySection('col-copy')">📋 칼럼 전문 복사</button>
-      <div id="col-copy" style="display:none;">【속초시민뉴스 금요칼럼 | 2026.05.02】지방자치 30년, 속초가 아직 풀지 못한 숙제 / 1995년 지방자치가 부활한 지 30년이 지났다. 속초시민뉴스가 존재해야 하는 이유가 바로 여기에 있다. — 속초시 전 주민자치위원장</div>
     </div>
-    <!-- MANUAL:금요칼럼:END -->
   </div>
 </div>
 
 <!-- ══════════════════════════════════════ -->
-<!-- 5. 여론동향 (AUTO) -->
+<!-- 5. 여론동향 -->
 <!-- ══════════════════════════════════════ -->
 <div class="section green-border" id="s-opinion">
   <div class="section-header" onclick="toggleSection('s-opinion')">
@@ -802,7 +894,8 @@ footer {
     </div>
   </div>
   <div class="section-body">
-    <!-- AUTO:여론동향:START -->
+
+    <!-- 갤럽 대통령 지지율 -->
     <div class="chart-wrap">
       <div class="chart-title">🇰🇷 한국갤럽 대통령 직무수행 평가 (주간)</div>
       <div class="donut-row">
@@ -819,8 +912,49 @@ footer {
           <div class="donut-label">모름/<br>무응답</div>
         </div>
       </div>
-      <div class="chart-source">* 한국갤럽 주간 조사 | 전국 만 18세 이상 | 표본오차 ±3.1%p</div>
+      <!-- 추이 -->
+      <div class="chart-title" style="margin-top:14px;">📈 최근 8주 긍정 평가 추이</div>
+      <svg class="trend-svg" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#27ae60" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#27ae60" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Grid lines -->
+        <line x1="0" y1="20" x2="320" y2="20" stroke="#eee" stroke-width="1"/>
+        <line x1="0" y1="40" x2="320" y2="40" stroke="#eee" stroke-width="1"/>
+        <line x1="0" y1="60" x2="320" y2="60" stroke="#eee" stroke-width="1"/>
+        <!-- Labels -->
+        <text x="0" y="18" font-size="8" fill="#aaa">50%</text>
+        <text x="0" y="38" font-size="8" fill="#aaa">40%</text>
+        <text x="0" y="58" font-size="8" fill="#aaa">30%</text>
+        <!-- Area fill -->
+        <polygon points="30,52 75,48 120,44 165,40 210,46 255,42 300,35 300,72 30,72" fill="url(#grad1)"/>
+        <!-- Line -->
+        <polyline points="30,52 75,48 120,44 165,40 210,46 255,42 300,35"
+          fill="none" stroke="#27ae60" stroke-width="2" stroke-linejoin="round"/>
+        <!-- Dots -->
+        <circle cx="30" cy="52" r="3" fill="#27ae60"/>
+        <circle cx="75" cy="48" r="3" fill="#27ae60"/>
+        <circle cx="120" cy="44" r="3" fill="#27ae60"/>
+        <circle cx="165" cy="40" r="3" fill="#27ae60"/>
+        <circle cx="210" cy="46" r="3" fill="#27ae60"/>
+        <circle cx="255" cy="42" r="3" fill="#27ae60"/>
+        <circle cx="300" cy="35" r="4" fill="#27ae60" stroke="white" stroke-width="1.5"/>
+        <!-- X Labels -->
+        <text x="25" y="76" font-size="7" fill="#aaa" text-anchor="middle">3/10</text>
+        <text x="75" y="76" font-size="7" fill="#aaa" text-anchor="middle">3/17</text>
+        <text x="120" y="76" font-size="7" fill="#aaa" text-anchor="middle">3/24</text>
+        <text x="165" y="76" font-size="7" fill="#aaa" text-anchor="middle">3/31</text>
+        <text x="210" y="76" font-size="7" fill="#aaa" text-anchor="middle">4/7</text>
+        <text x="255" y="76" font-size="7" fill="#aaa" text-anchor="middle">4/21</text>
+        <text x="300" y="76" font-size="7" fill="#aaa" text-anchor="middle">5/1</text>
+      </svg>
+      <div class="chart-source">* 한국갤럽 주간 조사 | 전국 만 18세 이상 | ARS+면접혼용 | 표본오차 ±3.1%p</div>
     </div>
+
+    <!-- 속초시장 후보 지지율 -->
     <div class="chart-wrap">
       <div class="chart-title">🗳 속초시장 후보 지지도 (이레리서치)</div>
       <div class="bar-item">
@@ -839,33 +973,83 @@ footer {
         <div class="bar-label-row"><span>모름/무응답</span><span class="bar-pct">13%</span></div>
         <div class="bar-track"><div class="bar-fill gray" style="width:13%"></div></div>
       </div>
-      <div class="chart-source">조사: 이레리서치 | 속초시 유권자 500명 | ARS | ±4.4%p</div>
+      <div class="chart-source">조사: 이레리서치 | 2026.05.15~16 | 속초시 유권자 500명 | ARS | ±4.4%p</div>
     </div>
+
+    <!-- 갤럽 현안 이슈 -->
     <div class="chart-wrap">
-      <div class="chart-title">❓ 속초 시정 불신 이유 (복수응답)</div>
+      <div class="chart-title">📌 한국갤럽 현안 이슈 — 가장 중요한 국가 과제</div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>예산 낭비·불투명 집행</span><span class="bar-pct">38%</span></div>
-        <div class="bar-track"><div class="bar-fill red" style="width:76%"></div></div>
+        <div class="bar-label-row"><span>경제·민생 안정</span><span class="bar-pct">34%</span></div>
+        <div class="bar-track"><div class="bar-fill navy" style="width:68%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>인사 불공정</span><span class="bar-pct">27%</span></div>
-        <div class="bar-track"><div class="bar-fill navy" style="width:54%"></div></div>
+        <div class="bar-label-row"><span>정치 갈등·사회 통합</span><span class="bar-pct">22%</span></div>
+        <div class="bar-track"><div class="bar-fill blue" style="width:44%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>시민 의견 미반영</span><span class="bar-pct">21%</span></div>
-        <div class="bar-track"><div class="bar-fill gold" style="width:42%"></div></div>
+        <div class="bar-label-row"><span>저출생·인구 위기</span><span class="bar-pct">18%</span></div>
+        <div class="bar-track"><div class="bar-fill gold" style="width:36%"></div></div>
       </div>
-      <div class="chart-source">* 복수응답 | 불신한다 응답자 대상 | 이레리서치</div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>대북·안보</span><span class="bar-pct">12%</span></div>
+        <div class="bar-track"><div class="bar-fill red" style="width:24%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>교육·복지</span><span class="bar-pct">9%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:18%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>기타·모름</span><span class="bar-pct">5%</span></div>
+        <div class="bar-track"><div class="bar-fill gray" style="width:10%"></div></div>
+      </div>
+      <div class="chart-source">* 한국갤럽 | 2026.04.4주차 | 전국 만 18세 이상 | 복수응답</div>
     </div>
+
+    <!-- NBS 현안 이슈 -->
+    <div class="chart-wrap">
+      <div class="chart-title">📌 NBS 현안 이슈 — 현 정부가 시급히 해결해야 할 문제</div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>물가·생계비 부담</span><span class="bar-pct">41%</span></div>
+        <div class="bar-track"><div class="bar-fill red" style="width:82%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>부동산·주거 불안</span><span class="bar-pct">24%</span></div>
+        <div class="bar-track"><div class="bar-fill navy" style="width:48%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>청년 일자리</span><span class="bar-pct">19%</span></div>
+        <div class="bar-track"><div class="bar-fill gold" style="width:38%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>의료·건강보험</span><span class="bar-pct">10%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:20%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>기타·모름</span><span class="bar-pct">6%</span></div>
+        <div class="bar-track"><div class="bar-fill gray" style="width:12%"></div></div>
+      </div>
+      <div class="chart-source">* NBS(뉴스토마토) | 2026.04.4주차 | 전국 만 18세 이상 | ARS | ±3.1%p</div>
+    </div>
+
+    <!-- 편집부 총평 -->
+    <div class="chart-wrap" style="background:#f0f4ff; border:1px solid #c5d3f0;">
+      <div class="chart-title" style="color:var(--navy);">✍ 편집부 총평</div>
+      <div class="opinion-block">
+        <blockquote>갤럽과 NBS 모두 '경제·민생'이 압도적 1위다. 두 기관 합산 시 경제 관련 응답(경제·민생+물가+부동산+청년일자리)이 전체의 60%를 웃돈다. 정치 갈등 피로감이 높은 상황에서 유권자들은 이념보다 실생활 문제에 집중하는 경향이 뚜렷하다.</blockquote>
+        <blockquote style="margin-top:8px;">속초 맥락에서 보면 관광 호황이 주민 체감 소득으로 이어지지 않는 구조적 문제, 즉 '관광소득 역외유출'이 지역 경제 불만의 핵심으로 해석된다. 6·4 지방선거를 앞두고 후보들의 경제 공약 검증이 어느 때보다 중요하다.</blockquote>
+      </div>
+      <div class="chart-source">— 속초시민뉴스 편집부 | 2026.05.01</div>
+    </div>
+
     <div class="article-meta">
       <span>매주 월요일 업데이트</span><span>갤럽·NBS·이레리서치</span>
     </div>
-    <!-- AUTO:여론동향:END -->
   </div>
 </div>
 
 <!-- ══════════════════════════════════════ -->
-<!-- 6. 기획연재 (MANUAL) -->
+<!-- 6. 기획연재 -->
 <!-- ══════════════════════════════════════ -->
 <div class="section" id="s-series">
   <div class="section-header" onclick="toggleSection('s-series')">
@@ -879,31 +1063,58 @@ footer {
     </div>
   </div>
   <div class="section-body">
-    <!-- MANUAL:기획연재:START -->
+
+    <!-- 연재 목록 -->
     <div class="chart-wrap" style="padding:12px;">
       <div class="chart-title">📋 현재 연재 목록</div>
       <table class="data-table">
-        <tr><th>시리즈</th><th>회차</th><th>다음 게재</th></tr>
-        <tr><td>AI 리터러시</td><td class="highlight">2/10</td><td>5월 7일</td></tr>
-        <tr><td>속초 타매니홀 현상</td><td class="highlight">1/6</td><td>5월 14일</td></tr>
-        <tr><td>민주주의 강의</td><td class="positive">3/8</td><td>5월 21일</td></tr>
-        <tr><td>한국현대사</td><td class="positive">4/12</td><td>5월 28일</td></tr>
-        <tr><td>유아교육 이야기</td><td>1/6</td><td>6월 4일</td></tr>
+        <tr>
+          <th>시리즈</th>
+          <th>회차</th>
+          <th>다음 게재</th>
+        </tr>
+        <tr>
+          <td>AI 리터러시</td>
+          <td class="highlight">2/10</td>
+          <td>5월 7일</td>
+        </tr>
+        <tr>
+          <td>속초 타매니홀 현상</td>
+          <td class="highlight">1/6</td>
+          <td>5월 14일</td>
+        </tr>
+        <tr>
+          <td>민주주의 강의</td>
+          <td class="positive">3/8</td>
+          <td>5월 21일</td>
+        </tr>
+        <tr>
+          <td>한국현대사</td>
+          <td class="positive">4/12</td>
+          <td>5월 28일</td>
+        </tr>
+        <tr>
+          <td>유아교육 이야기</td>
+          <td>1/6</td>
+          <td>6월 4일</td>
+        </tr>
       </table>
     </div>
+
+    <!-- AI 리터러시 2회 -->
     <div class="article">
       <div class="article-cat blue">AI 리터러시 연재 ② | 2026.04.30</div>
       <div class="article-title">AI가 뉴스를 쓴다면, 독자는 무엇을 읽어야 하나</div>
       <div class="article-body">
         <p>속초시민뉴스는 풍향계·주요 뉴스·공지사항 등 일부 코너에 AI(Claude)를 활용합니다. AI는 빠르고 효율적이지만, 편향과 오류의 위험도 있습니다. 독자 여러분이 AI 생성 콘텐츠를 비판적으로 읽는 역량, 즉 'AI 리터러시'를 갖추어야 하는 이유입니다.</p>
-        <p>AI 리터러시의 핵심은 세 가지입니다. ①출처를 확인하라 ②AI가 틀릴 수 있음을 인식하라 ③AI의 주장을 무비판적으로 수용하지 말라. 우리는 독자에게 AI 활용 여부를 투명하게 표시하고, 사실 확인 과정을 거친 내용만 게재합니다.</p>
+        <p>AI 리터러시의 핵심은 세 가지입니다. ①출처를 확인하라 ②AI가 틀릴 수 있음을 인식하라 ③AI의 주장을 鵜呑(鵜吞)하지 말라. 우리는 독자에게 AI 활용 여부를 투명하게 표시하고, 사실 확인 과정을 거친 내용만 게재합니다.</p>
       </div>
       <div class="article-meta">
         <span>기획연재팀</span><span>최대 1,000자 원칙</span>
       </div>
-      <button class="copy-btn" onclick="copySection('series-copy')">📋 전문 복사</button>
-      <div id="series-copy" style="display:none;">【속초시민뉴스 AI리터러시 ② | 2026.04.30】AI가 뉴스를 쓴다면, 독자는 무엇을 읽어야 하나</div>
     </div>
+
+    <!-- 속초 타매니홀 1회 -->
     <div class="article">
       <div class="article-cat">속초 타매니홀 현상 연재 ① | 2026.05.01</div>
       <div class="article-title">30년 연고정치가 만든 구조, 어떻게 바꿀 것인가</div>
@@ -915,12 +1126,11 @@ footer {
         <span>기획연재팀 (매주 수요일)</span><span>2026.05.01</span>
       </div>
     </div>
-    <!-- MANUAL:기획연재:END -->
   </div>
 </div>
 
 <!-- ══════════════════════════════════════ -->
-<!-- 7. 속초시 공지사항 (AUTO) -->
+<!-- 7. 속초시 공지사항 -->
 <!-- ══════════════════════════════════════ -->
 <div class="section" id="s-notice">
   <div class="section-header" onclick="toggleSection('s-notice')">
@@ -934,11 +1144,11 @@ footer {
     </div>
   </div>
   <div class="section-body">
-    <!-- AUTO:공지사항:START -->
     <div class="week-info">
       <div>수집 기간: <span>2026.04.28 ~ 2026.05.02</span></div>
       <div>출처: <span>속초시청 홈페이지</span></div>
     </div>
+
     <div class="notice-item">
       <div class="n-title">
         <span class="notice-badge new">신규</span>
@@ -951,7 +1161,7 @@ footer {
         <span class="notice-badge">공고</span>
         2026년 2차 정례회 주민 방청 안내
       </div>
-      <div class="n-meta">📅 2026.05.10~06.05 | 📍 속초시의회 본회의장</div>
+      <div class="n-meta">📅 2026.05.10~06.05 | 📍 속초시의회 본회의장 | 담당: 의회사무국</div>
     </div>
     <div class="notice-item">
       <div class="n-title">
@@ -965,23 +1175,52 @@ footer {
         <span class="notice-badge">모집</span>
         2026년 속초시 청년창업지원 프로그램 참가자 모집
       </div>
-      <div class="n-meta">📅 신청: 2026.05.01~05.31 | 대상: 만 39세 이하</div>
+      <div class="n-meta">📅 신청: 2026.05.01~05.31 | 대상: 만 39세 이하 | 담당: 경제과</div>
     </div>
+    <div class="notice-item">
+      <div class="n-title">
+        <span class="notice-badge">행사</span>
+        설악제 2026 사전 프로그램 봉사자 모집
+      </div>
+      <div class="n-meta">📅 모집: 2026.05.01~05.20 | 행사기간: 2026.06.12~14 | 담당: 문화관광과</div>
+    </div>
+
+    <!-- 이번 주 입찰 현황 차트 -->
     <div class="chart-wrap" style="margin-top:16px;">
-      <div class="chart-title">💼 이번 주 발주 계약 현황</div>
+      <div class="chart-title">💼 이번 주 발주 계약 현황 (속초시청)</div>
       <table class="data-table">
-        <tr><th>사업명</th><th>계약방식</th><th>금액</th></tr>
-        <tr><td>해수욕장 편의시설 정비</td><td>일반입찰</td><td>2.3억</td></tr>
-        <tr><td>노인복지관 냉난방 교체</td><td class="highlight">수의계약</td><td>4,800만</td></tr>
-        <tr><td>청초호 주변 가로등 보수</td><td class="highlight">수의계약</td><td>3,200만</td></tr>
-        <tr><td>시청 홈페이지 유지보수</td><td class="highlight">수의계약</td><td>2,100만</td></tr>
+        <tr>
+          <th>사업명</th>
+          <th>계약방식</th>
+          <th>금액</th>
+        </tr>
+        <tr>
+          <td>해수욕장 편의시설 정비</td>
+          <td>일반입찰</td>
+          <td>2.3억</td>
+        </tr>
+        <tr>
+          <td>노인복지관 냉난방 교체</td>
+          <td class="highlight">수의계약</td>
+          <td>4,800만</td>
+        </tr>
+        <tr>
+          <td>청초호 주변 가로등 보수</td>
+          <td class="highlight">수의계약</td>
+          <td>3,200만</td>
+        </tr>
+        <tr>
+          <td>시청 홈페이지 유지보수</td>
+          <td class="highlight">수의계약</td>
+          <td>2,100만</td>
+        </tr>
       </table>
-      <div class="chart-source">* 속초시청 계약공개시스템 | AI 편집</div>
+      <div class="chart-source">* 속초시청 계약공개시스템 | 이번 주 수의계약 비율: 3/4건 = 75% ⚠️</div>
     </div>
+
     <div class="article-meta">
       <span>속초시청 홈페이지 수집 후 AI 편집</span><span>매주 월요일 업데이트</span>
     </div>
-    <!-- AUTO:공지사항:END -->
   </div>
 </div>
 
@@ -992,7 +1231,7 @@ footer {
     자유 민주주의 · 시장 자본주의 · 정의와 사랑을 편집 원칙으로
   </div>
   <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.9;">
-    <div>기사 원칙: 최대 1,000자 | 도표·차트 최대 활용 | 사실 기반 보도</div>
+    <div>자유 민주주의 · 시장자본주의 · 정의와 사랑을 원칙으로 사실 기반 보도</div>
     <div>게재: 월(풍향계·뉴스·여론·공지) · 수(기획연재) · 금(외부칼럼)</div>
   </div>
   <div class="footer-rule">
@@ -1003,47 +1242,34 @@ footer {
   </div>
 </footer>
 
-<!-- TOAST -->
-<div class="toast" id="toast">✅ 복사되었습니다</div>
+
 
 <script>
+// Date
 const now = new Date();
 const kdate = now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' });
 document.getElementById('today-date').textContent = kdate;
 const issueNo = Math.max(1, Math.floor((now - new Date('2026-05-01')) / 86400000) + 1);
-document.getElementById('header-issue').textContent = `제${issueNo}호 | 2026년 5월`;
+document.getElementById('header-issue').textContent = `창간호 | Vol.${issueNo} | 2026년 5월`;
 
+// Section toggle
 function toggleSection(id) {
-  document.getElementById(id).classList.toggle('collapsed');
+  const sec = document.getElementById(id);
+  sec.classList.toggle('collapsed');
 }
 
+// Smooth scroll to section
 function scrollTo(id) {
   event.preventDefault();
   const el = document.getElementById(id);
   if (el) {
+    // Open if collapsed
     el.classList.remove('collapsed');
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+  // Update active nav
   document.querySelectorAll('nav li a').forEach(a => a.classList.remove('active'));
   event.target.classList.add('active');
-}
-
-function copyText(id) {
-  const el = document.getElementById(id);
-  const text = el ? el.textContent : '';
-  navigator.clipboard.writeText(text).then(() => showToast()).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta); showToast();
-  });
-}
-
-function copySection(id) { copyText(id); }
-
-function showToast() {
-  const t = document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2200);
 }
 
 const observer = new IntersectionObserver((entries) => {
@@ -1057,10 +1283,13 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.2 });
+
 document.querySelectorAll('.chart-wrap').forEach(el => observer.observe(el));
 
+// Mobile: collapse all sections by default (except first)
 if (window.innerWidth <= 600) {
-  ['s-punghyang','s-news','s-column','s-opinion','s-series','s-notice'].forEach(id => {
+  const sections = ['s-punghyang','s-news','s-column','s-opinion','s-series','s-notice'];
+  sections.forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add('collapsed');
   });
