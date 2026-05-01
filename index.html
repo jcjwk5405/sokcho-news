@@ -667,7 +667,7 @@ footer {
   <div class="section-header" onclick="toggleSection('s-letter')">
     <div class="section-title">
       <h2>✒ 편집자 레터</h2>
-      <span class="s-badge">창간호</span>
+      <span class="s-badge">논평</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
       <span class="section-desc">Editor's Letter</span>
@@ -1227,9 +1227,6 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">속초<span>시민</span>뉴스</div>
-  <div class="footer-principle">
-    자유 민주주의 · 시장 자본주의 · 정의와 사랑을 편집 원칙으로
-  </div>
   <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.9;">
     <div>자유 민주주의 · 시장자본주의 · 정의와 사랑을 원칙으로 사실 기반 보도</div>
     <div>게재: 월(풍향계·뉴스·여론·공지) · 수(기획연재) · 금(외부칼럼)</div>
@@ -1265,7 +1262,12 @@ function scrollTo(id) {
   if (el) {
     // Open if collapsed
     el.classList.remove('collapsed');
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 섹션이 열린 후 스크롤 (nav 높이 고려)
+    setTimeout(() => {
+      const navHeight = document.getElementById('main-nav').offsetHeight;
+      const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 4;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }, 50);
   }
   // Update active nav
   document.querySelectorAll('nav li a').forEach(a => a.classList.remove('active'));
