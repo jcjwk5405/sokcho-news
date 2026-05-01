@@ -587,11 +587,7 @@ footer {
 <!-- TOPBAR -->
 <div class="topbar">
   <span id="today-date"></span>
-  <div class="topbar-links">
-    <a href="#">기사제보</a>
-    <a href="#">구독</a>
-    <a href="#">광고</a>
-  </div>
+  <div></div>
 </div>
 
 <!-- MASTHEAD -->
@@ -1212,7 +1208,7 @@ footer {
   <div class="footer-rule">
     등록번호: 강원 아XXXXX | 등록일: 2026.05.01<br>
     발행인·편집인: 김준철 | 발행소: 강원특별자치도 속초시<br>
-    문의: sokchonews@gmail.com<br>
+    기사제보: <a href="mailto:sokchonew@gmail.com" style="color:var(--gold);">sokchonew@gmail.com</a><br>
     © 2026 속초시민뉴스. All rights reserved.
   </div>
 </footer>
@@ -1224,8 +1220,9 @@ footer {
 const now = new Date();
 const kdate = now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' });
 document.getElementById('today-date').textContent = kdate;
-const issueNo = Math.max(1, Math.floor((now - new Date('2026-05-01')) / 86400000) + 1);
-document.getElementById('header-issue').textContent = `창간호 | Vol.${issueNo} | 2026년 5월`;
+const issueNo = 1; // ← 매주 발행 시 숫자만 변경 (창간호=1, 제2호=2, ...)
+const issueLabel = issueNo === 1 ? '창간호' : `제${issueNo}호`;
+document.getElementById('header-issue').textContent = `${issueLabel} | 2026년 5월`;
 
 // Section toggle
 function toggleSection(id) {
