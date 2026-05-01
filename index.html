@@ -6,6 +6,14 @@
 <title>속초시민뉴스 — 자유·정의·사랑의 시민언론</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- ===== GoatCounter 접속 통계 =====
+     ① goatcounter.com 무료 가입
+     ② Code 입력: sokchocitizennews
+     ③ 아래 두 줄이 자동으로 작동 시작
+     ================================================ -->
+<script data-goatcounter="https://sokchocitizennews.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -580,6 +588,64 @@ footer {
   margin-top: 2px;
   line-height: 1.4;
 }
+
+/* ── 독자 현황 띠 ── */
+#stats-strip {
+  background: var(--navy);
+  border-top: 2px solid var(--gold);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.stats-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.stat-block {
+  text-align: center;
+  padding: 0 18px;
+}
+.stat-block:first-child { padding-left: 0; }
+.stat-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+.stat-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.stat-time { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75); }
+.stat-divider {
+  width: 1px;
+  height: 34px;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+.stats-link {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  padding: 5px 12px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.stats-link:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--gold-light);
+}
+@media (max-width: 480px) {
+  .stat-block { padding: 0 12px; }
+  .stat-num { font-size: 17px; }
+}
 </style>
 </head>
 <body>
@@ -1141,43 +1207,35 @@ footer {
       <div class="n-meta">📅 모집: 2026.05.01~05.20 | 행사기간: 2026.06.12~14 | 담당: 문화관광과</div>
     </div>
 
-    <!-- 이번 주 입찰 현황 차트 -->
-    <div class="chart-wrap" style="margin-top:16px;">
-      <div class="chart-title">💼 이번 주 발주 계약 현황 (속초시청)</div>
-      <table class="data-table">
-        <tr>
-          <th>사업명</th>
-          <th>계약방식</th>
-          <th>금액</th>
-        </tr>
-        <tr>
-          <td>해수욕장 편의시설 정비</td>
-          <td>일반입찰</td>
-          <td>2.3억</td>
-        </tr>
-        <tr>
-          <td>노인복지관 냉난방 교체</td>
-          <td class="highlight">수의계약</td>
-          <td>4,800만</td>
-        </tr>
-        <tr>
-          <td>청초호 주변 가로등 보수</td>
-          <td class="highlight">수의계약</td>
-          <td>3,200만</td>
-        </tr>
-        <tr>
-          <td>시청 홈페이지 유지보수</td>
-          <td class="highlight">수의계약</td>
-          <td>2,100만</td>
-        </tr>
-      </table>
-      <div class="chart-source">* 속초시청 계약공개시스템 | 이번 주 수의계약 비율: 3/4건 = 75% ⚠️</div>
-    </div>
-
     <div class="article-meta">
       <span>속초시청 홈페이지 수집 후 AI 편집</span><span>매주 월요일 업데이트</span>
     </div>
   </div>
+</div>
+
+<!-- ===== 독자 현황 띠 ===== -->
+<div id="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-block">
+      <div class="stat-label">오늘 방문자</div>
+      <div class="stat-num"><span class="goatcounter-count" data-path="/" id="gc-today">—</span></div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-block">
+      <div class="stat-label">누적 페이지뷰</div>
+      <div class="stat-num" id="gc-total">—</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-block">
+      <div class="stat-label">집계 시각</div>
+      <div class="stat-num stat-time" id="gc-time">—</div>
+    </div>
+  </div>
+  <a class="stats-link"
+     href="https://sokchocitizennews.goatcounter.com"
+     target="_blank" rel="noopener">
+    📊 상세 통계
+  </a>
 </div>
 
 <!-- FOOTER -->
@@ -1250,6 +1308,49 @@ if (window.innerWidth <= 600) {
     if (el) el.classList.add('collapsed');
   });
 }
+
+/* ===== GoatCounter 독자 현황 실시간 표시 =====
+   goatcounter.com 가입 후 자동으로 집계됩니다.
+   Code를 바꿨다면 아래 GC_CODE도 동일하게 수정하세요.
+   ============================================= */
+(function () {
+  const GC_CODE = 'sokchocitizennews'; // ← 가입 시 설정한 Code와 동일하게
+
+  // 현재 시각 표시
+  const timeEl = document.getElementById('gc-time');
+  if (timeEl) {
+    const t = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+    timeEl.textContent = t + ' 기준';
+  }
+
+  // GoatCounter 공개 API → 누적 페이지뷰 가져오기
+  fetch('https://' + GC_CODE + '.goatcounter.com/api/v0/stats/total', {
+    headers: { 'Accept': 'application/json' }
+  })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      const el = document.getElementById('gc-total');
+      if (!el) return;
+      if (data && typeof data.total === 'number') {
+        el.textContent = data.total.toLocaleString('ko-KR') + '회';
+      } else {
+        el.textContent = '집계 중';
+      }
+    })
+    .catch(function () {
+      const el = document.getElementById('gc-total');
+      if (el) el.textContent = '집계 중';
+    });
+
+  // 오늘 방문자: count.js가 .goatcounter-count 를 자동으로 채워줌
+  // 가입 전에는 '—' 으로 표시되다가 가입 즉시 숫자로 전환됨
+  setTimeout(function () {
+    const el = document.getElementById('gc-today');
+    if (el && (el.textContent === '—' || el.textContent.trim() === '')) {
+      el.textContent = '집계 중';
+    }
+  }, 4000);
+})();
 </script>
 </body>
 </html>
