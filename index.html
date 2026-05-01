@@ -598,41 +598,23 @@ footer {
 </header>
 
 <!-- PUBLISH SCHEDULE -->
-<div class="schedule-strip">
-  <div class="sch-item">
-    <div class="sch-day">월요일</div>
-    <div class="sch-content">풍향계·뉴스·여론·공지</div>
-  </div>
-  <div class="sch-item">
-    <div class="sch-day">수요일</div>
-    <div class="sch-content">기획연재</div>
-  </div>
-  <div class="sch-item">
-    <div class="sch-day">금요일</div>
-    <div class="sch-content">외부칼럼</div>
-  </div>
-  <div class="sch-item">
-    <div class="sch-day">수시</div>
-    <div class="sch-content">편집자레터</div>
-  </div>
-</div>
 
 <!-- NAV -->
 <nav id="main-nav">
   <ul>
-    <li><a href="#" class="active" onclick="scrollTo('s-letter')">
+    <li><a href="#" class="active" onclick="goToSection('s-letter')">
       편집자레터<span class="nav-desc">Editor's Letter</span></a></li>
-    <li><a href="#" onclick="scrollTo('s-punghyang')">
+    <li><a href="#" onclick="goToSection('s-punghyang')">
       풍향계<span class="nav-desc">5대신문 사설</span></a></li>
-    <li><a href="#" onclick="scrollTo('s-news')">
+    <li><a href="#" onclick="goToSection('s-news')">
       주요뉴스<span class="nav-desc">전국·속초</span></a></li>
-    <li><a href="#" onclick="scrollTo('s-column')">
+    <li><a href="#" onclick="goToSection('s-column')">
       금요칼럼<span class="nav-desc">외부기고</span></a></li>
-    <li><a href="#" onclick="scrollTo('s-opinion')">
+    <li><a href="#" onclick="goToSection('s-opinion')">
       여론동향<span class="nav-desc">갤럽·NBS</span></a></li>
-    <li><a href="#" onclick="scrollTo('s-series')">
+    <li><a href="#" onclick="goToSection('s-series')">
       기획연재<span class="nav-desc">AI·민주주의 등</span></a></li>
-    <li><a href="#" onclick="scrollTo('s-notice')">
+    <li><a href="#" onclick="goToSection('s-notice')">
       공지사항<span class="nav-desc">속초시청</span></a></li>
   </ul>
 </nav>
@@ -1231,20 +1213,17 @@ function toggleSection(id) {
 }
 
 // Smooth scroll to section
-function scrollTo(id) {
+function goToSection(id) {
   event.preventDefault();
   const el = document.getElementById(id);
   if (el) {
-    // Open if collapsed
     el.classList.remove('collapsed');
-    // 섹션이 열린 후 스크롤 (nav 높이 고려)
     setTimeout(() => {
       const navHeight = document.getElementById('main-nav').offsetHeight;
       const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 4;
       window.scrollTo({ top: top, behavior: 'smooth' });
     }, 50);
   }
-  // Update active nav
   document.querySelectorAll('nav li a').forEach(a => a.classList.remove('active'));
   event.target.classList.add('active');
 }
