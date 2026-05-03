@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설악시민뉴스 - 준비 중</title>
+    <style>
+        body { 
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            background-color: #f8f9fa; 
+        }
+        .container { 
+            text-align: center; 
+            border: 1px solid #dee2e6; 
+            padding: 60px 40px; 
+            border-radius: 12px; 
+            background: white; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 { color: #212529; font-size: 2rem; margin-bottom: 20px; }
+        p { color: #6c757d; line-height: 1.6; margin: 5px 0; }
+        .footer { margin-top: 30px; font-size: 0.9rem; color: #adb5bd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>설악시민뉴스</h1>
+        <p>현재 정기간행물 등록 절차를<br>진행 중입니다.</p>
+        <p>등록 완료 후 정식 서비스로<br>찾아뵙겠습니다.</p>
+        <div class="footer">© 2026 설악시민뉴스</div>
+    </div>
+</body>
+</html>
