@@ -2164,13 +2164,18 @@ footer {
     </div>
     <div class="stat-divider"></div>
     <div class="stat-block">
-      <div class="stat-label">누적 페이지뷰</div>
-      <div class="stat-num" id="gc-total">—</div>
+      <div class="stat-label">집계 시각</div>
+      <div class="stat-num stat-time" id="gc-time">—</div>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-block">
-      <div class="stat-label">집계 시각</div>
-      <div class="stat-num stat-time" id="gc-time">—</div>
+      <div class="stat-label">전체 통계</div>
+      <div class="stat-num">
+        <a href="https://seorakcitizennews.goatcounter.com" target="_blank"
+           rel="noopener" style="color:var(--gold);font-size:12px;text-decoration:none;">
+          대시보드 ↗
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -2579,33 +2584,14 @@ if (window.innerWidth <= 600) {
     timeEl.textContent = t + ' 기준';
   }
 
-  // GoatCounter 공개 API → 누적 페이지뷰 가져오기
-  fetch('https://' + GC_CODE + '.goatcounter.com/api/v0/stats/total', {
-    headers: { 'Accept': 'application/json' }
-  })
-    .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (data) {
-      const el = document.getElementById('gc-total');
-      if (!el) return;
-      if (data && typeof data.total === 'number') {
-        el.textContent = data.total.toLocaleString('ko-KR') + '회';
-      } else {
-        el.textContent = '집계 중';
-      }
-    })
-    .catch(function () {
-      const el = document.getElementById('gc-total');
-      if (el) el.textContent = '집계 중';
-    });
-
   // 오늘 방문자: count.js가 .goatcounter-count 를 자동으로 채워줌
-  // 가입 전에는 '—' 으로 표시되다가 가입 즉시 숫자로 전환됨
+  // 방문 데이터 없을 때 '—' 유지
   setTimeout(function () {
     const el = document.getElementById('gc-today');
-    if (el && (el.textContent === '—' | el.textContent.trim() === '')) {
-      el.textContent = '집계 중';
+    if (el && (el.textContent === '—' || el.textContent.trim() === '')) {
+      el.textContent = '0';
     }
-  }, 4000);
+  }, 5000);
 })();
 </script>
 <script>
