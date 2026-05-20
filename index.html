@@ -2575,11 +2575,10 @@ if (window.innerWidth <= 600) {
   }
 
   // 오늘 방문자: count.js가 .goatcounter-count 를 자동으로 채워줌
-  // 방문 데이터 없을 때 '—' 유지
   setTimeout(function () {
     const el = document.getElementById('gc-today');
     if (el && (el.textContent === '—' || el.textContent.trim() === '')) {
-      el.textContent = '0';
+      el.textContent = '—';
     }
   }, 5000);
 })();
