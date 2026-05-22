@@ -2057,7 +2057,7 @@ footer {
 <div id="stats-strip">
   <div class="stats-inner">
     <div class="stat-block">
-      <div class="stat-label">오늘 방문자</div>
+      <div class="stat-label">누적 방문자</div>
       <div class="stat-num"><span class="goatcounter-count" data-path="/" id="gc-today">—</span></div>
     </div>
     <div class="stat-divider"></div>
@@ -2424,27 +2424,35 @@ if (window.innerWidth <= 600) {
   });
 }
 
-/* ===== GoatCounter 독자 현황 실시간 표시 =====
-   goatcounter.com 가입 후 자동으로 집계됩니다.
-   Code를 바꿨다면 아래 GC_CODE도 동일하게 수정하세요.
+/* ===== GoatCounter 독자 현황 표시 =====
+   공개 카운터 API(/counter/PATH.json)를 직접 fetch합니다.
+   count.js 타이밍 문제 없이 안정적으로 동작합니다.
+   GC_CODE를 가입 시 설정한 Code와 동일하게 유지하세요.
    ============================================= */
 (function () {
-  const GC_CODE = 'seorakcitizennews'; // ← 가입 시 설정한 Code와 동일하게
+  const GC_CODE = 'seorakcitizennews';
+  const elCount = document.getElementById('gc-today');
+  const elTime  = document.getElementById('gc-time');
 
-  // 현재 시각 표시
-  const timeEl = document.getElementById('gc-time');
-  if (timeEl) {
+  // 집계 시각 표시
+  if (elTime) {
     const t = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-    timeEl.textContent = t + ' 기준';
+    elTime.textContent = t + ' 기준';
   }
 
-  // 오늘 방문자: count.js가 .goatcounter-count 를 자동으로 채워줌
-  setTimeout(function () {
-    const el = document.getElementById('gc-today');
-    if (el && (el.textContent === '—' || el.textContent.trim() === '')) {
-      el.textContent = '—';
-    }
-  }, 5000);
+  // GoatCounter 공개 카운터 API — 인증 없이 누적 방문자 수 반환
+  fetch('https://' + GC_CODE + '.goatcounter.com/counter//.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function (data) {
+      if (elCount) elCount.textContent = data.count || '0';
+    })
+    .catch(function () {
+      // 로컬 환경·CORS 차단 시 대시보드 링크 안내
+      if (elCount) elCount.textContent = '—';
+    });
 })();
 </script>
 <script>
