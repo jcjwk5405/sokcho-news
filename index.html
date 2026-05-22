@@ -272,8 +272,12 @@ nav li a.active::after {
   user-select: none;
   border-bottom: 1px solid var(--border);
   background: #fafafa;
+  /* 모바일 터치 최적화 */
+  touch-action: manipulation;          /* 300ms 지연 제거 */
+  -webkit-tap-highlight-color: transparent; /* iOS 탭 하이라이트 제거 */
 }
 .section-header:hover { background: #f0f0f0; }
+.section-header:active { background: #e8e8e8; } /* 모바일 터치 피드백 */
 .section-title {
   display: flex;
   align-items: center;
@@ -848,6 +852,8 @@ footer {
   align-items: center;
   justify-content: center;
   font-family: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .modal-close:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
 .modal-body {
@@ -875,7 +881,10 @@ footer {
   border-radius: 2px;
   transition: all 0.2s;
   font-weight: 500;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
+
 .read-more-btn:hover { background: var(--navy); color: #fff; }
 @media (max-width: 480px) {
   .modal-title { font-size: 17px; }
@@ -2038,7 +2047,7 @@ footer {
 
 
 
-<div class="modal-bg" id="art-modal" onclick="if(event.target===this)closeMod()">
+<div class="modal-bg" id="art-modal">
   <div class="modal-box">
     <div class="modal-hd">
       <div class="modal-cat" id="mod-cat"></div>
@@ -2066,22 +2075,7 @@ footer {
       <div class="stat-num stat-time" id="gc-time">—</div>
     </div>
   </div>
-</div>
-
-<!-- ── 팝업 모달 ── -->
-<div class="modal-bg" id="art-modal" onclick="if(event.target===this)closeMod()">
-  <div class="modal-box">
-    <div class="modal-hd">
-      <div class="modal-cat" id="mod-cat"></div>
-      <div class="modal-title" id="mod-title"></div>
-      <div class="modal-meta">
-        <span id="mod-meta"></span>
-        <span id="mod-badge"></span>
-      </div>
-      <button class="modal-close" onclick="closeMod()">✕</button>
-    </div>
-    <div class="modal-body" id="mod-body"></div>
-  </div>
+</div></div>
 </div>
 
 <!-- FOOTER -->
@@ -2194,8 +2188,9 @@ function switchTab(e, panelId) {
 
 function toggleSection(id) {
   const sec = document.getElementById(id);
-  sec.classList.toggle('collapsed');
+  if (sec) sec.classList.toggle('collapsed');
 }
+
 
 // Smooth scroll to section
 function goToSection(e, id) {
@@ -2398,6 +2393,92 @@ function closeMod() {
   document.getElementById('art-modal').classList.remove('on');
   document.body.style.overflow = '';
 }
+
+/* ================================================================
+   모바일 터치 핸들러 v3
+   — 이벤트 위임 방식 폐기
+   — DOMContentLoaded 후 각 요소에 직접 바인딩
+   — touchend 로 즉시 처리, click 은 double-firing 방지 플래그로 스킵
+================================================================ */
+/* DOM이 이미 파싱된 상태(body 하단 스크립트)이므로
+   DOMContentLoaded 대신 readyState 확인 후 즉시 실행 */
+function _initMobileHandlers() {
+
+  /* 공통: touchend → click double-firing 방지 유틸 */
+  function bindTouch(el, handler) {
+    var _fired = false;
+    el.addEventListener('touchend', function (e) {
+      e.preventDefault();
+      _fired = true;
+      handler(e);
+    }, { passive: false });
+    el.addEventListener('click', function (e) {
+      if (_fired) { _fired = false; return; }
+      handler(e);
+    });
+  }
+
+  /* ① 전문보기 버튼 — onclick 속성에서 ID 추출 후 직접 바인딩 */
+  document.querySelectorAll('.read-more-btn').forEach(function (btn) {
+    var attr = btn.getAttribute('onclick') || '';
+    var m    = attr.match(/openModById\(['"]([^'"]+)['"]\)/);
+    if (!m) return;
+    var id = m[1];
+    btn.removeAttribute('onclick');          // onclick 속성 제거 (중복 방지)
+    bindTouch(btn, function () { openModById(id); });
+  });
+
+  /* ② 섹션 헤더 — 접기/펼치기 */
+  var _sx = 0, _sy = 0;
+  document.addEventListener('touchstart', function (e) {
+    _sx = e.touches[0].clientX;
+    _sy = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.querySelectorAll('.section-header').forEach(function (header) {
+    var sec = header.closest('.section');
+    if (!sec || !sec.id) return;
+    var id = sec.id;
+    header.removeAttribute('onclick');       // onclick 속성 제거
+    var _fired = false;
+    header.addEventListener('touchend', function (e) {
+      var dx = Math.abs(e.changedTouches[0].clientX - _sx);
+      var dy = Math.abs(e.changedTouches[0].clientY - _sy);
+      if (dx > 12 || dy > 12) return;       // 스크롤이면 무시
+      e.preventDefault();
+      _fired = true;
+      toggleSection(id);
+    }, { passive: false });
+    header.addEventListener('click', function () {
+      if (_fired) { _fired = false; return; }
+      toggleSection(id);
+    });
+  });
+
+  /* ③ 모달 배경 — 배경 탭으로 닫기 */
+  var modalBg = document.getElementById('art-modal');
+  if (modalBg) {
+    bindTouch(modalBg, function (e) {
+      if ((e.target || e.srcElement) === modalBg) closeMod();
+    });
+  }
+
+  /* ④ 모달 닫기 버튼(✕) */
+  document.querySelectorAll('.modal-close').forEach(function (btn) {
+    btn.removeAttribute('onclick');
+    bindTouch(btn, function () { closeMod(); });
+  });
+
+}
+
+/* 즉시 실행 — DOM은 이미 준비된 상태 */
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _initMobileHandlers);
+} else {
+  _initMobileHandlers();
+};
+
+
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMod(); });
 
 
