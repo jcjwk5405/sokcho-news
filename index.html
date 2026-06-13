@@ -2579,7 +2579,7 @@ if (window.innerWidth <= 600) {
   }
 
   // GoatCounter 공개 카운터 API 호출
-  fetch('https://' + GC_CODE + '.goatcounter.com/counter/_.json')
+  fetch('https://' + GC_CODE + '.goatcounter.com/counter/%2F.json')
     .then(function (r) {
       if (!r.ok) throw new Error(r.status);
       return r.json();
