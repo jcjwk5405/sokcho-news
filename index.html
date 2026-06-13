@@ -2563,34 +2563,16 @@ if (window.innerWidth <= 600) {
 }
 
 /* ===== GoatCounter 독자 현황 표시 =====
-   공개 카운터 API(/counter/PATH.json) fetch 방식
-   — count.js 타이밍 문제 없이 안정적으로 표시
-   — claudeusercontent.com 미리보기에서는 —(정상)
-   — GitHub Pages에서 실제 누적 방문수 표시
+   집계 시각만 JS로 표시; 방문수는 count.js가
+   goatcounter-count span을 자동으로 채움
    ============================================= */
 (function () {
-  const GC_CODE = 'seorakcitizennews';
-
   // 집계 시각 표시
-  const timeEl = document.getElementById('gc-time');
+  var timeEl = document.getElementById('gc-time');
   if (timeEl) {
-    const t = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+    var t = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
     timeEl.textContent = t + ' 기준';
   }
-
-  // GoatCounter 공개 카운터 API 호출
-  fetch('https://' + GC_CODE + '.goatcounter.com/counter/%2F.json')
-    .then(function (r) {
-      if (!r.ok) throw new Error(r.status);
-      return r.json();
-    })
-    .then(function (data) {
-      const el = document.getElementById('gc-today');
-      if (el) el.textContent = data.count || '0';
-    })
-    .catch(function () {
-      // 미리보기·CORS 차단 시 — 유지
-    });
 })();
 </script>
 <script>
