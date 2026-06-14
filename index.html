@@ -2029,7 +2029,7 @@ footer {
 <div id="stats-strip">
   <div class="stats-inner">
     <div class="stat-block">
-      <div class="stat-label">누적 방문자</div>
+      <div class="stat-label">오늘 방문자</div>
       <div class="stat-num"><span class="goatcounter-count" data-path="/" id="gc-today">—</span></div>
     </div>
     <div class="stat-divider"></div>
@@ -2620,11 +2620,8 @@ if (window.innerWidth <= 600) {
   var gcBase = 'https://seorakcitizennews.goatcounter.com/counter/';
   var gcCounts = {};
   function gcDone(key, val) {
-    gcCounts[key] = parseInt((val+'').replace(/,/g,'')) || 0;
-    if ('root' in gcCounts && 'idx' in gcCounts) {
-      var el = document.getElementById('gc-today');
-      if (el) el.textContent = (gcCounts.root + gcCounts.idx).toLocaleString();
-    }
+    var el = document.getElementById('gc-today');
+    if (el) el.textContent = (parseInt((val+'').replace(/,/g,'')) || 0).toLocaleString();
   }
   function gcGet(path, key) {
     var r = new XMLHttpRequest();
@@ -2635,8 +2632,7 @@ if (window.innerWidth <= 600) {
     r.open('GET', gcBase + path + '.json');
     r.send();
   }
-  gcGet('%2F', 'root');
-  gcGet('%2Findex.html', 'idx');
+  gcGet('%2F', 'today');
 })();
 </script>
 <script>
