@@ -1949,6 +1949,12 @@ footer {
       </div>
     </div>
 
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:700;color:#166534;margin-bottom:6px;">📲 앱처럼 설치하세요 — 무료·광고없음</div>
+      <div style="font-size:12px;color:#475569;line-height:1.6;margin-bottom:10px;">홈 화면에 추가하면 앱처럼 바로 실행됩니다. 앱스토어 불필요, 개인정보 수집 없음.</div>
+      <button onclick="document.getElementById('pwa-modal').classList.add('on')" style="background:#166534;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:700;cursor:pointer;">📲 설치 방법 보기</button>
+    </div>
+
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
       <div style="font-size:12px;font-weight:700;color:#1B3A6B;margin-bottom:8px;">📅 다음 호 예고</div>
       <ul style="font-size:12px;line-height:1.8;color:#475569;padding-left:16px;margin:0;">
@@ -1964,6 +1970,45 @@ footer {
 
 
 
+
+<!-- PWA 설치 안내 모달 -->
+<div class="modal-bg" id="pwa-modal" onclick="if(event.target===this)document.getElementById('pwa-modal').classList.remove('on')">
+  <div class="modal-box">
+    <div class="modal-hd">
+      <span>📲 앱 설치 방법</span>
+      <button class="modal-close" onclick="document.getElementById('pwa-modal').classList.remove('on')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="pwa-tab-and" style="display:block;">
+        <div style="display:flex;gap:8px;margin-bottom:16px;">
+          <button onclick="document.getElementById('pwa-tab-and').style.display='block';document.getElementById('pwa-tab-ios').style.display='none';this.style.background='#1B3A6B';this.style.color='#fff';document.getElementById('pwa-btn-ios').style.background='#f1f5f9';document.getElementById('pwa-btn-ios').style.color='#1B3A6B';" id="pwa-btn-and" style="flex:1;padding:8px;border-radius:6px;border:1px solid #1B3A6B;background:#1B3A6B;color:#fff;font-weight:700;font-size:13px;cursor:pointer;">🤖 안드로이드</button>
+          <button onclick="document.getElementById('pwa-tab-ios').style.display='block';document.getElementById('pwa-tab-and').style.display='none';this.style.background='#1B3A6B';this.style.color='#fff';document.getElementById('pwa-btn-and').style.background='#f1f5f9';document.getElementById('pwa-btn-and').style.color='#1B3A6B';" id="pwa-btn-ios" style="flex:1;padding:8px;border-radius:6px;border:1px solid #1B3A6B;background:#f1f5f9;color:#1B3A6B;font-weight:700;font-size:13px;cursor:pointer;">🍎 아이폰</button>
+        </div>
+        <ol style="font-size:14px;line-height:2;color:#1a1a1a;padding-left:20px;margin:0;">
+          <li>크롬 브라우저로 <strong>seorakcitizennews.kr</strong> 접속</li>
+          <li>오른쪽 위 <strong>⋮ (점 세 개)</strong> 메뉴 터치</li>
+          <li><strong>"홈 화면에 추가"</strong> 선택</li>
+          <li><strong>"추가"</strong> 확인 → 설치 완료</li>
+        </ol>
+      </div>
+      <div id="pwa-tab-ios" style="display:none;">
+        <div style="display:flex;gap:8px;margin-bottom:16px;">
+          <button onclick="document.getElementById('pwa-tab-and').style.display='block';document.getElementById('pwa-tab-ios').style.display='none';this.style.background='#f1f5f9';this.style.color='#1B3A6B';document.getElementById('pwa-btn-ios').style.background='#1B3A6B';document.getElementById('pwa-btn-ios').style.color='#fff';" id="pwa-btn-and2" style="flex:1;padding:8px;border-radius:6px;border:1px solid #1B3A6B;background:#f1f5f9;color:#1B3A6B;font-weight:700;font-size:13px;cursor:pointer;">🤖 안드로이드</button>
+          <button id="pwa-btn-ios2" style="flex:1;padding:8px;border-radius:6px;border:1px solid #1B3A6B;background:#1B3A6B;color:#fff;font-weight:700;font-size:13px;cursor:pointer;">🍎 아이폰</button>
+        </div>
+        <ol style="font-size:14px;line-height:2;color:#1a1a1a;padding-left:20px;margin:0;">
+          <li>사파리 브라우저로 <strong>seorakcitizennews.kr</strong> 접속</li>
+          <li>하단 가운데 <strong>□↑ 공유 버튼</strong> 터치</li>
+          <li><strong>"홈 화면에 추가"</strong> 선택</li>
+          <li>오른쪽 위 <strong>"추가"</strong> 터치 → 설치 완료</li>
+        </ol>
+      </div>
+      <div style="margin-top:16px;padding:10px 14px;background:#f8fafc;border-radius:6px;font-size:12px;color:#64748b;line-height:1.6;">
+        ✅ 앱스토어 불필요 &nbsp;|&nbsp; ✅ 광고 없음 &nbsp;|&nbsp; ✅ 개인정보 수집 없음
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal-bg" id="art-modal" onclick="if(event.target===this)closeMod()">
   <div class="modal-box">
