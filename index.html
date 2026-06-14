@@ -2616,24 +2616,27 @@ if (window.innerWidth <= 600) {
     timeEl.textContent = t + ' 기준';
   }
 
-  // 누적 방문자 — %2F(루트) 시도 후 TOTAL 폴백
-  function gcFetch(path, fallback) {
+  // 누적 방문자 — /와 /index.html 합산
+  var gcBase = 'https://seorakcitizennews.goatcounter.com/counter/';
+  var gcCounts = {};
+  function gcDone(key, val) {
+    gcCounts[key] = parseInt((val+'').replace(/,/g,'')) || 0;
+    if ('root' in gcCounts && 'idx' in gcCounts) {
+      var el = document.getElementById('gc-today');
+      if (el) el.textContent = (gcCounts.root + gcCounts.idx).toLocaleString();
+    }
+  }
+  function gcGet(path, key) {
     var r = new XMLHttpRequest();
-    r.addEventListener('load', function () {
-      try {
-        var data = JSON.parse(this.responseText);
-        var count = data.count;
-        if (count && count !== '0') {
-          var el = document.getElementById('gc-today');
-          if (el) el.textContent = count;
-        } else if (fallback) { gcFetch(fallback, null); }
-      } catch(e) { if (fallback) gcFetch(fallback, null); }
+    r.addEventListener('load', function() {
+      try { gcDone(key, JSON.parse(this.responseText).count); } catch(e) { gcDone(key, 0); }
     });
-    r.addEventListener('error', function() { if (fallback) gcFetch(fallback, null); });
-    r.open('GET', 'https://seorakcitizennews.goatcounter.com/counter/' + path + '.json');
+    r.addEventListener('error', function() { gcDone(key, 0); });
+    r.open('GET', gcBase + path + '.json');
     r.send();
   }
-  gcFetch('TOTAL', '%2F');
+  gcGet('%2F', 'root');
+  gcGet('%2Findex.html', 'idx');
 })();
 </script>
 <script>
