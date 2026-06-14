@@ -2562,10 +2562,7 @@ if (window.innerWidth <= 600) {
   });
 }
 
-/* ===== GoatCounter 독자 현황 표시 =====
-   집계 시각만 JS로 표시; 방문수는 count.js가
-   goatcounter-count span을 자동으로 채움
-   ============================================= */
+/* ===== GoatCounter 누적 방문자 표시 ===== */
 (function () {
   // 집계 시각 표시
   var timeEl = document.getElementById('gc-time');
@@ -2573,6 +2570,15 @@ if (window.innerWidth <= 600) {
     var t = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
     timeEl.textContent = t + ' 기준';
   }
+
+  // 누적 방문자 — TOTAL 경로로 전체 사이트 합산
+  var r = new XMLHttpRequest();
+  r.addEventListener('load', function () {
+    var el = document.getElementById('gc-today');
+    if (el) el.textContent = JSON.parse(this.responseText).count || '0';
+  });
+  r.open('GET', 'https://seorakcitizennews.goatcounter.com/counter/TOTAL.json');
+  r.send();
 })();
 </script>
 <script>
