@@ -4,7 +4,7 @@
    - 빠른 로딩 (캐시 우선)
    ═══════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'sokcho-news-v1';
+const CACHE_NAME = 'sokcho-news-v2';
 
 /* 앱 설치 시 미리 캐시할 파일 목록 */
 const PRE_CACHE = [
