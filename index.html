@@ -2029,13 +2029,13 @@ footer {
 <div id="stats-strip">
   <div class="stats-inner">
     <div class="stat-block">
-      <div class="stat-label">오늘 방문자</div>
-      <div class="stat-num"><span class="goatcounter-count" data-path="/" id="gc-today">—</span></div>
+      <div class="stat-label">누적 방문자</div>
+      <div class="stat-num" id="gc-today">—</div>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-block">
-      <div class="stat-label">집계 시각</div>
-      <div class="stat-num stat-time" id="gc-time">—</div>
+      <div class="stat-label">집계 기준</div>
+      <div class="stat-num stat-time" id="gc-time">2026.06.21</div>
     </div>
   </div>
 </div>
@@ -2607,33 +2607,7 @@ if (window.innerWidth <= 600) {
   });
 }
 
-/* ===== GoatCounter 누적 방문자 표시 ===== */
-(function () {
-  // 집계 시각 표시
-  var timeEl = document.getElementById('gc-time');
-  if (timeEl) {
-    var t = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-    timeEl.textContent = t + ' 기준';
-  }
-
-  // 누적 방문자 — /와 /index.html 합산
-  var gcBase = 'https://seorakcitizennews.goatcounter.com/counter/';
-  var gcCounts = {};
-  function gcDone(key, val) {
-    var el = document.getElementById('gc-today');
-    if (el) el.textContent = (parseInt((val+'').replace(/,/g,'')) || 0).toLocaleString();
-  }
-  function gcGet(path, key) {
-    var r = new XMLHttpRequest();
-    r.addEventListener('load', function() {
-      try { gcDone(key, JSON.parse(this.responseText).count); } catch(e) { gcDone(key, 0); }
-    });
-    r.addEventListener('error', function() { gcDone(key, 0); });
-    r.open('GET', gcBase + path + '.json');
-    r.send();
-  }
-  gcGet('%2F', 'today');
-})();
+/* GoatCounter — 방문자 수동 업데이트 방식으로 전환 */
 </script>
 <script>
 /* ── 찬반 투표 ── */
