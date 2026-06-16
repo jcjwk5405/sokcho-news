@@ -2609,75 +2609,66 @@ if (window.innerWidth <= 600) {
 
 /* GoatCounter — 방문자 수동 업데이트 방식으로 전환 */
 </script>
+
+<!-- ── Firebase Realtime Database SDK (v9 compat) ── -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
 <script>
-/* ── 찬반 투표 ── */
-
-  /* 투표 실행 — 전역 함수 */
-  function castVote(issueId, side) {
-    var storageKey = 'vote_' + issueId;
-    var countKey   = 'vcount_' + issueId;
-    try {
-      var already = localStorage.getItem(storageKey);
-      if (already) {
-        alert('이미 투표하셨습니다.');
-        return;
+/* ── Firebase 초기화 ──
+   아래 firebaseConfig 값을 Firebase 콘솔에서 발급받은 실제 값으로 교체하세요.
+   교체 후 이 주석 블록은 삭제하셔도 됩니다.
+   ※ Realtime Database 규칙(Rules):
+      {
+        "rules": {
+          "votes": {
+            "$issueId": {
+              ".read": true,
+              ".write": true
+            }
+          }
+        }
       }
-      var stored = localStorage.getItem(countKey);
-      var counts = stored ? JSON.parse(stored) : {pro:0, con:0};
-      counts[side] = (counts[side] || 0) + 1;
-      localStorage.setItem(countKey, JSON.stringify(counts));
-      localStorage.setItem(storageKey, side);
-      updateVoteUI(issueId, counts, side);
-    } catch(e) {
-      // localStorage 차단 환경 — 세션 내 임시 카운트
-      if (!window._votes) window._votes = {};
-      if (!window._vcounts) window._vcounts = {};
-      if (window._votes[issueId]) { alert('이미 투표하셨습니다.'); return; }
-      window._votes[issueId] = side;
-      window._vcounts[issueId] = window._vcounts[issueId] || {pro:0, con:0};
-      window._vcounts[issueId][side]++;
-      updateVoteUI(issueId, window._vcounts[issueId], side);
-    }
-  }
+   ────────────────────────────────────────────── */
+var firebaseConfig = {
+  apiKey:            "AIzaSyDenUpfmhhT4n3sVQOL3IQqy7KgPnoRkV0",
+  authDomain:        "seorak-citizen-news.firebaseapp.com",
+  databaseURL:       "https://seorak-citizen-news-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:         "seorak-citizen-news",
+  storageBucket:     "seorak-citizen-news.firebasestorage.app",
+  messagingSenderId: "269060446098",
+  appId:             "1:269060446098:web:7428b6d372ff5b24cb934b",
+  measurementId:     "G-7VN56VBEYJ"
+};
 
-  function updateVoteUI(issueId, counts, voted) {
-    var pro = counts.pro || 0;
-    var con = counts.con || 0;
-    var total = pro + con;
+var _fbReady = false;
+var _fbDB    = null;
 
-    var elPro = document.getElementById('vcnt-' + issueId + '-pro');
-    var elCon = document.getElementById('vcnt-' + issueId + '-con');
-    if (elPro) elPro.textContent = pro;
-    if (elCon) elCon.textContent = con;
+try {
+  firebase.initializeApp(firebaseConfig);
+  _fbDB    = firebase.database();
+  _fbReady = true;
+} catch(e) {
+  console.warn('[설악시민뉴스] Firebase 초기화 실패 — localStorage 폴백 모드로 전환', e);
+}
+</script>
 
-    var btnPro = document.getElementById('vbtn-' + issueId + '-pro');
-    var btnCon = document.getElementById('vbtn-' + issueId + '-con');
-    if (btnPro) btnPro.style.opacity = voted === 'pro' ? '1' : '0.5';
-    if (btnCon) btnCon.style.opacity = voted === 'con' ? '1' : '0.5';
+<script>
+/* ── 찬반 투표 (Firebase Realtime Database 연동) ──
+   · 집계: Firebase — 모든 독자 투표가 실시간 누적
+   · 중복 방지: localStorage — 기기별 1회 제한
+   · 폴백: Firebase 불가 시 localStorage 집계로 자동 전환
+   ──────────────────────────────────────────────── */
 
-    var pct = total > 0 ? Math.round(pro / total * 100) : 0;
-    var resultEl = document.getElementById('vresult-' + issueId);
-    if (resultEl) {
-      resultEl.innerHTML =
-        '<div style="margin-top:10px;">' +
-        '<div style="display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:6px;">' +
-        '<div style="background:#1F7A4D;width:' + pct + '%;transition:width .4s;"></div>' +
-        '<div style="background:#B03030;flex:1;transition:width .4s;"></div>' +
-        '</div>' +
-        '👍 찬성 ' + pro + '표 (' + pct + '%) &nbsp; 👎 반대 ' + con + '표 (' + (100-pct) + '%) &nbsp; 총 ' + total + '표' +
-        '</div>';
-    }
-  }
-
-  /* 결과 렌더링 */
+  /* ── 공통 UI 렌더러 ── */
   function renderVote(issueId, counts, voted) {
-    var pro = counts.pro | 0;
-    var con = counts.con | 0;
+    var pro   = (counts && counts.pro) ? parseInt(counts.pro, 10) : 0;
+    var con   = (counts && counts.con) ? parseInt(counts.con, 10) : 0;
     var total = pro + con;
     var proPct = total ? Math.round(pro / total * 100) : 50;
     var conPct = total ? (100 - proPct) : 50;
 
-    /* 숫자 뱃지 업데이트 */
+    /* 숫자 뱃지 */
     var elPro = document.getElementById('vcnt-' + issueId + '-pro');
     var elCon = document.getElementById('vcnt-' + issueId + '-con');
     if (elPro) elPro.textContent = pro;
@@ -2687,14 +2678,12 @@ if (window.innerWidth <= 600) {
     var btnPro = document.getElementById('vbtn-' + issueId + '-pro');
     var btnCon = document.getElementById('vbtn-' + issueId + '-con');
     if (btnPro) {
-      btnPro.classList.add('voted');
-      btnPro.disabled = false;
-      if (voted === 'pro') btnPro.classList.add('selected');
+      btnPro.classList.toggle('selected', voted === 'pro');
+      btnPro.style.opacity = voted ? (voted === 'pro' ? '1' : '0.5') : '1';
     }
     if (btnCon) {
-      btnCon.classList.add('voted');
-      btnCon.disabled = false;
-      if (voted === 'con') btnCon.classList.add('selected');
+      btnCon.classList.toggle('selected', voted === 'con');
+      btnCon.style.opacity = voted ? (voted === 'con' ? '1' : '0.5') : '1';
     }
 
     /* 결과 바 */
@@ -2714,26 +2703,91 @@ if (window.innerWidth <= 600) {
     }
   }
 
-  /* 기존 결과 표시 */
-  function showVoteResult(issueId) {
-    var counts = JSON.parse(localStorage.getItem('vcount_' + issueId) || '{"pro":0,"con":0}');
-    var voted  = localStorage.getItem('vote_' + issueId);
-    renderVote(issueId, counts, voted);
+  /* ── Firebase 투표 실행 ── */
+  function castVoteFirebase(issueId, side) {
+    var ref = _fbDB.ref('votes/' + issueId + '/' + side);
+    ref.transaction(function(current) {
+      return (current || 0) + 1;
+    }).then(function() {
+      localStorage.setItem('vote_' + issueId, side);
+      /* 결과는 onValue 리스너가 자동 반영 */
+    }).catch(function(err) {
+      console.warn('[투표] Firebase 쓰기 오류:', err);
+      alert('투표 저장 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    });
   }
 
-  /* 페이지 로드 시 기존 투표 복원 */
+  /* ── localStorage 폴백 투표 실행 ── */
+  function castVoteLocal(issueId, side) {
+    var countKey = 'vcount_' + issueId;
+    var stored   = localStorage.getItem(countKey);
+    var counts   = stored ? JSON.parse(stored) : {pro: 0, con: 0};
+    counts[side] = (counts[side] || 0) + 1;
+    localStorage.setItem(countKey, JSON.stringify(counts));
+    localStorage.setItem('vote_' + issueId, side);
+    renderVote(issueId, counts, side);
+  }
+
+  /* ── 투표 진입점 (버튼 onclick에서 호출) ── */
+  function castVote(issueId, side) {
+    /* 중복 투표 방지 */
+    var already = localStorage.getItem('vote_' + issueId);
+    if (already) {
+      alert('이미 투표하셨습니다.');
+      return;
+    }
+
+    if (_fbReady) {
+      castVoteFirebase(issueId, side);
+    } else {
+      castVoteLocal(issueId, side);
+    }
+  }
+
+  /* ── Firebase 실시간 리스너 구독 ── */
+  function subscribeVote(issueId) {
+    if (!_fbReady) return;
+    _fbDB.ref('votes/' + issueId).on('value', function(snap) {
+      var data  = snap.val() || {};
+      var voted = localStorage.getItem('vote_' + issueId);
+      renderVote(issueId, { pro: data.pro || 0, con: data.con || 0 }, voted);
+    });
+  }
+
+  /* ── 모달에서 결과 표시 (showVoteResult 호환 유지) ── */
+  function showVoteResult(issueId) {
+    if (_fbReady) {
+      /* Firebase에서 최신값 1회 읽기 */
+      _fbDB.ref('votes/' + issueId).once('value', function(snap) {
+        var data  = snap.val() || {};
+        var voted = localStorage.getItem('vote_' + issueId);
+        renderVote(issueId, { pro: data.pro || 0, con: data.con || 0 }, voted);
+      });
+    } else {
+      var counts = JSON.parse(localStorage.getItem('vcount_' + issueId) || '{"pro":0,"con":0}');
+      var voted  = localStorage.getItem('vote_' + issueId);
+      renderVote(issueId, counts, voted);
+    }
+  }
+
+  /* ── 페이지 로드 시 초기화 ── */
   function initVotes() {
     var ids = ['issue1','issue2','issue3','issue4','issue5'];
     ids.forEach(function(id) {
-      var voted  = localStorage.getItem('vote_' + id);
-      var counts = JSON.parse(localStorage.getItem('vcount_' + id) || '{"pro":0,"con":0}');
-      if (voted | counts.pro > 0 | counts.con > 0) {
-        renderVote(id, counts, voted);
+      if (_fbReady) {
+        subscribeVote(id);          /* Firebase 실시간 구독 */
+      } else {
+        /* 폴백: localStorage */
+        var voted  = localStorage.getItem('vote_' + id);
+        var counts = JSON.parse(localStorage.getItem('vcount_' + id) || '{"pro":0,"con":0}');
+        if (voted || counts.pro > 0 || counts.con > 0) {
+          renderVote(id, counts, voted);
+        }
       }
     });
   }
 
-  /* DOM 준비 후 실행 */
+  /* ── DOM 준비 후 실행 ── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       renderTeasers();
