@@ -726,58 +726,48 @@ footer {
 #stats-strip {
   background: var(--navy);
   border-top: 2px solid var(--gold);
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  padding: 11px 20px;
 }
-.stats-inner {
+.quote-strip-inner {
   display: flex;
   align-items: center;
   gap: 0;
+  flex-wrap: wrap;
+  row-gap: 4px;
 }
-.stat-block {
-  text-align: center;
-  padding: 0 18px;
-}
-.stat-block:first-child { padding-left: 0; }
-.stat-label {
+.quote-strip-label {
   font-size: 10px;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0.5px;
-  margin-bottom: 3px;
-}
-.stat-num {
-  font-size: 20px;
   font-weight: 700;
-  color: var(--gold-light);
-  line-height: 1;
+  letter-spacing: 0.6px;
+  color: var(--gold);
+  white-space: nowrap;
+  padding-right: 12px;
+  text-transform: uppercase;
 }
-.stat-time { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75); }
-.stat-divider {
+.quote-strip-divider {
+  display: inline-block;
   width: 1px;
-  height: 34px;
-  background: rgba(255,255,255,0.15);
+  height: 28px;
+  background: rgba(255,255,255,0.2);
+  margin-right: 14px;
   flex-shrink: 0;
 }
-.stats-link {
-  font-size: 11px;
-  color: rgba(255,255,255,0.6);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 4px;
-  padding: 5px 12px;
-  white-space: nowrap;
-  transition: background 0.2s, color 0.2s;
+.quote-strip-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+  font-style: italic;
+  margin-right: 10px;
+  line-height: 1.4;
 }
-.stats-link:hover {
-  background: rgba(255,255,255,0.1);
-  color: var(--gold-light);
+.quote-strip-source {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
 }
 @media (max-width: 480px) {
-  .stat-block { padding: 0 12px; }
-  .stat-num { font-size: 17px; }
+  .quote-strip-text { font-size: 12px; }
+  .quote-strip-divider { display: none; }
 }
 
 /* ── 팝업 모달 ── */
@@ -1363,20 +1353,6 @@ footer {
 .tab-btn.active { background: #1B3A6B; color: #fff; border-color: #1B3A6B; font-weight: 700; }
 /* ── /공지사항 탭 버튼 ── */
 </style>
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script>
-  firebase.initializeApp({
-    apiKey: "AIzaSyExample",
-    authDomain: "seorak-citizen-news.firebaseapp.com",
-    databaseURL: "https://seorak-citizen-news-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "seorak-citizen-news",
-    appId: "1:269060446098:web:7428b6d372ff5b24cb934b",
-    messagingSenderId: "269060446098"
-  });
-  window._db = firebase.database();
-</script>
 </head>
 <body>
 
@@ -1830,7 +1806,7 @@ footer {
       </div>
       <div class="editor-letter-sig">— 편집장 김준철 | 설악시민뉴스 | 2026.06.22 제2호</div>
     </div>
-    <button class="read-more-btn" onclick="openModById('letter')" style="margin-top:12px;">✒ 편집자 레터 전문 보기 ▶</button>
+    <button class="read-more-btn" onclick="openModById('letter')" style="margin-top:12px;">✒ 편집자 레터 + 창간사 전문 보기 ▶</button>
   </div>
 </div>
 <!-- ══════════════════════════════════════ -->
@@ -2043,16 +2019,11 @@ footer {
 
 <!-- ===== 독자 현황 띠 ===== -->
 <div id="stats-strip">
-  <div class="stats-inner">
-    <div class="stat-block">
-      <div class="stat-label">누적 방문자</div>
-      <div class="stat-num" id="gc-today">134</div>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-block">
-      <div class="stat-label">집계 기준</div>
-      <div class="stat-num stat-time" id="gc-time">2026.06.20</div>
-    </div>
+  <div class="quote-strip-inner">
+    <span class="quote-strip-label">이 주의 문장</span>
+    <span class="quote-strip-divider"></span>
+    <span class="quote-strip-text" id="weekly-quote">"정의는 각자에게 그의 몫을 돌려주는 것이다."</span>
+    <span class="quote-strip-source" id="weekly-quote-source">— 울피아누스 (로마 법학자)</span>
   </div>
 </div>
 
@@ -2083,7 +2054,7 @@ footer {
   <!-- 속초관광가이드 배너 -->
   <div style="margin-top:14px;padding:9px 16px;background:linear-gradient(90deg,#0a7a5a 0%,#0fa87a 100%);display:flex;align-items:center;justify-content:space-between;gap:8px;">
     <div>
-      <div style="font-size:9px;font-weight:700;letter-spacing:0.08em;color:rgba(255,255,255,0.6);margin-bottom:3px;">제작·배포 설악시민뉴스</div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.08em;color:rgba(255,255,255,0.6);margin-bottom:3px;">설악시민뉴스가 제작·배포하는</div>
       <div style="font-size:12px;font-weight:700;color:#fff;">
         🏔 속초 관광 가이드
         <span style="font-size:10px;font-weight:400;opacity:0.7;margin-left:3px;">(https://www.visitsokcho.kr)</span>
@@ -2627,36 +2598,34 @@ if (window.innerWidth <= 600) {
 /* GoatCounter — 방문자 수동 업데이트 방식으로 전환 */
 </script>
 <script>
-/* ── 찬반 투표 (Firebase Realtime Database) ── */
+/* ── 찬반 투표 ── */
 
   /* 투표 실행 — 전역 함수 */
   function castVote(issueId, side) {
     var storageKey = 'vote_' + issueId;
-
-    // 중복 투표 방지 — localStorage (KakaoTalk 등 차단 환경은 세션 변수 fallback)
-    var already;
-    try { already = localStorage.getItem(storageKey); } catch(e) { already = (window._votes && window._votes[issueId]); }
-    if (already) { alert('이미 투표하셨습니다.'); return; }
-
-    // 버튼 즉시 비활성화 (중복 클릭 방지)
-    var btnPro = document.getElementById('vbtn-' + issueId + '-pro');
-    var btnCon = document.getElementById('vbtn-' + issueId + '-con');
-    if (btnPro) btnPro.disabled = true;
-    if (btnCon) btnCon.disabled = true;
-
-    // Firebase에 increment 저장
-    var ref = window._db.ref('votes/' + issueId + '/' + side);
-    ref.transaction(function(cur) { return (cur || 0) + 1; }, function(err, committed) {
-      if (err || !committed) {
-        // Firebase 실패 시 버튼 복구
-        if (btnPro) btnPro.disabled = false;
-        if (btnCon) btnCon.disabled = false;
-        alert('투표 저장에 실패했습니다. 잠시 후 다시 시도해주세요.');
+    var countKey   = 'vcount_' + issueId;
+    try {
+      var already = localStorage.getItem(storageKey);
+      if (already) {
+        alert('이미 투표하셨습니다.');
         return;
       }
-      // 투표 완료 기록
-      try { localStorage.setItem(storageKey, side); } catch(e) { if (!window._votes) window._votes = {}; window._votes[issueId] = side; }
-    });
+      var stored = localStorage.getItem(countKey);
+      var counts = stored ? JSON.parse(stored) : {pro:0, con:0};
+      counts[side] = (counts[side] || 0) + 1;
+      localStorage.setItem(countKey, JSON.stringify(counts));
+      localStorage.setItem(storageKey, side);
+      updateVoteUI(issueId, counts, side);
+    } catch(e) {
+      // localStorage 차단 환경 — 세션 내 임시 카운트
+      if (!window._votes) window._votes = {};
+      if (!window._vcounts) window._vcounts = {};
+      if (window._votes[issueId]) { alert('이미 투표하셨습니다.'); return; }
+      window._votes[issueId] = side;
+      window._vcounts[issueId] = window._vcounts[issueId] || {pro:0, con:0};
+      window._vcounts[issueId][side]++;
+      updateVoteUI(issueId, window._vcounts[issueId], side);
+    }
   }
 
   function updateVoteUI(issueId, counts, voted) {
@@ -2735,25 +2704,20 @@ if (window.innerWidth <= 600) {
 
   /* 기존 결과 표시 */
   function showVoteResult(issueId) {
-    var voted;
-    try { voted = localStorage.getItem('vote_' + issueId); } catch(e) { voted = window._votes && window._votes[issueId]; }
-    window._db.ref('votes/' + issueId).once('value', function(snap) {
-      var data = snap.val() || {};
-      renderVote(issueId, {pro: data.pro||0, con: data.con||0}, voted);
-    });
+    var counts = JSON.parse(localStorage.getItem('vcount_' + issueId) || '{"pro":0,"con":0}');
+    var voted  = localStorage.getItem('vote_' + issueId);
+    renderVote(issueId, counts, voted);
   }
 
-  /* 페이지 로드 시 Firebase 실시간 리스너 등록 */
+  /* 페이지 로드 시 기존 투표 복원 */
   function initVotes() {
-    var ids = ['issue3']; // 현재 호 이슈 ID — 매호 발행 시 업데이트
+    var ids = ['issue1','issue2','issue3','issue4','issue5'];
     ids.forEach(function(id) {
-      var voted;
-      try { voted = localStorage.getItem('vote_' + id); } catch(e) { voted = window._votes && window._votes[id]; }
-      // 실시간 리스너 — Firebase 데이터 변경 시 UI 자동 갱신
-      window._db.ref('votes/' + id).on('value', function(snap) {
-        var data = snap.val() || {};
-        renderVote(id, {pro: data.pro||0, con: data.con||0}, voted);
-      });
+      var voted  = localStorage.getItem('vote_' + id);
+      var counts = JSON.parse(localStorage.getItem('vcount_' + id) || '{"pro":0,"con":0}');
+      if (voted | counts.pro > 0 | counts.con > 0) {
+        renderVote(id, counts, voted);
+      }
     });
   }
 
