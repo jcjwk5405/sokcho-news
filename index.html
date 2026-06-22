@@ -1353,6 +1353,22 @@ footer {
 .tab-btn.active { background: #1B3A6B; color: #fff; border-color: #1B3A6B; font-weight: 700; }
 /* ── /공지사항 탭 버튼 ── */
 </style>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyplaceholder",
+    authDomain: "seorak-citizen-news.firebaseapp.com",
+    databaseURL: "https://seorak-citizen-news-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "seorak-citizen-news",
+    storageBucket: "seorak-citizen-news.appspot.com",
+    messagingSenderId: "269060446098",
+    appId: "1:269060446098:web:7428b6d372ff5b24cb934b"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.database();
+</script>
 </head>
 <body>
 
@@ -2598,80 +2614,23 @@ if (window.innerWidth <= 600) {
 /* GoatCounter — 방문자 수동 업데이트 방식으로 전환 */
 </script>
 <script>
-/* ── 찬반 투표 ── */
+/* ── 찬반 투표 (Firebase Realtime Database 연동) ── */
 
-  /* 투표 실행 — 전역 함수 */
-  function castVote(issueId, side) {
-    var storageKey = 'vote_' + issueId;
-    var countKey   = 'vcount_' + issueId;
-    try {
-      var already = localStorage.getItem(storageKey);
-      if (already) {
-        alert('이미 투표하셨습니다.');
-        return;
-      }
-      var stored = localStorage.getItem(countKey);
-      var counts = stored ? JSON.parse(stored) : {pro:0, con:0};
-      counts[side] = (counts[side] || 0) + 1;
-      localStorage.setItem(countKey, JSON.stringify(counts));
-      localStorage.setItem(storageKey, side);
-      updateVoteUI(issueId, counts, side);
-    } catch(e) {
-      // localStorage 차단 환경 — 세션 내 임시 카운트
-      if (!window._votes) window._votes = {};
-      if (!window._vcounts) window._vcounts = {};
-      if (window._votes[issueId]) { alert('이미 투표하셨습니다.'); return; }
-      window._votes[issueId] = side;
-      window._vcounts[issueId] = window._vcounts[issueId] || {pro:0, con:0};
-      window._vcounts[issueId][side]++;
-      updateVoteUI(issueId, window._vcounts[issueId], side);
-    }
-  }
-
-  function updateVoteUI(issueId, counts, voted) {
-    var pro = counts.pro || 0;
-    var con = counts.con || 0;
-    var total = pro + con;
-
-    var elPro = document.getElementById('vcnt-' + issueId + '-pro');
-    var elCon = document.getElementById('vcnt-' + issueId + '-con');
-    if (elPro) elPro.textContent = pro;
-    if (elCon) elCon.textContent = con;
-
-    var btnPro = document.getElementById('vbtn-' + issueId + '-pro');
-    var btnCon = document.getElementById('vbtn-' + issueId + '-con');
-    if (btnPro) btnPro.style.opacity = voted === 'pro' ? '1' : '0.5';
-    if (btnCon) btnCon.style.opacity = voted === 'con' ? '1' : '0.5';
-
-    var pct = total > 0 ? Math.round(pro / total * 100) : 0;
-    var resultEl = document.getElementById('vresult-' + issueId);
-    if (resultEl) {
-      resultEl.innerHTML =
-        '<div style="margin-top:10px;">' +
-        '<div style="display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:6px;">' +
-        '<div style="background:#1F7A4D;width:' + pct + '%;transition:width .4s;"></div>' +
-        '<div style="background:#B03030;flex:1;transition:width .4s;"></div>' +
-        '</div>' +
-        '👍 찬성 ' + pro + '표 (' + pct + '%) &nbsp; 👎 반대 ' + con + '표 (' + (100-pct) + '%) &nbsp; 총 ' + total + '표' +
-        '</div>';
-    }
-  }
+  var ACTIVE_ISSUES = ['issue3']; /* 매주 현행 이슈 ID로 업데이트 */
 
   /* 결과 렌더링 */
   function renderVote(issueId, counts, voted) {
-    var pro = counts.pro | 0;
-    var con = counts.con | 0;
+    var pro = (counts && counts.pro) ? counts.pro : 0;
+    var con = (counts && counts.con) ? counts.con : 0;
     var total = pro + con;
     var proPct = total ? Math.round(pro / total * 100) : 50;
     var conPct = total ? (100 - proPct) : 50;
 
-    /* 숫자 뱃지 업데이트 */
     var elPro = document.getElementById('vcnt-' + issueId + '-pro');
     var elCon = document.getElementById('vcnt-' + issueId + '-con');
     if (elPro) elPro.textContent = pro;
     if (elCon) elCon.textContent = con;
 
-    /* 버튼 상태 */
     var btnPro = document.getElementById('vbtn-' + issueId + '-pro');
     var btnCon = document.getElementById('vbtn-' + issueId + '-con');
     if (btnPro) {
@@ -2685,7 +2644,6 @@ if (window.innerWidth <= 600) {
       if (voted === 'con') btnCon.classList.add('selected');
     }
 
-    /* 결과 바 */
     var resultEl = document.getElementById('vresult-' + issueId);
     if (resultEl) {
       resultEl.innerHTML =
@@ -2702,21 +2660,55 @@ if (window.innerWidth <= 600) {
     }
   }
 
-  /* 기존 결과 표시 */
-  function showVoteResult(issueId) {
-    var counts = JSON.parse(localStorage.getItem('vcount_' + issueId) || '{"pro":0,"con":0}');
-    var voted  = localStorage.getItem('vote_' + issueId);
-    renderVote(issueId, counts, voted);
+  /* 투표 실행 — Firebase 트랜잭션 + localStorage 중복 방지 */
+  function castVote(issueId, side) {
+    var storageKey = 'vote_' + issueId;
+    try {
+      var already = localStorage.getItem(storageKey);
+      if (already) { alert('이미 투표하셨습니다.'); return; }
+    } catch(e) {}
+
+    if (typeof db !== 'undefined') {
+      /* Firebase 경로: votes/issueId/pro 또는 con */
+      db.ref('votes/' + issueId + '/' + side).transaction(function(cur) {
+        return (cur || 0) + 1;
+      }, function(err, committed) {
+        if (!err && committed) {
+          try { localStorage.setItem(storageKey, side); } catch(e) {}
+        }
+      });
+    } else {
+      /* Firebase 미연결 폴백 — localStorage 단독 집계 */
+      try {
+        var countKey = 'vcount_' + issueId;
+        var counts = JSON.parse(localStorage.getItem(countKey) || '{"pro":0,"con":0}');
+        counts[side] = (counts[side] || 0) + 1;
+        localStorage.setItem(countKey, JSON.stringify(counts));
+        localStorage.setItem(storageKey, side);
+        renderVote(issueId, counts, side);
+      } catch(e) {}
+    }
   }
 
-  /* 페이지 로드 시 기존 투표 복원 */
+  /* 페이지 로드 시 Firebase 실시간 리스너 등록 */
   function initVotes() {
-    var ids = ['issue1','issue2','issue3','issue4','issue5'];
-    ids.forEach(function(id) {
-      var voted  = localStorage.getItem('vote_' + id);
-      var counts = JSON.parse(localStorage.getItem('vcount_' + id) || '{"pro":0,"con":0}');
-      if (voted | counts.pro > 0 | counts.con > 0) {
-        renderVote(id, counts, voted);
+    ACTIVE_ISSUES.forEach(function(id) {
+      var voted = null;
+      try { voted = localStorage.getItem('vote_' + id); } catch(e) {}
+
+      if (typeof db !== 'undefined') {
+        db.ref('votes/' + id).on('value', function(snap) {
+          var data = snap.val() || {};
+          renderVote(id, data, voted);
+        });
+      } else {
+        /* 폴백: localStorage */
+        try {
+          var counts = JSON.parse(localStorage.getItem('vcount_' + id) || '{"pro":0,"con":0}');
+          if (voted || counts.pro > 0 || counts.con > 0) {
+            renderVote(id, counts, voted);
+          }
+        } catch(e) {}
       }
     });
   }
