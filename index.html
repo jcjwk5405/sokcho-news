@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>설악시민뉴스 — 자유·정의·사랑의 시민언론 | 제2호 | 2026.06.22</title>
+<title>설악시민뉴스 — 자유·정의·사랑의 시민언론 | 제3호 | 2026.06.29</title>
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1a2744">
@@ -73,18 +73,16 @@ async function loadArchive() {
         </a>`;
     }).join('');
   } catch(e) {
-    // manifest가 없을 때 — 창간호+제2호 표시
+    // manifest가 없을 때 — 제3호만 표시
     listEl.innerHTML = `
-      <a class="archive-item" href="archives/20260622.html">
-        <div class="archive-num">제2호</div>
-        <div class="archive-headline">동해 환경·원전 에너지 전환 · 민선9기 당선인 공약 이행 감시 시작</div>
-        <div class="archive-date">2026년 6월 22일</div>
+      <a class="archive-item current" href="./">
+        <div class="archive-num">제3호 <span class="archive-badge">최신</span></div>
+        <div class="archive-headline">김건희 1심 징역 7년 · 권금성 케이블카 공공이익 환수 논쟁</div>
+        <div class="archive-date">2026년 6월 29일</div>
       </a>
-      <a class="archive-item" href="archives/20260615.html">
-        <div class="archive-num">제1호 (창간호)</div>
-        <div class="archive-headline">설악시민뉴스 창간 — 자유·정의·사랑의 시민언론 출범</div>
-        <div class="archive-date">2026년 6월 15일</div>
-      </a>`;
+      <div class="archive-loading" style="font-size:11px;margin-top:8px;">
+        지난 호는 발행 후 순차적으로 등록됩니다.
+      </div>`;
   }
 }
 
@@ -1355,22 +1353,6 @@ footer {
 .tab-btn.active { background: #1B3A6B; color: #fff; border-color: #1B3A6B; font-weight: 700; }
 /* ── /공지사항 탭 버튼 ── */
 </style>
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script>
-  var firebaseConfig = {
-    apiKey: "AIzaSyplaceholder",
-    authDomain: "seorak-citizen-news.firebaseapp.com",
-    databaseURL: "https://seorak-citizen-news-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "seorak-citizen-news",
-    storageBucket: "seorak-citizen-news.appspot.com",
-    messagingSenderId: "269060446098",
-    appId: "1:269060446098:web:7428b6d372ff5b24cb934b"
-  };
-  firebase.initializeApp(firebaseConfig);
-  var db = firebase.database();
-</script>
 </head>
 <body>
 
@@ -1432,18 +1414,16 @@ footer {
   <div class="ticker-label">속보</div>
   <div class="ticker-scroll">
     <div class="ticker-inner">
-      <span>미·이란 106일 전쟁 종전 — 6월 18일 MOU 공식 서명, 코스피 8,700선 돌파</span>
-      <span>6·3 지방선거 선관위 진상규명위 출범 — 전국 140곳 추가 송부·91곳 실제 사용·26곳 중단</span>
-      <span>갤럽 6월2주 이재명 대통령 지지율 57% — 투표용지 사태 여파 7%p 급락</span>
-      <span>한국 월드컵 체코전 2-1 역전승 — 오현규·황인범 골 / A조 16강 청신호</span>
-      <span>이재명 대통령 첫 유럽 순방 — EU·이탈리아·G7 릴레이 외교</span>
-      <span>영덕·기장 신규 원전 부지 15년 만에 확정 — 대형원전 영덕, SMR 기장 선정</span>
-      <span>미·이란 106일 전쟁 종전 — 6월 18일 MOU 공식 서명, 코스피 8,700선 돌파</span>
-      <span>6·3 지방선거 선관위 진상규명위 출범 — 전국 140곳 추가 송부·91곳 실제 사용·26곳 중단</span>
-      <span>갤럽 6월2주 이재명 대통령 지지율 57% — 투표용지 사태 여파 7%p 급락</span>
-      <span>한국 월드컵 체코전 2-1 역전승 — 오현규·황인범 골 / A조 16강 청신호</span>
-      <span>이재명 대통령 첫 유럽 순방 — EU·이탈리아·G7 릴레이 외교</span>
-      <span>영덕·기장 신규 원전 부지 15년 만에 확정 — 대형원전 영덕, SMR 기장 선정</span>
+      <span>김건희 '매관매직' 1심 징역 7년 선고 — 서울중앙지법 6월 26일, 특검·피고인 측 모두 항소 예정</span>
+      <span>이재명 대통령 지지율 51% — 갤럽 제666호(6.23~25) 현 정부 출범 이후 최저치, 경제·부동산 부정 1위</span>
+      <span>2026 북중미 월드컵 한국 조별리그 3위 — 남아공에 0-1 패, 자력 32강 탈락·와일드카드 대기</span>
+      <span>최저임금위원회 2027년 심의 착수 — 노동계 인상 vs 중기·소상공인 동결·인하 대립</span>
+      <span>설악권 4개 시군 단체장 7월 1일 민선9기 취임 — 속초·고성·양양·인제 새 출발</span>
+      <span>김건희 '매관매직' 1심 징역 7년 선고 — 서울중앙지법 6월 26일, 특검·피고인 측 모두 항소 예정</span>
+      <span>이재명 대통령 지지율 51% — 갤럽 제666호(6.23~25) 현 정부 출범 이후 최저치, 경제·부동산 부정 1위</span>
+      <span>2026 북중미 월드컵 한국 조별리그 3위 — 남아공에 0-1 패, 자력 32강 탈락·와일드카드 대기</span>
+      <span>최저임금위원회 2027년 심의 착수 — 노동계 인상 vs 중기·소상공인 동결·인하 대립</span>
+      <span>설악권 4개 시군 단체장 7월 1일 민선9기 취임 — 속초·고성·양양·인제 새 출발</span>
       </div>
   </div>
 </div>
@@ -1463,7 +1443,7 @@ footer {
       <span class="s-badge red">전국·설악권</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">2026.06.22</span>
+      <span class="section-desc">2026.06.29</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
@@ -1489,7 +1469,7 @@ footer {
     <div id="teaser-news-yangyang" class="news-teaser-block"></div>
     <button class="read-more-btn" onclick="openModById('news-yangyang')">📍 양양 전문 보기 ▶</button>
 
-    <p style="color:#aaa;font-size:11px;margin-top:14px;">연합뉴스·뉴스1·강원일보·강원도민일보 수집 │ 2026.06.22</p>
+    <p style="color:#aaa;font-size:11px;margin-top:14px;">연합뉴스·뉴스1·강원일보·강원도민일보 수집 │ 2026.06.29</p>
   </div>
 </div>
 
@@ -1503,21 +1483,21 @@ footer {
       <span class="s-badge gold">AI분析</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">5대 신문 사설 흐름 소개 | v4.1 | 6/15~6/20</span>
+      <span class="section-desc">5대 신문 사설 흐름 소개 | 2026.06.22~27</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
     <div class="week-info">
-      <div>분석 기간: <span>2026.06.15 ~ 2026.06.20</span></div>
+      <div>분석 기간: <span>2026.06.22 ~ 2026.06.27</span></div>
       <div>분석 대상: <span>정기 사설 발행 국내 주요 5개 종합일간지</span></div>
     </div>
 
     <div class="article">
       <div class="article-cat gold">이번 주 언론 흐름</div>
-      <div class="article-title">종전 직후와 선거 이후 — 5개 신문이 본 두 개의 화약고</div>
+      <div class="article-title">판결과 지지율 최저치 — 5개 신문이 본 두 개의 충격</div>
       <div class="article-body">
-        <p>이번 주(6월 15~20일) 5대 일간지 사설은 미·이란 종전 합의 후폭풍과 선관위 개혁이라는 두 의제를 집중 조명했다. 미국이 사실상 패전한 전쟁의 뒷수습 비용이 동맹국으로 전가될 우려를 경고하면서, 국내에서는 당-청 갈등과 원전 확대를 둘러싼 신문별 강조점 차이가 선명하게 드러났다.</p>
+        <p>이번 주(6월 22~27일) 5대 일간지 사설은 두 가지 사건을 중심으로 갈렸다. 6월 26일 김건희 피고인 1심 징역 7년 선고와, 이재명 대통령 지지율이 51%로 내려앉아 현 정부 최저치를 기록한 것이다. 여기에 2026 북중미 월드컵에서 대표팀이 조별리그 3위로 자력 32강 진출에 실패한 소식이 겹쳤다.</p>
       </div>
     </div>
 
@@ -1525,63 +1505,63 @@ footer {
       <div class="chart-title">📰 신문별 주요 사설 주장</div>
       <div class="paper-row">
         <div class="paper-name">조선일보</div>
-        <div class="paper-summary">대통령 인사 기준 일관성 촉구, 선관위 쇄신 책임자 적격성 문제 제기 — 진영 아닌 국민 전체 향한 국정 운영 요구</div>
+        <div class="paper-summary">"보유·양도세 동시 인상은 文정부 실패 재판" — "보완수사권 완전 폐지는 형사사법의 정치 제물화" · 김건희 판결 "국가적 비극이자 망신"</div>
       </div>
       <div class="paper-row">
         <div class="paper-name">동아일보</div>
-        <div class="paper-summary">미·이란 종전 MOU를 '허영의 전쟁' 완패로 규정, 동맹 비용 전가 구조 비판 — 최저임금 차등·상용직 감소·실업급여 적자 등 노동시장 구조 개혁 촉구</div>
+        <div class="paper-summary">김건희 1심 "매관매직 단죄" — "반도체 성과급 발 집값 불안 심리부터 진정시킬 때" · 선관위 국조 불출석 "이런 무책임 부끄럽지 않나"</div>
       </div>
       <div class="paper-row">
         <div class="paper-name">중앙일보</div>
-        <div class="paper-summary">'핵 둔 채 보상' 위험한 전례 경고, 영덕·기장 원전 부지 결정 긍정 평가 — 선관위 원포인트 개헌 여야 논의 제안</div>
+        <div class="paper-summary">"공급 대책 없고 세금 엄포만 계속" 부동산 직격 — "보완수사권 폐지, 대통령·여당 시각차 혼란" · 최저임금 "을 대 을 전쟁 피하려면 최소화"</div>
       </div>
       <div class="paper-row">
         <div class="paper-name">한겨레</div>
-        <div class="paper-summary">미 패권 쇠퇴 신호로 종전 해석, G7 중견국 연대 기회 강조 — 원전 증설은 재생에너지 위축 없는 방향으로 추진해야</div>
+        <div class="paper-summary">"국정지지율 급락은 당·청 모두에 대한 경고" — 민생 무관 편가르기·권력 다툼 비판 · "집값 상승 기대 되살아나, 전방위 대책 서둘러야"</div>
       </div>
       <div class="paper-row">
         <div class="paper-name">경향신문</div>
-        <div class="paper-summary">'다시는 이런 전쟁 말아야 할 이유 차고 넘친다' — 선관위 국정조사·원포인트 개헌 병행 촉구, 장동혁 전국 재선거 주장 '억지 선동' 직격</div>
+        <div class="paper-summary">"김건희 징역 7년 사필귀정" · "반도체 호황 53조 원 부동산 거품 경고" · 2기 청와대 민정수석 검찰 출신 3연속 우려 표명</div>
       </div>
     </div>
 
     <div class="chart-wrap">
       <div class="chart-title">🌡 이번 주 언론 의제 순위 (5대 신문 사설 집중도)</div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>선관위 개혁</span><span class="bar-pct">100%</span></div>
+        <div class="bar-label-row"><span>김건희 1심 판결</span><span class="bar-pct">100%</span></div>
         <div class="bar-track"><div class="bar-fill navy" style="width:100%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>당-청·여권 내부 갈등</span><span class="bar-pct">100%</span></div>
+        <div class="bar-label-row"><span>경제·부동산 민심</span><span class="bar-pct">100%</span></div>
         <div class="bar-track"><div class="bar-fill gold" style="width:100%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>미·이란 종전 후폭풍</span><span class="bar-pct">80%</span></div>
+        <div class="bar-label-row"><span>대통령 지지율 하락</span><span class="bar-pct">80%</span></div>
         <div class="bar-track"><div class="bar-fill blue" style="width:80%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>원전 확대·에너지 전환</span><span class="bar-pct">80%</span></div>
-        <div class="bar-track"><div class="bar-fill green" style="width:80%"></div></div>
+        <div class="bar-label-row"><span>최저임금 2027 논쟁</span><span class="bar-pct">60%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:60%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>노동시장·경제(임금·집값)</span><span class="bar-pct">60%</span></div>
-        <div class="bar-track"><div class="bar-fill red" style="width:60%"></div></div>
+        <div class="bar-label-row"><span>월드컵 참패·감독 책임</span><span class="bar-pct">40%</span></div>
+        <div class="bar-track"><div class="bar-fill red" style="width:40%"></div></div>
       </div>
-      <div class="chart-source">※ 5개 종합일간지(조선·동아·중앙·한겨레·경향) 사설 의제별 집중도 | 분석 기간: 2026.06.15~06.20</div>
+      <div class="chart-source">※ 5개 종합일간지(조선·동아·중앙·한겨레·경향) 사설 의제별 집중도 | 분석 기간: 2026.06.22~06.27</div>
     </div>
 
     <!-- ── 주간 사자성어 ── -->
     <div style="margin:18px 0 10px;padding:12px 16px;background:linear-gradient(135deg,#fefae8 0%,#fdf3c0 100%);border:1px solid #e8c84a;border-left:4px solid #c8a000;border-radius:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
       <div style="font-size:11px;font-weight:700;color:#9a7800;letter-spacing:.08em;white-space:nowrap;">🀄 이번 주 사자성어</div>
-      <span style="font-size:22px;font-weight:900;color:#1B3A6B;font-family:'Noto Serif KR',serif;letter-spacing:.05em;">群盲撫象</span>
-      <span style="font-size:13px;font-weight:600;color:#555;font-family:'Noto Serif KR',serif;">군맹무상</span>
-      <span style="font-size:12px;color:#6b5a00;">눈먼 이들이 코끼리를 제각각 더듬어 다르다 말한다</span>
-      <span style="font-size:11px;color:#9a7800;white-space:nowrap;">출전: 열반경</span>
+      <span style="font-size:22px;font-weight:900;color:#1B3A6B;font-family:'Noto Serif KR',serif;letter-spacing:.05em;">換骨奪胎</span>
+      <span style="font-size:13px;font-weight:600;color:#555;font-family:'Noto Serif KR',serif;">환골탈태</span>
+      <span style="font-size:12px;color:#6b5a00;">외형은 그대로지만 내용을 근본적으로 바꾸다</span>
+      <span style="font-size:11px;color:#9a7800;white-space:nowrap;">출전: 江西詩派 시론</span>
     </div>
     <!-- ── /주간 사자성어 ── -->
 
     <div class="article-meta">
-      <span>풍향계 v4.1 | 2026.06.15~06.20</span><span>2026.06.22 발행</span>
+      <span>풍향계 v4.1 | 2026.06.22~06.27</span><span>2026.06.29 발행</span>
     </div>
     <button class="read-more-btn" onclick="openModById('punghyang')">전문 보기 ▶</button>
   </div>
@@ -1595,25 +1575,25 @@ footer {
       <span class="s-badge green">갤럽 6월2주 최신</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">갤럽 57% · 6.9~11 조사 (6.12 발표)</span>
+      <span class="section-desc">갤럽 51% · 6.23~25 조사 (6.26 발표)</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
 
     <div class="chart-wrap">
-      <div class="chart-title">🇰🇷 한국갤럽 대통령 직무수행 평가 — 제665호</div>
+      <div class="chart-title">🇰🇷 한국갤럽 대통령 직무수행 평가 — 제666호</div>
       <div class="donut-row">
         <div class="donut-item">
-          <div class="donut-val red">57%</div>
-          <div class="donut-label">긍정<br>▼7%p</div>
+          <div class="donut-val red">51%</div>
+          <div class="donut-label">긍정<br>▼6%p</div>
         </div>
         <div class="donut-item">
-          <div class="donut-val red">35%</div>
+          <div class="donut-val red">41%</div>
           <div class="donut-label">부정<br>▲7%p</div>
         </div>
         <div class="donut-item">
-          <div class="donut-val gray">8%</div>
+          <div class="donut-val gray">7%</div>
           <div class="donut-label">모름/<br>무응답</div>
         </div>
       </div>
@@ -1649,13 +1629,13 @@ footer {
         <text x="210" y="76" font-size="7" fill="#aaa" text-anchor="middle">5/19</text>
         <text x="255" y="76" font-size="7" fill="#aaa" text-anchor="middle">5/26</text>
         <text x="280" y="76" font-size="7" fill="#aaa" text-anchor="middle">6/2</text>
-        <text x="300" y="76" font-size="7" fill="#c0392b" text-anchor="middle">6/13</text>
+        <text x="300" y="76" font-size="7" fill="#c0392b" text-anchor="middle">6/23</text>
       </svg>
-      <div class="chart-source">* 한국갤럽 제665호 | 조사: 2026.06.09~11 | 전국 만 18세 이상 1,002명 | 표본오차 ±3.1%p(95% 신뢰수준) | 응답률 11.3%</div>
+      <div class="chart-source">* 한국갤럽 제666호 | 조사: 2026.06.23~25 | 전국 만 18세 이상 1,000명 | 표본오차 ±3.1%p(95% 신뢰수준) | 응답률 10.5%</div>
     </div>
 
     <div class="chart-wrap">
-      <div class="chart-title">📌 국정 평가 이유 — 부정 1위: 선관위 문제</div>
+      <div class="chart-title">📌 국정 평가 이유 — 부정 1위: 경제·민생</div>
       <div style="display:flex;gap:8px;margin-bottom:8px;">
         <div style="flex:1;font-size:11px;font-weight:700;color:#1F7A4D;">👍 긍정 평가 이유</div>
         <div style="flex:1;font-size:11px;font-weight:700;color:#B03030;">👎 부정 평가 이유</div>
@@ -1663,12 +1643,12 @@ footer {
       <div style="display:flex;gap:8px;">
         <div style="flex:1;">
           <div class="bar-item">
-            <div class="bar-label-row"><span>경제·민생</span><span class="bar-pct">21%</span></div>
-            <div class="bar-track"><div class="bar-fill green" style="width:62%"></div></div>
+            <div class="bar-label-row"><span>외교</span><span class="bar-pct">24%</span></div>
+            <div class="bar-track"><div class="bar-fill green" style="width:71%"></div></div>
           </div>
           <div class="bar-item">
-            <div class="bar-label-row"><span>외교</span><span class="bar-pct">12%</span></div>
-            <div class="bar-track"><div class="bar-fill green" style="width:35%"></div></div>
+            <div class="bar-label-row"><span>경제·민생</span><span class="bar-pct">15%</span></div>
+            <div class="bar-track"><div class="bar-fill green" style="width:44%"></div></div>
           </div>
           <div class="bar-item">
             <div class="bar-label-row"><span>소통</span><span class="bar-pct">8%</span></div>
@@ -1677,16 +1657,16 @@ footer {
         </div>
         <div style="flex:1;">
           <div class="bar-item">
-            <div class="bar-label-row"><span style="color:#c0392b;font-weight:700;">선관위 문제</span><span class="bar-pct">1위</span></div>
+            <div class="bar-label-row"><span style="color:#c0392b;font-weight:700;">경제·민생·고환율</span><span class="bar-pct">15%</span></div>
             <div class="bar-track"><div class="bar-fill red" style="width:85%"></div></div>
           </div>
           <div class="bar-item">
-            <div class="bar-label-row"><span>경제·민생</span><span class="bar-pct">2위</span></div>
-            <div class="bar-track"><div class="bar-fill red" style="width:60%"></div></div>
+            <div class="bar-label-row"><span>부동산 정책</span><span class="bar-pct">10%</span></div>
+            <div class="bar-track"><div class="bar-fill red" style="width:59%"></div></div>
           </div>
           <div class="bar-item">
-            <div class="bar-label-row"><span>도덕성·재판</span><span class="bar-pct">3위</span></div>
-            <div class="bar-track"><div class="bar-fill red" style="width:40%"></div></div>
+            <div class="bar-label-row"><span>선관위·부정선거</span><span class="bar-pct">10%</span></div>
+            <div class="bar-track"><div class="bar-fill red" style="width:59%"></div></div>
           </div>
         </div>
       </div>
@@ -1706,7 +1686,7 @@ footer {
         <div class="bar-label-row"><span>무당층</span><span class="bar-pct">25%</span></div>
         <div class="bar-track"><div class="bar-fill gray" style="width:47%"></div></div>
       </div>
-      <div class="chart-source">* 한국갤럽 제665호 | 2026.06.09~11 | ±3.1%p</div>
+      <div class="chart-source">* 한국갤럽 제666호 | 2026.06.23~25 | ±3.1%p</div>
     </div>
 
     <div class="chart-wrap">
@@ -1727,15 +1707,13 @@ footer {
     </div>
 
     <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:8px 12px;font-size:11px;color:#92400e;margin-top:4px;">
-      ⚠️ <strong>통계 주의:</strong> 표본오차 ±3.1%p(95% 신뢰수준) | 응답자 특성에 따른 편향 가능성 | 단일 조사 결과로 단정 금지
+      ⚠️ <strong>통계 주의:</strong> 표본오차 ±3.1%p(95% 신뢰수준) | 응답률 10.5%(총통화 9,494명 중 1,000명) | 단일 조사 결과로 단정 금지
     </div>
 
-    <div style="background:#f0f9ff;border:1px solid #7dd3fc;border-left:4px solid #0284c7;border-radius:6px;padding:10px 14px;font-size:12px;color:#0c4a6e;margin-top:10px;line-height:1.8;">
-      📢 <strong>갤럽 안내</strong> — 이번 주(6월 22일 발행 기준) 한국갤럽 데일리 조사는 휴무입니다. 6월 17일(한국갤럽 설립 52주년) 포함 주중 휴무일 및 조사실 소재 건물 공사로 인해 해당 주 조사를 실시하지 않았습니다. <strong>제666호는 6월 26일(금) 공개</strong> 예정이며, 다음 호(제3호, 6월 29일)에 최신 지지율을 반영합니다.
-    </div>
+
 
     <div class="article-meta">
-      <span>갤럽 제665호 | 2026.06.09~11</span><span>2026.06.22 발행</span>
+      <span>갤럽 제666호 | 2026.06.23~25</span><span>2026.06.29 발행</span>
     </div>
     <button class="read-more-btn" onclick="openModById('opinion')">분석 전문 보기 ▶</button>
   </div>
@@ -1748,15 +1726,15 @@ footer {
       <span class="s-badge">편집장 직접 제작</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">사설 | 환경·미래 | 2026.06.22</span>
+      <span class="section-desc">사설 | 지역경제·공공자산 | 2026.06.29</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
-    <p class="section-lede"><span class="art-cat">사설 | 환경·미래</span>
-      설악권 정치문화, 우리가 함께 만들어 갑시다
+    <p class="section-lede"><span class="art-cat">사설 | 지역경제·공공자산</span>
+      공공 투자에는 공공 수익의 통로가 있어야 합니다
     </p>
-    <p>지방선거가 끝나면 정치는 시장실과 의회 안으로 사라지곤 합니다. 이 익숙한 풍경을 바꾸는 것이 설악권 정치문화의 출발점입니다. 속초·고성·양양·인제 네 곳이 함께라면 더 강한 목소리를 낼 수 있습니다.</p>
+    <p>외옹치항 208억, 연안정비 255억, 청초호 벨트 400억 — 시민 세금으로 만들어진 인프라에서 가장 많은 수익을 올리는 사업자가 그 이익의 일부를 지역에 돌려주는 구조적 통로가 있습니까?</p>
     <div style="background:#fef9e7;border:1px solid #fde68a;border-radius:6px;padding:8px 12px;margin-top:10px;font-size:12px;color:#78350f;">
       📮 시민 기고 환영합니다 → jcjwk54@gmail.com
     </div>
@@ -1770,33 +1748,33 @@ footer {
   <div class="section-header" onclick="toggleSection('s-series')">
     <div class="section-title">
       <h2>💬 이슈&amp;토론</h2>
-      <span class="s-badge red">환경·에너지</span>
+      <span class="s-badge red">지역·공공자산</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">원전 재확대, 지속해야 하나</span>
+      <span class="section-desc">케이블카, 공공이익 환수해야 하나</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
-    <p class="section-lede"><span class="art-cat">이슈&amp;토론 | 환경·에너지</span>
-      원전 재확대, 지속해야 하나 — 탄소중립과 에너지 안보 사이
+    <p class="section-lede"><span class="art-cat">이슈&amp;토론 No.4 | 지역·공공자산</span>
+      설악산 권금성 케이블카, 공공이익을 지역에 환수해야 하나
     </p>
-    <p>정부가 영덕·기장 신규 원전 부지를 확정하며 15년 만에 원전 확대 정책이 본격화됐다. 동해안 원전과 인접한 강원도 시민에게 이 논쟁은 남의 이야기가 아니다.</p>
+    <p>54년간 민간이 독점해온 권금성 케이블카 — 연 142억 원 매출, 영업이익률 36%. 반면 설악산 국립공원 관리비 83억 원은 전액 국민 세금. 재허가 심사가 다가오고 있다.</p>
     <div class="debate-cards" style="display:flex;gap:8px;margin:12px 0;flex-wrap:wrap;">
       <div style="flex:1;min-width:140px;background:#EAF5EE;border:1px solid #7DB87D;border-radius:6px;padding:10px;font-size:12px;">
-        <div style="font-weight:700;color:#1F7A4D;margin-bottom:5px;">👍 확대 찬성</div>
-        <div>탄소 배출 없는 안정적 전원, IEA도 탄소중립에 원전 불가피 인정. 한국 기술·수출 경쟁력 높다.</div>
+        <div style="font-weight:700;color:#1F7A4D;margin-bottom:5px;">👍 환수 찬성</div>
+        <div>국립공원은 국민 자산. 재허가 조건으로 수익 환원·생태 복원 비용 부담·탑승객 상한제 의무화해야.</div>
       </div>
       <div style="flex:1;min-width:140px;background:#FFF0F0;border:1px solid #D97C7C;border-radius:6px;padding:10px;font-size:12px;">
-        <div style="font-weight:700;color:#B03030;margin-bottom:5px;">👎 축소 주장</div>
-        <div>고준위 방사성 폐기물 처리장 미확보, 막대한 건설비·10년 이상 소요로 기후위기 즉각 대응 부적합.</div>
+        <div style="font-weight:700;color:#B03030;margin-bottom:5px;">👎 사업권 보호</div>
+        <div>수십 년간 투자·운영 리스크 감수. 법인세 납부 중. 소급 규제는 법적 안정성·재산권 침해.</div>
       </div>
     </div>
     <div class="vote-wrap">
       <div class="vote-label">📊 어느 입장이 더 타당하다고 생각하시나요?</div>
       <div class="vote-row">
-        <button id="vbtn-issue3-pro" class="vote-btn vote-pro" onclick="castVote('issue3','pro',this)">👍 확대 찬성 <span id="vcnt-issue3-pro" class="vote-count">0</span></button>
-        <button id="vbtn-issue3-con" class="vote-btn vote-con" onclick="castVote('issue3','con',this)">👎 축소 주장 <span id="vcnt-issue3-con" class="vote-count">0</span></button>
+        <button id="vbtn-issue4-pro" class="vote-btn vote-pro" onclick="castVote('issue4','pro',this)">👍 환수 찬성 <span id="vcnt-issue4-pro" class="vote-count">0</span></button>
+        <button id="vbtn-issue4-con" class="vote-btn vote-con" onclick="castVote('issue4','con',this)">👎 사업권 보호 <span id="vcnt-issue4-con" class="vote-count">0</span></button>
       </div>
       <div id="vresult-issue3" class="vote-result"></div>
     </div>
@@ -1807,22 +1785,22 @@ footer {
   <div class="section-header" onclick="toggleSection('s-letter')">
     <div class="section-title">
       <h2>✒ 편집자 레터</h2>
-      <span class="s-badge">제2호</span>
+      <span class="s-badge">제3호</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">제2호 | 2026.06.22</span>
+      <span class="section-desc">제3호 | 2026.06.29</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
     <div class="editor-letter">
-      <div class="editor-letter-label">EDITOR'S LETTER | 2026.06.22 제2호</div>
+      <div class="editor-letter-label">EDITOR'S LETTER | 2026.06.29 제3호</div>
       <div class="editor-letter-body">
-        <p style="font-weight:700;color:#1B3A6B;">이란 전쟁이 끝났지만 설악의 바다는 지금도 닳아가고 있습니다.</p>
-        <p>6월 18일 미·이란 종전 양해각서 서명으로 코스피가 8,700선을 돌파했습니다. 이번 호 이슈&amp;토론 '원전 재확대, 지속해야 하나'는 이 흐름과 맞닿아 있습니다. 동해안 원전 인근 설악권 시민의 목소리가 이 논쟁에서 특별한 의미를 갖습니다.</p>
-        <p>이번 호 설악권뉴스는 6·3 지방선거에서 선출된 4개 시군 당선인의 공약을 소개합니다. 7월 1일 취임 직후부터 설악시민뉴스가 공약 이행을 기록합니다.</p>
+        <p style="font-weight:700;color:#1B3A6B;">51과 83 — 공공의 것은 공공에게 돌아와야 합니다.</p>
+        <p>이번 주 두 개의 숫자가 겹쳐 읽혔습니다. 51 — 이재명 대통령 지지율 현 정부 최저치. 83 — 설악산 국립공원 연간 관리 비용(억 원). 민심이 가장 아프게 느끼는 것은 일상의 생계이고, 국민의 자산은 국민에게 돌아와야 한다는 두 명제가 이번 호의 기둥입니다.</p>
+        <p>권금성 케이블카 이슈는 설악권 시민에게 직접적 질문입니다. 54년간 민간이 독점한 국립공원 수익이 지역으로 환류될 구조적 통로가 있는지 — 재허가 시점이 다가오는 지금, 우리가 물어야 합니다.</p>
       </div>
-      <div class="editor-letter-sig">— 편집장 김준철 | 설악시민뉴스 | 2026.06.22 제2호</div>
+      <div class="editor-letter-sig">— 편집장 김준철 | 설악시민뉴스 | 2026.06.29 제3호</div>
     </div>
     <button class="read-more-btn" onclick="openModById('letter')" style="margin-top:12px;">✒ 편집자 레터 + 창간사 전문 보기 ▶</button>
   </div>
@@ -1837,7 +1815,7 @@ footer {
       <span class="s-badge">속초·고성·양양·인제</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">2026.06.22 기준</span>
+      <span class="section-desc">2026.06.29 기준</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
@@ -1852,73 +1830,73 @@ footer {
 
       <div class="tab-panel active" id="nt-sokcho">
         <div class="notice-item">
-          <div class="notice-tag">🏛 당선인</div>
-          <div class="notice-title">이병선 속초시장 당선인 3선 — 민선 9기 출범 준비</div>
-          <div class="notice-body">국민의힘 이병선 당선인이 50.80% 득표로 3선됐습니다. 취임일은 7월 1일 예정. 인수위 구성 및 공약 이행 로드맵 준비 중. 문의: 속초시청 033-639-2000</div>
-        </div>
-        <div class="notice-item">
-          <div class="notice-tag">🏗 개발</div>
-          <div class="notice-title">영랑호관광단지 강원도 관광단지 지정 승인</div>
-          <div class="notice-body">영랑호 일대 체류형 관광 개발사업이 강원특별자치도 관광단지로 공식 지정됐습니다. 본격 추진 단계 진입. 문의: 속초시청 관광과 033-639-2000</div>
+          <div class="notice-tag">🏛 취임</div>
+          <div class="notice-title">이병선 속초시장 7월 1일 민선9기 취임 — 인수위 없이 즉시 업무 시작</div>
+          <div class="notice-body">이병선 시장이 7월 1일 민선9기에 공식 취임합니다. 인수위 미구성·시정구호 유지로 행정 연속성 강조. 제1호 공약 전 시민 민생회복지원금(속초사랑상품권) 조례 제정 진행 중. 문의: 속초시청 033-639-2000</div>
         </div>
         <div class="notice-item">
           <div class="notice-tag">🏔 국립공원</div>
-          <div class="notice-title">설악산 주요 탐방로 예약제 — 6월 전 구간 운영</div>
-          <div class="notice-body">공룡능선·화채능선 등 주요 탐방로 예약제 운영. 예약: knps.or.kr. 문의: 설악산국립공원사무소 033-636-7700</div>
+          <div class="notice-title">설악산 주요 탐방로 예약제 — 7월에도 전 구간 운영</div>
+          <div class="notice-body">공룡능선·화채능선 등 주요 탐방로 예약제 계속 운영. 예약: knps.or.kr. 문의: 설악산국립공원사무소 033-636-7700</div>
+        </div>
+        <div class="notice-item">
+          <div class="notice-tag">📰 설악시민뉴스</div>
+          <div class="notice-title">제3호 이슈&토론 — 권금성 케이블카 찬반 투표 참여해 주세요</div>
+          <div class="notice-body">이번 호 이슈&토론 No.4 '설악산 권금성 케이블카, 공공이익을 지역에 환수해야 하나' 찬반 투표가 진행 중입니다. 본문 하단 버튼을 눌러 의견을 남겨 주세요.</div>
         </div>
       </div>
 
       <div class="tab-panel" id="nt-goseong">
         <div class="notice-item">
-          <div class="notice-tag">🏛 당선인</div>
-          <div class="notice-title">함명준 고성군수 당선인 3선 — 민선 9기 출범 준비</div>
-          <div class="notice-body">더불어민주당 함명준 당선인이 54.67% 득표로 3선됐습니다. 취임일 7월 1일 예정. DMZ 생태관광 벨트 조성 공약 이행 계획 주목. 문의: 고성군청 033-680-3000</div>
-        </div>
-        <div class="notice-item">
-          <div class="notice-tag">🦑 축제</div>
-          <div class="notice-title">제6회 저도 대문어축제 — 일정 공지</div>
-          <div class="notice-body">고성군 저도 대문어축제 일정이 공지됐습니다. 세부 일정 및 참여 방법: 고성군 공식 홈페이지 참조. 문의: 고성군청 해양수산과 033-680-3000</div>
+          <div class="notice-tag">🏛 취임</div>
+          <div class="notice-title">함명준 고성군수 7월 1일 민선9기 취임</div>
+          <div class="notice-body">더불어민주당 함명준 군수가 7월 1일 민선9기에 공식 취임합니다. DMZ 생태관광 벨트 조성·인구 소멸 대응 등 핵심 공약 이행 시작. 문의: 고성군청 033-680-3000</div>
         </div>
         <div class="notice-item">
           <div class="notice-tag">💰 청년</div>
           <div class="notice-title">청년 디딤돌 2배 적금 2차 모집 — 만 19~39세</div>
           <div class="notice-body">고성군 거주 만 19~39세 청년 대상 청년 디딤돌 2배 적금 지원사업 2차 모집 중. 신청·문의: 고성군 경제체육과 033-680-3000</div>
         </div>
+        <div class="notice-item">
+          <div class="notice-tag">🦑 축제</div>
+          <div class="notice-title">저도 대문어축제 — 고성군청 홈페이지 일정 확인</div>
+          <div class="notice-body">고성군 저도 대문어축제 세부 일정 및 참여 방법은 고성군 공식 홈페이지(goseong.go.kr)를 확인해 주세요. 문의: 고성군청 해양수산과 033-680-3000</div>
+        </div>
       </div>
 
       <div class="tab-panel" id="nt-yangyang">
         <div class="notice-item">
-          <div class="notice-tag">🏛 당선인</div>
-          <div class="notice-title">김정중 양양군수 당선인 — 양양 첫 민주당 군수 취임 준비</div>
-          <div class="notice-body">더불어민주당 김정중 당선인이 50.52% 득표로 당선됐습니다. 양양 역사상 첫 민주당 군수. 취임일 7월 1일 예정. 문의: 양양군청 033-670-2000</div>
-        </div>
-        <div class="notice-item">
-          <div class="notice-tag">🌾 농업</div>
-          <div class="notice-title">2026년 농지전수조사 착수 — 6~12월 전 농지 대상</div>
-          <div class="notice-body">경자유전 원칙 확립·청년농 농지 접근성 향상 목적. 1단계 6~7월 기본조사. AI·항공사진 활용. 문의: 양양군 농업정책과 033-670-2000</div>
+          <div class="notice-tag">🏛 취임</div>
+          <div class="notice-title">김정중 양양군수 7월 1일 민선9기 취임 — 양양 첫 민주당 군수</div>
+          <div class="notice-body">더불어민주당 김정중 군수가 7월 1일 민선9기에 공식 취임합니다. 양양 역사상 첫 민주당 군수. 도시가스 배관 확대·서핑 관광 활성화 등 공약 이행 시작. 문의: 양양군청 033-670-2000</div>
         </div>
         <div class="notice-item">
           <div class="notice-tag">🌊 서핑</div>
-          <div class="notice-title">양양 서프 위크 2026 — 8월 14~16일, 예약 진행 중</div>
+          <div class="notice-title">양양 서프 위크 2026 — 8월 14~16일 개최</div>
           <div class="notice-body">2026 양양 서프 위크 8월 14~16일 개최. 예약 진행 중. 문의: 양양군 관광과 033-670-2000</div>
+        </div>
+        <div class="notice-item">
+          <div class="notice-tag">🏠 도시가스</div>
+          <div class="notice-title">양양읍 남문4리·구교1리 도시가스 배관 설치 — 75세대 혜택</div>
+          <div class="notice-body">양양읍 2개 구간 916m에 도시가스 공급배관 설치 사업이 본격 추진됩니다. 75세대가 새로 도시가스를 공급받게 됩니다. 문의: 양양군 건설과 033-670-2000</div>
         </div>
       </div>
 
       <div class="tab-panel" id="nt-inje">
         <div class="notice-item">
-          <div class="notice-tag">🏛 당선인</div>
-          <div class="notice-title">최상기 인제군수 당선인 3선 — 민선 9기 출범 준비</div>
-          <div class="notice-body">더불어민주당 최상기 당선인이 52.35% 득표로 3선됐습니다. 취임일 7월 1일 예정. 내린천 래프팅·생태관광 인프라 확충 공약 이행 주목. 문의: 인제군청 033-460-2000</div>
-        </div>
-        <div class="notice-item">
-          <div class="notice-tag">📚 교육</div>
-          <div class="notice-title">2학기 인제영어교육센터 수강생 모집</div>
-          <div class="notice-body">초·중학생 대상 2학기 인제영어교육센터 정규프로그램 수강생 모집. 읍면 소재 학생 우선 배정. 자세한 내용: inje.go.kr 공지사항. 문의: 인제군청 033-460-2000</div>
+          <div class="notice-tag">🏛 취임</div>
+          <div class="notice-title">최상기 인제군수 7월 1일 민선9기 취임</div>
+          <div class="notice-body">더불어민주당 최상기 군수가 7월 1일 민선9기에 공식 취임합니다. 내린천 래프팅·생태관광 인프라 확충·인구 소멸 대응 공약 이행 시작. 문의: 인제군청 033-460-2000</div>
         </div>
         <div class="notice-item">
           <div class="notice-tag">🏛 문화</div>
           <div class="notice-title">만해문화제 — 7월 12일 만해마을 개최</div>
           <div class="notice-body">만해 한용운 선생 탄신 기념 만해문화제 7월 12일 인제군 만해마을 개최. 자원봉사자 모집 중. 문의: 인제군 문화관광과 033-460-2000</div>
+        </div>
+        <div class="notice-item">
+          <div class="notice-tag">📚 교육</div>
+          <div class="notice-title">2학기 인제영어교육센터 수강생 모집</div>
+          <div class="notice-body">초·중학생 대상 2학기 인제영어교육센터 정규프로그램 수강생 모집. 읍면 소재 학생 우선 배정. 문의: 인제군청 033-460-2000 / inje.go.kr</div>
         </div>
       </div>
     </div>
@@ -1934,7 +1912,7 @@ footer {
       <span class="s-badge navy">설악시민뉴스</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">제2호 | 구독·기고 안내</span>
+      <span class="section-desc">제3호 | 구독·기고 안내</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
@@ -1942,8 +1920,8 @@ footer {
 
     <div style="background:linear-gradient(135deg,#1B3A6B,#2E75B6);border-radius:10px;padding:16px 18px;color:#fff;margin-bottom:14px;">
       <div style="font-size:11px;font-weight:700;opacity:.7;margin-bottom:6px;letter-spacing:.08em;">📰 발행 안내</div>
-      <div style="font-size:18px;font-weight:800;margin-bottom:6px;">설악시민뉴스 제2호</div>
-      <div style="font-size:13px;opacity:.9;margin-bottom:10px;">2026년 6월 22일 (월) — 제2호 발행</div>
+      <div style="font-size:18px;font-weight:800;margin-bottom:6px;">설악시민뉴스 제3호</div>
+      <div style="font-size:13px;opacity:.9;margin-bottom:10px;">2026년 6월 29일 (월) — 제3호 발행</div>
       <div style="font-size:12px;line-height:1.6;opacity:.85;">강원특별자치도 설악권(속초·고성·양양·인제) 시민을 위한 독립 인터넷 신문. 자유·정의·사랑의 시민언론. 2026년 6월 15일 창간.</div>
     </div>
 
@@ -1966,11 +1944,11 @@ footer {
     </div>
 
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
-      <div style="font-size:12px;font-weight:700;color:#1B3A6B;margin-bottom:8px;">📅 다음 호 예고 — 제3호 (2026.06.29)</div>
+      <div style="font-size:12px;font-weight:700;color:#1B3A6B;margin-bottom:8px;">📅 다음 호 — 제4호 (2026.07.06 월)</div>
       <ul style="font-size:12px;line-height:1.8;color:#475569;padding-left:16px;margin:0;">
-        <li>제3호 발행: <strong>2026.06.29(월)</strong></li>
-        <li>이슈&amp;토론 — 설악산 권금성 케이블카, 공공이익을 지역에 환수해야 하나</li>
-        <li>당선인 7월 1일 공식 취임 — 공약 이행 감시 본격 시작</li>
+        <li>발행일: <strong>2026년 7월 6일 (월)</strong></li>
+        <li>이슈&amp;토론: 초등학교 스마트폰 사용 금지, 옳은가</li>
+        <li>4개 시군 민선9기 출범 후 첫 공약 이행 동향 점검</li>
       </ul>
     </div>
 
@@ -2040,8 +2018,8 @@ footer {
   <div class="quote-strip-inner">
     <span class="quote-strip-label">이 주의 문장</span>
     <span class="quote-strip-divider"></span>
-    <span class="quote-strip-text" id="weekly-quote">"정의는 각자에게 그의 몫을 돌려주는 것이다."</span>
-    <span class="quote-strip-source" id="weekly-quote-source">— 울피아누스 (로마 법학자)</span>
+    <span class="quote-strip-text" id="weekly-quote">"공공의 것은 공공의 목적에 쓰여야 한다. 정의는 각자에게 그의 몫을 돌려주는 일이다."</span>
+    <span class="quote-strip-source" id="weekly-quote-source">— 플라톤 《국가론》 제1권 (331e)</span>
   </div>
 </div>
 
@@ -2092,9 +2070,9 @@ footer {
 const now = new Date();
 const kdate = now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' });
 document.getElementById('today-date').textContent = kdate;
-const issueNo = 2; // ← 매주 발행 시 숫자만 변경 (창간호=1, 제2호=2, ...)
+const issueNo = 3; // ← 매주 발행 시 숫자만 변경 (창간호=1, 제2호=2, ...)
 const issueLabel = issueNo === 1 ? '창간호' : `제${issueNo}호`;
-document.getElementById('header-issue').textContent = `제2호 | 2026년 6월 22일 (월) | 강원 아00423`;
+document.getElementById('header-issue').textContent = `제3호 | 2026년 6월 29일 (월) | 강원 아00423`;
 
 // News Tab Switch
 function switchNewsTab(active) {
@@ -2185,253 +2163,249 @@ const ARTICLES = {
     teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#c0392b;">미·이란 종전 MOU 공식 서명 — 106일 만에 전쟁 종료 (6.18)</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">호르무즈 기뢰 제거·통항 보장, 일부 제재 완화. 핵프로그램 처리 모호. 코스피 8,700선 돌파. [연합뉴스 | 2026.06.18]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#c0392b;">김건희 '매관매직' 1심 — 징역 7년 선고 (6.26)</div>
+        <div style="font-size:12px;color:#555;margin-top:3px;">서울중앙지법 | 혐의 대부분 유죄 | 특검·피고인 모두 항소</div>
       </div>
     </div>
     <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">선관위 합동수사본부 수사 착수 — 비상임위원 출근 거부·외유성 출장 논란</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">대통령 지시로 검경 합수본 구성. 임직원 소환 조사 방침. 여야 원포인트 개헌 논의. [연합뉴스 | 2026.06.15~20]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1B3A6B;">이재명 대통령 지지율 51% — 현 정부 최저치 (6.26)</div>
+        <div style="font-size:12px;color:#555;margin-top:3px;">한국갤럽 제666호 | 경제·부동산 부정 1위 복귀</div>
       </div>
     </div>
     <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">③</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">영덕·기장 신규 원전 부지 15년 만에 확정 (6.17)</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">대형원전 2기 경북 영덕(91.01점), SMR 1기 부산 기장 선정. 영덕 2037~38년·기장 2035년 준공 목표. [연합뉴스 | 2026.06.17]</div>
-      </div>
-    </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
-      <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">④</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">이 대통령 G7 참석 — 중견국 외교, 해외서 당-청 갈등 메시지 논란</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">캐나다 G7 정상회의 참석·중견국 연대 강조. 귀국 직전 여당 갈등 관련 메시지 발표로 비판. [연합뉴스 | 2026.06.15~16]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#555;">2026 북중미 월드컵 — 한국 조별리그 3위, 와일드카드 대기 (6.25)</div>
+        <div style="font-size:12px;color:#555;margin-top:3px;">남아공에 0-1 패배 | 자력 32강 진출 실패</div>
       </div>
     </div>
     <div style="display:flex;gap:8px;padding:7px 0;">
-      <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">⑤</span>
+      <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">④</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">국민의힘 장동혁 대표 사퇴 압박 — 전국 재선거 역제안으로 버티기</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">당내 다수 의원 사퇴 요구. 장 대표 전국 재선거 역제안. 당 쇄신 갈등 장기화. [뉴스1 | 2026.06.16~20]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#555;">최저임금위원회, 2027년 심의 착수 (6.25)</div>
+        <div style="font-size:12px;color:#555;margin-top:3px;">중기·소상공인 "동결·인하" | 노동계 "인상"</div>
       </div>
     </div>`,
-    cat: '📰 전국 뉴스 전문 | 2026.06.15~20',
-    title: '미·이란 종전 MOU 서명 · 선관위 합수본 수사 착수 · 원전 부지 확정 · G7 외교 · 국민의힘 내분',
-    meta: '연합뉴스·뉴스1 | 2026.06.15~20 | 전국뉴스 v2.0',
+    cat: '📰 전국 뉴스 전문 | 2026.06.22~27',
+    title: '김건희 1심 징역 7년 · 대통령 지지율 51% 최저치 · 월드컵 조별리그 탈락 · 최저임금 심의 착수',
+    meta: '연합뉴스·뉴스1 | 2026.06.22~27 | 전국뉴스 v2.0',
     badge: '전국',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">맥락과 의미 중심 | 전국뉴스 v2.0 | 수집 기간: 2026.06.15~20</p>
-<p><strong>① 미·이란 종전 MOU 공식 서명 — 106일 만에 전쟁 종료</strong><br>
-미국과 이란이 6월 18일(현지시간) 종전 양해각서(MOU)에 공식 서명하며 106일 만에 전쟁이 종료됐다. 14개 항으로 구성된 합의에는 호르무즈 해협 기뢰 제거와 선박 통항 보장, 일부 대이란 제재 완화가 담겼다. 그러나 이란의 핵프로그램 처리 방식은 모호하게 기술돼 논란이 이어지고 있다. 한·일·유럽의 이란 재건기금 분담 가능성이 제기되며 국내 외교·경제계가 긴장했다. 코스피는 종전 합의 기대감과 함께 이틀 연속 상승해 8,700선을 돌파했다.<br>
-<span style="font-size:11px;color:#888;">[연합뉴스 | 2026.06.18]</span></p>
-<p><strong>② 선관위 합동수사본부, 투표용지 부족 사태 수사 착수</strong><br>
-6·3 지방선거 투표용지 부족 사태 진상 규명을 위한 검경 합동수사본부가 수사에 착수했다. 이재명 대통령 지시로 구성된 합수본은 선관위 임직원 소환 조사 방침을 밝혔다. 비상임위원 7명의 출근 거부, 외유성 출장 등 선관위 내부 비위가 추가로 드러나며 도덕적 해이 비판이 이어지고 있다. 여야는 선관위 원포인트 개헌 논의에도 나섰다.<br>
-<span style="font-size:11px;color:#888;">[연합뉴스 | 2026.06.15~20]</span></p>
-<p><strong>③ 영덕·기장 신규 원전 부지 15년 만에 확정</strong><br>
-신규원전부지선정평가위원회가 6월 17일 경북 영덕군을 대형 원전 2기(APR1400) 건설 후보지로, 부산 기장군을 국내 첫 소형모듈원자로(SMR) 건설 후보지로 최종 확정했다. 2011년 이후 15년 만의 신규 원전 부지 결정이다. 영덕 대형원전은 2037~2038년, 기장 SMR은 2035년 준공이 목표로 총 사업비는 약 12조 원에 달한다.<br>
-<span style="font-size:11px;color:#888;">[연합뉴스 | 2026.06.17]</span></p>
-<p><strong>④ 이 대통령 G7 참석 — 중견국 외교, 해외서 당-청 갈등 메시지 논란</strong><br>
-이재명 대통령이 캐나다 G7 정상회의에 참석해 중견국 연대 외교를 펼쳤다. 그러나 해외 순방 중 여당 내부 갈등에 관한 메시지를 발표하면서 당-청 갈등에 기름을 부었다는 비판이 제기됐다.<br>
-<span style="font-size:11px;color:#888;">[연합뉴스 | 2026.06.15~16]</span></p>
-<p><strong>⑤ 국민의힘 장동혁 대표 사퇴 압박 가열</strong><br>
-장동혁 국민의힘 대표에 대한 당 내외의 사퇴 압박이 거세지고 있다. 당내 다수 의원들이 사퇴를 요구하는 가운데 장 대표가 전국 재선거를 역제안하며 버티기를 이어가고 있어 당 쇄신을 둘러싼 갈등이 장기화되고 있다.<br>
-<span style="font-size:11px;color:#888;">[뉴스1 | 2026.06.16~20]</span></p>
-<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;">출처: 연합뉴스·뉴스1 | 2026.06.15~20</p>`
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">맥락과 의미 중심 | 전국뉴스 v2.0 | 수집 기간: 2026.06.22~27</p>
+
+<p><strong>① 김건희 '매관매직' 1심 — 징역 7년 선고</strong><br>
+서울중앙지법 형사21부는 6월 26일 공천·수사 개입 등 이른바 '매관매직' 혐의로 기소된 김건희 피고인에게 징역 7년을 선고했다. 특검 구형(7년 6개월)보다 낮지만 혐의 대부분을 유죄로 인정한 판결이다. 특검과 피고인 측 모두 항소 의사를 밝혀 2심에서 다시 법원 판단을 받는다.<br>
+<span style="font-size:11px;color:#999;">출처: 연합뉴스 | 2026.06.26</span></p>
+
+<p><strong>② 이재명 대통령 지지율 51% — 현 정부 출범 이후 최저</strong><br>
+한국갤럽이 6월 23~25일(1,000명 대상) 실시한 조사에서 이재명 대통령 직무 수행 긍정 평가가 51%를 기록했다. 직전 조사(57%, 6.9~11) 대비 6%포인트 추가 하락으로 현 정부 최저치다. 갤럽은 "경제·부동산이 부정 평가 1위로 복귀했다"고 분석했다. 정당 지지도는 민주당 41%, 국민의힘 29%.<br>
+<span style="font-size:11px;color:#999;">출처: 한국갤럽 제666호 | 2026.06.26</span></p>
+
+<p><strong>③ 2026 북중미 월드컵 — 한국 조별리그 3위, 와일드카드 대기</strong><br>
+한국 대표팀이 6월 25일 A조 최종전에서 남아공에 0-1로 패해 1승 2패(승점 3)로 조 3위에 그쳤다. 자력 32강 진출에 실패해 타 조 경기 결과를 기다려야 하는 처지가 됐다. 홍명보 감독의 전술 선택과 손흥민 선발 제외 결정에 대한 비판 여론이 이어지고 있다.<br>
+<span style="font-size:11px;color:#999;">출처: 연합뉴스 | 2026.06.25</span></p>
+
+<p><strong>④ 최저임금위원회, 2027년 최저임금 심의 착수</strong><br>
+최저임금위원회가 내년도 최저임금 결정을 위한 심의를 시작했다. 중소기업·소상공인 단체는 동결 또는 인하를 요구하고, 노동계는 인상을 주장한다. 관광·숙박·요식업 비중이 높은 설악권 경제에 직접 영향을 미치는 사안이다.<br>
+<span style="font-size:11px;color:#999;">출처: 연합뉴스 | 2026.06.25</span></p>
+
+<p style="font-size:11px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;margin-top:14px;">전국뉴스 v2.0 | 수집 기간: 2026.06.22~27 | 출처: 연합뉴스·뉴스1 | 2026.06.29</p>`
   },
 
   /* ─── 설악권뉴스 4개 탭 — 당선인 공약 소개 특집 ─── */
   'news-sokcho': {
-    teaser: `<div style="background:#EBF4FF;border-left:3px solid #1B3A6B;padding:8px 12px;border-radius:4px;margin-bottom:10px;font-size:12px;color:#334155;">
-      📌 <strong>이번 호 설악권뉴스 특집</strong> — 6·3 지방선거로 새롭게 선출된 4개 시군 단체장의 선거 공약을 소개합니다. 설악시민뉴스는 이 공약들이 임기 4년 안에 어떻게 이행되는지 지속적으로 점검합니다.
-    </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">이병선 당선인 5대 공약 — 민생회복지원금·여성건강지원·자영업자센터·신중년재도약·파크골프장</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">전 시민 20만 원 지역화폐 지급, 45~69세 여성 부인과 진료비 지원, 원스톱 자영업자센터 설립 등 생활 밀착형 공약. [선관위 공약집 | 2026.06.03]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">속초시, 6·25전쟁 제76주년 기념식 개최 — 관행 깬 특별 식순</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">25일 문화예술회관 400여 명 참석 | 이병선 시장 주재 [강원도민일보 | 2026.06.25]</div>
       </div>
     </div>
     <div style="display:flex;gap:8px;padding:7px 0;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">인수위 없이 민선 9기 출범 — "행정 연속성 최우선"</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">재선 시장으로 별도 인수위 구성 않고 즉시 실무 시작. 인수위 예산·시정구호 교체 비용 절감. 취임일 7월 1일. [강원일보 | 2026.06.09]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">이병선 시장 7월 1일 취임 — 인수위 없이 즉시 실무, 예산 4천만 원 절감</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">시정구호 유지 | 민생회복지원금 조례 제정 진행 중 [연합뉴스 | 2026.06.22]</div>
       </div>
     </div>`,
-    cat: '📍 속초시 뉴스 전문 | 제2호 2026.06.22',
-    title: '속초시민이 선택한 이병선 시장, 5대 공약은 이렇다',
-    meta: '중앙선거관리위원회 공약집 | 2026.06.03',
+    cat: '📍 속초시 뉴스 전문 | 제3호 2026.06.29',
+    title: '속초시, 6·25전쟁 제76주년 기념식 개최 · 이병선 시장 인수위 없이 민선9기 출범',
+    meta: '강원도민일보·연합뉴스 | 2026.06.22~27',
     badge: '속초',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">당선인 공약 소개 특집 | 중앙선거관리위원회 공약집 | 2026.06.03</p>
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">속초시 뉴스 | 강원도민일보·강원일보 | 2026.06.22~27</p>
 
-<div style="background:#EBF4FF;border-left:4px solid #1B3A6B;padding:10px 14px;border-radius:4px;margin-bottom:16px;font-size:13px;color:#334155;line-height:1.8;">
-📌 <strong>이번 호 설악권뉴스 특집</strong><br>
-6·3 지방선거로 새롭게 선출된 속초·고성·양양·인제 4개 시군 단체장의 선거 공약을 소개합니다. 설악시민뉴스는 이 공약들이 임기 4년 안에 어떻게 이행되는지 지속적으로 점검합니다.
-</div>
+<p><strong>속초시, 6·25전쟁 제76주년 기념식 개최</strong><br>
+속초시는 25일 문화예술회관에서 보훈가족과 시민 등 400여 명이 참석한 가운데 '6·25전쟁 제76주년 기념식'을 개최했다. 관행을 깬 특별 식순으로 주목받았으며, 이병선 시장은 "전쟁의 아픔을 기억하며 평화와 번영의 속초를 만들겠다"고 말했다.<br>
+<span style="font-size:11px;color:#999;">출처: 강원도민일보 | 2026.06.25</span></p>
 
-<p>6·3 지방선거에서 <strong>이병선 후보(국민의힘)</strong>가 속초시장에 당선됐다. 이 당선인이 선거 과정에서 내건 5대 공약을 소개한다.</p>
-<p>첫 번째 공약은 <strong>전 시민 민생회복지원금 20만 원 지급</strong>이다. 속초시민 전원에게 1인당 20만 원을 지역화폐·선불카드 방식으로 지급해 지역 내 소비를 유도하고 소상공인 매출 증대를 꾀한다는 계획이다. 재원은 국·도·시비를 통해 마련하며 취임 직후 시행을 목표로 한다.</p>
-<p>두 번째는 <strong>여성 건강지원 및 아이행복 가족도시 조성</strong>이다. 45~69세 여성을 대상으로 부인과 진료비를 격년 20만 원씩 지원하고, 대형 어린이 실내 놀이터와 가족 휴식공간을 확대한다.</p>
-<p>세 번째는 <strong>365일 원스톱 자영업자 평생지원센터 설립</strong>이다. 창업·세무·노무·디지털전환을 통합 지원하고 위기 자영업자 재도전 프로그램을 운영한다. 네 번째는 <strong>5060 신중년 재도약 지원</strong>으로, 재취업·창업·디지털 교육과 사회공헌 활동을 연계한다.</p>
-<p>다섯 번째는 <strong>제2 파크골프장 및 권역별 생활체육센터 조성</strong>이다. 도심권·북부권에 복합 체육센터를 건립해 시민 생활체육 접근성을 높인다는 구상이다.</p>
-<p>이 당선인의 공약이 임기 4년 안에 어떻게 이행되는지 설악시민뉴스가 지속적으로 점검한다.</p>
-<p style="font-size:12px;color:#888;border-top:1px dashed #eee;padding-top:8px;">출처: 중앙선거관리위원회 공약집 | 2026.06.03</p>`
+<p><strong>이병선 시장 7월 1일 취임 — 인수위 없이 민선9기 출범</strong><br>
+이병선 속초시장이 별도 인수위원회를 구성하지 않고 기존 행정체계를 유지한 채 7월 1일 민선9기에 출범한다. 인수위 운영 예산 4천만 원을 절감하고, 시정구호 '시민은 하나로, 속초는 미래로'도 그대로 이어간다. 제1호 공약인 전 시민 민생회복지원금(속초사랑상품권) 지급을 위한 조례 제정 절차가 현재 시의회와 진행 중이다.<br>
+<span style="font-size:11px;color:#999;">출처: 연합뉴스 | 2026.06.22</span></p>
+
+<p style="font-size:11px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;">출처: 강원도민일보·연합뉴스 | 2026.06.25~27</p>`
   },
 
   'news-goseong': {
     teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">함명준 당선인 5대 공약 — 기본사회 모델·체류관광 전환·해양심층수 산단·글로벌 교육·평화도시</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">군민 기본소득·만원 주택, 대진항 글로벌 푸드 마켓·역세권 개발, 탈라소테라피·연어 양식 등 신성장 산업 육성. [선관위 공약집 | 2026.06.03]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">함명준 고성군수 7월 1일 민선9기 취임 — 12대 강원도의회 원구성 협상과 맞물려</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">강원도의회 국힘 30석·민주 24석 | 협치 구도 주목 [강원일보 | 2026.06.25]</div>
       </div>
     </div>
     <div style="display:flex;gap:8px;padding:7px 0;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">함명준 당선인 54.67% 당선 — 취임일 7월 1일</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">더불어민주당 함명준 당선인. 설악시민뉴스가 공약 이행을 단계별로 점검한다. [중앙선거관리위원회 | 2026.06.03]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">제12대 강원도의회 당선인 오리엔테이션 — 고성·속초·양양·인제 의원 첫 대면</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">25일 춘천 스카이컨벤션 | 원구성 협상 본격화 [강원일보 | 2026.06.25]</div>
       </div>
     </div>`,
-    cat: '📍 고성군 뉴스 전문 | 제2호 2026.06.22',
-    title: '고성군민이 선택한 함명준 군수, 5대 공약은 이렇다',
-    meta: '중앙선거관리위원회 공약집 | 2026.06.03',
+    cat: '📍 고성군 뉴스 전문 | 제3호 2026.06.29',
+    title: '고성군, 함명준 당선인 7월 1일 민선9기 취임 · 강원도의회 원구성 협상 시선 집중',
+    meta: '강원도민일보·강원일보 | 2026.06.22~27',
     badge: '고성',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">당선인 공약 소개 특집 | 중앙선거관리위원회 공약집 | 2026.06.03</p>
-<p>6·3 지방선거에서 <strong>함명준 후보(더불어민주당)</strong>가 고성군수에 당선됐다. 함 당선인이 내건 5대 공약을 소개한다.</p>
-<p>첫 번째는 <strong>고성형 기본사회 모델 구축</strong>이다. 에너지 주권 기반의 군민 기본소득 실현, 다람쥐 버스 및 희망택시 확대, 청년·귀농인용 만원 주택 프로젝트 등 생활 밀착형 복지를 3단계에 걸쳐 완성한다는 계획이다.</p>
-<p>두 번째는 <strong>'스쳐 가는 관광'에서 '머무는 관광'으로의 대전환</strong>이다. 대진항 글로벌 푸드 마켓 조성, 울산바위 케이블카 설치, 동해북부선 간성역·화진포역 역세권 개발이 핵심 사업이다.</p>
-<p>세 번째는 <strong>해양심층수 국가산업단지 승격 및 일자리 1,000개 창출</strong>이다. 탈라소테라피 클러스터 조성, 연어 양식·K-뷰티 등 신성장 산업 육성, RE100 전용 단지 조성을 병행 추진한다.</p>
-<p>네 번째는 <strong>글로벌 교육·외교 거점 도시</strong>로, 고교 1학년 무상 유럽 연수 브랜드화, EU 대사관 협력 체계 구축이 포함된다. 다섯 번째는 <strong>미래 평화도시 및 SOC 구축</strong>이다. 금강산 관광 재개 수용 태세 확립, 평화경제특구 지정, 제생병원 조기 개원을 추진한다.</p>
-<p>함 당선인의 공약 이행 여부를 설악시민뉴스가 단계별로 점검한다.</p>
-<p style="font-size:12px;color:#888;border-top:1px dashed #eee;padding-top:8px;">출처: 중앙선거관리위원회 공약집 | 2026.06.03</p>`
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">고성군 뉴스 | 강원도민일보 | 2026.06.22~27</p>
+
+<p><strong>함명준 고성군수 당선인, 7월 1일 취임 준비 마무리</strong><br>
+함명준 고성군수 당선인(더불어민주당)이 7월 1일 민선9기 취임을 앞두고 주요 군정 현안을 파악 중이다. 고성군은 인구 감소와 접경지 개발 제약이라는 이중 과제를 안고 있어, 취임 직후 주요 현안 대응 방향 발표가 주목된다. 통일전망대와 화진포 등 생태·평화 관광자원 활용 방향도 관심사다.<br>
+<span style="font-size:11px;color:#999;">출처: 강원도민일보 | 2026.06.25</span></p>
+
+<p><strong>제12대 강원도의회 당선인 오리엔테이션 — 원구성 협상 시선 집중</strong><br>
+제12대 강원특별자치도의회 당선인들이 25일 오리엔테이션을 열고 첫 대면식을 가졌다. 강원도의회는 국민의힘 30석, 민주당 24석으로 구성됐다. 설악권에서는 고성·양양·인제 민주당 의원들이 도정 협치 구도를 어떻게 이끌어낼지 주목된다.<br>
+<span style="font-size:11px;color:#999;">출처: 강원일보 | 2026.06.25</span></p>
+
+<p style="font-size:11px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;">출처: 강원도민일보·강원일보 | 2026.06.25~27</p>`
   },
 
   'news-yangyang': {
     teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">김정중 당선인 5대 공약 — 사계절 축제도시·접경지법 개정·경제벨트·중고교생 자기계발비·기부제 100억</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">낙산~양양 원스톱 경제벨트, 남대천 집라인, 중·고등학생 월 5만원 자기계발비, 고향사랑기부제 100억 달성. [선관위 공약집 | 2026.06.03]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">양양군, 제76주년 6·25전쟁 기념행사 — 보훈단체 회원 7명 군수 표창</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">25일 일출예식장 개최 [강원도민일보 | 2026.06.25]</div>
       </div>
     </div>
     <div style="display:flex;gap:8px;padding:7px 0;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">김정중 당선인 50.52% 당선 — 양양 첫 민주당 군수 탄생</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">전 군수 비리 의혹 이후 변화를 원하는 민심이 반영. 취임일 7월 1일. [중앙선거관리위원회 | 2026.06.03]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">양양읍 2개 구간 도시가스 배관 설치 착수 — 75세대 혜택</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">남문4리·구교1리 916m | 주거환경 개선 [강원도민일보 | 2026.06.25]</div>
       </div>
     </div>`,
-    cat: '📍 양양군 뉴스 전문 | 제2호 2026.06.22',
-    title: '양양군민이 선택한 김정중 군수, 5대 공약은 이렇다',
-    meta: '중앙선거관리위원회 공약집 | 2026.06.03',
+    cat: '📍 양양군 뉴스 전문 | 제3호 2026.06.29',
+    title: '양양군, 6·25전쟁 제76주년 기념행사 개최 · 도시가스 배관 확대',
+    meta: '강원도민일보 | 2026.06.22~27',
     badge: '양양',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">당선인 공약 소개 특집 | 중앙선거관리위원회 공약집 | 2026.06.03</p>
-<p>6·3 지방선거에서 <strong>김정중 후보(더불어민주당)</strong>가 양양군수에 당선됐다. 김 당선인이 내건 5대 공약을 소개한다.</p>
-<p>첫 번째는 <strong>사계절 축제 도시 조성</strong>이다. 민·관 협력 거버넌스로 양양의 사계절 스토리를 발굴하고 읍·면 단위 풀뿌리 체험을 연결해 체류형 축제 도시를 만든다는 구상이다. 소규모 축제는 자체 예산, 군 단위 축제는 국도비 공모로 재원을 마련한다.</p>
-<p>두 번째는 <strong>접경지특별법 개정 추진</strong>이다. 양양을 접경지역 지원 특별법 대상에 포함시키도록 대통령령 개정을 요청해 정부 지방교부세 등 국비를 확보한다는 계획이다.</p>
-<p>세 번째는 <strong>낙산~양양 원스톱 경제벨트 구축</strong>이다. 셔틀버스와 남대천 테마열차 운행, 양양읍 특성화 먹거리 단지 조성, 남대천 집라인 설치로 관광객 동선을 시내권까지 연결한다.</p>
-<p>네 번째는 <strong>중·고등학생 자기계발비 지원</strong>으로, 관내 중·고등학생에게 월 5만 원 수준의 지역화폐 또는 교육 바우처를 정기 지급한다. 다섯 번째는 <strong>고향사랑기부제 100억 달성</strong>으로, 출향민·군민 기부금과 관광객 적립금을 모아 양양 이미지를 높인다는 계획이다.</p>
-<p>김 당선인의 공약 이행 여부를 설악시민뉴스가 지속적으로 점검한다.</p>
-<p style="font-size:12px;color:#888;border-top:1px dashed #eee;padding-top:8px;">출처: 중앙선거관리위원회 공약집 | 2026.06.03</p>`
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">양양군 뉴스 | 강원도민일보 | 2026.06.22~27</p>
+
+<p><strong>양양군, 6·25전쟁 제76주년 기념행사 개최</strong><br>
+양양군은 25일 일출예식장에서 참전용사 및 유가족과 보훈단체 회원 등이 참석한 가운데 '제76주년 6·25전쟁 기념행사'를 개최했다. 보훈단체 회원 7명에게 군수 표창이 수여됐다.<br>
+<span style="font-size:11px;color:#999;">출처: 강원도민일보 | 2026.06.25</span></p>
+
+<p><strong>양양읍 2개 구간 도시가스 배관 설치 — 75세대 혜택</strong><br>
+양양군이 올해 남문4리와 구교1리 등 양양읍 2개 구간에 도시가스 공급배관 설치 지원사업을 본격 추진한다고 밝혔다. 총 916m 구간에 75세대가 새로 도시가스를 공급받을 수 있게 된다. 주거환경 개선과 연료비 부담 경감이 목적이다. 김정중 당선인(더불어민주당)은 7월 1일 취임 후 이 사업의 속도를 높일 계획이다.<br>
+<span style="font-size:11px;color:#999;">출처: 강원도민일보 | 2026.06.25</span></p>
+
+<p style="font-size:11px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;">출처: 강원도민일보 | 2026.06.25~27</p>`
   },
 
   'news-inje': {
     teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">최상기 당선인 5대 공약 — KTX 연계 정원도시·기존 시설 활용·67km 정원길·지역경제 순환·생활 편의</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">춘천~속초 KTX 개통 맞춰 콤팩트 시티 조성, 인제채워드림카드, 버스 요금 전면 폐지, 병원동행서비스 도입. [선관위 공약집 | 2026.06.03]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">강원도지사직 인수위, 인제 주민자치 현장 방문 — 군민 목소리 청취</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">23일 남면종합복지회관 간담회 [강원도민일보 | 2026.06.23]</div>
       </div>
     </div>
     <div style="display:flex;gap:8px;padding:7px 0;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">최상기 당선인 52.35% 당선 — 취임일 7월 1일</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">더불어민주당 최상기 당선인. 설악시민뉴스가 공약 이행을 단계별로 점검한다. [중앙선거관리위원회 | 2026.06.03]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">강원 출생아 6개월 연속 증가 — 4월 기준 전년 대비 11.6%↑</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">1~4월 2,559명 | 인제·고성 인구 회복 기대 [강원일보 | 2026.06.24]</div>
       </div>
     </div>`,
-    cat: '📍 인제군 뉴스 전문 | 제2호 2026.06.22',
-    title: '인제군민이 선택한 최상기 군수, 5대 공약은 이렇다',
-    meta: '중앙선거관리위원회 공약집 | 2026.06.03',
+    cat: '📍 인제군 뉴스 전문 | 제3호 2026.06.29',
+    title: '강원도지사직 인수위, 인제 주민자치 현장 점검 · 강원 출생아 6개월 연속 증가',
+    meta: '강원도민일보·강원일보 | 2026.06.22~27',
     badge: '인제',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">당선인 공약 소개 특집 | 중앙선거관리위원회 공약집 | 2026.06.03</p>
-<p>6·3 지방선거에서 <strong>최상기 후보(더불어민주당)</strong>가 인제군수에 당선됐다. 최 당선인이 내건 5대 공약을 소개한다.</p>
-<p>첫 번째는 <strong>사람이 모이고 관광객이 머무는 정원도시 인제</strong>다. 춘천~속초 전 구간을 잇는 KTX(전체 노선 총사업비 3조 131억 원) 개통에 맞춰 인제읍·덕산리·원통을 정주인구 3만 명 규모 콤팩트 시티로 묶고, 백담사·자작나무숲·소양호를 잇는 정원도시 네트워크를 구축한다.</p>
-<p>두 번째는 <strong>만든 시설을 제대로 쓰겠다</strong>는 공약이다. 도서관·체육센터·청년커뮤니티센터 등 기존 시설의 휴관을 줄이고 AI 교육과 청년·군인 프로그램을 추가해 이용률을 높인다.</p>
-<p>세 번째는 <strong>인제 전체를 하나의 정원도시로</strong> 만드는 것이다. 용대 지방정원을 출발점으로 남에서 북으로 67km 정원길을 조성해 인제의 자연 자원을 하나로 잇는다.</p>
-<p>네 번째는 <strong>지역경제 순환 강화</strong>다. 인제채워드림카드로 소상공인 매출을 늘리고, 2028 강원도민체전을 인제에서 유치하며, 농업인 수당을 120만 원으로 인상한다. 다섯 번째는 <strong>군민·군인가족 생활 편의 개선</strong>으로, LPG 배관망 확충, 버스 요금 전면 폐지, 병원동행서비스 도입을 추진한다.</p>
-<p>최 당선인의 공약 이행 여부를 설악시민뉴스가 단계별로 점검한다.</p>
-<p style="font-size:12px;color:#888;border-top:1px dashed #eee;padding-top:8px;">출처: 중앙선거관리위원회 공약집 | 2026.06.03</p>`
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">인제군 뉴스 | 강원도민일보·뉴스1 | 2026.06.22~27</p>
+
+<p><strong>강원도지사직 인수위, 인제 주민자치 현장 방문</strong><br>
+민선9기 강원특별자치도지사직 인수위원회 도민안전자치분과위원회가 23일 인제군 남면종합복지회관에서 인제군주민자치협의회와 간담회를 갖고 주민자치 운영현황과 제도 개선 과제를 논의했다. 인제는 예산 규모 6,685억 원으로 설악권 4개 시군 중 최대다. 최상기 당선인(더불어민주당)은 7월 1일 취임과 함께 공약 이행에 나선다.<br>
+<span style="font-size:11px;color:#999;">출처: 강원도민일보 | 2026.06.23</span></p>
+
+<p><strong>강원 출생아 6개월 연속 증가 — 인제 등 접경지 인구 회복 기대</strong><br>
+국가데이터처가 24일 발표한 '2026년 4월 인구동향'에 따르면 강원도 출생아 수가 전년 대비 11.6% 늘어난 608명을 기록했다. 1월부터 4월까지 강원 출생아는 2,559명으로, 6개월 연속 증가세다. 인구 소멸 위기 지역인 인제·고성 등 설악권에도 긍정적 신호로 주목된다.<br>
+<span style="font-size:11px;color:#999;">출처: 강원일보 | 2026.06.24</span></p>
+
+<p style="font-size:11px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;">출처: 강원도민일보·강원일보 | 2026.06.23~27</p>`
   },
 
   /* ─── 풍향계 ─── */
   punghyang: {
-    cat: '🧭 풍향계 — 5대 신문 사설 흐름 소개 | 2026.06.15~06.20',
-    title: '종전 직후와 선거 이후 — 5개 신문이 본 두 개의 화약고',
-    meta: '조선일보·동아일보·중앙일보·한겨레·경향신문 | 풍향계 v4.1 | 분석기간 2026.06.15~06.20',
+    cat: '🧭 풍향계 — 5대 신문 사설 흐름 소개 | 2026.06.22~06.27',
+    title: '판결·지지율 최저치·월드컵 탈락 — 5개 신문이 본 세 겹의 충격',
+    meta: '조선일보·동아일보·중앙일보·한겨레·경향신문 | 풍향계 v4.1 | 분석기간 2026.06.22~06.27',
     badge: '언론흐름',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">풍향계 v4.1 | 분석 기간: 2026.06.15(일)~06.20(금)</p>
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">풍향계 v4.2 | 분석 기간: 2026.06.22(월)~06.27(토) | 5대 종합일간지 사설 실물 분석</p>
 
-<p><strong>[1단계] 신문별 주요 사설 주장</strong></p>
-<p><strong>조선일보</strong>는 이번 주 세 편의 사설로 대통령 인사·선관위·정치 신뢰를 집중 점검했다. 한덕수 총리 후보자가 지명 직후 불법 사항을 뒤늦게 시정하겠다고 한 것을 비판하며 인사 검증 기준의 일관성을 촉구했다. 선관위 개혁과 관련해선 대통령의 '밥 친구'가 쇄신 책임자로 거론되는 현실을 정면으로 문제 삼았다. 이재명 대통령에게는 진영이 아닌 국민 전체를 향한 국정 운영을 요구했다.</p>
-<p><strong>동아일보</strong>는 미·이란 종전 협정(MOU)을 '허영의 전쟁'으로 규정하고, 한·일·유럽이 3,000억 달러 규모의 이란 재건기금을 부담해야 할 가능성을 지적하며 동맹 비용 전가 구조를 강하게 비판했다. 경제 분야에서는 최저임금 차등 적용 무산, 상용직 환란 이후 첫 감소, 실업급여 1.8조 적자 등을 잇달아 다루며 노동시장 구조 개선을 촉구했다.</p>
-<p><strong>중앙일보</strong>는 미·이란 합의를 '핵 둔 채 보상'이라는 표현으로 규정하고 위험한 전례를 경고했다. 선관위에 대해선 '감시 무풍지대'라는 표현으로 도덕적 해이를 지적하고 원포인트 개헌 논의를 여야에 촉구했다. 에너지 분야에서는 영덕·기장 신규 원전 부지 결정을 긍정 평가하며 추가 건설 적극 검토를 주문했다.</p>
-<p><strong>한겨레</strong>는 미·이란 종전을 미국 패권 쇠퇴의 신호로 읽으며 한국 외교의 불확실성을 경고했다. 이재명 대통령의 G7 참석을 중견국 연대 강화의 기회로 평가하면서도, 장동혁 대표의 버티기를 '민심·당심에 귀막고 막무가내 버티는' 행태로 비판했다. 원전 증설은 재생에너지를 위축시키지 않는 방향으로 추진해야 한다는 입장도 분명히 했다.</p>
-<p><strong>경향신문</strong>은 미·이란 합의에 대해 '다시는 이런 전쟁 말아야 할 이유가 차고 넘친다'는 표현으로 미국이 사고를 치고 동맹에 수습을 떠넘기는 구조를 집중 조명했다. 선관위 국정조사와 원포인트 개헌을 병행 추진해야 한다고 주문하고, 장동혁 대표의 전국 재선거 주장을 '억지 선동'으로 직격했다.</p>
+<p><strong>[1단계] 신문별 주요 사설 주장 — 실제 사설 근거</strong></p>
+
+<p><strong>조선일보</strong>는 이 기간 가장 큰 공간을 부동산·보완수사권 문제에 할애했다. 부동산에서는 "보유·양도세를 동시에 올리는 것은 문재인 정부 정책 실패의 재판"이라며 공급 없는 세금 규제를 정면 비판했다. 보완수사권 폐지에 대해서는 "형사사법이 정치 제물이 됐다"고 비판했으며, 연어·술파티 위증 판결을 근거로 공소 취소 특검 폐지를 촉구했다. 김건희 1심은 "국가적 비극이자 망신"이라는 제목으로 다뤘다.</p>
+
+<p><strong>동아일보</strong>는 김건희 1심 징역 7년을 단독 사설로 다루며 "금품 받고 공직 판 매관매직 단죄"라고 평가했다. 부동산은 "호황에 부동산 꿈틀할 수도 — 불안 심리부터 진정시킬 때"라며 반도체 성과급 발 집값 상승을 경고했다. 선관위 국조 불출석에 대해서는 "이런 무책임 부끄럽지 않나"라고 헌법기관의 책임 회피를 질책했다.</p>
+
+<p><strong>중앙일보</strong>는 보완수사권을 집중 다뤘다. "대통령의 보완수사권 봉쇄 우려, 여당은 국민 입장서 보기를"이라며 대통령·여당 간 시각 차이를 부각했다. 부동산은 "공급 대책은 진척 없고 세금 엄포만 계속"이라며 정부를 직격했다. 선관위원 무더기 국조 불출석에 "국민 무시하나"라고 비판했고, 최저임금은 "을 대 을의 전쟁 피하려면 인상 최소화해야"라며 소상공인·노동자 간 충돌을 경고했다.</p>
+
+<p><strong>한겨레</strong>는 국정지지율 급락을 주간 최대 사안으로 다뤘다. "국정지지율 급락은 당·청 모두에 대한 경고"라며, 민생 무관 편가르기와 권력 다툼에 자만한 여당을 함께 비판했다. 부동산은 "되살아난 집값 상승 기대, 정부 전방위 대책 서둘러야"라며 반도체 성과급·주가 상승이 집값 기대를 되살렸다고 진단했다. 김건희 1심은 "이런 국정 사유화 다신 없어야"로 다뤘다.</p>
+
+<p><strong>경향신문</strong>은 "매관매직 김건희 징역 7년 — 국정 사유화 단죄 사필귀정"으로 판결을 환영하면서, 내란 가담 박성재 징역 25년도 별도로 다뤘다. 부동산은 "반도체 호황, 부동산 거품으로 이어지지 않도록 대응 서둘러야"라며 53조 원 규모 대기 자금 경고를 담았다. 이재명 정부 2기 청와대 개편에서는 민정수석 3명 연속 검찰 출신 임명에 우려를 표하며 지선 민심을 받드는 국정 쇄신을 촉구했다.</p>
 
 <div style="overflow-x:auto;margin:18px 0;">
 <table style="width:100%;border-collapse:collapse;font-size:12px;">
 <thead><tr style="background:#1a2744;color:#fff;">
-<th style="padding:7px 10px;text-align:left;">핵심어</th>
-<th style="padding:7px 6px;text-align:center;">조선</th>
-<th style="padding:7px 6px;text-align:center;">동아</th>
-<th style="padding:7px 6px;text-align:center;">중앙</th>
-<th style="padding:7px 6px;text-align:center;">한겨레</th>
-<th style="padding:7px 6px;text-align:center;">경향</th>
-<th style="padding:7px 6px;text-align:center;">분류</th>
+<th style="padding:7px 10px;text-align:left;">핵심 의제</th><th style="padding:7px 6px;text-align:center;">조선</th><th style="padding:7px 6px;text-align:center;">동아</th><th style="padding:7px 6px;text-align:center;">중앙</th><th style="padding:7px 6px;text-align:center;">한겨레</th><th style="padding:7px 6px;text-align:center;">경향</th><th style="padding:7px 6px;text-align:center;">분류</th>
 </tr></thead>
 <tbody>
-<tr><td style="padding:6px 10px;">선관위 개혁</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#c0392b;">🔴 공통</td></tr>
-<tr style="background:#f8fafc;"><td style="padding:6px 10px;">당-청·여권 내부 갈등</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#c0392b;">🔴 공통</td></tr>
-<tr><td style="padding:6px 10px;">미·이란 종전 후폭풍</td><td style="text-align:center;">○</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#d4a000;">🟡 일부</td></tr>
-<tr style="background:#f8fafc;"><td style="padding:6px 10px;">원전 확대·에너지 전환</td><td style="text-align:center;">○</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#d4a000;">🟡 일부</td></tr>
-<tr><td style="padding:6px 10px;">동맹 비용 전가 구조</td><td style="text-align:center;">○</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#d4a000;">🟡 일부</td></tr>
-<tr style="background:#f8fafc;"><td style="padding:6px 10px;">선관위 원포인트 개헌</td><td style="text-align:center;">○</td><td style="text-align:center;">○</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#d4a000;">🟡 일부</td></tr>
+<tr><td style="padding:6px 10px;">김건희 1심 징역 7년 — 매관매직 단죄</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#c0392b;">🔴 공통</td></tr>
+<tr style="background:#f8fafc;"><td style="padding:6px 10px;">부동산 집값 상승 — 반도체 성과급 발 자금 유입</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#c0392b;">🔴 공통</td></tr>
+<tr><td style="padding:6px 10px;">국정지지율 하락·당청 민심 이반</td><td style="text-align:center;">○</td><td style="text-align:center;">○</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#d4a000;">🟡 일부</td></tr>
+<tr style="background:#f8fafc;"><td style="padding:6px 10px;">보완수사권 폐지·검찰개혁 논쟁</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">○</td><td style="text-align:center;">●</td><td style="text-align:center;color:#d4a000;">🟡 일부</td></tr>
+<tr><td style="padding:6px 10px;">선관위 국조 불출석·개헌론</td><td style="text-align:center;">○</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;">●</td><td style="text-align:center;color:#d4a000;">🟡 일부</td></tr>
 </tbody>
 </table>
-<div style="font-size:10px;color:#aaa;margin-top:4px;">● 주요 다룸 | ○ 언급 없음 | 🔴 공통 = 5개 매체 모두 | 🟡 일부 = 일부 매체</div>
+<div style="font-size:10px;color:#aaa;margin-top:4px;">● 주요 다룸 | ○ 언급 없음 | 🔴 공통 = 5개 매체 모두 | 🟡 일부 = 2~4개 매체</div>
 </div>
 
 <p><strong>[3단계] 이번 주 언론이 제기한 질문들</strong></p>
-<p style="background:#e8f4f8;border-left:4px solid #2980b9;padding:10px 12px;border-radius:4px;margin-bottom:8px;"><strong>Q1. (공통 미답)</strong> 선관위 개혁과 원포인트 개헌이 동시에 논의되고 있는데, 두 트랙의 우선순위와 구체적 로드맵을 누가 어떤 절차로 결정하는가?</p>
-<p style="background:#e8f4f8;border-left:4px solid #2980b9;padding:10px 12px;border-radius:4px;margin-bottom:8px;"><strong>Q2. (일부 다룬)</strong> 미·이란 종전 MOU에서 한국이 실제로 부담해야 할 이란 재건기금 규모와 법적 근거는 무엇인가? 동아·중앙·한겨레·경향은 집중 다뤘지만 조선일보는 이 의제를 직접 다루지 않았다.</p>
-<p style="background:#fef9e7;border-left:4px solid #f39c12;padding:10px 12px;border-radius:4px;"><strong>Q3. ★ (어떤 신문도 묻지 않은 질문)</strong> 당-청 갈등, 선관위 개혁, 미국발 동맹 비용 압박이 동시에 진행되는 이 시점에 — 설악권 4개 시·군 새 자치단체장들은 지지율이 흔들리는 중앙정부로부터 어떻게 예산·정책 협력 레버리지를 확보할 수 있는가?</p>
+<p style="background:#e8f4f8;border-left:4px solid #2980b9;padding:10px 12px;border-radius:4px;margin-bottom:8px;"><strong>Q1.</strong> 법원이 김건희에게 징역 7년을 선고했다. 5개 신문이 모두 이를 사설로 다뤘다 — 그런데 판결 이후 정치는 무엇을 달라지게 할 것인가?</p>
+<p style="background:#e8f4f8;border-left:4px solid #2980b9;padding:10px 12px;border-radius:4px;margin-bottom:8px;"><strong>Q2.</strong> 반도체 호황으로 53조 원이 부동산으로 유입될 수 있다는 경고가 5개 신문에서 나왔다. 보유세냐 공급이냐 — 정부가 틀리면 누가 가장 먼저 피해를 입는가?</p>
+<p style="background:#fef9e7;border-left:4px solid #f39c12;padding:10px 12px;border-radius:4px;"><strong>Q3. ★ (어떤 신문도 묻지 않은 질문)</strong> 5개 신문이 수도권 집값 급등을 일제히 경고했다. 그런데 속초·고성·양양·인제에서 집을 살 돈이 없어 수도권으로 떠나는 청년들에게, 서울 집값 안정 대책이 실제로 무슨 의미인가? 설악권 부동산의 문제는 과열이 아니라 공동화(空洞化)다.</p>
 
-<p style="font-size:10px;color:#aaa;margin-top:14px;border-top:1px dashed #eee;padding-top:8px;">분석 대상: 조선일보·동아일보·중앙일보·한겨레·경향신문 | 분석 기간: 2026.06.15(일)~06.20(금) | 이념 레이블 없음 | 풍향계 v4.1</p>
+<p style="font-size:10px;color:#aaa;margin-top:14px;border-top:1px dashed #eee;padding-top:8px;">분석 대상: 조선일보·동아일보·중앙일보·한겨레·경향신문 실물 사설 | 분석 기간: 2026.06.22(월)~06.27(토) | 이념 레이블 없음 | 풍향계 v4.2</p>
 
 <div style="background:#FFF9E6;border:1px solid #FFD966;border-radius:8px;padding:12px 14px;margin-top:16px;">
-<strong>🀄 사자성어 — 群盲撫象 (군맹무상)</strong><br>
-<span style="font-size:12px;">群(군/무리)·盲(맹/눈멀다)·撫(무/어루만지다)·象(상/코끼리) | 출전: 『열반경(涅槃經)』 (통용 성어)<br>
-눈 먼 이들이 각자 코끼리를 어루만져 '뱀 같다', '기둥 같다', '벽 같다'고 제각각 말하는 비유. 이번 주 5대 신문은 미·이란 종전이라는 하나의 사건을 두고 '미국의 패전', '동맹 비용 전가', '핵 위협 지속', '포스트 워 리스크', '공존의 길 모색' 등 서로 다른 각도에서 조명했다. 어느 시각도 틀리지 않지만, 어느 하나도 전체 그림이 아니다.</span>
+<strong>🀄 사자성어 — 換骨奪胎 (환골탈태)</strong><br>
+<span style="font-size:12px;">換(환/바꾸다)·骨(골/뼈)·奪(탈/빼앗다)·胎(태/틀) | 출전: 江西詩派 시론(詩論)<br>
+외형은 그대로이지만 내용을 근본적으로 바꾸는 것. 이번 주 5개 신문이 공통으로 다룬 두 의제 — 김건희 단죄와 부동산 과열 — 는 모두 껍데기가 아닌 내용을 바꾸지 못한 데서 비롯된 반복된 문제다.</span>
 </div>`
   },
 
   /* ─── 여론동향 ─── */
   opinion: {
-    cat: '📊 여론동향 전문 | 한국갤럽 제665호 | 2026.06.12',
-    title: '갤럽 57% ▼7%p — 선관위 사태가 대통령 지지율 끌어내렸다',
-    meta: '한국갤럽 제665호 (조사 2026.06.09~11, 발표 2026.06.12) | 전국 만 18세 이상 1,002명 | ±3.1%p(95%CI)',
+    cat: '📊 여론동향 전문 | 한국갤럽 제666호 | 2026.06.26',
+    title: '갤럽 51% ▼6%p — 경제·부동산이 다시 민심 1위로 복귀',
+    meta: '한국갤럽 제666호 (조사 2026.06.23~25, 발표 2026.06.26) | 전국 만 18세 이상 1,000명 | ±3.1%p(95%CI)',
     badge: '여론',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">여론동향 | 2026년 6월 2주차 기준 | 한국갤럽 제665호</p>
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">여론동향 | 2026년 6월 4주차 기준 | 한국갤럽 제666호</p>
 
 <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:10px 12px;margin-bottom:14px;">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:center;">
   <div style="background:#fff;border-radius:6px;padding:10px;">
     <div style="font-size:10px;color:#888;margin-bottom:4px;">갤럽 대통령 직무 긍정</div>
-    <div style="font-size:28px;font-weight:900;color:#c0392b;">57%</div>
-    <div style="font-size:11px;color:#c0392b;">▼7%p (직전 64%)</div>
+    <div style="font-size:28px;font-weight:900;color:#c0392b;">51%</div>
+    <div style="font-size:11px;color:#c0392b;">▼6%p (직전 57%)</div>
   </div>
   <div style="background:#fff;border-radius:6px;padding:10px;">
     <div style="font-size:10px;color:#888;margin-bottom:4px;">국민의힘 지지도</div>
@@ -2441,103 +2415,97 @@ const ARTICLES = {
 </div>
 </div>
 
-<p><strong>【한국갤럽 제665호 (6월 2주차)】</strong><br>
-조사기간: 2026.06.09~11 | 전국 만 18세 이상 1,002명 | ±3.1%p(95% CI) | 응답률 11.3%</p>
+<p><strong>【한국갤럽 제666호 (6월 4주차)】</strong><br>
+조사기간: 2026.06.23~25 | 전국 만 18세 이상 1,000명 | ±3.1%p(95% CI) | 응답률 10.5%</p>
 <ul style="font-size:13px;line-height:1.9;padding-left:18px;">
-<li>이재명 대통령 직무수행 <strong>긍정 57% / 부정 35% / 의견유보 8%</strong></li>
-<li>직전 조사(64%, 5월 3주) 대비 <strong>7%p 급락</strong> — 4개월 만에 60% 아래</li>
-<li>긍정 이유(1위): 경제·민생 21%, 외교 12%</li>
-<li><strong>부정 이유(1위): 선관위 문제(투표용지 부족 사태)</strong> — 갤럽 직접 명시</li>
-<li>더불어민주당 지지도 <strong>41%</strong> ▼4%p | 국민의힘 <strong>29%</strong> ▲7%p — 현 정부 출범 후 최고</li>
-<li>양당 격차 12%p로 축소</li>
+<li>이재명 대통령 직무수행 <strong>긍정 51% / 부정 41% / 의견유보 7%</strong></li>
+<li>직전 조사(57%, 6.9~11) 대비 <strong>6%p 추가 하락</strong> — 현 정부 출범 이후 최저치</li>
+<li>긍정 이유(1위): 외교 24%, 경제·민생 15%, 전반적으로 잘한다 8%</li>
+<li><strong>부정 이유(1위): 경제·민생·고환율 15%</strong>, 부동산 정책 10%, 부실·부정선거·선관위 문제 10%</li>
+<li>더불어민주당 지지도 <strong>41%</strong> (변동 없음) | 국민의힘 <strong>29%</strong> ▲7%p</li>
+<li>양당 격차 14%p | 갤럽 발표: 2026.06.26</li>
 </ul>
 
 <p><strong>【설악권 시사점】</strong><br>
 설악권은 속초(국민의힘 이병선)를 제외한 양양·고성·인제에서 민주당이 승리했다. 대통령 지지율 하락과 여당 반등이 동시에 진행되는 구도에서, 7월 1일 취임하는 4개 시군 당선인들이 중앙정부와 예산·정책 협력을 어떻게 이끌어낼지가 향후 관심사다.</p>
 
-<div style="background:#f0f9ff;border:1px solid #7dd3fc;border-left:4px solid #0284c7;border-radius:6px;padding:10px 14px;font-size:12px;color:#0c4a6e;margin-top:14px;line-height:1.8;">
-📢 <strong>한국갤럽 안내</strong><br>
-이번 주(6월 22일 발행 기준) 한국갤럽 데일리 조사는 휴무입니다. 6월 17일(한국갤럽 설립 52주년) 포함 주중 휴무일 및 조사실 소재 건물 공사 관계로 데일리 조사를 실시하지 않았습니다. <strong>제666호는 6월 26일(금) 공개</strong> 예정입니다. 다음 호(제3호, 6월 29일)에 최신 지지율을 반영합니다.
-</div>
 
-<p style="font-size:10px;color:#aaa;margin-top:12px;border-top:1px dashed #eee;padding-top:8px;">한국갤럽 제665호 | 조사 2026.06.09~11 | 발표 2026.06.12 | 1,002명 | ±3.1%p(95%CI) | 응답률 11.3%<br>자세한 내용: 중앙선거여론조사심의위원회 홈페이지</p>`
+
+<p style="font-size:10px;color:#aaa;margin-top:12px;border-top:1px dashed #eee;padding-top:8px;">한국갤럽 제666호 | 조사 2026.06.23~25 | 발표 2026.06.26 | 1,000명 | ±3.1%p(95%CI)<br>자세한 내용: 중앙선거여론조사심의위원회 홈페이지</p>`
   },
 
   /* ─── 시민의 소리 ─── */
   voice: {
-    cat: '🗣 시민의 소리 — 사설 | 환경·미래 | 2026.06.22',
-    title: '동해를 지키는 것이 관광을 지키는 일입니다',
-    meta: '설악시민뉴스 편집장 김준철 | 2026.06.22',
+    cat: '🗣 시민의 소리 — 사설 | 지역경제·공공자산 | 2026.06.29',
+    title: '공공 투자에는 공공 수익의 통로가 있어야 합니다',
+    meta: '설악시민뉴스 편집장 김준철 | 2026.06.29',
     badge: '사설',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">환경·미래 사설 | 편집장 집필 | 2026.06.22</p>
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">사설 | 경제·공공자산 | 2026.06.29</p>
 
-<p>설악권의 가장 큰 자산은 동해 바다와 설악산입니다. 이것은 누가 만든 것이 아닙니다. 수천 년 동안 이 땅에 있어온 것입니다. 그런데 관광객이 늘고 개발이 진행될수록 이 자산이 조금씩 닳아가고 있습니다. 연안침식은 진행 중이고 해양생태계는 예민하게 반응하고 있습니다.</p>
+<p>설악권에 수천억 원의 공공 재원이 투입되고 있습니다. 외옹치항 국가어항 개발 208억 원, 연안정비 255억 원, 청초호 벨트 400억 원 — 이 모든 사업은 시민의 세금으로 만들어집니다. 그런데 이 인프라 덕에 가장 많은 수익을 올리는 사업자가 그 이익의 일부를 다시 지역 사회에 돌려주는 통로가 구조적으로 마련되어 있습니까?</p>
 
-<p>연안침식 방지, 해양생태계 보전, 탄소중립 로드맵 — 이 과제들이 환경부의 일이기 전에 우리 지역의 생존 과제입니다. 동해 바다가 건강해야 관광 자원이 유지되고 설악산이 깨끗해야 등산객이 계속 찾아옵니다. 환경을 지키는 것이 경제를 지키는 일이기도 합니다.</p>
+<p>이것은 사업자의 도덕성 문제가 아닙니다. 인센티브 설계의 문제입니다. 공공이 인프라를 만들고, 민간이 그 혜택을 누린 뒤, 이익의 일부가 다시 지역 사회로 환류되는 고리 — 이 고리가 없으면 관광 수익은 구조적으로 역외 유출됩니다. 공공 투자의 편익 일부를 공공이 거두어 재투자하는 개발이익 환수는, 시장 기능을 막는 것이 아니라 공공 투자의 정당성을 지키는 최소 조건입니다.</p>
 
-<p>환경 보전과 경제 성장은 반드시 충돌하지 않습니다. 친환경 관광 인프라, 재생에너지 도입, 순환경제 구조 — 이것들이 함께 갈 때 설악권은 진짜 지속 가능한 관광도시가 됩니다. 외옹치항·연안정비 사업이 완공된 이후에도 바다를 지키는 일상적인 노력이 계속되어야 합니다. 다음 세대에게 물려줄 이 땅을 함께 지켜가면 어떨까요.</p>
+<p>구체적으로는 두 가지 방향이 있습니다. 하나는 공공관광기금에 민간 사업자가 일정 비율을 자발적으로 출연할 경우 세제 혜택이나 인허가 우선권 같은 유인책을 주는 방식입니다. 다른 하나는 광역 협력 규약에 개발이익 환수 조항을 명문화하고 강원특별자치도 특례를 활용하는 제도적 방식입니다. 어느 쪽이든 먼저 논의를 시작하는 것이 출발점입니다. 구조를 설계해야 흐릅니다. 설악권 4개 시·군이 함께 그 설계도를 그려보면 어떨까요.</p>
 
-<p style="color:#888;font-size:12px;margin-top:20px;border-top:1px solid #e2e8f0;padding-top:12px;">설악시민뉴스 편집장 김준철 | 2026.06.22</p>
+<p style="color:#888;font-size:12px;margin-top:20px;border-top:1px solid #e2e8f0;padding-top:12px;">출처: 설악시민뉴스 편집부 | 사설 | 2026.06.29</p>
 <div style="background:#fef9e7;border:1px solid #fde68a;border-radius:6px;padding:8px 12px;margin-top:12px;font-size:12px;color:#78350f;">📮 시민 기고 환영합니다 → jcjwk54@gmail.com</div>`
   },
 
   /* ─── 이슈&토론 ─── */
-  issue3: {
-    cat: '💬 이슈&토론 | 환경·에너지 | 2026.06.22',
-    title: '원전 재확대, 지속해야 하나',
-    meta: '설악시민뉴스 편집부 | 2026.06.22',
+  issue4: {
+    cat: '💬 이슈&토론 No.4 | 지역·도시·농촌 | 2026.06.29',
+    title: '설악산 권금성 케이블카, 공공이익을 지역에 환수해야 하나',
+    meta: '설악시민뉴스 편집부 | 2026.06.29',
     badge: '토론',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">이슈&amp;토론 | 환경·에너지 | 탄소중립과 에너지 안보 사이</p>
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">이슈&토론 No.4 | 지역·도시·농촌 | 국립공원 공공자산 수익 환원 vs. 민간 사업권 보호</p>
 
-<div style="background:#1B3A6B;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:10px;">이번 주 토론 주제</div>
-<div style="font-size:17px;font-weight:700;color:#1B3A6B;border-left:4px solid #1B3A6B;padding-left:12px;margin-bottom:14px;line-height:1.5;">탄소중립 현실 대안 vs. 안전·핵폐기물 위험</div>
+<p>여름 휴가철, 설악산을 찾는 수백만 관광객이 가장 먼저 타는 것이 권금성 케이블카다. 운영사 ㈜동효는 1970년 설립 이후 현재까지 일가가 주식 88% 이상을 보유한 가족회사로, 1971년부터 기한 없는 영구 면허 형태로 54년간 민간이 독점해왔다. 2024년 매출 약 142억 원, 영업이익률 36%, 현금성 자산 300억 원에 이른다. 반면 설악산 국립공원 연간 관리 비용 83억 원 이상은 전액 국민 세금으로 충당된다. 개정 궤도운송법으로 재허가 심사를 앞두고 공공이익 환수 논의가 본격화됐다.</p>
 
-<p>매년 여름이면 전력 수요가 급증한다. 2026년 폭염은 기후위기의 현실을 다시 한 번 상기시킨다. 정부는 탄소중립 목표와 에너지 안보를 동시에 달성하기 위해 원전 확대 정책을 추진 중이며, 이번 주 영덕·기장 신규 원전 부지를 15년 만에 확정했다. 강원도 역시 동해안 원전과 인접해 있어 이 논쟁은 우리 지역의 문제이기도 하다.</p>
+<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👍 찬성 — 공공이익을 환수해야 한다</div>
+<p style="background:#EAF5EE;border:1px solid #7DB87D;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;color:#222;">설악산 국립공원은 국민 전체의 자산이다. 연 142억 원을 벌어들이는 사업자가 환경부담금을 단 한 푼도 내지 않고, 케이블카 이용객 집중으로 황폐해진 권금성 정상부 생태 복원 비용도 모두 국민이 부담한 구조는 정당하지 않다. 재허가 조건으로 수익 환원, 생태 복원 비용 전액 부담, 1일 탑승객 상한제, 지역 주민 우선 고용을 의무화해야 한다.</p>
 
-<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👍 찬성 — 원전 확대가 필요하다</div>
-<p style="background:#EAF5EE;border:1px solid #7DB87D;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;color:#222;">태양광·풍력은 날씨에 따라 발전량이 들쭉날쭉해 간헐성 문제가 크다. 원전은 탄소 배출이 거의 없고 연간 이용률이 90% 이상인 안정적 전원이다. 국제에너지기구(IEA)도 탄소중립 달성을 위해 원전 역할이 불가피하다고 강조한다. 한국의 원전 기술 수준은 세계 최고이며 수출 산업으로서의 경제적 가치도 크다.</p>
-
-<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:12px 0 6px;">👎 반대 — 원전 축소가 맞다</div>
-<p style="background:#FFF0F0;border:1px solid #D97C7C;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;color:#222;">후쿠시마 사고(2011)가 보여주듯 원전 사고 시 피해는 국경을 초월한다. 고준위 방사성 폐기물 처리장을 아직 확보하지 못한 상태에서 원전을 늘리는 것은 미래 세대에 짐을 떠넘기는 행위다. 원전 건설에는 막대한 비용과 10년 이상의 시간이 걸려 당장의 기후위기 대응에는 부적합하다. 재생에너지 기술 발전 속도를 고려하면 투자 방향을 바꿔야 한다.</p>
+<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:12px 0 6px;">👎 반대 — 민간 사업권을 존중해야 한다</div>
+<p style="background:#FFF0F0;border:1px solid #D97C7C;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;color:#222;">사업자는 수십 년간 투자·운영 리스크를 감수하며 시설을 유지해왔다. 연간 법인세를 성실히 납부하고 있으며, 허가 당시 조건에 없던 환경부담금·생태 복원 의무를 재허가 시점에 소급 부과하는 것은 법적 안정성과 재산권을 침해한다. 과도한 조건이 붙으면 사업자가 재허가를 포기하거나 서비스 질이 저하될 수 있다.</p>
 
 <div style="background:linear-gradient(135deg,#1B3A6B,#2E75B6);border-radius:8px;padding:14px 16px;color:#fff;margin-top:14px;">
   <div style="font-size:10px;font-weight:700;opacity:.7;letter-spacing:.08em;margin-bottom:8px;">✏️ 편집자의 관점</div>
-  <div style="font-size:13px;line-height:1.75;">기후위기와 에너지 안보 사이에서 원전이 어떤 역할을 해야 할지, <strong style="color:#FFD966;">동해안 원전과 함께 살아가는 강원도 시민의 시각이 이 논쟁에서 특별한 무게를 갖는다.</strong></div>
+  <div style="font-size:13px;line-height:1.75;">이 사안은 설악권 시민에게 가장 직결된 공공자산 이슈다. 국립공원 위의 민간 독점 구조가 54년간 지속됐다. 재허가 심사는 단 한 번의 기회다. <strong style="color:#FFD966;">법인세 납부만으로 공공 기여가 충분한가, 아니면 공공자산 위의 수익에는 그에 상응하는 사회적 책임이 따라야 하는가. 설악 시민의 목소리가 이 결정에 직접 영향을 미칠 수 있다.</strong></div>
 </div>
 
-<p style="background:#FFF9E6;border:1px solid #FFD966;border-radius:8px;padding:12px 14px;font-size:13px;margin-top:14px;"><strong>💬 이 주제, 당신의 생각은?</strong><br>기후위기와 에너지 안보 사이에서 원전은 어떤 역할을 해야 할까요? 동해안 원전 인근 주민으로서 어떻게 생각하시나요?</p>
+<p style="background:#FFF9E6;border:1px solid #FFD966;border-radius:8px;padding:12px 14px;font-size:13px;margin-top:14px;"><strong>💬 이 주제, 당신의 생각은?</strong><br>연간 142억 원을 버는 권금성 케이블카 운영사가 국립공원 관리 비용(연 83억 원, 전액 국민 세금)에 기여하지 않는 구조, 정당하다고 보십니까? 재허가 조건으로 수익 일부를 지역 환경·주민 복지에 의무 적립하게 하는 것에 찬성하십니까?</p>
 
 <div style="margin-top:18px;border-top:2px solid #e2e8f0;padding-top:16px;">
 <div style="font-size:13px;font-weight:700;color:#1a2744;margin-bottom:10px;">📊 어느 입장이 더 타당하다고 생각하시나요?</div>
 <div style="display:flex;gap:8px;">
-<button id="vbtn-issue3-pro" onclick="castVote('issue3','pro',this)" style="flex:1;background:#EAF5EE;border:2px solid #1F7A4D;border-radius:6px;padding:10px 8px;font-size:13px;font-weight:700;cursor:pointer;color:#1F7A4D;">👍 확대 찬성 <span id="vcnt-issue3-pro" style="background:rgba(31,122,77,.15);border-radius:10px;padding:1px 8px;font-size:11px;">0</span></button>
-<button id="vbtn-issue3-con" onclick="castVote('issue3','con',this)" style="flex:1;background:#FFF0F0;border:2px solid #B03030;border-radius:6px;padding:10px 8px;font-size:13px;font-weight:700;cursor:pointer;color:#B03030;">👎 축소 주장 <span id="vcnt-issue3-con" style="background:rgba(176,48,48,.15);border-radius:10px;padding:1px 8px;font-size:11px;">0</span></button>
+<button id="vbtn-issue4-pro" onclick="castVote('issue4','pro',this)" style="flex:1;background:#EAF5EE;border:2px solid #1F7A4D;border-radius:6px;padding:10px 8px;font-size:13px;font-weight:700;cursor:pointer;color:#1F7A4D;">👍 환수 찬성 <span id="vcnt-issue4-pro" style="background:rgba(31,122,77,.15);border-radius:10px;padding:1px 8px;font-size:11px;">0</span></button>
+<button id="vbtn-issue4-con" onclick="castVote('issue4','con',this)" style="flex:1;background:#FFF0F0;border:2px solid #B03030;border-radius:6px;padding:10px 8px;font-size:13px;font-weight:700;cursor:pointer;color:#B03030;">👎 사업권 보호 <span id="vcnt-issue4-con" style="background:rgba(176,48,48,.15);border-radius:10px;padding:1px 8px;font-size:11px;">0</span></button>
 </div>
 <div id="vresult-issue3" style="margin-top:10px;font-size:12px;color:#888;"></div>
 </div>
 
-<p style="color:#888;font-size:12px;margin-top:16px;">설악시민뉴스 편집부 | 이슈&amp;토론 | 2026.06.22</p>`
+<p style="color:#888;font-size:12px;margin-top:16px;">설악시민뉴스 편집부 | 이슈&토론 No.4 | 2026.06.29</p>`
   },
 
   /* ─── 편집자 레터 ─── */
   letter: {
-    cat: '✒ 편집자 레터 | 제2호 | 2026.06.22',
-    title: '이란 전쟁이 끝났지만 설악의 바다는 지금도 닳아가고 있습니다',
-    meta: '편집장 김준철 | 설악시민뉴스 | 2026.06.22',
+    cat: '✒ 편집자 레터 | 제3호 | 2026.06.29',
+    title: '공공의 것은 공공에게 돌아와야 합니다',
+    meta: '편집장 김준철 | 설악시민뉴스 | 2026.06.29',
     badge: '레터',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">설악시민뉴스 제2호 편집자 레터 | 2026.06.22</p>
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">설악시민뉴스 제3호 편집자 레터 | 2026.06.29</p>
 
-<p>제2호를 발행하는 이번 주, 세계가 이란 전쟁 종전 소식으로 술렁였습니다. 6월 18일 미국과 이란이 공식 서명한 종전 양해각서는 코스피를 8,700선으로 끌어올렸고, 다음 날 아침 신문들은 일제히 이란 재건기금 분담 문제, 핵 처리의 모호함, 동맹 비용 전가 논란을 다뤘습니다.</p>
+<p>이번 주 두 개의 숫자가 겹쳐 읽혔습니다.</p>
 
-<p>하지만 설악 바다는 이 모든 뉴스와 상관없이 오늘도 조금씩 닳아가고 있습니다.</p>
+<p>하나는 51. 이재명 대통령 지지율이 현 정부 출범 이후 최저치로 내려앉은 수치입니다. 한국갤럽은 부정 평가 1위가 '경제·부동산'으로 복귀했다고 분석했습니다. 중앙 정치의 소용돌이가 어떻든, 민심이 가장 아프게 느끼는 것은 결국 일상의 생계라는 뜻입니다.</p>
 
-<p>이번 호 사설은 그 이야기입니다. 연안침식, 해양생태계, 탄소중립. 이것들은 환경부의 과제이기 전에 속초·고성·양양·인제 시민 모두의 생존 과제입니다. 이번 주 신규 원전 부지 확정 소식과 함께, 에너지와 환경을 어떻게 함께 가져갈 것인지를 이번 호 이슈&amp;토론 '원전 재확대, 지속해야 하나'로 이어서 묻습니다. 동해안 원전 인근에 사는 우리 시민의 목소리가 이 논쟁에서 특별한 의미를 갖습니다.</p>
+<p>다른 하나는 83. 설악산 국립공원 연간 관리 비용(억 원)입니다. 시민 세금으로 만들어진 이 숫자 앞에, 권금성 케이블카 운영사는 연간 142억 원을 벌면서 환경부담금을 내지 않습니다. 이번 호 이슈&amp;토론과 이번 호 사설이 함께 짚은 질문입니다 — 공공 투자가 낳은 수익을 공공이 돌려받는 통로가 있어야 한다고.</p>
 
-<p>이번 호 설악권뉴스는 6·3 지방선거에서 새롭게 선출된 속초·고성·양양·인제 4개 시군 단체장의 공약을 소개합니다. 이병선 속초시장 당선인은 인수위 없이 바로 실무에 들어갔습니다. 고성 함명준·양양 김정중·인제 최상기 당선인은 7월 1일 취임 후 공약 이행 로드맵을 발표할 예정입니다. 설악시민뉴스는 그날부터 4년 동안 이 공약들이 실현되는지 꼼꼼히 기록하겠습니다.</p>
+<p>설악산을 지키는 비용은 국민 모두가 내고, 케이블카로 돈을 버는 것은 특정 사업자입니다. 재허가 심사라는 단 한 번의 기회 앞에서, 설악권 시민이 자신의 의견을 갖는 것이 중요합니다. 이것은 법률 다툼이 아니라, 우리가 어떤 지역을 원하느냐의 문제입니다.</p>
 
-<p>한국갤럽은 대통령 지지율이 57%로 7%포인트 급락했고 그 주요 원인으로 선관위 문제를 꼽았다고 밝혔습니다. 선관위 합동수사본부가 수사에 착수했고 원포인트 개헌 논의도 시작됐습니다. 어떤 제도가 만들어지든, 선거가 시민의 의사를 정확히 반영하는 도구가 되어야 한다는 것 — 그것만은 모두가 동의하는 출발점입니다.</p>
+<p>7월 초 4개 시군 당선인의 취임이 가까워지고 있습니다. 이병선 속초시장, 김정중 양양군수, 함명준 고성군수, 최상기 인제군수 당선인 모두 이 지역의 공공자산이 어떻게 관리되어야 하는지 공약한 바 있습니다. 설악시민뉴스는 그 공약 이행을 매호 추적합니다.</p>
 
-<p>다음 호(6월 29일)는 이슈&amp;토론 '설악산 권금성 케이블카, 공공이익을 지역에 환수해야 하나'입니다. 연 142억 원을 버는 민간 사업자와 국민 세금으로 유지되는 국립공원 사이의 문제 — 이것은 먼 나라 이야기가 아닙니다.</p>
+<p>공공의 것은 공공의 목적에 쓰여야 합니다. 이번 주 '이 주의 문장'이 전하는 말입니다.</p>
 
 <p style="margin-top:20px;background:#1B3A6B;color:#fff;border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.9;">
 <strong style="color:#FFD966;">설악시민뉴스는 자유·정의·사랑의 시민언론입니다.</strong><br>
@@ -2545,7 +2513,7 @@ const ARTICLES = {
 기고·제보·구독 문의: jcjwk54@gmail.com
 </p>
 
-<p style="text-align:right;font-style:italic;color:#1B3A6B;margin-top:16px;">— 편집장 김준철 드림<br>2026.06.22 제2호</p>`
+<p style="text-align:right;font-style:italic;color:#1B3A6B;margin-top:16px;">— 편집장 김준철 드림<br>2026.06.29 제3호</p>`
   },
 
 };
@@ -2616,23 +2584,80 @@ if (window.innerWidth <= 600) {
 /* GoatCounter — 방문자 수동 업데이트 방식으로 전환 */
 </script>
 <script>
-/* ── 찬반 투표 (Firebase Realtime Database 연동) ── */
+/* ── 찬반 투표 ── */
 
-  var ACTIVE_ISSUES = ['issue3']; /* 매주 현행 이슈 ID로 업데이트 */
+  /* 투표 실행 — 전역 함수 */
+  function castVote(issueId, side) {
+    var storageKey = 'vote_' + issueId;
+    var countKey   = 'vcount_' + issueId;
+    try {
+      var already = localStorage.getItem(storageKey);
+      if (already) {
+        alert('이미 투표하셨습니다.');
+        return;
+      }
+      var stored = localStorage.getItem(countKey);
+      var counts = stored ? JSON.parse(stored) : {pro:0, con:0};
+      counts[side] = (counts[side] || 0) + 1;
+      localStorage.setItem(countKey, JSON.stringify(counts));
+      localStorage.setItem(storageKey, side);
+      updateVoteUI(issueId, counts, side);
+    } catch(e) {
+      // localStorage 차단 환경 — 세션 내 임시 카운트
+      if (!window._votes) window._votes = {};
+      if (!window._vcounts) window._vcounts = {};
+      if (window._votes[issueId]) { alert('이미 투표하셨습니다.'); return; }
+      window._votes[issueId] = side;
+      window._vcounts[issueId] = window._vcounts[issueId] || {pro:0, con:0};
+      window._vcounts[issueId][side]++;
+      updateVoteUI(issueId, window._vcounts[issueId], side);
+    }
+  }
 
-  /* 결과 렌더링 */
-  function renderVote(issueId, counts, voted) {
-    var pro = (counts && counts.pro) ? counts.pro : 0;
-    var con = (counts && counts.con) ? counts.con : 0;
+  function updateVoteUI(issueId, counts, voted) {
+    var pro = counts.pro || 0;
+    var con = counts.con || 0;
     var total = pro + con;
-    var proPct = total ? Math.round(pro / total * 100) : 50;
-    var conPct = total ? (100 - proPct) : 50;
 
     var elPro = document.getElementById('vcnt-' + issueId + '-pro');
     var elCon = document.getElementById('vcnt-' + issueId + '-con');
     if (elPro) elPro.textContent = pro;
     if (elCon) elCon.textContent = con;
 
+    var btnPro = document.getElementById('vbtn-' + issueId + '-pro');
+    var btnCon = document.getElementById('vbtn-' + issueId + '-con');
+    if (btnPro) btnPro.style.opacity = voted === 'pro' ? '1' : '0.5';
+    if (btnCon) btnCon.style.opacity = voted === 'con' ? '1' : '0.5';
+
+    var pct = total > 0 ? Math.round(pro / total * 100) : 0;
+    var resultEl = document.getElementById('vresult-' + issueId);
+    if (resultEl) {
+      resultEl.innerHTML =
+        '<div style="margin-top:10px;">' +
+        '<div style="display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:6px;">' +
+        '<div style="background:#1F7A4D;width:' + pct + '%;transition:width .4s;"></div>' +
+        '<div style="background:#B03030;flex:1;transition:width .4s;"></div>' +
+        '</div>' +
+        '👍 찬성 ' + pro + '표 (' + pct + '%) &nbsp; 👎 반대 ' + con + '표 (' + (100-pct) + '%) &nbsp; 총 ' + total + '표' +
+        '</div>';
+    }
+  }
+
+  /* 결과 렌더링 */
+  function renderVote(issueId, counts, voted) {
+    var pro = counts.pro | 0;
+    var con = counts.con | 0;
+    var total = pro + con;
+    var proPct = total ? Math.round(pro / total * 100) : 50;
+    var conPct = total ? (100 - proPct) : 50;
+
+    /* 숫자 뱃지 업데이트 */
+    var elPro = document.getElementById('vcnt-' + issueId + '-pro');
+    var elCon = document.getElementById('vcnt-' + issueId + '-con');
+    if (elPro) elPro.textContent = pro;
+    if (elCon) elCon.textContent = con;
+
+    /* 버튼 상태 */
     var btnPro = document.getElementById('vbtn-' + issueId + '-pro');
     var btnCon = document.getElementById('vbtn-' + issueId + '-con');
     if (btnPro) {
@@ -2646,6 +2671,7 @@ if (window.innerWidth <= 600) {
       if (voted === 'con') btnCon.classList.add('selected');
     }
 
+    /* 결과 바 */
     var resultEl = document.getElementById('vresult-' + issueId);
     if (resultEl) {
       resultEl.innerHTML =
@@ -2662,55 +2688,21 @@ if (window.innerWidth <= 600) {
     }
   }
 
-  /* 투표 실행 — Firebase 트랜잭션 + localStorage 중복 방지 */
-  function castVote(issueId, side) {
-    var storageKey = 'vote_' + issueId;
-    try {
-      var already = localStorage.getItem(storageKey);
-      if (already) { alert('이미 투표하셨습니다.'); return; }
-    } catch(e) {}
-
-    if (typeof db !== 'undefined') {
-      /* Firebase 경로: votes/issueId/pro 또는 con */
-      db.ref('votes/' + issueId + '/' + side).transaction(function(cur) {
-        return (cur || 0) + 1;
-      }, function(err, committed) {
-        if (!err && committed) {
-          try { localStorage.setItem(storageKey, side); } catch(e) {}
-        }
-      });
-    } else {
-      /* Firebase 미연결 폴백 — localStorage 단독 집계 */
-      try {
-        var countKey = 'vcount_' + issueId;
-        var counts = JSON.parse(localStorage.getItem(countKey) || '{"pro":0,"con":0}');
-        counts[side] = (counts[side] || 0) + 1;
-        localStorage.setItem(countKey, JSON.stringify(counts));
-        localStorage.setItem(storageKey, side);
-        renderVote(issueId, counts, side);
-      } catch(e) {}
-    }
+  /* 기존 결과 표시 */
+  function showVoteResult(issueId) {
+    var counts = JSON.parse(localStorage.getItem('vcount_' + issueId) || '{"pro":0,"con":0}');
+    var voted  = localStorage.getItem('vote_' + issueId);
+    renderVote(issueId, counts, voted);
   }
 
-  /* 페이지 로드 시 Firebase 실시간 리스너 등록 */
+  /* 페이지 로드 시 기존 투표 복원 */
   function initVotes() {
-    ACTIVE_ISSUES.forEach(function(id) {
-      var voted = null;
-      try { voted = localStorage.getItem('vote_' + id); } catch(e) {}
-
-      if (typeof db !== 'undefined') {
-        db.ref('votes/' + id).on('value', function(snap) {
-          var data = snap.val() || {};
-          renderVote(id, data, voted);
-        });
-      } else {
-        /* 폴백: localStorage */
-        try {
-          var counts = JSON.parse(localStorage.getItem('vcount_' + id) || '{"pro":0,"con":0}');
-          if (voted || counts.pro > 0 || counts.con > 0) {
-            renderVote(id, counts, voted);
-          }
-        } catch(e) {}
+    var ids = ['issue1','issue2','issue3','issue4','issue5'];
+    ids.forEach(function(id) {
+      var voted  = localStorage.getItem('vote_' + id);
+      var counts = JSON.parse(localStorage.getItem('vcount_' + id) || '{"pro":0,"con":0}');
+      if (voted | counts.pro > 0 | counts.con > 0) {
+        renderVote(id, counts, voted);
       }
     });
   }
