@@ -52,7 +52,7 @@ async function loadArchive() {
     if (!res.ok) throw new Error('manifest 없음');
     const manifest = await res.json();
 
-    if (!manifest.issues | manifest.issues.length === 0) {
+    if (!manifest.issues || manifest.issues.length === 0) {
       listEl.innerHTML = '<div class="archive-loading">아직 지난 호가 없습니다.</div>';
       return;
     }
@@ -73,16 +73,18 @@ async function loadArchive() {
         </a>`;
     }).join('');
   } catch(e) {
-    // manifest가 없을 때 — 제2호만 표시
+    // manifest가 없을 때 — 창간호+제2호 표시
     listEl.innerHTML = `
-      <a class="archive-item current" href="./">
-        <div class="archive-num">제2호 <span class="archive-badge">최신</span></div>
-        <div class="archive-headline">동해 환경·원전·당선인 공약 이행 감시 시작</div>
+      <a class="archive-item" href="archives/20260622.html">
+        <div class="archive-num">제2호</div>
+        <div class="archive-headline">동해 환경·원전 에너지 전환 · 민선9기 당선인 공약 이행 감시 시작</div>
         <div class="archive-date">2026년 6월 22일</div>
       </a>
-      <div class="archive-loading" style="font-size:11px;margin-top:8px;">
-        지난 호는 발행 후 순차적으로 등록됩니다.
-      </div>`;
+      <a class="archive-item" href="archives/20260615.html">
+        <div class="archive-num">제1호 (창간호)</div>
+        <div class="archive-headline">설악시민뉴스 창간 — 자유·정의·사랑의 시민언론 출범</div>
+        <div class="archive-date">2026년 6월 15일</div>
+      </a>`;
   }
 }
 
