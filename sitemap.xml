@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://seorakcitizennews.kr/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://seorakcitizennews.kr/archives/20260629.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seorakcitizennews.kr/archives/20260622.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seorakcitizennews.kr/archives/20260615.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
