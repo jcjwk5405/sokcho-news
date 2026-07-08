@@ -2164,39 +2164,44 @@ const ARTICLES = {
 
   /* ─── 전국뉴스 ─── */
   'news-national': {
-    teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">3대 메가프로젝트 국민보고회, 반도체·AI에 10년 1000조 원대</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">3대 메가프로젝트 국민보고회, 반도체·AI에 10년 1000조 원대<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">삼성·SK 지방 투자계획 공개. [뉴시스 | 06.29]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">이재명 대통령이 6월 29일 청와대 영빈관에서 '대한민국 대도약 3대 메가프로젝트 국민보고회'를 열고 반도체·AI 데이터센터·피지컬AI 세 축을 중심으로 한 국가 성장 전략을 공개했다. 삼성전자 이재용 회장과 SK 최태원 회장이 직접 참석해 호남 등 지방 거점 투자계획을 발표했으며, 정부는 전력·용수 공급방안과 거점도시 조성방안을 함께 제시했다. [뉴시스·연합뉴스 | 2026.06.29]</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">국회 여당 단독 원 구성…법사위원장 자리 재차 차지</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">국회 여당 단독 원 구성…법사위원장 자리 재차 차지<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">국민의힘 상임위 강제배정 사임 통보. [연합뉴스 | 06.30]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">더불어민주당이 6월 30일 본회의를 열어 22대 국회 하반기 상임위원장 선출을 단독으로 밀어붙였다. 법제사법위원장 자리를 다시 차지했고, 국민의힘 의원들은 강제 배정된 상임위원직 사임을 통보했다. [연합뉴스 | 2026.06.30]</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">③</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">한국 축구, 월드컵 32강 탈락…홍명보 감독 사퇴</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">한국 축구, 월드컵 32강 탈락…홍명보 감독 사퇴<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">취임 후 첫 본선에서 조기 탈락. [연합뉴스 | 06.28]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">한국 축구대표팀이 2026 북중미 월드컵 32강에서 탈락했다. 홍명보 감독은 경기 이틀 뒤 기자회견에서 모든 책임을 지고 사퇴한다고 밝혔다. [연합뉴스 | 2026.06.28]</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">④</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">한성숙 국무총리 7월 2일 공식 취임</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">한성숙 국무총리 7월 2일 공식 취임<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">인사청문회 후 임명동의안 가결. [연합뉴스 | 07.02]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">6월 7일 후보 지명, 25~26일 인사청문회를 거쳐 6월 30일 임명동의안이 가결된 한성숙 국무총리가 7월 2일 공식 취임했다. [연합뉴스 | 2026.07.02]</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">⑤</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">투표용지 부족 사태 국정조사 시작</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">투표용지 부족 사태 국정조사 시작<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">중앙선관위 대국민 사과 이후 후속 조치. [연합뉴스 | 07.01]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">6·3 지방선거 당시 일부 지역 투표용지 부족·투표함 미반출 논란에 대한 국회 국정조사가 시작됐다. 노태악 중앙선거관리위원장은 앞서 대국민 사과를 했다. [연합뉴스 | 2026.07.01]</div>
       </div>
     </div>`,
     cat: '📰 전국 뉴스 전문 | 2026.07.06',
@@ -2214,25 +2219,28 @@ const ARTICLES = {
 
   /* ─── 설악권뉴스 4개 탭 — 당선인 공약 소개 특집 ─── */
   'news-sokcho': {
-    teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">이병선 시장 취임, 첫 일정은 수돗물·하수시설 현장 점검</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">이병선 시장 취임, 첫 일정은 수돗물·하수시설 현장 점검<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">민선 9기 제30대 속초시장 취임. [속초시 보도자료 | 07.01]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">이병선 시장이 7월 1일 속초문화예술회관에서 민선 9기 제30대 속초시장 취임식을 열었다. 관행적인 의전 대신 정수장 등 생활 현장을 직접 점검하는 것으로 취임 첫 일정을 시작했다. [속초시 보도자료 | 2026.07.01]</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">민생회복지원금 1인당 20만 원, 7월 20일부터 지급</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">민생회복지원금 1인당 20만 원, 7월 20일부터 지급<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">157억 원 규모, 속초사랑상품권으로 지급. [강원도민일보 | 06.10]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">이 시장은 1호 공약인 민생회복지원금을 소득·재산·연령과 무관하게 전 시민에게 속초사랑상품권으로 지급한다고 밝혔다. 규모는 157억 원이며, 지역 내 소비를 통한 소상공인 매출 증대를 기대하고 있다. [강원도민일보 | 2026.06.10]</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">③</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">먹거리단지 200면 주차장 등 생활 인프라 확충 추진</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">먹거리단지 200면 주차장 등 생활 인프라 확충 추진<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">상습 침수지역 하수도 정비도 병행. [속초시 보도자료 | 07.01]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">먹거리단지 내 200면 규모 주차장 조성과 상습 침수지역 하수도 정비 등 생활밀착형 인프라 사업도 병행한다. 대포항 국가거점어항 지정, 속초항 국제여객터미널 등 권역별 성장동력 확보 계획도 제시했다. [속초시 보도자료 | 2026.07.01]</div>
       </div>
     </div>`,
     cat: '📍 속초시 뉴스 전문 | 2026.07.06',
@@ -2247,18 +2255,20 @@ const ARTICLES = {
   },
 
   'news-goseong': {
-    teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">함명준 군수 3선 취임, 외부 초청 없는 간소한 취임식</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">함명준 군수 3선 취임, 외부 초청 없는 간소한 취임식<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">민선 9기 제39대 고성군수. [고성군 보도자료 | 07.01]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">함명준 군수가 7월 1일 민선 9기 제39대 고성군수로 취임했다. 어려운 경제 상황과 지방재정 여건을 고려해 외부 인사 초청 없이 직원 대상의 실용적인 방식으로 취임식을 치렀다. [고성군 보도자료 | 2026.07.01]</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">고향사랑기부금 200만 원 기탁·평화자원 국제포럼 개최</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">고향사랑기부금 200만 원 기탁·평화자원 국제포럼 개최<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">NH농협 고성군지부 기탁, 국제포럼 7월 3일. [강원도민일보 | 07.02]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">NH농협 고성군지부가 7월 2일 고성군청을 방문해 고향사랑기부금 200만 원을 기탁했다. 7월 3일에는 고성군 주최·강원도민일보 주관으로 '평화자원 로컬 브랜딩' 국제포럼이 국회고성연수원에서 열린다. [강원도민일보 | 2026.07.02]</div>
       </div>
     </div>`,
     cat: '📍 고성군 뉴스 전문 | 2026.07.06',
@@ -2272,18 +2282,20 @@ const ARTICLES = {
   },
 
   'news-yangyang': {
-    teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">김정중 군수 취임, "신뢰 회복" 최우선 과제로</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">김정중 군수 취임, "신뢰 회복" 최우선 과제로<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">민선 9기 첫 양양 민주당 소속 군수. [양양군 보도자료 | 07.02]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">김정중 군수가 취임 이후 첫 공식 기자회견에서 투명하고 공정한 행정, 적극적인 현장행정 등을 민선 9기 군정 운영의 기본 가치로 제시했다. 취임 직후 첫 지시사항으로 '민생안정 및 군정혁신 특별대책' 추진을 발표했다. [양양군 보도자료 | 2026.07.02]</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">"인구소멸위기 해법 제시, 주민화합 앞장"</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">"인구소멸위기 해법 제시, 주민화합 앞장"<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">선거 후유증 극복·지역현안 재점검 강조. [강원도민일보 | 06월]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">김 군수는 당선 인사에서 선거 과정의 후유증을 하루빨리 극복하고 지역발전을 위해 화합할 수 있도록 노력하겠다고 밝혔다. 그동안 추진해 온 사업을 철저히 점검하겠다는 방침도 제시했다. [강원도민일보]</div>
       </div>
     </div>`,
     cat: '📍 양양군 뉴스 전문 | 2026.07.06',
@@ -2297,18 +2309,20 @@ const ARTICLES = {
   },
 
   'news-inje': {
-    teaser: `<div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">최상기 군수 3선 취임, 충혼탑 참배로 첫 일정</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">최상기 군수 3선 취임, 충혼탑 참배로 첫 일정<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">민선 9기 제44대 인제군수. [인제군 보도자료 | 07.01]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">최상기 군수가 7월 1일 하늘내린센터 대공연장에서 민선 9기 제44대 인제군수 취임식을 갖고, 충혼탑 참배로 공식 일정을 시작했다. [인제군 보도자료 | 2026.07.01]</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;">
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
-      <div>
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">한강수계기금 지원 축소 문제 제기</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">한강수계기금 지원 축소 문제 제기<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
         <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">내년도 지원액 급감 우려, 도-시군 배분 개선 요구. [강원일보 | 06월]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">최 군수는 당선인 시절 한강수계기금이 연간 300억 원가량 지원되던 것이 내년도에는 67억 원 수준으로 급감할 것으로 예상된다며, 강원도와 시·군 간 배분 구조 개선이 필요하다고 밝혔다. [강원일보]</div>
       </div>
     </div>`,
     cat: '📍 인제군 뉴스 전문 | 2026.07.06',
@@ -2506,6 +2520,18 @@ function openModById(id) {
 function closeMod() {
   document.getElementById('art-modal').classList.remove('on');
   document.body.style.overflow = '';
+}
+
+/* ── [테스트] 전국·설악권 뉴스 항목별 클릭-펼침(아코디언) ──────────
+   news-item 클릭 시 그 안의 news-item-detail만 토글.
+   기존 openModById·전문보기 버튼과는 완전히 별개 기능. ──────── */
+function toggleNewsDetail(el) {
+  const detail = el.querySelector('.news-item-detail');
+  const arrow = el.querySelector('.news-item-arrow');
+  if (!detail) return;
+  const isOpen = detail.style.display === 'block';
+  detail.style.display = isOpen ? 'none' : 'block';
+  if (arrow) arrow.textContent = isOpen ? '▼' : '▲';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMod(); });
 
