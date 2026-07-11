@@ -4,25 +4,36 @@
       "no": 1,
       "filename": "20260615.html",
       "headline": "설악시민뉴스 창간 — 자유·정의·사랑의 시민언론 출범",
-      "date": "2026년 6월 15일"
+      "date": "2026년 6월 15일",
+      "en_filename": null
     },
     {
       "no": 2,
       "filename": "20260622.html",
       "headline": "동해 환경·원전 에너지 전환 · 민선9기 당선인 공약 이행 감시 시작",
-      "date": "2026년 6월 22일"
+      "date": "2026년 6월 22일",
+      "en_filename": null
     },
     {
       "no": 3,
       "filename": "20260629.html",
       "headline": "김건희 1심 징역 7년 · 권금성 케이블카 공공이익 환수 논쟁",
-      "date": "2026년 6월 29일"
+      "date": "2026년 6월 29일",
+      "en_filename": null
     },
     {
       "no": 4,
       "filename": "20260706.html",
       "headline": "3대 메가프로젝트 발표·국회 원 구성 파행 · 설악권 민선 9기 취임",
-      "date": "2026년 7월 6일"
+      "date": "2026년 7월 6일",
+      "en_filename": "en_20260706.html"
+    },
+    {
+      "no": 5,
+      "filename": "index.html",
+      "headline": "6·3 지방선거, 설악권은 어떻게 갈렸나(상) · 검찰 보완수사권 폐지 공방",
+      "date": "2026년 7월 13일",
+      "en_filename": "en.html"
     }
   ]
 }
