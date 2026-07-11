@@ -67,6 +67,9 @@ async function loadArchive() {
     const sorted = [...manifest.issues].reverse();
     listEl.innerHTML = sorted.map(issue => {
       const isCurrent = issue.filename === 'index.html';
+      const enHref = issue.en_filename
+        ? (issue.en_filename === 'en.html' ? 'en.html' : 'archives/' + issue.en_filename)
+        : null;
       return `
         <a class="archive-item${isCurrent ? ' current' : ''}"
            href="${isCurrent ? './' : 'archives/' + issue.filename}">
@@ -76,7 +79,8 @@ async function loadArchive() {
           </div>
           <div class="archive-headline">${issue.headline}</div>
           <div class="archive-date">${issue.date}</div>
-        </a>`;
+        </a>
+        ${enHref ? `<a class="archive-en-link" href="${enHref}">🌐 English</a>` : ''}`;
     }).join('');
   } catch(e) {
     // manifest가 없을 때 — 제5호만 표시
@@ -86,6 +90,7 @@ async function loadArchive() {
         <div class="archive-headline">6·3 지방선거, 설악권은 어떻게 갈렸나(상) · 검찰 보완수사권 폐지 공방</div>
         <div class="archive-date">2026년 7월 13일</div>
       </a>
+      <a class="archive-en-link" href="en.html">🌐 English</a>
       <div class="archive-loading" style="font-size:11px;margin-top:8px;">
         지난 호는 발행 후 순차적으로 등록됩니다.
       </div>`;
@@ -981,6 +986,16 @@ footer {
   vertical-align: middle;
   letter-spacing: 0.5px;
 }
+.archive-en-link {
+  display: block;
+  padding: 4px 16px 10px;
+  margin-top: -6px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.archive-en-link:hover { color: var(--gold); }
 /* 패널 열릴 때 배경 오버레이 */
 .archive-overlay {
   display: none;
