@@ -54,7 +54,7 @@ async function loadArchive() {
 
   try {
     // GitHub raw 경로에서 manifest.json 로드
-    const res = await fetch('/archives/manifest.json');
+    const res = await fetch('archives/manifest.json');
     if (!res.ok) throw new Error('manifest 없음');
     const manifest = await res.json();
 
@@ -68,11 +68,11 @@ async function loadArchive() {
     listEl.innerHTML = sorted.map(issue => {
       const isCurrent = issue.filename === 'index.html';
       const enHref = issue.en_filename
-        ? (issue.en_filename === 'en.html' ? '/en.html' : '/archives/' + issue.en_filename)
+        ? (issue.en_filename === 'en.html' ? 'en.html' : 'archives/' + issue.en_filename)
         : null;
       return `
         <a class="archive-item${isCurrent ? ' current' : ''}"
-           href="${isCurrent ? '/' : '/archives/' + issue.filename}">
+           href="${isCurrent ? './' : 'archives/' + issue.filename}">
           <div class="archive-num">
             ${isCurrent ? '현재호' : '제' + issue.no + '호'}
             ${isCurrent ? '<span class="archive-badge">최신</span>' : ''}
@@ -85,12 +85,12 @@ async function loadArchive() {
   } catch(e) {
     // manifest가 없을 때 — 제5호만 표시
     listEl.innerHTML = `
-      <a class="archive-item current" href="/">
+      <a class="archive-item current" href="./">
         <div class="archive-num">제5호 <span class="archive-badge">최신</span></div>
         <div class="archive-headline">6·3 지방선거, 설악권은 어떻게 갈렸나(상) · 검찰 보완수사권 폐지 공방</div>
         <div class="archive-date">2026년 7월 13일</div>
       </a>
-      <a class="archive-en-link" href="/en.html">🌐 English</a>
+      <a class="archive-en-link" href="en.html">🌐 English</a>
       <div class="archive-loading" style="font-size:11px;margin-top:8px;">
         지난 호는 발행 후 순차적으로 등록됩니다.
       </div>`;
@@ -1382,7 +1382,7 @@ footer {
 <div class="topbar">
   <span id="today-date"></span>
   <div style="display:flex;gap:6px;">
-    <a href="/en.html" class="archive-trigger" style="text-decoration:none;">🌐 English</a>
+    <a href="en.html" class="archive-trigger" style="text-decoration:none;">🌐 English</a>
     <button class="archive-trigger" onclick="toggleArchive()" title="이전 신문 보기">
       📂 이전 신문
     </button>
@@ -1740,7 +1740,7 @@ footer {
     <p class="section-lede"><span class="art-cat">이슈&amp;토론 No.2 | 2026.07.13 (제헌절 특집)</span>
       사법시험 부활, 옳은가
     </p>
-    <p>7월 17일은 제헌절, 대한민국 헌법이 제정·공포된 날입니다. 헌법은 법 앞의 평등을 선언합니다. 로스쿨 3년 학비는 평균 3,000만 원을 넘어, 경제적 여유가 있는 집안 출신만 법조인이 될 수 있다는 법조 귀족화 우려가 현실이 됐습니다.</p>
+    <p>7월 17일은 제헌절, 대한민국 헌법이 제정·공포된 날입니다. 헌법은 법 앞의 평등을 선언합니다. 로스쿨 3년 학비는 평균 3,000만 원을 넘습니다. 경제적 여유가 있는 집안 출신만 법조인이 되기 유리해졌다는 법조 귀족화 우려가 제기됩니다.</p>
     <div class="debate-cards" style="display:flex;gap:8px;margin:12px 0;flex-wrap:wrap;">
       <div style="flex:1;min-width:140px;background:#EAF5EE;border:1px solid #7DB87D;border-radius:6px;padding:10px;font-size:12px;">
         <div style="font-weight:700;color:#1F7A4D;margin-bottom:5px;">👍 부활해야 한다</div>
@@ -2474,7 +2474,7 @@ const ARTICLES = {
     meta: '설악시민뉴스 편집부 | 2026.07.13',
     badge: '토론',
     body: `<div style="background:#F5F0E0;border-radius:6px;padding:6px 12px;font-size:11px;font-weight:700;color:#7a5b00;margin-bottom:10px;display:inline-block;">🗓 제헌절(7/17) 기념 특집</div>
-<p>7월 17일은 제헌절, 대한민국 헌법이 제정·공포된 날입니다. 헌법은 법 앞의 평등을 선언합니다. 그렇다면 법조인이 되는 길도 평등하게 열려 있어야 할까요. 로스쿨 3년 학비는 평균 3,000만 원을 넘습니다. 경제적 여유가 있는 집안 출신만 법조인이 될 수 있다는 법조 귀족화 우려가 현실이 됐습니다. 설악 지역처럼 지방에 사는 청년에게 이 문제는 더욱 절박합니다.</p>
+<p>7월 17일은 제헌절, 대한민국 헌법이 제정·공포된 날입니다. 헌법은 법 앞의 평등을 선언합니다. 그렇다면 법조인이 되는 길도 평등하게 열려 있어야 할까요. 로스쿨 3년 학비는 평균 3,000만 원을 넘습니다. 경제적 여유가 있는 집안 출신만 법조인이 되기 유리해졌다는 법조 귀족화 우려가 제기됩니다. 설악 지역처럼 지방에 사는 청년에게 이 문제는 더욱 절박합니다.</p>
 <div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👍 부활해야 한다</div>
 <p style="background:#EAF5EE;border:1px solid #7DB87D;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;">사법시험은 학벌·재력과 무관하게 실력으로 승부할 수 있는 기회의 사다리였습니다. 실제로 과거 사시 합격자 중 상당수가 야간 대학·독학으로 시험을 준비한 사례가 있습니다. 연간 50~150명 소규모로 병행하는 방안도 검토 중입니다. 지역 청년들이 경제적 여건에 관계없이 법조계에 진출할 기회가 보장되어야 합니다.</p>
 <div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👎 부활해선 안 된다</div>
