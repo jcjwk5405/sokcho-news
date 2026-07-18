@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>설악시민뉴스 앱처럼 설치하기 — 무료·광고없음</title>
+<meta name="description" content="설악시민뉴스를 홈 화면에 추가하면 앱처럼 바로 실행됩니다. 앱스토어 설치 불필요, 광고 없음, 개인정보 수집 없음.">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="설악시민뉴스">
+<meta property="og:url" content="https://seorakcitizennews.kr/install.html">
+<meta property="og:title" content="설악시민뉴스 앱처럼 설치하기">
+<meta property="og:description" content="홈 화면에 추가하면 앱처럼 바로 실행됩니다. 앱스토어 불필요 · 광고 없음 · 개인정보 수집 없음. 안드로이드·아이폰 설치 방법 안내.">
+<meta property="og:image" content="https://seorakcitizennews.kr/icons/icon-192.png">
+
+<meta name="theme-color" content="#1a2744">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #e8ecf1;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px 40px;
+  }
+  .card {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+    overflow: hidden;
+  }
+  .hd {
+    background: #1a2744;
+    color: #fff;
+    padding: 28px 24px 22px;
+    text-align: center;
+  }
+  .hd .logo {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+  .hd .en {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #C8A84B;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  .hd .headline {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .body { padding: 20px 22px 26px; }
+  .badges {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .badge {
+    font-size: 11px;
+    color: #166534;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+  .tab-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #1B3A6B;
+    background: #f1f5f9;
+    color: #1B3A6B;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .tab-btn.active { background: #1B3A6B; color: #fff; }
+  ol {
+    font-size: 15px;
+    line-height: 2.1;
+    color: #1a1a1a;
+    padding-left: 20px;
+    margin: 0;
+  }
+  ol strong { color: #1B3A6B; }
+  .foot-note {
+    margin-top: 18px;
+    padding: 12px 14px;
+    background: #f8fafc;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.6;
+    text-align: center;
+  }
+  .site-link {
+    display: block;
+    text-align: center;
+    margin-top: 22px;
+    background: #166534;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="hd">
+    <div class="logo">설악시민뉴스</div>
+    <div class="en">SEORAK CITIZENS NEWS</div>
+    <div class="headline">📲 앱처럼 설치하세요</div>
+  </div>
+  <div class="body">
+    <div class="badges">
+      <span class="badge">✅ 앱스토어 불필요</span>
+      <span class="badge">✅ 광고 없음</span>
+      <span class="badge">✅ 개인정보 수집 없음</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" id="btn-and" onclick="showTab('and')">🤖 안드로이드</button>
+      <button class="tab-btn" id="btn-ios" onclick="showTab('ios')">🍎 아이폰</button>
+    </div>
+
+    <div id="tab-and">
+      <ol>
+        <li>크롬 브라우저로 <strong>seorakcitizennews.kr</strong> 접속</li>
+        <li>오른쪽 위 <strong>⋮ (점 세 개)</strong> 메뉴 터치</li>
+        <li><strong>"홈 화면에 추가"</strong> 선택</li>
+        <li><strong>"추가"</strong> 확인 → 설치 완료</li>
+      </ol>
+    </div>
+    <div id="tab-ios" style="display:none;">
+      <ol>
+        <li>사파리 브라우저로 <strong>seorakcitizennews.kr</strong> 접속</li>
+        <li>하단 가운데 <strong>□↑ 공유 버튼</strong> 터치</li>
+        <li><strong>"홈 화면에 추가"</strong> 선택</li>
+        <li>오른쪽 위 <strong>"추가"</strong> 터치 → 설치 완료</li>
+      </ol>
+    </div>
+
+    <div class="foot-note">한 번 설치해두시면 다음부터는 홈 화면 아이콘만 누르시면 됩니다.</div>
+
+    <a class="site-link" href="https://seorakcitizennews.kr">📰 설악시민뉴스 바로가기</a>
+  </div>
+</div>
+
+<script>
+function showTab(which) {
+  document.getElementById('tab-and').style.display = which === 'and' ? 'block' : 'none';
+  document.getElementById('tab-ios').style.display = which === 'ios' ? 'block' : 'none';
+  document.getElementById('btn-and').classList.toggle('active', which === 'and');
+  document.getElementById('btn-ios').classList.toggle('active', which === 'ios');
+}
+</script>
+
+</body>
+</html>
