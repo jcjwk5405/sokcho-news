@@ -172,6 +172,21 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: -1px;
 }
 .masthead-logo span { color: var(--gold); }
+.masthead-en {
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+@media (max-width: 480px) {
+  .masthead-en { font-size: 10px; letter-spacing: 2.5px; }
+}
+@media (min-width: 900px) {
+  .masthead-en { font-size: 14px; letter-spacing: 4.5px; }
+}
 .masthead-tagline {
   color: rgba(255,255,255,0.92);
   font-size: 13px;
@@ -1404,6 +1419,7 @@ footer {
 <!-- MASTHEAD -->
 <header class="masthead">
   <div class="masthead-logo">설악<span>시민</span>뉴스</div>
+  <div class="masthead-en">SEORAK CITIZENS NEWS</div>
   <div class="masthead-tagline">고성 <span style="color:var(--gold);">·</span> 속초 <span style="color:var(--gold);">·</span> 양양 <span style="color:var(--gold);">·</span> 인제</div>
   <div class="masthead-date" id="header-issue"></div>
 </header>
