@@ -24,22 +24,29 @@
     {
       "no": 4,
       "filename": "20260706.html",
-      "headline": "청년 정착 3조건 · 초등학생 스마트폰 사용 금지 논쟁",
+      "headline": "청년이 뿌리 내리려면 세 가지가 필요합니다 · 초등학교 스마트폰 금지 이슈&토론",
       "date": "2026년 7월 6일",
-      "en_filename": "en_20260706.html"
+      "en_filename": "en_trial_issue4.html"
     },
     {
       "no": 5,
       "filename": "20260713.html",
-      "headline": "6·3 지방선거 설악권 결과 분석(상) · 검찰 보완수사권 폐지 공방 · 사법시험 부활 논쟁(제헌절 특집)",
+      "headline": "6·3 지방선거, 설악권은 어떻게 갈렸나 (상) — 엇갈린 결과",
       "date": "2026년 7월 13일",
-      "en_filename": "en_20260713.html"
+      "en_filename": null
     },
     {
       "no": 6,
-      "filename": "index.html",
-      "headline": "6·3 지방선거 설악권 결과 분석(하) · 검찰 보완수사권 갑론을박 · 사관학교 통합·최저임금 확정",
+      "filename": "20260720.html",
+      "headline": "6·3 지방선거, 설악권은 어떻게 갈렸나(하) · 검찰 보완수사권 갑론을박",
       "date": "2026년 7월 20일",
+      "en_filename": null
+    },
+    {
+      "no": 7,
+      "filename": "index.html",
+      "headline": "임금 직접지급·시의회 감시 사설 2편 · 주4일 근무제 이슈&토론",
+      "date": "2026년 7월 27일",
       "en_filename": "en.html"
     }
   ]
