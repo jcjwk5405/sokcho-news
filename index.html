@@ -155,6 +155,29 @@ a { text-decoration: none; color: inherit; }
 .topbar-links a { color: rgba(255,255,255,0.6); }
 .topbar-links a:hover { color: var(--gold-light); }
 
+/* ── PDF 다운로드 바 (마스트헤드 바로 아래) ── */
+.pdf-download-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--navy-mid);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding: 9px 16px;
+  text-align: center;
+}
+.pdf-download-bar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold-light);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+.pdf-download-bar a:hover { color: #fff; }
+.pdf-download-bar .pdf-icon { font-size: 14px; }
+
 /* ── MASTHEAD ── */
 .masthead {
   background: var(--navy);
@@ -1424,6 +1447,13 @@ footer {
   <div class="masthead-tagline">고성 <span style="color:var(--gold);">·</span> 속초 <span style="color:var(--gold);">·</span> 양양 <span style="color:var(--gold);">·</span> 인제</div>
   <div class="masthead-date" id="header-issue"></div>
 </header>
+
+<!-- PDF 다운로드 바 -->
+<div class="pdf-download-bar">
+  <a href="archives/pdf/20260727.pdf" download>
+    <span class="pdf-icon">📄</span>이번 호 지면 PDF 다운로드
+  </a>
+</div>
 
 <!-- PUBLISH SCHEDULE -->
 
