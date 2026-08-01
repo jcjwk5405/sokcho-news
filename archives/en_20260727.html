@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seorak Citizens News — English Trial Edition, Issue 7</title>
+<meta name="description" content="Seorak Citizens News in English — a trial edition for residents of Sokcho, Goseong, Yangyang, and Inje who live in the Seorak region of Gangwon.">
+<style>
+  :root{
+    --navy:#1B3A6B;
+    --navy-mid:#2E75B6;
+    --gold:#C8A84B;
+    --paper:#FAF8F3;
+    --ink:#1a1a1a;
+    --muted:#5b6472;
+    --line:#e2e2df;
+    --green:#1F7A4D;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Georgia','Noto Serif','Times New Roman',serif;
+    line-height:1.65;
+  }
+  header{
+    background:var(--navy);
+    color:#fff;
+    text-align:center;
+    padding:28px 16px 20px;
+    border-bottom:4px solid var(--gold);
+    position:relative;
+  }
+  .lang-btn{
+    position:absolute;
+    top:14px;
+    right:14px;
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    background:var(--gold);
+    color:#3a2e00;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.04em;
+    padding:5px 10px;
+    border-radius:20px;
+    text-decoration:none;
+    font-family:system-ui,-apple-system,sans-serif;
+    z-index:5;
+  }
+  .lang-btn:hover{background:#fff;}
+  .kr-name{
+    font-size:14px;
+    letter-spacing:2px;
+    opacity:.75;
+    margin-bottom:4px;
+  }
+  .en-name{
+    font-size:32px;
+    font-weight:700;
+    letter-spacing:.5px;
+  }
+  .tagline{
+    font-size:13px;
+    opacity:.85;
+    margin-top:8px;
+  }
+  .trial-badge{
+    display:inline-block;
+    margin-top:12px;
+    background:var(--gold);
+    color:#3a2e00;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.06em;
+    padding:4px 12px;
+    border-radius:20px;
+  }
+  main{
+    max-width:640px;
+    margin:0 auto;
+    padding:24px 18px 60px;
+  }
+  .notice-box{
+    background:#fff8e6;
+    border:1px solid #e8d9a8;
+    border-left:4px solid var(--gold);
+    border-radius:8px;
+    padding:14px 16px;
+    font-size:14.5px;
+    color:#6b5400;
+    margin-bottom:28px;
+    font-family:system-ui,-apple-system,sans-serif;
+    line-height:1.6;
+  }
+  section{margin-bottom:36px;}
+  .main-section{
+    margin-bottom:14px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:0 18px;
+  }
+  .main-section summary{
+    cursor:pointer;
+    list-style:none;
+    padding:16px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .main-section summary::-webkit-details-marker{display:none;}
+  .main-section summary::after{
+    content:"▾";
+    font-size:18px;
+    color:var(--navy-mid);
+    flex-shrink:0;
+    transition:transform .15s ease;
+  }
+  .main-section[open] summary::after{
+    transform:rotate(180deg);
+  }
+  .main-section summary .summary-text{
+    display:block;
+  }
+  .main-section summary h2{
+    border-bottom:none;
+    padding-bottom:0;
+    margin:2px 0 0;
+  }
+  .main-section:not([open]) summary h2{
+    font-size:17px;
+    color:var(--ink);
+  }
+  .main-section > *:not(summary){
+    padding-bottom:18px;
+  }
+  .main-section > h3:first-of-type{
+    margin-top:4px;
+  }
+  .section-label{
+    font-family:system-ui,-apple-system,sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--navy-mid);
+    margin-bottom:6px;
+  }
+  h2{
+    font-size:21px;
+    margin:0 0 14px;
+    color:var(--navy);
+    border-bottom:2px solid var(--navy);
+    padding-bottom:8px;
+  }
+  h3{
+    font-size:16px;
+    margin:18px 0 6px;
+    color:var(--navy);
+  }
+  p{margin:0 0 13px;font-size:16.5px;}
+  .county-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid var(--navy);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-bottom:12px;
+  }
+  .county-card.goseong{border-left-color:#3f7a8c;}
+  .county-card.yangyang{border-left-color:#e08a4f;}
+  .county-card.inje{border-left-color:#2f6b4f;}
+  h3{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .county-icon{
+    font-size:20px;
+    line-height:1;
+  }
+  .county-name{
+    font-family:system-ui,-apple-system,sans-serif;
+    font-size:11px;
+    font-weight:700;
+    color:var(--navy-mid);
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .county-card p{font-size:16px;margin-bottom:9px;}
+  .county-card p:last-child{margin-bottom:0;}
+  .highlight{
+    background:#eaf5ee;
+    border-left:3px solid var(--green);
+    padding:10px 14px;
+    font-size:15px;
+    border-radius:4px;
+    margin-top:8px;
+  }
+  .term-card{
+    background:#f0f6ff;
+    border:1px solid #b8d4f0;
+    border-left:4px solid var(--navy-mid);
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:10px;
+  }
+  .term-card.law{background:#f6f0fb;border-color:#d4bfe8;border-left-color:#7a4fa8;}
+  .term-card.economy{background:#fff8ec;border-color:#eeddb0;border-left-color:#b8862f;}
+  .term-card.law .term-domain{color:#7a4fa8;}
+  .term-card.economy .term-domain{color:#b8862f;}
+  .term-name{
+    font-size:16.5px;
+    font-weight:700;
+    color:var(--navy);
+  }
+  .term-domain{
+    font-family:system-ui,-apple-system,sans-serif;
+    font-size:11px;
+    color:var(--navy-mid);
+    font-weight:600;
+    margin-left:6px;
+  }
+  .term-card p{font-size:15px;margin:7px 0 0;color:#444;}
+  footer{
+    text-align:center;
+    font-family:system-ui,-apple-system,sans-serif;
+    font-size:11px;
+    color:var(--muted);
+    padding:24px 16px 40px;
+    border-top:1px solid var(--line);
+  }
+  footer a{color:var(--navy-mid);}
+  .feedback-box{
+    background:var(--navy);
+    color:#fff;
+    border-radius:8px;
+    padding:16px 18px;
+    text-align:center;
+    font-family:system-ui,-apple-system,sans-serif;
+  }
+  .feedback-box p{font-size:15px;color:#dce6f2;margin-bottom:8px;}
+  .glossary{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .gloss-item{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:8px 12px;
+    font-family:system-ui,-apple-system,sans-serif;
+    flex:1 1 260px;
+  }
+  .gloss-item summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:8px;
+  }
+  .gloss-item summary::-webkit-details-marker{display:none;}
+  .gloss-item summary::after{
+    content:"▸";
+    color:var(--navy-mid);
+    font-size:13px;
+    margin-left:auto;
+    transition:transform .15s ease;
+  }
+  .gloss-item[open] summary::after{
+    transform:rotate(90deg);
+  }
+  .gloss-item[open]{
+    background:#f7fbff;
+  }
+  .gloss-word{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    color:var(--navy);
+    font-style:italic;
+  }
+  .gloss-ipa{
+    display:block;
+    font-size:11px;
+    color:var(--navy-mid);
+    font-style:normal;
+    font-family:'Doulos SIL','Charis SIL','Lucida Sans Unicode',sans-serif;
+    margin-top:1px;
+  }
+  .gloss-mean{
+    display:block;
+    font-size:14px;
+    color:#444;
+    margin-top:8px;
+  }
+  .gloss-ex{
+    display:block;
+    font-size:12.5px;
+    color:var(--muted);
+    margin-top:5px;
+    padding-top:5px;
+    border-top:1px dashed var(--line);
+    font-style:italic;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="lang-btn" title="한글판으로">🌐 한글</a>
+  <div class="kr-name">설악시민뉴스</div>
+  <div class="en-name">Seorak Citizens News</div>
+  <div class="tagline">Sokcho · Goseong · Yangyang · Inje, Gangwon</div>
+  <span class="trial-badge">ENGLISH TRIAL EDITION — ISSUE 7</span>
+</header>
+
+<main>
+
+  <div class="notice-box">
+    📣 This is a trial English edition for residents of the Seorak region who read English. It covers three sections from this week's Korean edition: the Editor's Letter, County Notices, and This Week's Terms.
+  </div>
+
+  <details class="main-section">
+    <summary><span class="summary-text">
+      <span class="section-label">Editor's Letter</span>
+      <h2>The Truth Is Still in the Fog</h2>
+    </span></summary>
+    <p>This week's paper carries two editorials at once. One asks how Seorak's four counties can make sure construction workers get paid on time when big tourism projects break ground. The other asks local councils to keep watching their mayors and county chiefs closely. Our debate topic this week asks a different question: should Korea move to a four-day workweek?</p>
+    <p>Nationally, the ruling party confirmed a plan to remove a prosecutorial power, and the opposition promised to fight it in parliament. The US also set a new 12.5% tariff on Korean goods this week. In Incheon, a warehouse fire at a Coupang logistics center was finally put out — and then a fire broke out at another Coupang warehouse just a few kilometers away. This week's featured Chinese saying, roughly "lost in a five-mile fog," captures the mood: several stories this week share one thing in common — the full truth still hasn't come out.</p>
+    <p>A new Gallup poll shows the president's approval rating dipped slightly to 51%. Disapproval over housing policy jumped sharply, matching what this week's newspaper editorials focused on most.</p>
+  </details>
+
+  <details class="main-section">
+    <summary><span class="summary-text">
+      <span class="section-label">County Notices</span>
+      <h2>Summer Season Gets Underway</h2>
+    </span></summary>
+
+    <h3><span class="county-icon">🏙️</span> Sokcho</h3>
+    <div class="county-card">
+      <div class="county-name">🚄 City strategy</div>
+      <p>At a regional development forum, Mayor Lee Byung-sun laid out his plan for Sokcho's future: turning the city into a "compact city" ahead of two new rail lines opening in the coming years.</p>
+    </div>
+    <div class="county-card">
+      <div class="county-name">💰 Benefit for residents</div>
+      <p>The <strong>₩200,000</strong> livelihood recovery grant is still being paid out to every Sokcho resident. If you haven't applied yet, visit your local community center.</p>
+    </div>
+
+    <h3><span class="county-icon">🕊️</span> Goseong</h3>
+    <div class="county-card goseong">
+      <div class="county-name">💰 For young residents</div>
+      <p>Goseong County has extended its second round of the "Youth Double Savings" program, which matches savings for residents aged 19–39. Contact the county's Economy and Sports division to apply.</p>
+    </div>
+    <div class="county-card goseong">
+      <div class="county-name">📢 Notice</div>
+      <p>The county has posted this month's artillery firing schedule for a nearby military unit. Residents in the area can check the exact dates on the county website.</p>
+    </div>
+
+    <h3><span class="county-icon">🏄</span> Yangyang</h3>
+    <div class="county-card yangyang">
+      <div class="county-name">🎉 Festival</div>
+      <p>The "2026 Yangyang Summer Festival" opens July 31 at Naksan Beach and runs through August 1, with music, performances, and activities for all ages.</p>
+    </div>
+
+    <h3><span class="county-icon">⛰️</span> Inje</h3>
+    <div class="county-card inje">
+      <div class="county-name">🏁 Ongoing event</div>
+      <p>Motorsport events, including the "2026 Hyundai N Festival," continue through July at Inje Speedium.</p>
+    </div>
+    <div class="county-card inje">
+      <div class="county-name">💧 Local issue</div>
+      <p>Chief Choi Sang-gi continues to press the province and central government for a fairer share of Han River Basin Fund money, which is expected to drop sharply for Inje next year.</p>
+    </div>
+  </details>
+
+  <details class="main-section">
+    <summary><span class="summary-text">
+      <span class="section-label">This Week's Terms</span>
+      <h2>Words in the News, Explained</h2>
+    </span></summary>
+    <p style="font-size:15px;color:var(--muted);">Three terms that came up often in this week's national newspaper editorials — explained simply, so you can follow the news even if you're new to Korean politics and policy.</p>
+
+    <div class="term-card">
+      <span class="term-name">Filibuster</span><span class="term-domain">POLITICS</span>
+      <p>A way for lawmakers to delay a vote by speaking for as long as they legally can, without a time limit. It's a legal form of protest, but once the majority party votes to end debate, the bill still moves to a final vote.</p>
+    </div>
+
+    <div class="term-card law">
+      <span class="term-name">Parliamentary Inquiry</span><span class="term-domain">LAW</span>
+      <p>A formal investigation that the National Assembly can launch into a specific issue, using its legal power to summon witnesses and demand documents. This week, ruling and opposition parties disagreed over whether to extend one looking into a local election vote-count scandal.</p>
+    </div>
+
+    <div class="term-card economy">
+      <span class="term-name">Dutch Disease</span><span class="term-domain">ECONOMY</span>
+      <p>A situation where a booming industry — like semiconductors — makes a country's other industries less competitive. The name comes from the Netherlands, where a 1970s natural-gas boom weakened its manufacturing sector.</p>
+    </div>
+  </details>
+
+  <details class="main-section">
+    <summary><span class="summary-text">
+      <span class="section-label">Vocabulary Note</span>
+      <h2>Today's Vocabulary</h2>
+    </span></summary>
+    <p style="font-size:14px;color:var(--muted);">Tap a word to see its meaning and an example.</p>
+    <div class="glossary">
+      <details class="gloss-item">
+        <summary><span class="gloss-word">confirm(ed)</span><span class="gloss-ipa">/kənˈfɜːrm(d)/</span></summary>
+        <span class="gloss-mean">확정하다, 확정된</span><span class="gloss-ex">"The ruling party confirmed a plan to remove a prosecutorial power."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">tariff</span><span class="gloss-ipa">/ˈtærɪf/</span></summary>
+        <span class="gloss-mean">관세</span><span class="gloss-ex">"The US set a new 12.5% tariff on Korean goods this week."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">logistics center</span><span class="gloss-ipa">/ləˈdʒɪstɪks ˈsentər/</span></summary>
+        <span class="gloss-mean">물류센터</span><span class="gloss-ex">"A fire broke out at another Coupang logistics center nearby."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">approval rating</span><span class="gloss-ipa">/əˈpruːvəl ˈreɪtɪŋ/</span></summary>
+        <span class="gloss-mean">직무 지지율, 승인율</span><span class="gloss-ex">"A new Gallup poll shows the president's approval rating dipped to 51%."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">disapproval</span><span class="gloss-ipa">/ˌdɪsəˈpruːvəl/</span></summary>
+        <span class="gloss-mean">부정 평가, 반대</span><span class="gloss-ex">"Disapproval over housing policy jumped sharply this week."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">construction worker</span><span class="gloss-ipa">/kənˈstrʌkʃən ˈwɜːrkər/</span></summary>
+        <span class="gloss-mean">건설 노동자</span><span class="gloss-ex">"How can counties make sure construction workers get paid on time?"</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">oversight</span><span class="gloss-ipa">/ˈoʊvərsaɪt/</span></summary>
+        <span class="gloss-mean">감시, 감독</span><span class="gloss-ex">"The editorial asks local councils to keep close oversight of their mayors."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">workweek</span><span class="gloss-ipa">/ˈwɜːrkwiːk/</span></summary>
+        <span class="gloss-mean">근무 주간, 근무 일수</span><span class="gloss-ex">"This week's debate asks whether Korea should move to a four-day workweek."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">put down roots</span><span class="gloss-ipa">/pʊt daʊn ruːts/</span></summary>
+        <span class="gloss-mean">뿌리를 내리다, 정착하다</span><span class="gloss-ex">"Direct wage payment could help construction workers put down roots in Seorak."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">extend(ed)</span><span class="gloss-ipa">/ɪkˈstend(ɪd)/</span></summary>
+        <span class="gloss-mean">연장하다, 연장된</span><span class="gloss-ex">"Goseong County has extended its youth savings program."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">competitive</span><span class="gloss-ipa">/kəmˈpetətɪv/</span></summary>
+        <span class="gloss-mean">경쟁력 있는</span><span class="gloss-ex">"A booming industry can make a country's other industries less competitive."</span>
+      </details>
+      <details class="gloss-item">
+        <summary><span class="gloss-word">summon</span><span class="gloss-ipa">/ˈsʌmən/</span></summary>
+        <span class="gloss-mean">소환하다</span><span class="gloss-ex">"A parliamentary inquiry can summon witnesses and demand documents."</span>
+      </details>
+    </div>
+  </details>
+
+  <div class="feedback-box">
+    <p>Was this useful to you? We'd like to know whether to keep making this every week.</p>
+    <p style="font-weight:700;">📧 jcjwk54@gmail.com</p>
+  </div>
+
+</main>
+
+<footer>
+  Seorak Citizens News (설악시민뉴스) — an independent weekly newspaper for residents of Sokcho, Goseong, Yangyang, and Inje.<br>
+  This English edition is a trial and covers only part of the full Korean paper.<br>
+  Full Korean edition: <a href="https://seorakcitizennews.kr">seorakcitizennews.kr</a>
+</footer>
+
+</body>
+</html>
