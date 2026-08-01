@@ -2702,7 +2702,7 @@ if (window.innerWidth <= 600) {
 
   /* 페이지 로드 시 Firebase에서 실시간 투표 수 복원 */
   function initVotes() {
-    var ids = ['issue1','issue2','issue3','issue4','no4','no5','no6','no7'];
+    var ids = ['issue1','issue2','issue3','issue4','no4','no5','no6','no7','no8'];
     ids.forEach(function(id) {
       var voted;
       try { voted = localStorage.getItem('vote_' + id); } catch(e) {
