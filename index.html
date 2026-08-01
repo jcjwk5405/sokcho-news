@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>설악시민뉴스 — 자유·정의·사랑의 시민언론 | 제7호</title>
-<meta name="description" content="강원 설악권(속초·고성·양양·인제) 시민을 위한 독립 주간 인터넷 신문. 제7호(2026.07.27) — 임금 직접지급·시의회 감시 사설 2편, 검찰 보완수사권 폐지 당론 확정, 부동산 정책 여론 급랭, 주4일 근무제 이슈&토론을 다룹니다.">
+<title>설악시민뉴스 — 자유·정의·사랑의 시민언론 | 제8호</title>
+<meta name="description" content="강원 설악권(속초·고성·양양·인제) 시민을 위한 독립 주간 인터넷 신문. 제8호(2026.08.03) — 노인과 아이가 함께 웃는 설악권 사설, 형소법 공소기각 조항·국회의장 개헌 발언 논란, NBS 전국지표조사 제185호, 노인 요양 이슈&토론을 다룹니다.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="설악시민뉴스">
 <meta property="og:url" content="https://seorakcitizennews.kr">
-<meta property="og:title" content="설악시민뉴스 제7호 — 임금 직접지급, 설악권 개발의 새 기준">
-<meta property="og:description" content="임금 직접지급·시의회 감시 사설 2편, 5대 신문 사설 분석(오리무중), 한국갤럽 제670호 여론조사, 주4일 근무제 이슈&토론까지 매주 월요일 발행.">
+<meta property="og:title" content="설악시민뉴스 제8호 — 노인과 아이가 함께 웃는 설악권을 꿈꿉니다">
+<meta property="og:description" content="노인과 아이가 함께 웃는 설악권 사설, 5대 신문 사설 분석(자중지란), NBS 전국지표조사 제185호, 노인 요양 이슈&토론까지 매주 월요일 발행.">
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1a2744">
@@ -83,12 +83,12 @@ async function loadArchive() {
         ${enHref ? `<a class="archive-en-link" href="${enHref}">🌐 English</a>` : ''}`;
     }).join('');
   } catch(e) {
-    // manifest가 없을 때 — 제5호만 표시
+    // manifest가 없을 때 — 최신호만 표시
     listEl.innerHTML = `
       <a class="archive-item current" href="./">
-        <div class="archive-num">제7호 <span class="archive-badge">최신</span></div>
-        <div class="archive-headline">임금 직접지급·시의회 감시 사설 2편 · 주4일 근무제 이슈&토론</div>
-        <div class="archive-date">2026년 7월 27일</div>
+        <div class="archive-num">제8호 <span class="archive-badge">최신</span></div>
+        <div class="archive-headline">노인과 아이가 함께 웃는 설악권을 꿈꿉니다 · 노인 요양 이슈&토론</div>
+        <div class="archive-date">2026년 8월 3일</div>
       </a>
       <a class="archive-en-link" href="en.html">🌐 English</a>
       <div class="archive-loading" style="font-size:11px;margin-top:8px;">
@@ -1450,7 +1450,7 @@ footer {
 
 <!-- PDF 다운로드 바 -->
 <div class="pdf-download-bar">
-  <a href="archives/pdf/20260727.pdf" download>
+  <a href="archives/pdf/20260803.pdf" download>
     <span class="pdf-icon">📄</span>이번 호 지면 PDF 다운로드
   </a>
 </div>
@@ -1484,16 +1484,16 @@ footer {
   <div class="ticker-label">속보</div>
   <div class="ticker-scroll">
     <div class="ticker-inner">
-      <span>민주당, 검찰 보완수사권 폐지 당론 확정…국민의힘 필리버스터 예고</span>
-      <span>미국, 60개국에 강제노동 관세 확정…한국 사실상 12.5%</span>
-      <span>인천 쿠팡 물류센터 화재 109시간 만에 완진…7km 거리 또 화재</span>
-      <span>한국갤럽 제670호, 부동산 정책 부정평가 이유 22%(▲11%p) 급등</span>
-      <span>설악시민뉴스 제7호 — 임금 직접지급·시의회 감시 사설 2편 동시 게재</span>
-      <span>민주당, 검찰 보완수사권 폐지 당론 확정…국민의힘 필리버스터 예고</span>
-      <span>미국, 60개국에 강제노동 관세 확정…한국 사실상 12.5%</span>
-      <span>인천 쿠팡 물류센터 화재 109시간 만에 완진…7km 거리 또 화재</span>
-      <span>한국갤럽 제670호, 부동산 정책 부정평가 이유 22%(▲11%p) 급등</span>
-      <span>설악시민뉴스 제7호 — 임금 직접지급·시의회 감시 사설 2편 동시 게재</span>
+      <span>국회, 형소법에 공소기각 조항 추가해 본회의 통과…법무장관 사의</span>
+      <span>조정식 국회의장 "현직 대통령 연임은 국민의 선택 문제" 발언 파문</span>
+      <span>코스피 장중 6000선 붕괴…레버리지 ETF발 변동성 확산</span>
+      <span>신임 주한미국대사 스틸 부임…한미관계 이례적 주목</span>
+      <span>설악시민뉴스 제8호 — 노인과 아이가 함께 웃는 설악권을 꿈꿉니다</span>
+      <span>국회, 형소법에 공소기각 조항 추가해 본회의 통과…법무장관 사의</span>
+      <span>조정식 국회의장 "현직 대통령 연임은 국민의 선택 문제" 발언 파문</span>
+      <span>코스피 장중 6000선 붕괴…레버리지 ETF발 변동성 확산</span>
+      <span>신임 주한미국대사 스틸 부임…한미관계 이례적 주목</span>
+      <span>설악시민뉴스 제8호 — 노인과 아이가 함께 웃는 설악권을 꿈꿉니다</span>
       </div>
   </div>
 </div>
@@ -1513,7 +1513,7 @@ footer {
       <span class="s-badge red">전국·설악권</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">2026.07.27</span>
+      <span class="section-desc">2026.08.03</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
@@ -1539,7 +1539,7 @@ footer {
     <div id="teaser-news-yangyang" class="news-teaser-block"></div>
     <button class="read-more-btn" onclick="openModById('news-yangyang')">📍 양양 전문 보기 ▶</button>
 
-    <p style="color:#aaa;font-size:11px;margin-top:14px;">한국일보·경향신문·서울신문·연합뉴스·뉴데일리·강원일보·아주경제·고성군청 수집 │ 2026.07.27</p>
+    <p style="color:#aaa;font-size:11px;margin-top:14px;">연합뉴스·뉴시스·한국경제·헤럴드경제·강원신문·G1방송·GNN뉴스통신·고성군청·아주경제·양양군·인제군청·강원일보 수집 │ 2026.08.03</p>
   </div>
 </div>
 
@@ -1550,59 +1550,59 @@ footer {
   <div class="section-header" onclick="toggleSection('s-punghyang')">
     <div class="section-title">
       <h2>🧭 풍향계</h2>
-      <span class="s-badge gold">AI분析</span>
+      <span class="s-badge gold">AI分析</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">5대 신문 사설 흐름 소개 | 2026.07.20~07.25</span>
+      <span class="section-desc">5대 신문 사설 흐름 소개 | 2026.07.27~08.01</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
     <div class="week-info">
-      <div>분석 기간: <span>2026.07.20~07.25</span></div>
+      <div>분석 기간: <span>2026.07.27~08.01</span></div>
       <div>분석 대상: <span>정기 사설 발행 국내 주요 5개 종합일간지</span></div>
     </div>
 
     <div class="article">
       <div class="article-cat gold">이번 주 언론 흐름</div>
-      <div class="article-title">부동산 대토론회·선관위 투표율 조작 공통 지적, 원구성 정체·오세훈 판결까지</div>
+      <div class="article-title">국회의장 연임 개헌 발언 전 매체 비판, 형소법 공소기각 조항·증시 변동성도 공통 지적</div>
       <div class="article-body">
-        <p>이번 주 5대 신문(조선·동아·중앙·한겨레·경향)이 부동산 대토론회의 실효성과 선관위 투표율 조작·허위 입력 의혹을 모두 다뤘다. 원 구성 정체와 여야 대치, 오세훈 서울시장 당선무효형, 물류센터 화재 반복 등도 함께 지적됐다.</p>
+        <p>이번 주 5대 신문(조선·동아·중앙·한겨레·경향)은 조정식 국회의장의 "현직 대통령 연임은 국민의 선택 문제" 발언을 예외 없이 비판했다. 형사소송법 개정 막판에 추가된 공소기각 조항, 레버리지 ETF발 코스피 급락, 스틸 신임 주한미국대사 부임을 둘러싼 한미관계 이상기류도 여러 매체가 함께 다뤘다.</p>
       </div>
     </div>
 
     <div class="chart-wrap">
       <div class="chart-title">🌡 이번 주 언론 의제 순위 (5대 신문 사설 집중도)</div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>부동산 대토론회 실효성</span><span class="bar-pct">100%</span></div>
+        <div class="bar-label-row"><span>국회의장 연임 개헌 발언</span><span class="bar-pct">100%</span></div>
         <div class="bar-track"><div class="bar-fill navy" style="width:100%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>선관위 투표율 조작·허위입력</span><span class="bar-pct">100%</span></div>
-        <div class="bar-track"><div class="bar-fill navy" style="width:100%"></div></div>
+        <div class="bar-label-row"><span>형소법 공소기각 조항 논란</span><span class="bar-pct">80%</span></div>
+        <div class="bar-track"><div class="bar-fill navy" style="width:80%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>원 구성 정체·여야 대치</span><span class="bar-pct">80%</span></div>
+        <div class="bar-label-row"><span>한미관계 이상기류(스틸대사·무인기 등)</span><span class="bar-pct">80%</span></div>
         <div class="bar-track"><div class="bar-fill blue" style="width:80%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>오세훈 당선무효형</span><span class="bar-pct">80%</span></div>
+        <div class="bar-label-row"><span>코스피 급락·레버리지 ETF</span><span class="bar-pct">80%</span></div>
         <div class="bar-track"><div class="bar-fill gold" style="width:80%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>물류센터 화재 반복</span><span class="bar-pct">80%</span></div>
-        <div class="bar-track"><div class="bar-fill red" style="width:80%"></div></div>
+        <div class="bar-label-row"><span>민주당 전당대회·신천지 논란</span><span class="bar-pct">60%</span></div>
+        <div class="bar-track"><div class="bar-fill red" style="width:60%"></div></div>
       </div>
-      <div class="chart-source">※ 5개 종합일간지(조선·동아·중앙·한겨레·경향) 사설 의제별 집중도(작성 편수 기준) | 분석 기간: 2026.07.20~07.25</div>
+      <div class="chart-source">※ 5개 종합일간지(조선·동아·중앙·한겨레·경향) 사설 의제별 집중도(작성 편수 기준) | 분석 기간: 2026.07.27~08.01</div>
     </div>
 
     <!-- ── 주간 사자성어 ── -->
     <div style="margin:18px 0 10px;padding:12px 16px;background:linear-gradient(135deg,#fefae8 0%,#fdf3c0 100%);border:1px solid #e8c84a;border-left:4px solid #c8a000;border-radius:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
       <div style="font-size:11px;font-weight:700;color:#9a7800;letter-spacing:.08em;white-space:nowrap;">🀄 이번 주 사자성어</div>
-      <span style="font-size:22px;font-weight:900;color:#1B3A6B;font-family:'Noto Serif KR',serif;letter-spacing:.05em;">五里霧中</span>
-      <span style="font-size:13px;font-weight:600;color:#555;font-family:'Noto Serif KR',serif;">오리무중</span>
-      <span style="font-size:12px;color:#6b5a00;">다섯 리 안개 속에서 길을 잃음 — 진상·책임 소재가 드러나지 않음</span>
-      <span style="font-size:11px;color:#9a7800;white-space:nowrap;">출전: 『후한서』 「장해전」</span>
+      <span style="font-size:22px;font-weight:900;color:#1B3A6B;font-family:'Noto Serif KR',serif;letter-spacing:.05em;">自中之亂</span>
+      <span style="font-size:13px;font-weight:600;color:#555;font-family:'Noto Serif KR',serif;">자중지란</span>
+      <span style="font-size:12px;color:#6b5a00;">같은 편 안에서 일어나는 다툼과 혼란</span>
+      <span style="font-size:11px;color:#9a7800;white-space:nowrap;">출전: 『조선왕조실록』</span>
     </div>
     <!-- ── /주간 사자성어 ── -->
 
@@ -1611,19 +1611,19 @@ footer {
       <div style="font-size:11px;font-weight:700;color:#1B3A6B;letter-spacing:.08em;margin-bottom:8px;">📖 이주의 시사용어 — 이번 주 사설에 나온 말</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div>
-          <span style="font-size:13px;font-weight:800;color:#1B3A6B;">필리버스터</span>
-          <span style="font-size:11px;color:#2E75B6;font-weight:600;">(정치)</span>
-          <span style="font-size:12px;color:#444;"> — 국회에서 법안 처리를 늦추기 위해 시간 제한 없이 발언을 이어가는 합법적 의사진행 방해 방식입니다. 다수당이 토론 종결을 의결하면 표결로 넘어갑니다.</span>
+          <span style="font-size:13px;font-weight:800;color:#1B3A6B;">공소기각</span>
+          <span style="font-size:11px;color:#2E75B6;font-weight:600;">(법률)</span>
+          <span style="font-size:12px;color:#444;"> — 법원이 공소 제기 절차에 문제가 있다고 판단해 사건의 실체 판단 없이 소송을 끝내는 것을 말합니다. 이번 주 형사소송법 개정 논란에서 새로 추가된 조항이 이 공소기각 사유를 다루면서 논쟁이 커졌습니다.</span>
         </div>
         <div>
-          <span style="font-size:13px;font-weight:800;color:#1B3A6B;">국정조사</span>
-          <span style="font-size:11px;color:#2E75B6;font-weight:600;">(정치)</span>
-          <span style="font-size:12px;color:#444;"> — 국회가 특정 사안의 진상을 규명하기 위해 조사권을 행사하는 절차입니다. 선관위 투표율 조작 의혹처럼 국민적 관심이 큰 사안에서는 여야가 연장 여부를 놓고 다투기도 합니다.</span>
-        </div>
-        <div>
-          <span style="font-size:13px;font-weight:800;color:#1B3A6B;">네덜란드병</span>
+          <span style="font-size:13px;font-weight:800;color:#1B3A6B;">사이드카</span>
           <span style="font-size:11px;color:#2E75B6;font-weight:600;">(경제)</span>
-          <span style="font-size:12px;color:#444;"> — 특정 산업(자원·반도체 등) 호황이 오히려 다른 산업의 경쟁력을 약화시키는 현상입니다. 1970년대 네덜란드가 천연가스 수출 호황 뒤 제조업이 위축된 데서 유래했습니다.</span>
+          <span style="font-size:12px;color:#444;"> — 주가가 급등락할 때 프로그램 매매 호가 접수를 일시적으로 정지시켜 시장 충격을 완화하는 제도입니다. 최근 코스피 변동성이 커지면서 이 제도가 다시 주목받았습니다.</span>
+        </div>
+        <div>
+          <span style="font-size:13px;font-weight:800;color:#1B3A6B;">특별감찰관</span>
+          <span style="font-size:11px;color:#2E75B6;font-weight:600;">(정치)</span>
+          <span style="font-size:12px;color:#444;"> — 대통령의 친인척이나 측근의 비위 행위를 독립적으로 감찰하는 자리입니다. 이번 주 사설에서는 후보 인선 방향을 두고 "권력에 가장 불편한 인물이어야 한다"는 요구가 제기됐습니다.</span>
         </div>
       </div>
       <div style="font-size:10px;color:#6b8caf;margin-top:8px;">※ 이번 주 풍향계 분석 사설에서 다룬 용어 중 이해를 돕기 위해 선정. 특정 진영을 겨냥하지 않습니다.</div>
@@ -1631,7 +1631,7 @@ footer {
     <!-- ── /이주의 시사용어 ── -->
 
     <div class="article-meta">
-      <span>풍향계 v4.1 | 2026.07.20~07.25</span><span>2026.07.27 발행</span>
+      <span>풍향계 v4.1 | 2026.07.27~08.01</span><span>2026.08.03 발행</span>
     </div>
     <button class="read-more-btn" onclick="openModById('punghyang')">전문 보기 ▶</button>
   </div>
@@ -1642,113 +1642,87 @@ footer {
   <div class="section-header" onclick="toggleSection('s-opinion')">
     <div class="section-title">
       <h2>📊 여론동향</h2>
-      <span class="s-badge green">갤럽 7월4주</span>
+      <span class="s-badge green">NBS 제185호</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">갤럽 51% · 부동산 부정평가 이유 22%(▲11%p)</span>
+      <span class="section-desc">NBS 53% · 부동산정책 부정 56%</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
 
+    <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:8px 12px;margin-bottom:12px;font-size:11px;color:#92400e;">
+      ※ 한국갤럽은 이번 주부터 향후 2주간(7.27~8.7) 정기 조사를 진행하지 않으며, 다음 조사는 8월 14일(금) 제671호로 공개될 예정입니다. 이에 따라 이번 호는 NBS 전국지표조사 제185호 단독 자료로 작성합니다.
+    </div>
+
     <div class="chart-wrap">
-      <div class="chart-title">🇰🇷 대통령 직무수행 평가 — 한국갤럽 제670호</div>
+      <div class="chart-title">🇰🇷 대통령 국정운영 평가 — NBS 전국지표조사 제185호</div>
       <div class="donut-row">
         <div class="donut-item">
-          <div class="donut-val green">51%</div>
-          <div class="donut-label">갤럽 긍정<br>▼1%p</div>
+          <div class="donut-val green">53%</div>
+          <div class="donut-label">긍정평가<br>취임 이후 최저</div>
         </div>
         <div class="donut-item">
-          <div class="donut-val red">38%</div>
-          <div class="donut-label">갤럽 부정<br>▲1%p</div>
+          <div class="donut-val red">37%</div>
+          <div class="donut-label">부정평가</div>
         </div>
         <div class="donut-item">
-          <div class="donut-val gray">11%</div>
-          <div class="donut-label">의견 유보</div>
+          <div class="donut-val gray">10%</div>
+          <div class="donut-label">모름/무응답</div>
         </div>
       </div>
-      <div class="chart-title" style="margin-top:14px;">📈 최근 갤럽 직무 긍정 평가 추이</div>
-      <svg class="trend-svg" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="grad1b" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#27ae60" stop-opacity="0.2"/>
-            <stop offset="100%" stop-color="#27ae60" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <line x1="0" y1="18" x2="320" y2="18" stroke="#eee" stroke-width="1"/>
-        <line x1="0" y1="38" x2="320" y2="38" stroke="#eee" stroke-width="1"/>
-        <line x1="0" y1="58" x2="320" y2="58" stroke="#eee" stroke-width="1"/>
-        <text x="0" y="16" font-size="8" fill="#aaa">65%</text>
-        <text x="0" y="36" font-size="8" fill="#aaa">60%</text>
-        <text x="0" y="56" font-size="8" fill="#aaa">55%</text>
-        <polygon points="30,74 97,62 165,66 232,70 300,74 300,76 30,76" fill="url(#grad1b)"/>
-        <polyline points="30,74 97,62 165,66 232,70 300,74"
-          fill="none" stroke="#1B3A6B" stroke-width="2" stroke-linejoin="round"/>
-        <circle cx="30" cy="74" r="3" fill="#27ae60"/>
-        <circle cx="97" cy="62" r="3" fill="#27ae60"/>
-        <circle cx="165" cy="66" r="3" fill="#27ae60"/>
-        <circle cx="232" cy="70" r="3" fill="#27ae60"/>
-        <circle cx="300" cy="74" r="4" fill="#c0392b" stroke="white" stroke-width="1.5"/>
-        <text x="30" y="79" font-size="7" fill="#aaa" text-anchor="middle">6/23(51%)</text>
-        <text x="97" y="79" font-size="7" fill="#aaa" text-anchor="middle">6/30(54%)</text>
-        <text x="165" y="79" font-size="7" fill="#aaa" text-anchor="middle">7/9(53%)</text>
-        <text x="232" y="79" font-size="7" fill="#aaa" text-anchor="middle">7/16(52%)</text>
-        <text x="300" y="79" font-size="7" fill="#c0392b" text-anchor="middle">7/23(51%)</text>
-      </svg>
-      <div class="chart-source">* 한국갤럽 제670호 | 조사: 2026.07.21~23 | 전국 만 18세 이상 1,003명 | 표본오차 ±3.1%p(95% 신뢰수준) | 응답률 10.7%</div>
+      <div class="chart-source">* NBS 전국지표조사 제185호 | 조사: 2026.07.27~29 | 전국 만 18세 이상 1,000명 | 표본오차 ±3.1%p(95% 신뢰수준) | 응답률 15.8%</div>
     </div>
 
     <div class="chart-wrap">
-      <div class="chart-title">🏠 부동산 정책 평가 — 긍정 26% vs 부정 46%</div>
+      <div class="chart-title">🧭 국정방향성 평가 — 올바른 방향 52% vs 잘못된 방향 40%</div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>잘하고 있다 (제667호, 6.30~7.2)</span><span class="bar-pct">26%</span></div>
-        <div class="bar-track"><div class="bar-fill green" style="width:26%"></div></div>
+        <div class="bar-label-row"><span>올바른 방향으로 가고 있다</span><span class="bar-pct">52%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:52%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>잘못하고 있다</span><span class="bar-pct">46%</span></div>
-        <div class="bar-track"><div class="bar-fill red" style="width:46%"></div></div>
+        <div class="bar-label-row"><span>잘못된 방향으로 가고 있다</span><span class="bar-pct">40%</span></div>
+        <div class="bar-track"><div class="bar-fill red" style="width:40%"></div></div>
       </div>
-      <div class="chart-source">* 한국갤럽 제667호 | 3월 대비 25%p 급락(51%→26%) | 이번 주 풍향계 1위 의제(부동산 대토론회)와 직접 연결되는 문항(5-1단계 연계)</div>
+      <div class="chart-source">* NBS 제185호 | 40대·50대에서 긍정 응답이 각 71%·69%로 특히 높게 나타남</div>
     </div>
 
     <div class="chart-wrap">
-      <div class="chart-title">📉 대통령 직무 부정 평가 이유 1위 — 부동산 정책 22%(▲11%p)</div>
+      <div class="chart-title">🗳 정당 지지도 — 민주 40% · 국힘 21% · 태도유보 33%</div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>부동산 정책 (이번 주, ▲11%p)</span><span class="bar-pct">22%</span></div>
-        <div class="bar-track"><div class="bar-fill red" style="width:22%"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label-row"><span>경제·민생·고환율 (▼6%p)</span><span class="bar-pct">10%</span></div>
-        <div class="bar-track"><div class="bar-fill red" style="width:10%"></div></div>
-      </div>
-      <div class="chart-source">* 한국갤럽 제670호 | 부정 평가자 자유응답 기준 | 지난주 대비 ±3%p 이상 증감 항목만 표시</div>
-    </div>
-
-    <div class="chart-wrap">
-      <div class="chart-title">🗳 정당 지지도 — 민주 44%(▲4%p) · 국힘 23%(▼3%p)</div>
-      <div class="bar-item">
-        <div class="bar-label-row"><span>더불어민주당</span><span class="bar-pct">44% ▲4%p</span></div>
+        <div class="bar-label-row"><span>더불어민주당</span><span class="bar-pct">40%</span></div>
         <div class="bar-track"><div class="bar-fill blue" style="width:80%"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-label-row"><span>국민의힘</span><span class="bar-pct">23% ▼3%p</span></div>
+        <div class="bar-label-row"><span>국민의힘</span><span class="bar-pct">21%</span></div>
         <div class="bar-track"><div class="bar-fill red" style="width:42%"></div></div>
       </div>
-      <div class="chart-source">* 한국갤럽 제670호 | 2026.07.21~23 | ±3.1%p | 지난주 국민의힘 반등세가 꺾이고 양당 격차(21%p)가 다시 벌어짐</div>
+      <div class="chart-source">* NBS 제185호 | 2026.07.27~29 | ±3.1%p | 태도유보(지지정당 없음+모름/무응답) 33%, 지난 7월 3주 조사와 유사한 수준</div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">🏠 부동산 정책 평가 — 잘못하고 있다 56% &gt; 잘하고 있다 33%</div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>잘하고 있다</span><span class="bar-pct">33%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:33%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>잘못하고 있다</span><span class="bar-pct">56%</span></div>
+        <div class="bar-track"><div class="bar-fill red" style="width:56%"></div></div>
+      </div>
+      <div class="chart-source">* NBS 제185호 | 지난 1월 4주 조사 대비 부정 평가 9%p 상승 | 주담대·전세대출 모두 "완화해야 한다" 응답이 55%로 최다</div>
     </div>
 
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:8px 12px;font-size:11px;color:#64748b;margin-top:4px;">
-      ※ 이번 주 풍향계 1위 의제(부동산 대토론회)는 이번 주 여론조사 원자료에 직접 연결되는 문항이 있어 5-1단계 연계 지표에 반영했습니다. 2위 의제(선관위 투표율 조작)는 관련 문항이 없어 연계 지표에서 제외했습니다.
+      ※ 이번 주 풍향계 1~2위 의제(국회의장 연임 개헌 발언, 형소법 공소기각 조항 논란)와 직접 연결되는 문항이 NBS 원자료에 없어 5-1단계 연계 지표는 이번 호에서 생략합니다. 더불어민주당 차기 당대표 적합도 문항(정청래 21%·김민석 19%·송영길 6%·태도유보 54%)은 풍향계 5위 의제(전당대회·신천지 논란)와는 관련이 있으나, 최상위 의제가 아니어서 억지로 연계하지 않습니다.
     </div>
 
     <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:8px 12px;font-size:11px;color:#92400e;margin-top:8px;">
       ⚠️ <strong>통계 주의:</strong> 표본오차 ±3.1%p(95% 신뢰수준) | 단일 조사 결과로 단정 금지 | 강원 등 소표본 지역 세부수치는 이번 호에 인용하지 않음
     </div>
 
-
-
     <div class="article-meta">
-      <span>한국갤럽 제670호 | 2026.07.21~23</span><span>2026.07.27 발행</span>
+      <span>NBS 전국지표조사 제185호 | 2026.07.27~29</span><span>2026.08.03 발행</span>
     </div>
     <button class="read-more-btn" onclick="openModById('opinion')">분석 전문 보기 ▶</button>
   </div>
@@ -1758,19 +1732,18 @@ footer {
   <div class="section-header" onclick="toggleSection('s-voice')">
     <div class="section-title">
       <h2>🗣 시민의 소리</h2>
-      <span class="s-badge gold">사설 2편 동시 게재</span>
+      <span class="s-badge gold">사설</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">C-06·P-03 | 2026.07.27</span>
+      <span class="section-desc">S-05 | 2026.08.03</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
-    <p class="section-lede"><span class="art-cat">🗣 시민의 소리 — 사설 2편</span>
-      임금 직접지급, 설악권 개발의 새 기준을 만들 수 있습니다 · 시의회가 시장을 감시해야 민주주의입니다
+    <p class="section-lede"><span class="art-cat">🗣 시민의 소리</span>
+      노인과 아이가 함께 웃는 설악권을 꿈꿉니다
     </p>
-    <p>설악권에 광역 협력이 현실이 된다면, 대규모 관광 인프라 건설이 뒤따를 것입니다. 그 공사에 투입될 노동자의 임금이 안전하게 지급되는 구조를 지금부터 설계해야 합니다.</p>
-    <p>집행부와 의회가 서로 긴장 관계를 유지하는 것, 이것이 지방 민주주의의 핵심입니다. 시의회가 그 역할을 다하고 있는지 함께 지켜봐 주세요.</p>
+    <p>속초의 고령화율은 32.9%에 달하는데 어린이집은 부족한, 설악권의 현실을 짚었습니다. 노인 일자리 확충과 국공립 어린이집 확충을 하나로 묶어, 네 개 시·군이 함께 세대 통합 돌봄 인프라를 설계하자는 제안입니다.</p>
     <div style="background:#fef9e7;border:1px solid #fde68a;border-radius:6px;padding:8px 12px;margin-top:10px;font-size:12px;color:#78350f;">
       📮 시민 기고 환영합니다 → jcjwk54@gmail.com
     </div>
@@ -1784,58 +1757,58 @@ footer {
   <div class="section-header" onclick="toggleSection('s-series')">
     <div class="section-title">
       <h2>💬 이슈&amp;토론</h2>
-      <span class="s-badge red">경제·노동</span>
+      <span class="s-badge red">인구·가족·젠더</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">주 4일 근무제, 도입해야 하나</span>
+      <span class="section-desc">노인 요양을 가족에게 맡겨야 하나</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
-    <p class="section-lede"><span class="art-cat">이슈&amp;토론 No.8 | 2026.07.27 (경제·노동)</span>
-      주 4일 근무제, 도입해야 하나
+    <p class="section-lede"><span class="art-cat">이슈&amp;토론 No.9 | 2026.08.03 (인구·가족·젠더)</span>
+      노인 요양을 가족에게 맡겨야 하나
     </p>
-    <p>2학기가 시작되는 8월 말, 직장인들은 주 5일의 일상으로 돌아갑니다. 그런데 세계 곳곳에서 주 4일 근무 실험이 진행 중입니다. 영국 61개 기업 시범 사업 결과, 직원 수입 감소 없이 생산성이 유지됐고 결근율은 65% 감소했습니다. 설악 지역 관광업·소상공인에게는 어떤 영향이 있을까요.</p>
+    <p>추석을 앞두고 부모님 요양을 둘러싼 대화가 잦아지는 계절입니다. 초고령사회에 진입한 한국에서, 전국보다 고령화가 빠른 강원도는 이 질문이 더욱 절박합니다.</p>
     <div class="debate-cards" style="display:flex;gap:8px;margin:12px 0;flex-wrap:wrap;">
       <div style="flex:1;min-width:140px;background:#EAF5EE;border:1px solid #7DB87D;border-radius:6px;padding:10px;font-size:12px;">
-        <div style="font-weight:700;color:#1F7A4D;margin-bottom:5px;">👍 도입해야 한다</div>
-        <div>영국·아이슬란드·일본 시범 사업에서 생산성 유지·향상이 보고됐습니다. 육아·돌봄 시간이 늘어 저출생 문제 해소에도 기여할 수 있습니다.</div>
+        <div style="font-weight:700;color:#1F7A4D;margin-bottom:5px;">👍 가족 돌봄에 수당을 지급해야 한다</div>
+        <div>가족이 돌봄을 맡으면 노인의 심리적 안정감이 높고 삶의 질이 향상된다는 연구가 많습니다. 정부가 수당을 지급하면 돌봄을 위해 일을 줄인 가족의 경제적 손실도 일정 보전할 수 있습니다.</div>
       </div>
       <div style="flex:1;min-width:140px;background:#FFF0F0;border:1px solid #D97C7C;border-radius:6px;padding:10px;font-size:12px;">
-        <div style="font-weight:700;color:#B03030;margin-bottom:5px;">👎 아직 현실적이지 않다</div>
-        <div>제조업·서비스업 현장에서는 사실상 불가능합니다. 인력이 부족한 중소기업은 업무 적체나 노동 강도 상승으로 이어질 수 있습니다.</div>
+        <div style="font-weight:700;color:#B03030;margin-bottom:5px;">👎 사회적 돌봄 체계를 확충해야 한다</div>
+        <div>가족 돌봄의 짐은 대부분 여성에게 집중되어 성별 불평등을 심화시킵니다. 돌봄 서비스를 전문화·직업화해야 일자리도 늘고 서비스 질도 높아집니다.</div>
       </div>
     </div>
     <div class="vote-wrap">
-      <div class="vote-label">📊 주 4일 근무제, 지금 도입해야 할까요?</div>
+      <div class="vote-label">📊 노인 요양, 가족이 맡아야 할까요?</div>
       <div class="vote-row">
-        <button id="vbtn-no7-pro" class="vote-btn vote-pro" onclick="castVote('no7','pro',this)">👍 도입해야 한다 <span id="vcnt-no7-pro" class="vote-count">0</span></button>
-        <button id="vbtn-no7-con" class="vote-btn vote-con" onclick="castVote('no7','con',this)">👎 아직 이르다 <span id="vcnt-no7-con" class="vote-count">0</span></button>
+        <button id="vbtn-no8-pro" class="vote-btn vote-pro" onclick="castVote('no8','pro',this)">👍 가족 돌봄 수당 지급 <span id="vcnt-no8-pro" class="vote-count">0</span></button>
+        <button id="vbtn-no8-con" class="vote-btn vote-con" onclick="castVote('no8','con',this)">👎 사회적 돌봄 확충 <span id="vcnt-no8-con" class="vote-count">0</span></button>
       </div>
-      <div id="vresult-no7" class="vote-result"></div>
+      <div id="vresult-no8" class="vote-result"></div>
     </div>
-    <button class="read-more-btn" onclick="openModById('issue7')">💬 이슈&amp;토론 전문 + 논거 ▶</button>
+    <button class="read-more-btn" onclick="openModById('issue8')">💬 이슈&amp;토론 전문 + 논거 ▶</button>
   </div>
 </div>
 <div class="section" id="s-letter">
   <div class="section-header" onclick="toggleSection('s-letter')">
     <div class="section-title">
       <h2>✒ 편집자 레터</h2>
-      <span class="s-badge">제7호</span>
+      <span class="s-badge">제8호</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">제7호 | 2026.07.27</span>
+      <span class="section-desc">제8호 | 2026.08.03</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
   <div class="section-body">
     <div class="editor-letter">
-      <div class="editor-letter-label">EDITOR'S LETTER | 2026.07.27 제7호</div>
+      <div class="editor-letter-label">EDITOR'S LETTER | 2026.08.03 제8호</div>
       <div class="editor-letter-body">
-        <p style="font-weight:700;color:#1B3A6B;">진상이 안개 속에 있다 — 제7호</p>
-        <p>이번 호 사설 두 편은 임금 직접지급과 시의회 감시를 다뤘고, 이슈&토론은 주 4일 근무제를 물었습니다. 전국 언론은 이번 주 부동산 대토론회와 선관위 투표율 조작 의혹을 공통으로 짚었고, 풍향계가 고른 사자성어 五里霧中(오리무중)처럼 진상과 책임 소재가 좀처럼 드러나지 않는 한 주였습니다. 갤럽 조사에서도 부동산 정책에 대한 부정 평가가 11%p나 급등해 같은 흐름을 보여줬습니다.</p>
+        <p style="font-weight:700;color:#1B3A6B;">노인과 아이가 함께 웃는 설악권 — 제8호</p>
+        <p>이번 호 사설(S-05)과 이슈&토론(No.9)은 노인 돌봄이라는 같은 결의 질문을 던집니다. 전국적으로는 국회의장의 개헌 발언과 형소법 공소기각 조항 논란이 5대 신문 모두의 비판을 받았고, 풍향계가 고른 사자성어 自中之亂(자중지란)처럼 같은 편 안에서 벌어지는 다툼이 두드러진 한 주였습니다. 이번 호 여론동향은 한국갤럽의 휴지 기간을 맞아 NBS 전국지표조사 제185호를 단독으로 다뤘습니다.</p>
       </div>
-      <div class="editor-letter-sig">— 편집장 김준철 | 제7호 | 2026.07.27</div>
+      <div class="editor-letter-sig">— 편집장 김준철 | 제8호 | 2026.08.03</div>
     </div>
     <button class="read-more-btn" onclick="openModById('letter')" style="margin-top:12px;">✒ 편집자 레터 전문 보기 ▶</button>
   </div>
@@ -1850,7 +1823,7 @@ footer {
       <span class="s-badge">속초·고성·양양·인제</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">2026.07.27 기준</span>
+      <span class="section-desc">2026.08.03 기준</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
@@ -1865,68 +1838,58 @@ footer {
 
       <div class="tab-panel active" id="nt-sokcho">
         <div class="notice-item">
-          <div class="notice-tag">🚄 발전전략</div>
-          <div class="notice-title">이병선 시장, "양대 철도 시대 콤팩트시티로 승부"</div>
-          <div class="notice-body">강원자치발전전략 대토론회에서 이병선 시장이 동서고속화철도·동해북부선 개통을 앞두고 콤팩트시티 완성을 성장 전략으로 제시했습니다. 문의: 속초시청 033-639-2000</div>
+          <div class="notice-tag">🎉 축제</div>
+          <div class="notice-title">'2026 속초 썸머페스티벌' 개막…8월 22일 워터밤까지 이어져</div>
+          <div class="notice-body">속초해수욕장 일원에서 다양한 장르의 공연과 체험 프로그램이 열립니다. 8월 22일에는 한화리조트 설악 쏘라노에서 대형 음악축제 '워터밤 속초 2026'도 개최됩니다. 문의: 속초시청 033-639-2000</div>
         </div>
         <div class="notice-item">
-          <div class="notice-tag">💰 공약 이행</div>
-          <div class="notice-title">민생회복지원금 지급 계속 진행 중</div>
-          <div class="notice-body">전 시민 대상 1인당 20만 원 속초사랑상품권 지급이 계속 진행되고 있습니다. 아직 신청하지 않은 시민은 읍면동 행정복지센터에 문의하세요. 문의: 속초시청 033-639-2000</div>
+          <div class="notice-tag">🌊 안전</div>
+          <div class="notice-title">속초해수욕장 8월 12일까지 야간 개장</div>
+          <div class="notice-body">입수 가능 시간이 오후 9시까지 연장됩니다. 유해생물 방지망 점검, LED 부표 설치, 수상 안전관리 요원 배치 등 안전관리가 강화됩니다. 문의: 속초시청 033-639-2000</div>
         </div>
       </div>
 
       <div class="tab-panel" id="nt-goseong">
         <div class="notice-item">
-          <div class="notice-tag">💰 청년</div>
-          <div class="notice-title">청년 디딤돌 2배 적금 2차 모집 연장 안내</div>
-          <div class="notice-body">만 19~39세 청년 대상 청년 디딤돌 2배 적금 지원사업 2차 모집이 연장됐습니다. 신청·문의: 고성군 경제체육과 033-680-3000</div>
-        </div>
-        <div class="notice-item">
           <div class="notice-tag">🏛 정책</div>
-          <div class="notice-title">평화경제특구 1호 지정, 신청 절차 계속 진행</div>
-          <div class="notice-body">함명준 군수의 공약인 평화경제특구 1호 지정을 위해 고성군이 관계 부처 신청 준비 작업을 이어가고 있습니다. 문의: 고성군청 033-680-3000</div>
+          <div class="notice-title">함명준 군수, 국회 잇단 방문…군정 핵심 현안 해결 총력</div>
+          <div class="notice-body">평화경제특구 지정과 관광 인프라 확충 등 군정 핵심 현안 해결을 위해 국회 방문을 이어가고 있습니다. 문의: 고성군청 033-680-3000</div>
         </div>
         <div class="notice-item">
           <div class="notice-tag">📢 안내</div>
-          <div class="notice-title">7월 제7830부대 포병 사격 일정 안내</div>
-          <div class="notice-body">7월 중 인근 지역 포병 사격 일정이 공지됐습니다. 자세한 일정은 고성군청 홈페이지에서 확인하세요. 문의: 고성군청 033-680-3000</div>
+          <div class="notice-title">8월 제55보병여단 박격포 사격 훈련 일정 안내</div>
+          <div class="notice-body">8월 중 인근 지역 포병 사격 훈련 일정이 공지됐습니다. 자세한 일정은 고성군청 홈페이지에서 확인하세요. 문의: 고성군청 033-680-3000</div>
         </div>
       </div>
 
       <div class="tab-panel" id="nt-yangyang">
         <div class="notice-item">
           <div class="notice-tag">🎉 축제</div>
-          <div class="notice-title">'2026 양양 써머 페스티벌' 7월 31일 낙산해변서 개막</div>
-          <div class="notice-body">양양군의 대표 여름 축제가 7월 31일~8월 1일 낙산해수욕장 일원에서 열립니다. '세대통합·에너지·자유·젊음·흥'을 주제로 공연·체험 프로그램이 준비됐습니다. 문의: 양양군 관광과 033-670-2000</div>
+          <div class="notice-title">'2026 양양 써머 페스티벌' 성료 — 7년 만의 귀환</div>
+          <div class="notice-body">낙산해수욕장에서 열린 이번 축제에는 하이키·자두·범키 등이 출연해 세대통합·젊음을 주제로 무대를 꾸몄습니다. 문의: 양양군 관광과 033-670-2000</div>
         </div>
         <div class="notice-item">
-          <div class="notice-tag">🌊 서핑</div>
-          <div class="notice-title">양양 서프 위크 2026 — 8월 14~16일 개최</div>
-          <div class="notice-body">2026 양양 서프 위크가 8월 14~16일 개최되며 예약이 진행 중입니다. 문의: 양양군 관광과 033-670-2000</div>
+          <div class="notice-tag">🏄 서핑</div>
+          <div class="notice-title">'2026 하조대 비치페스티벌' 8월 1일 개막</div>
+          <div class="notice-body">서핑 명소 하조대 해변에서 이 지역 특색을 살린 체험·공연 프로그램이 진행됩니다. 문의: 양양군 관광과 033-670-2000</div>
         </div>
       </div>
 
       <div class="tab-panel" id="nt-inje">
         <div class="notice-item">
           <div class="notice-tag">🏁 관광</div>
-          <div class="notice-title">인제스피디움 모터스포츠 축제 계속 이어져</div>
-          <div class="notice-body">'2026 현대 N 페스티벌', '2026 강원 국제 모터 페스타' 등 7월 모터스포츠·공연·체험행사가 계속됩니다. 문의: 인제군청 관광과 033-460-2000</div>
+          <div class="notice-title">인제스피디움 모터스포츠 축제, 8월에도 이어져</div>
+          <div class="notice-body">여름 휴가철 관광객 유치 효과가 이어지는 모터스포츠·공연·체험 행사가 8월에도 계속됩니다. 문의: 인제군청 관광과 033-460-2000</div>
         </div>
         <div class="notice-item">
           <div class="notice-tag">💰 재정</div>
-          <div class="notice-title">한강수계기금 배분 개선, 도·국토부 대응 지속 요구</div>
-          <div class="notice-body">최상기 군수는 내년도 한강수계기금이 300억 원대에서 67억 원 수준으로 급감할 것으로 예상된다며, 강원도와 국토부에 배분 구조 개선을 계속 요구하고 있습니다. 문의: 인제군청 033-460-2000</div>
-        </div>
-        <div class="notice-item">
-          <div class="notice-tag">📚 교육</div>
-          <div class="notice-title">2학기 인제영어교육센터 수강생 모집</div>
-          <div class="notice-body">초·중학생 대상 2학기 인제영어교육센터 정규프로그램 수강생을 모집합니다. 읍면 소재 학생 우선 배정. 문의: 인제군청 033-460-2000 / inje.go.kr</div>
+          <div class="notice-title">한강수계기금 배분 개선, 국회 예산 심사 앞두고 재차 요구</div>
+          <div class="notice-body">최상기 군수는 내년도 한강수계기금이 300억 원대에서 67억 원 수준으로 급감할 것으로 예상된다며, 국회 예산 심사를 앞두고 도·국토부에 배분 구조 개선을 재차 요구하고 있습니다. 문의: 인제군청 033-460-2000</div>
         </div>
       </div>
     </div>
   </div>
-</div><!-- ══════════════════════════════════════ -->
+</div></div><!-- ══════════════════════════════════════ -->
 <!-- 8. 신문사 공지 (설악시민뉴스 자체 공지) -->
 <!-- ══════════════════════════════════════ -->
 <div class="section" id="s-announce">
@@ -1936,7 +1899,7 @@ footer {
       <span class="s-badge navy">설악시민뉴스</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span class="section-desc">제7호 | 구독·기고 안내</span>
+      <span class="section-desc">제8호 | 구독·기고 안내</span>
       <span class="toggle-icon">▼</span>
     </div>
   </div>
@@ -1955,8 +1918,8 @@ footer {
     </div>
 
     <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
-      <div style="font-size:12px;font-weight:700;color:#166534;margin-bottom:6px;">🗳 제7호 이슈&amp;토론 투표 참여해 주세요</div>
-      <div style="font-size:12px;color:#475569;line-height:1.6;">이번 호 이슈&amp;토론 No.8 '주 4일 근무제, 도입해야 하나' 찬반 투표가 진행 중입니다. 이슈&amp;토론 섹션 본문 하단 버튼을 눌러 의견을 남겨 주세요.</div>
+      <div style="font-size:12px;font-weight:700;color:#166534;margin-bottom:6px;">🗳 제8호 이슈&amp;토론 투표 참여해 주세요</div>
+      <div style="font-size:12px;color:#475569;line-height:1.6;">이번 호 이슈&amp;토론 No.9 '노인 요양을 가족에게 맡겨야 하나' 찬반 투표가 진행 중입니다. 이슈&amp;토론 섹션 본문 하단 버튼을 눌러 의견을 남겨 주세요.</div>
     </div>
 
     <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
@@ -1966,11 +1929,10 @@ footer {
     </div>
 
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
-      <div style="font-size:12px;font-weight:700;color:#1B3A6B;margin-bottom:8px;">📅 다음 호 — 제8호 (2026.08.03 월)</div>
+      <div style="font-size:12px;font-weight:700;color:#1B3A6B;margin-bottom:8px;">📅 다음 호 — 제9호 (2026.08.10 월, 광복절 특집)</div>
       <ul style="font-size:12px;line-height:1.8;color:#475569;padding-left:16px;margin:0;">
-        <li>발행일: <strong>2026년 8월 3일 (월)</strong></li>
-        <li>사설: S-05 노인과 아이가 함께 웃는 설악권을 꿈꿉니다</li>
-        <li>이슈&amp;토론: No.9 노인 요양, 가족 부담 어디까지인가</li>
+        <li>발행일: <strong>2026년 8월 10일 (월)</strong></li>
+        <li>사설: C-01 고성 DMZ, 설악권의 독점 콘텐츠입니다</li>
       </ul>
     </div>
 
@@ -2041,8 +2003,8 @@ footer {
   <div class="quote-strip-inner">
     <span class="quote-strip-label">이 주의 문장</span>
     <span class="quote-strip-divider"></span>
-    <span class="quote-strip-text" id="weekly-quote">"그 품삯을 당일에 주고 해 진 후까지 미루지 말라" <span style="font-weight:400;opacity:.75;">(Pay them their wages each day before sunset, because they are poor and are counting on it.)</span></span>
-    <span class="quote-strip-source" id="weekly-quote-source">— 『신명기』 24:15 (개역개정 · NIV)</span>
+    <span class="quote-strip-text" id="weekly-quote">"너는 센 머리 앞에 일어서고 노인의 얼굴을 공경하며 네 하나님을 경외하라" <span style="font-weight:400;opacity:.75;">(Stand up in the presence of the aged, show respect for the elderly and revere your God.)</span></span>
+    <span class="quote-strip-source" id="weekly-quote-source">— 『레위기』 19:32 (개역개정 · NIV)</span>
   </div>
 </div>
 
@@ -2050,9 +2012,9 @@ footer {
 <div id="scripture-strip" style="max-width:720px;margin:0 auto;background:#f4f5f7;border-top:2px solid #b9c2cf;padding:14px 16px;">
   <div class="scripture-strip-inner" style="max-width:1080px;margin:0 auto;">
     <div style="font-size:11px;font-weight:700;color:#556072;letter-spacing:.06em;margin-bottom:8px;">📖 사자성어와 함께 읽는 말씀</div>
-    <div class="scripture-kr" id="weekly-scripture-kr" style="font-size:13px;color:#333;line-height:1.7;margin-bottom:4px;">"감추인 것이 드러나지 않을 것이 없고 숨긴 것이 알려지지 않을 것이 없나니" — 『누가복음』 12:2</div>
-    <div class="scripture-en" id="weekly-scripture-en" style="font-size:12px;color:#666;line-height:1.6;margin-bottom:8px;">"There is nothing concealed that will not be disclosed, or hidden that will not be made known." (NIV) — Luke 12:2</div>
-    <div class="scripture-note" id="weekly-scripture-note" style="font-size:12px;color:#475569;line-height:1.7;margin-bottom:6px;">五里霧中(오리무중)이 가리키는 "갈피를 잡을 수 없는 안개"도, 결국은 걷힌다는 것이 이 말씀의 약속이다. 지금 드러나지 않은 것들도 언젠가는 밝혀진다는 점에서, 이번 주 사설들의 문제의식과 같은 방향을 가리킨다.</div>
+    <div class="scripture-kr" id="weekly-scripture-kr" style="font-size:13px;color:#333;line-height:1.7;margin-bottom:4px;">"만일 집이 스스로 분쟁하면 그 집이 설 수 없고" — 『마가복음』 3:25</div>
+    <div class="scripture-en" id="weekly-scripture-en" style="font-size:12px;color:#666;line-height:1.6;margin-bottom:8px;">"If a house is divided against itself, that house cannot stand." (NIV) — Mark 3:25</div>
+    <div class="scripture-note" id="weekly-scripture-note" style="font-size:12px;color:#475569;line-height:1.7;margin-bottom:6px;">自中之亂(자중지란)이 경계하는 같은 편 안의 다툼은, 스스로 나뉜 집은 설 수 없다는 이 말씀의 경고와 같은 방향을 가리킨다.</div>
   </div>
 </div>
 
@@ -2103,9 +2065,9 @@ footer {
 const now = new Date();
 const kdate = now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' });
 document.getElementById('today-date').textContent = kdate;
-const issueNo = 7; // ← 매주 발행 시 숫자만 변경 (창간호=1, 제2호=2, ...)
+const issueNo = 8; // ← 매주 발행 시 숫자만 변경 (창간호=1, 제2호=2, ...)
 const issueLabel = issueNo === 1 ? '창간호' : `제${issueNo}호`;
-document.getElementById('header-issue').textContent = `제7호 · 주간 | 2026년 7월 27일 (월) | 강원 아00423`;
+document.getElementById('header-issue').textContent = `제8호 · 주간 | 2026년 8월 3일 (월) | 강원 아00423`;
 
 // News Tab Switch
 function switchNewsTab(active) {
@@ -2196,328 +2158,320 @@ const ARTICLES = {
     teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">민주당, 검찰 보완수사권 폐지 당론 확정<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">국민의힘 필리버스터 예고. [한국일보 | 07.24]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">더불어민주당이 의원총회에서 검찰 보완수사권을 폐지하는 형사소송법 개정안을 당론으로 확정했다. 국민의힘 정점식 원내대표는 "법치 붕괴"라며 30일 본회의 상정 시 필리버스터 등 총력 투쟁을 예고했다. [한국일보 | 2026.07.24]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">국회, 형소법에 공소기각 조항 추가해 본회의 통과…법무장관 사의<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">공소기각 조항 뒤늦게 추가. [연합뉴스 | 07.30]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">더불어민주당 주도로 검찰 보완수사권 폐지 후속 형사소송법 개정안이 국회 본회의를 통과했다. 논의 막판 공소기각 사유 조항이 추가되면서 "대통령 재판을 겨냥한 입법 아니냐"는 비판이 여야 안팎에서 제기됐고, 법무부 장관은 이에 반발해 사의를 표명했다. [연합뉴스 | 2026.07.30]</div>
       </div>
     </div>
     <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">미국, 60개국에 강제노동 관세 확정…한국 사실상 12.5%<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">24일부터 발효. [경향신문 | 07.24]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">미 무역대표부(USTR)가 무역법 301조를 근거로 60개국에 10~12.5%의 강제노동 관세를 확정했다. 한국은 일본·호주 등과 함께 12.5% 대상국으로 분류됐으며, 새 관세는 24일부터 발효됐다. [경향신문 | 2026.07.24]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">조정식 국회의장 "현직 대통령 연임은 국민의 선택 문제" 발언 파문<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">5대 신문 모두 부적절 지적. [뉴시스 | 07.29]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">조정식 국회의장이 한 강연에서 현직 대통령의 연임 여부를 개헌 논의에 포함해 국민이 직접 선택하도록 하자는 취지로 발언해 파문이 일었다. 헌법기관장이 위헌 소지가 있는 발언을 했다는 비판이 여야를 가리지 않고 5대 신문 사설에 실렸다. [뉴시스 | 2026.07.29]</div>
       </div>
     </div>
     <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">③</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">단일종목 레버리지 ETF발 코스피 변동성 심화<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">"도파민 투자" 우려 확산. [서울신문 | 07.22]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">삼성전자·SK하이닉스 기초 단일종목 레버리지·인버스 ETF 상장 이후 코스피 일평균 변동폭이 크게 확대됐다. 거래대금 상위 10개 ETF 중 6개가 레버리지·인버스 상품으로 나타나 과도한 쏠림 우려가 제기됐다. [서울신문 | 2026.07.22]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">코스피 장중 6000선 붕괴…레버리지 ETF발 변동성 확산<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">당국 늑장 대응 질타. [한국경제 | 07.31]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">코스피 지수가 장중 6000선 아래로 밀리며 최근 며칠 새 롤러코스터 장세를 이어갔다. 단일종목 레버리지·인버스 ETF 상품이 변동성을 키운다는 지적과 함께, 금융당국의 늑장 대응을 질타하는 목소리가 커졌다. [한국경제 | 2026.07.31]</div>
       </div>
     </div>
     <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">④</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">인천 쿠팡 물류센터 화재 109시간 만에 완진…7km 거리 또 화재<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">제15물류센터서 재발화. [연합뉴스 | 07.22~23]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">지난 18일 발생한 인천 쿠팡 제32물류센터 화재가 109시간 만인 22일 밤 완진됐다. 그런데 하루 뒤인 23일, 약 7km 떨어진 제15물류센터에서도 화재가 발생해 소방당국이 다시 출동했다. [연합뉴스 | 2026.07.22~23]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">신임 주한미국대사 스틸 부임…한미관계 이례적 주목<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">1년 반 만의 부임. [헤럴드경제 | 07.30]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">1년 반 가까이 공석이던 주한미국대사 자리에 스틸 신임 대사가 부임했다. 최근 불거진 주한미군 무인기 사태, 한국 공무원 미국 입국 금지 법안 발의 등 한미관계 곳곳에 낀 이상 기류 속에 대사 부임이 이례적으로 큰 주목을 받았다. [헤럴드경제 | 2026.07.30]</div>
       </div>
     </div>
     <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">⑤</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">선관위 투표율 허위 입력 정황 추가 포착<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">국정조사 연장 공방. [뉴데일리 | 07.24]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">검경 합동수사본부의 압수수색 과정에서 선관위의 투표율 허위 입력 정황이 추가로 드러났다. 국정조사 연장 요구가 커졌지만 여당은 "논의된 바 없다"는 입장이다. [뉴데일리 | 2026.07.24]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">윤석열 전 대통령, 선거법 위반 1심 당선무효형<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">확정 시 정치권 파장 예상. [연합뉴스 | 07.29]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">윤석열 전 대통령이 대선 과정의 허위사실 공표 혐의로 1심에서 당선무효형에 해당하는 판결을 받았다. 법원은 선거 승리를 위한 정치인의 거짓말에 엄중한 책임을 물은 판결이라고 밝혔으며, 확정될 경우 정치권에 상당한 파장이 예상된다. [연합뉴스 | 2026.07.29]</div>
       </div>
     </div>`,
-    cat: '📰 전국 뉴스 전문 | 2026.07.27',
-    title: '보완수사권 폐지 당론 확정·美 강제노동관세 12.5%·코스피 변동성·쿠팡 잇단 화재',
-    meta: '한국일보·경향신문·서울신문·연합뉴스·뉴데일리 | 2026.07.27 | 전국뉴스 v2.0',
+    cat: '📰 전국 뉴스 전문 | 2026.08.03',
+    title: '형소법 공소기각 조항 논란·국회의장 개헌 발언 파문·코스피 변동성·스틸 대사 부임·尹 당선무효형',
+    meta: '연합뉴스·뉴시스·한국경제·헤럴드경제 | 2026.08.03 | 전국뉴스 v2.0',
     badge: '전국',
     body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">맥락과 의미 중심 | 선정기준: 시의성·영향성·중요성·근접성 | 전국뉴스 v2.0</p>
-<p><strong>① 민주당, 검찰 보완수사권 폐지 법안 당론 확정</strong><br>더불어민주당이 의원총회에서 검찰 보완수사권을 폐지하는 형사소송법 개정안을 당론으로 확정했다. 국민의힘 정점식 원내대표는 "법치 붕괴"라며 30일 본회의 상정 시 필리버스터 등 총력 투쟁을 예고했다. [한국일보 | 2026.07.24]</p>
-<p><strong>② 미국, 60개국에 강제노동 관세 확정 — 한국 사실상 12.5%</strong><br>미 무역대표부(USTR)가 무역법 301조를 근거로 60개국에 10~12.5%의 강제노동 관세를 확정했다. 한국은 일본·호주 등과 함께 12.5% 대상국으로 분류됐으며, 새 관세는 24일부터 발효됐다. [경향신문 | 2026.07.24]</p>
-<p><strong>③ 단일종목 레버리지 ETF발 코스피 변동성 심화</strong><br>삼성전자·SK하이닉스 기초 단일종목 레버리지·인버스 ETF 상장 이후 코스피 일평균 변동폭이 크게 확대됐다. 거래대금 상위 10개 ETF 중 6개가 레버리지·인버스 상품으로 나타나 과도한 쏠림 우려가 제기됐다. [서울신문 | 2026.07.22]</p>
-<p><strong>④ 인천 쿠팡 물류센터 화재 109시간 만에 완진 — 7km 거리 또 화재</strong><br>지난 18일 발생한 인천 쿠팡 제32물류센터 화재가 109시간 만인 22일 밤 완진됐다. 그런데 하루 뒤인 23일, 약 7km 떨어진 제15물류센터에서도 화재가 발생해 소방당국이 다시 출동했다. [연합뉴스 | 2026.07.22~23]</p>
-<p><strong>⑤ 선관위 투표율 허위 입력 정황 추가 포착</strong><br>검경 합동수사본부의 압수수색 과정에서 선관위의 투표율 허위 입력 정황이 추가로 드러났다. 국정조사 연장 요구가 커졌지만 여당은 "논의된 바 없다"는 입장이다. [뉴데일리 | 2026.07.24]</p>
-<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;">전국뉴스 v2.0 | 도메인: 정치·경제·사회 | 2026.07.27</p>`
+<p><strong>① 국회, 형소법에 공소기각 조항 추가해 본회의 통과…법무장관 사의</strong><br>더불어민주당 주도로 검찰 보완수사권 폐지 후속 형사소송법 개정안이 국회 본회의를 통과했다. 논의 막판 공소기각 사유 조항이 추가되면서 "대통령 재판을 겨냥한 입법 아니냐"는 비판이 여야 안팎에서 제기됐고, 법무부 장관은 이에 반발해 사의를 표명했다. [연합뉴스 | 2026.07.30]</p>
+<p><strong>② 조정식 국회의장 "현직 대통령 연임은 국민의 선택 문제" 발언 파문</strong><br>조정식 국회의장이 한 강연에서 현직 대통령의 연임 여부를 개헌 논의에 포함해 국민이 직접 선택하도록 하자는 취지로 발언해 파문이 일었다. 헌법기관장이 위헌 소지가 있는 발언을 했다는 비판이 여야를 가리지 않고 5대 신문 사설에 실렸다. [뉴시스 | 2026.07.29]</p>
+<p><strong>③ 코스피 장중 6000선 붕괴 — 레버리지 ETF발 변동성 확산</strong><br>코스피 지수가 장중 6000선 아래로 밀리며 최근 며칠 새 롤러코스터 장세를 이어갔다. 단일종목 레버리지·인버스 ETF 상품이 변동성을 키운다는 지적과 함께, 금융당국의 늑장 대응을 질타하는 목소리가 커졌다. [한국경제 | 2026.07.31]</p>
+<p><strong>④ 신임 주한미국대사 스틸 부임 — 한미관계 이례적 주목</strong><br>1년 반 가까이 공석이던 주한미국대사 자리에 스틸 신임 대사가 부임했다. 최근 불거진 주한미군 무인기 사태, 한국 공무원 미국 입국 금지 법안 발의 등 한미관계 곳곳에 낀 이상 기류 속에 대사 부임이 이례적으로 큰 주목을 받았다. [헤럴드경제 | 2026.07.30]</p>
+<p><strong>⑤ 윤석열 전 대통령, 선거법 위반 1심 당선무효형</strong><br>윤석열 전 대통령이 대선 과정의 허위사실 공표 혐의로 1심에서 당선무효형에 해당하는 판결을 받았다. 법원은 선거 승리를 위한 정치인의 거짓말에 엄중한 책임을 물은 판결이라고 밝혔으며, 확정될 경우 정치권에 상당한 파장이 예상된다. [연합뉴스 | 2026.07.29]</p>
+<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;">전국뉴스 v2.0 | 도메인: 정치·경제·사회 | 2026.08.03</p>`
   },
 
-  /* ─── 설악권뉴스 4개 탭 — 당선인 공약 소개 특집 ─── */
+  /* ─── 설악권뉴스 4개 탭 ─── */
   'news-sokcho': {
     teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">이병선 시장, "양대 철도 시대 콤팩트시티로 승부"<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">강원자치발전전략 대토론회 참석. [강원일보 | 07.20]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">강원특별자치도·18개 시군·강원일보·G1방송 공동 주최 '2026 강원자치발전전략 대토론회'에서 이병선 속초시장이 동서고속화철도·동해북부선 개통을 앞두고 콤팩트시티 완성을 속초의 성장 전략으로 제시했다. [강원일보 | 2026.07.20]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">'2026 속초 썸머페스티벌' 7월 31일~8월 2일 개막<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">8.22 워터밤 속초까지 여름 행사 이어져. [강원신문 | 07.31]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">속초시가 여름 휴가철 성수기를 맞아 속초해수욕장 일원에서 '2026 속초 썸머페스티벌'을 개최한다. 어쿠스틱·인디팝·힙합·재즈·록 등 다양한 장르의 공연과 체험 프로그램이 마련됐으며, 8월 22일에는 대형 음악축제 '워터밤 속초 2026'도 이어진다. [강원신문 | 2026.07.31]</div>
       </div>
     </div>
     <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">민생회복지원금 지급 계속 진행 중<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">전 시민 1인당 20만 원 지급 지속. [속초시 보도자료 | 2026.07]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">지난 7월 20일부터 시작된 민생회복지원금(1인당 20만 원, 속초사랑상품권) 지급이 계속 진행되고 있다. 아직 신청하지 않은 시민은 읍면동 행정복지센터에 문의하면 된다. [속초시 보도자료 | 2026.07]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">속초해수욕장 8월 12일까지 야간 개장<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">입수 가능시간 오후 9시까지 연장. [G1방송 | 07.21]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">속초시는 21일부터 다음달 12일까지 속초해수욕장을 야간 개장한다. 기존 오후 6시까지였던 입수 가능 시간이 오후 9시까지 연장되며, 유해생물 방지망 점검과 LED 부표 설치, 수상 안전관리 요원 배치 등 안전관리도 함께 강화된다. [G1방송 | 2026.07.21]</div>
       </div>
     </div>`,
-    cat: '📍 속초시 뉴스 전문 | 2026.07.27',
-    title: '이병선 시장 "콤팩트시티로 승부" — 강원자치발전전략 대토론회 참석',
-    meta: '강원일보·속초시 보도자료 | 2026.07.27',
+    cat: '📍 속초시 뉴스 전문 | 2026.08.03',
+    title: "'2026 속초 썸머페스티벌' 개막…해수욕장 야간개장 8월 12일까지",
+    meta: '강원신문·G1방송 | 2026.08.03',
     badge: '속초',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">수집 매체: 강원일보·속초시 보도자료 | 2026.07.27</p>
-<p><strong>① 이병선 시장, "양대 철도 시대 콤팩트시티로 승부"</strong><br>강원특별자치도·18개 시군·강원일보·G1방송 공동 주최 '2026 강원자치발전전략 대토론회'에서 이병선 속초시장이 동서고속화철도·동해북부선 개통을 앞두고 콤팩트시티 완성을 속초의 성장 전략으로 제시했다. [강원일보 | 2026.07.20]</p>
-<p><strong>② 민생회복지원금 지급 계속 진행 중</strong><br>지난 7월 20일부터 시작된 민생회복지원금(1인당 20만 원, 속초사랑상품권) 지급이 계속 진행되고 있다. 아직 신청하지 않은 시민은 읍면동 행정복지센터에 문의하면 된다. [속초시 보도자료 | 2026.07]</p>
-<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;margin-top:12px;">강원일보·속초시 보도자료 | 2026.07.27 수집</p>`
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">수집 매체: 강원신문·G1방송 | 2026.08.03</p>
+<p><strong>① '2026 속초 썸머페스티벌' 7월 31일~8월 2일 개막</strong><br>속초시가 여름 휴가철 성수기를 맞아 속초해수욕장 일원에서 '2026 속초 썸머페스티벌'을 개최한다. 어쿠스틱·인디팝·힙합·재즈·록 등 다양한 장르의 공연과 체험 프로그램이 마련됐으며, 8월 22일에는 대형 음악축제 '워터밤 속초 2026'도 이어진다. [강원신문 | 2026.07.31]</p>
+<p><strong>② 속초해수욕장 8월 12일까지 야간 개장</strong><br>속초시는 21일부터 다음달 12일까지 속초해수욕장을 야간 개장한다. 기존 오후 6시까지였던 입수 가능 시간이 오후 9시까지 연장되며, 유해생물 방지망 점검과 LED 부표 설치, 수상 안전관리 요원 배치 등 안전관리도 함께 강화된다. [G1방송 | 2026.07.21]</p>
+<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;margin-top:12px;">강원신문·G1방송 | 2026.08.03 수집</p>`
   },
 
   'news-goseong': {
     teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">청년 디딤돌 2배 적금 2차 모집 연장 안내<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">만 19~39세 청년 대상. [고성군청 공식 공지 | 2026.07]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">고성군이 만 19~39세 청년을 대상으로 한 청년 디딤돌 2배 적금 지원사업 2차 모집을 연장했다. 신청·문의: 고성군 경제체육과 033-680-3000 [고성군청 공식 공지 | 2026.07]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">함명준 군수, 국회 잇단 방문…군정 핵심 현안 해결 총력<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">평화경제특구·국비 확보 행보. [GNN뉴스통신 | 07.27]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">함명준 고성군수가 관광 인프라 확충과 평화경제특구 지정 등 군정 핵심 현안 해결을 위해 국회를 잇달아 방문했다. 관계 부처·국회 예산 심사를 앞두고 국비 확보를 위한 행보로 풀이된다. [GNN뉴스통신 | 2026.07.27]</div>
       </div>
     </div>
     <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">7월 제7830부대 포병 사격 일정 안내<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">인근 지역 주민 안전 안내. [고성군청 공식 공지 | 2026.07]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">7월 중 제7830부대 포병 사격 일정이 공지됐다. 인근 지역 주민은 고성군청 홈페이지에서 세부 일정을 확인할 수 있다. [고성군청 공식 공지 | 2026.07]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">8월 제55보병여단 박격포 사격 훈련 일정 안내<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">인근 지역 주민 안전 안내. [고성군청 공식 공지 | 2026.08]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">8월 중 제55보병여단 박격포 사격 훈련 일정이 공지됐다. 인근 지역 주민은 고성군청 홈페이지에서 세부 일정을 확인할 수 있다. [고성군청 공식 공지 | 2026.08]</div>
       </div>
     </div>`,
-    cat: '📍 고성군 뉴스 전문 | 2026.07.27',
-    title: '청년 디딤돌 2배 적금 2차 모집 연장…포병 사격 일정 안내',
-    meta: '고성군청 공식 공지 | 2026.07.27',
+    cat: '📍 고성군 뉴스 전문 | 2026.08.03',
+    title: '함명준 군수, 국회 잇단 방문…8월 제55보병여단 사격훈련 일정 안내',
+    meta: 'GNN뉴스통신·고성군청 공식 공지 | 2026.08.03',
     badge: '고성',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">수집 매체: 고성군청 공식 공지 | 2026.07.27</p>
-<p><strong>① 청년 디딤돌 2배 적금 2차 모집 연장 안내</strong><br>고성군이 만 19~39세 청년을 대상으로 한 청년 디딤돌 2배 적금 지원사업 2차 모집을 연장했다. 신청·문의: 고성군 경제체육과 033-680-3000 [고성군청 공식 공지 | 2026.07]</p>
-<p><strong>② 7월 제7830부대 포병 사격 일정 안내</strong><br>7월 중 제7830부대 포병 사격 일정이 공지됐다. 인근 지역 주민은 고성군청 홈페이지에서 세부 일정을 확인할 수 있다. [고성군청 공식 공지 | 2026.07]</p>
-<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;margin-top:12px;">고성군청 공식 공지 | 2026.07.27 수집</p>`
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">수집 매체: GNN뉴스통신·고성군청 공식 공지 | 2026.08.03</p>
+<p><strong>① 함명준 군수, 국회 잇단 방문…군정 핵심 현안 해결 총력</strong><br>함명준 고성군수가 관광 인프라 확충과 평화경제특구 지정 등 군정 핵심 현안 해결을 위해 국회를 잇달아 방문했다. 관계 부처·국회 예산 심사를 앞두고 국비 확보를 위한 행보로 풀이된다. [GNN뉴스통신 | 2026.07.27]</p>
+<p><strong>② 8월 제55보병여단 박격포 사격 훈련 일정 안내</strong><br>8월 중 제55보병여단 박격포 사격 훈련 일정이 공지됐다. 인근 지역 주민은 고성군청 홈페이지에서 세부 일정을 확인할 수 있다. [고성군청 공식 공지 | 2026.08]</p>
+<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;margin-top:12px;">GNN뉴스통신·고성군청 공식 공지 | 2026.08.03 수집</p>`
   },
 
   'news-yangyang': {
     teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">'2026 양양 써머 페스티벌' 7월 31일 낙산해변서 개막<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">7.31~8.1 낙산해수욕장. [아주경제 | 07.21]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">양양군과 양양문화재단이 주최하는 대표 여름 축제가 7월 31일~8월 1일 낙산해수욕장 일원에서 열린다. '세대통합·에너지·자유·젊음·흥'을 주제로 공연·체험 프로그램이 준비됐다. [아주경제 | 2026.07.21]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">'2026 양양 써머 페스티벌' 성료…7년 만의 귀환<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">하이키·자두 등 출연. [아주경제 | 07.31]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">양양군과 양양문화재단이 주최한 '2026 양양 써머 페스티벌'이 7월 31일~8월 1일 낙산해수욕장 일원에서 열렸다. 하이키·자두·범키 등이 출연해 세대통합·젊음을 주제로 한 무대를 꾸몄으며, 7년 만에 재개된 대표 여름 축제로 관심을 모았다. [아주경제 | 2026.07.31]</div>
       </div>
     </div>
     <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">양양 서프 위크 2026, 8월 14~16일 개최 예정<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">예약 진행 중. [양양군 보도자료 | 2026.07]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">2026 양양 서프 위크가 8월 14~16일 개최되며 현재 예약이 진행 중이다. [양양군 보도자료 | 2026.07]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">'2026 하조대 비치페스티벌' 8월 1일 개막<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">서핑 명소 하조대에서 개막. [양양군 보도자료 | 08.01]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">양양군이 하조대 해변 일원에서 '2026 하조대 비치페스티벌'을 8월 1일 개막했다. 서핑 성지로 알려진 하조대의 특색을 살린 체험·공연 프로그램이 마련됐다. [양양군 보도자료 | 2026.08.01]</div>
       </div>
     </div>`,
-    cat: '📍 양양군 뉴스 전문 | 2026.07.27',
-    title: "'2026 양양 써머 페스티벌' 7월 31일 개막…서프 위크 예약도 진행 중",
-    meta: '아주경제·양양군 보도자료 | 2026.07.27',
+    cat: '📍 양양군 뉴스 전문 | 2026.08.03',
+    title: "'2026 양양 써머 페스티벌' 성료…하조대 비치페스티벌도 개막",
+    meta: '아주경제·양양군 보도자료 | 2026.08.03',
     badge: '양양',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">수집 매체: 아주경제·양양군 보도자료 | 2026.07.27</p>
-<p><strong>① '2026 양양 써머 페스티벌' 7월 31일 낙산해변서 개막</strong><br>양양군과 양양문화재단이 주최하는 대표 여름 축제가 7월 31일~8월 1일 낙산해수욕장 일원에서 열린다. '세대통합·에너지·자유·젊음·흥'을 주제로 공연·체험 프로그램이 준비됐다. [아주경제 | 2026.07.21]</p>
-<p><strong>② 양양 서프 위크 2026, 8월 14~16일 개최 예정</strong><br>2026 양양 서프 위크가 8월 14~16일 개최되며 현재 예약이 진행 중이다. [양양군 보도자료 | 2026.07]</p>
-<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;margin-top:12px;">아주경제·양양군 보도자료 | 2026.07.27 수집</p>`
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">수집 매체: 아주경제·양양군 보도자료 | 2026.08.03</p>
+<p><strong>① '2026 양양 써머 페스티벌' 성료 — 7년 만의 귀환</strong><br>양양군과 양양문화재단이 주최한 '2026 양양 써머 페스티벌'이 7월 31일~8월 1일 낙산해수욕장 일원에서 열렸다. 하이키·자두·범키 등이 출연해 세대통합·젊음을 주제로 한 무대를 꾸몄으며, 7년 만에 재개된 대표 여름 축제로 관심을 모았다. [아주경제 | 2026.07.31]</p>
+<p><strong>② '2026 하조대 비치페스티벌' 8월 1일 개막</strong><br>양양군이 하조대 해변 일원에서 '2026 하조대 비치페스티벌'을 8월 1일 개막했다. 서핑 성지로 알려진 하조대의 특색을 살린 체험·공연 프로그램이 마련됐다. [양양군 보도자료 | 2026.08.01]</p>
+<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;margin-top:12px;">아주경제·양양군 보도자료 | 2026.08.03 수집</p>`
   },
 
   'news-inje': {
     teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">인제스피디움 모터스포츠 축제 계속 이어져<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">현대 N 페스티벌·강원 국제 모터 페스타. [인제군청 공식 공지 | 2026.07]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">인제스피디움에서 '2026 현대 N 페스티벌', '2026 강원 국제 모터 페스타' 등 7월 모터스포츠·공연·체험행사가 계속되고 있다. [인제군청 공식 공지 | 2026.07]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">인제스피디움 모터스포츠 축제, 8월에도 이어져<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">여름 휴가철 관광객 유치 효과 지속. [인제군청 공식 공지 | 2026.08]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">인제스피디움에서 진행돼 온 모터스포츠·공연·체험 행사가 8월에도 계속된다. 여름 휴가철을 맞아 관광객 유치 효과가 이어지고 있다는 평가다. [인제군청 공식 공지 | 2026.08]</div>
       </div>
     </div>
     <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
       <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">한강수계기금 배분 개선, 도·국토부 대응 계속 요구<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">내년도 지원액 급감 우려 지속. [강원일보 | 2026.07]</div>
-        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">최상기 군수는 한강수계기금이 연간 300억 원가량 지원되던 것이 내년도에는 67억 원 수준으로 급감할 것으로 예상된다며, 강원도와 국토부 차원의 배분 구조 개선을 계속 요구하고 있다. [강원일보 | 2026.07]</div>
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">한강수계기금 배분 개선, 국회 예산 심사 앞두고 재차 요구<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">예산 심사 앞두고 도·국토부에 재차 요구. [강원일보 | 2026.07]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">최상기 군수는 내년도 한강수계기금이 300억 원대에서 67억 원 수준으로 급감할 것으로 예상된다며, 국회 예산 심사를 앞두고 강원도·국토부에 배분 구조 개선을 재차 요구했다. [강원일보 | 2026.07]</div>
       </div>
     </div>`,
-    cat: '📍 인제군 뉴스 전문 | 2026.07.27',
-    title: '인제스피디움 모터스포츠 축제 지속…한강수계기금 개선 요구도 계속',
-    meta: '인제군청 공식 공지·강원일보 | 2026.07.27',
+    cat: '📍 인제군 뉴스 전문 | 2026.08.03',
+    title: '인제스피디움 축제 8월에도 이어져…한강수계기금 개선 재차 요구',
+    meta: '인제군청 공식 공지·강원일보 | 2026.08.03',
     badge: '인제',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">수집 매체: 인제군청 공식 공지·강원일보 | 2026.07.27</p>
-<p><strong>① 인제스피디움 모터스포츠 축제 계속 이어져</strong><br>인제스피디움에서 '2026 현대 N 페스티벌', '2026 강원 국제 모터 페스타' 등 7월 모터스포츠·공연·체험행사가 계속되고 있다. [인제군청 공식 공지 | 2026.07]</p>
-<p><strong>② 한강수계기금 배분 개선, 도·국토부 대응 계속 요구</strong><br>최상기 군수는 한강수계기금이 연간 300억 원가량 지원되던 것이 내년도에는 67억 원 수준으로 급감할 것으로 예상된다며, 강원도와 국토부 차원의 배분 구조 개선을 계속 요구하고 있다. [강원일보 | 2026.07]</p>
-<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;margin-top:12px;">인제군청 공식 공지·강원일보 | 2026.07.27 수집</p>`
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">수집 매체: 인제군청 공식 공지·강원일보 | 2026.08.03</p>
+<p><strong>① 인제스피디움 모터스포츠 축제, 8월에도 이어져</strong><br>인제스피디움에서 진행돼 온 모터스포츠·공연·체험 행사가 8월에도 계속된다. 여름 휴가철을 맞아 관광객 유치 효과가 이어지고 있다는 평가다. [인제군청 공식 공지 | 2026.08]</p>
+<p><strong>② 한강수계기금 배분 개선, 국회 예산 심사 앞두고 재차 요구</strong><br>최상기 군수는 내년도 한강수계기금이 300억 원대에서 67억 원 수준으로 급감할 것으로 예상된다며, 국회 예산 심사를 앞두고 강원도·국토부에 배분 구조 개선을 재차 요구했다. [강원일보 | 2026.07]</p>
+<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;margin-top:12px;">인제군청 공식 공지·강원일보 | 2026.08.03 수집</p>`
   },
 
   /* ─── 풍향계 ─── */
   punghyang: {
-    cat: '풍향계 — 5대 신문 사설 흐름 소개 | 2026.07.27',
-    title: '부동산 대토론회·선관위 투표율 조작 공통 지적, 원구성 정체·오세훈 판결까지',
-    meta: '조선일보·동아일보·중앙일보·한겨레·경향신문 | 풍향계 v4.1 | 2026.07.27',
+    cat: '풍향계 — 5대 신문 사설 흐름 소개 | 2026.08.03',
+    title: '국회의장 연임 개헌 발언 전 매체 비판, 형소법 공소기각 조항·증시 변동성도 공통 지적',
+    meta: '조선일보·동아일보·중앙일보·한겨레·경향신문 | 풍향계 v4.1 | 2026.08.03',
     badge: '언론흐름',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">분석 기간: 2026.07.20~07.25 | 풍향계 v4.1 | 분석 매체: 조선일보·동아일보·중앙일보·한겨레·경향신문(5대 종합일간지)</p>
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">분석 기간: 2026.07.27(월)~08.01(토) | 풍향계 v4.1 | 분석 매체: 조선일보·동아일보·중앙일보·한겨레·경향신문(5대 종합일간지)</p>
 
 <p><strong>【1단계 — 신문별 주장】</strong><br>
-조선일보는 정부가 규제를 우회해 부동산 현실을 뒤늦게 실감했다고 지적하며, 증세만 고집해서는 집값을 잡을 수 없다고 비판했다. 선관위의 투표율 허위 입력 의혹에 대해서는 무능과 기만이 불신을 키운다고 질타했다.<br><br>
-동아일보는 22대 후반기 국회가 상임위 구성도 못한 채 51일째 반쪽 운영 중이라 비판하며 여야 모두에 책임을 물었고, 부동산 대토론회에 대해서는 세금·대출·공급을 아우르는 새판짜기를 주문했다.<br><br>
-중앙일보는 원 구성도 안 된 채 법안부터 강행 처리한 여당을 비판하고, 부동산 대책은 헬기 타고 땅 찾기 식이 아니라 지방정부와의 협력이 우선이라고 제언했다.<br><br>
-한겨레는 개원 두 달째 원 구성도 못한 여야를 함께 질타하면서도, 보완수사권 폐지는 국민 우려 없이 끝까지 살펴야 한다고 당부했다. 부동산 토론회를 포용적 주거체제로의 대전환 계기로 삼자고 제언했다.<br><br>
-경향신문은 3대 메가프로젝트가 노동권 후퇴의 빌미가 되어선 안 된다고 경고하고, 부동산 토론회에서 확인된 현실을 바탕으로 최선의 정책 조합을 찾아야 한다고 제언했다.</p>
+조선일보는 형소법 개정에 막판 끼워 넣은 공소기각 조항을 "누구를 위한 조항이냐"고 비판했고, 국회의장의 연임 개헌 발언을 "국민의 선택 문제"라는 프레임 자체가 부적절하다고 지적했다. 코스피 급변동에 대해서도 정부가 안이한 태도를 보인다고 질타했다.<br><br>
+동아일보는 조정식 국회의장의 발언을 "反헌법적"이라고 못박으며 개헌론에 찬물을 끼얹었다고 비판했고, 스틸 신임 미국대사 부임을 동맹 현안 조율 창구로 기대하면서도 무인기 격추 미수 사태에서 드러난 "손발 안 맞는 불통 동맹"을 문제 삼았다.<br><br>
+중앙일보는 헌법정신을 흔드는 국회의장의 무책임한 발언과, 대통령을 위한 입법이라는 의심을 살 만한 공소기각 조항 추가를 나란히 비판했고, 롤러코스터 증시와 레버리지 ETF 정책 실패의 책임 소재를 물었다.<br><br>
+한겨레는 여야 모두를 향해 원 구성 지연과 정쟁을 질타하면서도, 국회의장의 부적절하기 짝이 없는 연임 개헌 발언을 별도로 지적했다. 형소법 개정을 비난하는 검찰을 향해서도 "반성부터 제대로 하라"고 요구했다.<br><br>
+경향신문은 국회의장의 발언이 여권의 총체적 난맥을 보여준다고 진단했고, 본회의에 상정된 형소법의 공소기각 사유 추가를 두고 "의심받을 일을 왜 하느냐"고 물었다. 검찰 수사권 폐지 후속 대책을 국민 피해 없이 마련하라고도 당부했다.</p>
 
 <div class="chart-wrap" style="margin-top:14px;">
 <div class="chart-title">📊 핵심어 매트릭스</div>
 <table style="width:100%;font-size:12px;border-collapse:collapse;">
 <tr style="border-bottom:1px solid #e2e8f0;"><th style="text-align:left;padding:6px 4px;">의제</th><th style="padding:6px 4px;">조선</th><th style="padding:6px 4px;">동아</th><th style="padding:6px 4px;">중앙</th><th style="padding:6px 4px;">한겨레</th><th style="padding:6px 4px;">경향</th></tr>
-<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">부동산 대토론회</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
-<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">선관위 투표율 조작·허위입력</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
-<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">원 구성 정체·여야 대치</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🟡</td><td style="text-align:center;">—</td></tr>
-<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">오세훈 당선무효형</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🟡</td><td style="text-align:center;">—</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🟡</td></tr>
-<tr><td style="padding:6px 4px;">물류센터 화재 반복</td><td style="text-align:center;">—</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🟡</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">국회의장 연임 개헌 발언</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">형소법 공소기각 조항 논란</td><td style="text-align:center;">🔴</td><td style="text-align:center;">—</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">한미관계 이상기류(스틸대사·무인기 등)</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🟡</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">코스피 급락·레버리지 ETF</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🟡</td></tr>
+<tr><td style="padding:6px 4px;">민주당 전당대회·신천지 논란</td><td style="text-align:center;">🟡</td><td style="text-align:center;">—</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🟡</td><td style="text-align:center;">—</td></tr>
 </table>
 <div class="chart-source">🔴 집중적으로 다룸 · 🟡 일부 언급</div>
 </div>
 
 <p style="margin-top:14px;"><strong>【3단계 — 질문】</strong><br>
-<strong>Q1(공통 미답):</strong> 부동산 대토론회에서 논의된 보유세 강화·거래세 인하·공급 확대 등 여러 정책 조합 중 정부가 실제 무엇을 채택할지, 다섯 매체 중 누구도 구체적 답을 제시하지 않았다.<br>
-<strong>Q2(일부 다룬):</strong> 오세훈 서울시장 1심 당선무효형을 조선·동아·한겨레·경향 네 매체가 다뤘지만, 항소심 전망이나 서울시정 공백 우려를 놓고는 온도차가 뚜렷했다.<br>
-<strong>Q3(어떤 신문도 묻지 않은 질문):</strong> 외교망이 뚫리고도 열 달간 몰랐다는 사실과 선관위 투표율 조작·허위 입력 경위가 같은 주 나란히 보도됐음에도, "정부 시스템 전반의 상시 점검 체계가 왜 작동하지 않았는가"라는 구조적 질문을 던진 매체는 없었다.</p>
+<strong>Q1(공통 미답):</strong> 형소법 개정과 국회의장 발언 논란이 겹치며 "실제 대통령 본인의 재판·거취와 무관하다"는 해명이 나왔지만, 다섯 매체 중 이 해명을 검증한 매체는 없었다.<br>
+<strong>Q2(일부 다룬):</strong> 스틸 신임 미국대사 부임을 놓고 동아·한겨레·경향은 "동맹 현안 조율의 계기"로 기대감을 표했지만, 조선·중앙은 "한미관계가 이미 심각한 국면"이라는 우려에 무게를 실어 온도차를 보였다.<br>
+<strong>Q3(어떤 신문도 묻지 않은 질문):</strong> 국회의장의 발언, 형소법 공소기각 조항, 레버리지 ETF발 증시 급락까지 — 서로 다른 세 영역에서 반복적으로 제도의 허점을 이용한 무리수가 도마에 올랐음에도, "왜 이런 무리수가 반복해서 나오는가"라는 구조적 질문을 던진 매체는 없었다.</p>
 
-<p style="margin-top:14px;">【사자성어 — 五里霧中(오리무중) 선정 이유】<br>
-외교망이 뚫리고도 열 달간 몰랐다는 사실, 선관위 투표율이 허위로 입력된 경위조차 아직 불명확하다는 지적, 감사원 유병호 사건의 윗선 규명 촉구까지 — 이번 주 사설들은 사안의 진상과 책임 소재가 좀처럼 드러나지 않는 상황을 한목소리로 지적했다.</p>
+<p style="margin-top:14px;">【사자성어 — 自中之亂(자중지란) 선정 이유】<br>
+국회의장의 개헌 발언에 여야 안팎에서 비판이 쏟아졌고, 여권 내부에서도 법무부 장관의 사의, 여당의 신천지 공방과 상임위 갈등이 겹치며 자중지란이라 부를 만한 내홍 양상이 두드러진 한 주였다. 형소법 공소기각 조항을 둘러싼 여야 안팎의 이견 역시 같은 흐름 위에 있다.</p>
 <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:10px 12px;margin-top:10px;font-size:12px;color:#475569;">
-五里霧中(오리무중) | 五(오/다섯)·里(리/거리단위)·霧(무/안개)·中(중/가운데) — 다섯 리에 걸친 안개 속에 있다는 뜻으로, 사물의 상황이나 갈피를 잡을 수 없음을 이르는 말 | 출전: 『후한서(後漢書)』「장해전(張楷傳)」<br>
+自中之亂(자중지란) | 自(자/스스로)·中(중/가운데)·之(지/어조사)·亂(란/어지러울) — 같은 편 안에서 일어나는 다툼이나 혼란을 이르는 말 | 출전: 『조선왕조실록』(세조실록 기록에서 유래, 한국에서만 쓰이는 성어)<br>
 ※ 사자성어는 해당 주 풍향계 분석 내용을 바탕으로 선정하며, 특정 진영을 겨냥하지 않습니다.
 </div>
 
-<p style="font-size:10px;color:#aaa;margin-top:14px;border-top:1px dashed #eee;padding-top:8px;">방법론: 조선·동아·중앙·한겨레·경향 5대 종합일간지 사설 원문(총 86건, 2026.7.20~7.25 게재분)을 직접 검토했습니다. 이념 레이블을 붙이지 않고 각 신문의 주장을 있는 그대로 소개하는 것을 원칙으로 합니다. | 풍향계 v4.1 | 2026.07.27</p>`
+<p style="font-size:10px;color:#aaa;margin-top:14px;border-top:1px dashed #eee;padding-top:8px;">방법론: 조선·동아·중앙·한겨레·경향 5대 종합일간지 사설 원문(총 87건, 2026.7.27~8.1 게재분)을 직접 검토했습니다. 이념 레이블을 붙이지 않고 각 신문의 주장을 있는 그대로 소개하는 것을 원칙으로 합니다. | 풍향계 v4.1 | 2026.08.03</p>`
   },
 
   /* ─── 여론동향 ─── */
   opinion: {
-    cat: '📊 여론동향 전문 | 한국갤럽 제670호 | 2026.07.27',
-    title: '갤럽 51% — 부동산 정책 부정평가 이유 22%(▲11%p) 급등',
-    meta: '한국갤럽 제670호(조사 2026.07.21~23, n=1,003)',
+    cat: '📊 여론동향 전문 | NBS 전국지표조사 제185호 | 2026.08.03',
+    title: 'NBS 53% — 국정운영 긍정평가 취임 이후 최저, 부동산정책 부정 56%',
+    meta: 'NBS 전국지표조사 제185호(조사 2026.07.27~29, n=1,000)',
     badge: '여론',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">여론동향 | 2026년 7월 4주차 기준 | 한국갤럽 제670호</p>
-<p style="font-size:11px;color:#92400e;background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:6px 10px;margin-bottom:14px;">※ NBS 전국지표조사는 격주 조사 주기상 이번 주 신규 발표가 없어, 이번 호는 한국갤럽 단독 자료로 작성합니다.</p>
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">여론동향 | 2026년 7월 5주차 기준 | NBS 전국지표조사 제185호</p>
+<p style="font-size:11px;color:#92400e;background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:6px 10px;margin-bottom:14px;">※ 한국갤럽은 이번 주부터 향후 2주간(7.27~8.7) 정기 조사를 진행하지 않으며, 다음 조사는 8월 14일(금) 제671호로 공개될 예정입니다. 이에 따라 이번 호는 NBS 전국지표조사 단독 자료로 작성합니다.</p>
 
 <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:10px 12px;margin-bottom:14px;">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:center;">
   <div style="background:#fff;border-radius:6px;padding:10px;">
-    <div style="font-size:10px;color:#888;margin-bottom:4px;">갤럽 대통령 직무 긍정</div>
-    <div style="font-size:28px;font-weight:900;color:#1F7A4D;">51%</div>
-    <div style="font-size:11px;color:#B03030;">▼1%p (직전 52%)</div>
+    <div style="font-size:10px;color:#888;margin-bottom:4px;">NBS 국정운영 긍정평가</div>
+    <div style="font-size:28px;font-weight:900;color:#1F7A4D;">53%</div>
+    <div style="font-size:11px;color:#B03030;">취임 이후 최저 수준</div>
   </div>
   <div style="background:#fff;border-radius:6px;padding:10px;">
-    <div style="font-size:10px;color:#888;margin-bottom:4px;">갤럽 대통령 직무 부정</div>
-    <div style="font-size:28px;font-weight:900;color:#B03030;">38%</div>
-    <div style="font-size:11px;color:#B03030;">▲1%p (의견유보 11%)</div>
+    <div style="font-size:10px;color:#888;margin-bottom:4px;">NBS 국정운영 부정평가</div>
+    <div style="font-size:28px;font-weight:900;color:#B03030;">37%</div>
+    <div style="font-size:11px;color:#B03030;">모름/무응답 10%</div>
   </div>
 </div>
 </div>
 
 <p><strong>【① 핵심 수치】</strong><br>
-갤럽 제670호(조사 7.21~23, n=1,003, ±3.1%p): 대통령 직무 긍정 51%/부정 38%/의견유보 11% | 정당지지도 더불어민주당 44%·국민의힘 23%·조국혁신당 2%·무당층 27%</p>
+NBS 제185호(조사 7.27~29, n=1,000, ±3.1%p): 국정운영 긍정 53%/부정 37%/모름·무응답 10% | 국정방향성 올바른 방향 52%/잘못된 방향 40% | 정당지지도 더불어민주당 40%·국민의힘 21%·조국혁신당 2%·개혁신당 2%·진보당 1%·태도유보 33%</p>
 
 <p><strong>【② 전회차 대비 변화】</strong><br>
-직무 긍정은 52%→51%(▼1%p), 부정은 37%→38%(▲1%p)로 소폭 조정됐다. 정당지지도는 더불어민주당 40%→44%(▲4%p), 국민의힘 26%→23%(▼3%p)로, 지난주 있었던 국민의힘의 반등세가 다시 꺾이고 양당 격차(21%p)가 벌어졌다.</p>
+긍정 평가 53%는 취임 직후(25년 6월 2주) 이래 가장 낮은 수준이다. 30대 이하(18-29세 41%, 30대 50%)에서 부정 평가가 긍정 평가 대비 비교적 높게 나타났다. 정당지지도는 지난 7월 3주 조사와 유사한 수준을 유지했다.</p>
 
-<p><strong>【③ 긍·부정 평가 이유】</strong><br>
-긍정 1위 외교 17%(▼4%p), 경제·민생 15%(▼4%p). 부정 1위 부동산 정책 22%(▲11%p, 큰 폭 상승), 경제·민생·고환율 10%(▼6%p).</p>
+<p><strong>【③ 부문별 평가】</strong><br>
+부동산 정책 평가는 잘못하고 있다 56% &gt; 잘하고 있다 33%로, 지난 1월 4주 조사 대비 부정 평가가 9%p 상승했다. 주택담보대출·전세대출 규제 모두 "완화해야 한다"는 응답이 55%로 최다였다. 향후 기준금리는 인하해야 한다는 의견이 42%로 가장 많았다.</p>
 
 <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:10px 12px;margin:14px 0;font-size:12px;color:#334155;">
 <strong>【5-1단계 — 풍향계 연계 지표】</strong><br><br>
-이번 주 풍향계 1위 의제였던 부동산 대토론회와 관련해, 갤럽은 대통령 직무 부정 평가 이유 중 "부동산 정책"이 22%로 전주 대비 11%p 급등해 1위에 올랐다고 밝혔다. 분야별 정책 평가에서도 부동산 정책은 가장 최근 조사(제667호, 6.30~7.2)에서 긍정 26%·부정 46%로 7개 분야 중 최저 긍정률을 기록했으며, 3월(51%) 대비 25%p 급락했다. 이는 이번 주 사설들이 공통 지적한 "대토론회는 열렸지만 정책 조합이 여전히 표류한다"는 비판과 같은 방향이다.<br><br>
-※ 풍향계 2위 의제(선관위 투표율 조작)는 이번 주 갤럽 조사에 직접 연결되는 문항이 없어 5-1단계 적용 대상에서 제외한다.
+이번 주 풍향계 1~2위 의제(국회의장 연임 개헌 발언, 형소법 공소기각 조항 논란)와 직접 연결되는 문항이 NBS 원자료에 없어, 이번 호에서는 5-1단계 연계 지표를 생략합니다. 다만 NBS는 더불어민주당 차기 당대표 적합도를 묻는 문항에서 정청래 21%·김민석 19%·송영길 6%, 태도유보 54%라는 결과를 함께 발표했는데, 이는 풍향계 5위 의제(민주당 전당대회·신천지 논란)와 관련은 있으나 최상위 의제가 아니어서 억지로 연계하지 않습니다.
 </div>
 
 <p><strong>【④ 통계적 유의성】</strong><br>
-표본오차는 ±3.1%p(95% 신뢰수준)이며, 응답률 10.7%, 접촉률 39.7%다. 강원 등 표본 30명 안팎의 소지역은 상대표준오차가 25%를 넘어 이번 호에서는 지역별 세부수치를 인용하지 않는다.</p>
+표본오차는 ±3.1%p(95% 신뢰수준)이며, 응답률 15.8%, 접촉률 34.0%다. 강원/제주 표본(41명 안팎)은 상대표준오차가 15~23%대로 나타나 이번 호에서는 지역별 세부수치를 인용하지 않는다.</p>
 
 <p><strong>【⑤ 설악권 시사점】</strong><br>
-이번 주는 설악권과 직접 연결되는 문항은 확인되지 않았다. 정당지지도·성향별 분포는 대체로 안정적으로 유지되고 있다.</p>
+이번 주는 설악권과 직접 연결되는 문항은 확인되지 않았다. 다만 부동산 정책에 대한 부정평가(56%)와 대출 규제 완화 요구(주담대·전세대출 모두 55%)가 높다는 점은 눈여겨볼 만하다.</p>
 
 <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:8px 12px;font-size:11px;color:#92400e;margin-top:8px;">
-⚠️ <strong>통계 주의:</strong> 표본오차 ±3.1%p(95% 신뢰수준) | 단일 조사 결과로 단정 금지
+⚠️ <strong>통계 주의:</strong> 표본오차 ±3.1%p(95% 신뢰수준) | 단일 조사 결과로 단정 금지</p>
 </div>
 
-<p style="font-size:10px;color:#aaa;margin-top:12px;border-top:1px dashed #eee;padding-top:8px;">한국갤럽 제670호(조사 2026.07.21~23, 1,003명, ±3.1%p, 응답률 10.7%, 접촉률 39.7%)<br>자세한 내용: 한국갤럽 홈페이지 gallup.co.kr</p>`
+<p style="font-size:10px;color:#aaa;margin-top:12px;border-top:1px dashed #eee;padding-top:8px;">NBS 전국지표조사 제185호(조사 2026.07.27~29, 1,000명, ±3.1%p, 응답률 15.8%, 접촉률 34.0%) | 실사: 코리아리서치·한국리서치 | 조사: 엠브레인퍼블릭·케이스탯리서치·코리아리서치·한국리서치<br>자세한 내용: 전국지표조사 홈페이지 nbsurvey.kr</p>`
   },
 
-  /* ─── 시민의 소리 — 사설 2편 동시 게재 ─── */
+  /* ─── 시민의 소리 — 사설 1편 ─── */
   voice: {
-    cat: '🗣 시민의 소리 — 사설 2편 | 2026.07.27',
-    title: '임금 직접지급, 설악권 개발의 새 기준을 만들 수 있습니다 · 시의회가 시장을 감시해야 민주주의입니다',
-    meta: '김준철 편집장 | 설악시민뉴스 제7호 | 2026.07.27',
+    cat: '🗣 시민의 소리 — 사설 | 2026.08.03',
+    title: '노인과 아이가 함께 웃는 설악권을 꿈꿉니다',
+    meta: '김준철 편집장 | 설악시민뉴스 제8호 | 2026.08.03',
     badge: '사설',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">시민의 소리 | 사설 2편 동시 게재 (편집장 집필) | 2026.07.27</p>
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">시민의 소리 | 사설(편집장 집필) | 2026.08.03</p>
 
-<div style="background:#f0f6ff;border:1px solid #b8d4f0;border-radius:6px;padding:8px 12px;margin-bottom:14px;font-size:11px;color:#1B3A6B;">📝 케이스 ① 편집장 직접 제작 — 이번 호는 시민 기고 미수신으로 편집장이 사설 2편을 작성했습니다.</div>
+<div style="background:#f0f6ff;border:1px solid #b8d4f0;border-radius:6px;padding:8px 12px;margin-bottom:14px;font-size:11px;color:#1B3A6B;">📝 케이스 ① 편집장 직접 제작 — 이번 호는 시민 기고 미수신으로 편집장이 사설을 작성했습니다.</div>
 
-<p style="font-weight:800;color:#1B3A6B;font-size:15px;">사설 C-06 | 임금 직접지급, 설악권 개발의 새 기준을 만들 수 있습니다</p>
-<p>설악권에 광역 협력이 현실이 된다면, 대규모 관광 인프라 건설이 뒤따를 것입니다. 청초호 문화예술벨트, 국가어항 개발, 복합교육체육센터 — 이 공사에는 수백 명의 건설 노동자가 투입됩니다. 이들의 임금이 안전하게 지급되는 구조를 개발과 함께 설계하는 것, 지금부터 준비해야 합니다.</p>
-<p>임금 체불은 단순한 노동 문제가 아닙니다. 다단계 하청 구조에서 인건비가 중간에 새거나 묶이는 것은 시장의 정보 비대칭 문제이기도 합니다. 발주자가 최종 근로자에게 임금이 실제로 지급됐는지 확인할 수 없는 구조가 문제의 뿌리입니다. 서울시는 2026년 3월부터 시가 발주하는 모든 건설공사에서 발주자가 노무비를 근로자 계좌로 직접 송금하는 임금 직접지급제를 전면 시행하고 있습니다. 이 방식은 정보의 투명성을 높여 시장 신뢰를 회복하는 접근입니다.</p>
-<p>설악권 4개 시·군이 현행 지방계약법의 공사 계약 특수조건 조항을 활용해, 공동 발주 사업에 임금 직접지급을 표준 조건으로 채택하는 것은 법리적으로 가능한 길입니다. 강원특별자치도 특례를 활용하면 더 탄탄한 제도적 근거를 만들 수 있습니다. 규약 조항 하나, 계약 조건 한 줄이 수백 명 건설 노동자의 임금을 지켜줄 수 있습니다. 설악권이 강원도에서 이 기준을 처음 세우는 지역이 된다면, 개발과 공정이 함께 가는 모범 사례가 될 것입니다. 함께 만들어보면 어떨까요.</p>
-
-<hr style="border:none;border-top:1px dashed #e2e8f0;margin:20px 0;">
-
-<p style="font-weight:800;color:#1B3A6B;font-size:15px;">사설 P-03 | 시의회가 시장을 감시해야 민주주의입니다</p>
-<p>집행부와 의회가 서로 긴장 관계를 유지하는 것, 이것이 지방 민주주의의 핵심입니다. 시장이 무언가를 하려 할 때 의회가 "정말 그게 맞습니까? 재원은 확보됐습니까? 다른 방법은 없습니까?"라고 물어야 합니다. 그 물음이 없으면 공약은 검증 없이 실행되고, 예산은 제대로 심의되지 않습니다.</p>
-<p>속초·고성·양양·인제 모든 시·군 의회에 드리는 부탁입니다. 예산을 꼼꼼히 따지고, 감사에서 빠져나가는 사업이 없도록 하고, 시민이 알아야 할 정보를 집행부가 공개하도록 압박해주십시오. 이 기본적인 역할만 제대로 해줘도 설악권 행정은 크게 달라질 수 있습니다. 같은 당 소속 단체장이라도, 의회는 독립적인 눈으로 봐야 합니다. 그것이 주민이 의원에게 맡긴 역할입니다.</p>
-<p>비판이 곧 반대가 아닙니다. 건강한 긴장이 더 나은 결과를 만듭니다. 설악권 시민 여러분, 우리 지역 의회가 그 역할을 다하고 있는지 함께 지켜봐 주세요. 의회를 지켜보는 시민이 많은 지역일수록, 의회는 더 잘 작동합니다.</p>
+<p style="font-weight:800;color:#1B3A6B;font-size:15px;">사설 S-05 | 노인과 아이가 함께 웃는 설악권을 꿈꿉니다</p>
+<p>설악권은 초고령사회입니다. 속초의 고령화율은 32.9%에 달합니다. 동시에 출생률은 낮아지고 어린이집은 부족합니다. 노인과 아이, 이 두 세대가 모두 불편한 도시 — 이것이 지금 설악권의 현실입니다. 두 문제는 따로 떨어진 것이 아닙니다.</p>
+<p>노인이 안정적이어야 청년 부부가 아이를 맡기고 일할 수 있고, 어린이가 건강하게 자라야 이 지역의 미래가 있습니다. 노인 일자리를 늘리고, 경로당 환경을 개선하고, 국공립 어린이집을 확충하는 것은 하나로 연결된 과제입니다. 한 세대를 위한 정책이 다른 세대의 삶을 받쳐주는 구조를 설계해야 합니다.</p>
+<p>설악권 네 곳이 광역으로 묶여 돌봄·복지 인프라를 함께 설계하면, 혼자서는 감당하기 어려운 규모의 복지 서비스가 가능해집니다. 전문 요양 시설, 공동 육아 공간 — 규모가 커야 가능한 것들이 광역 협력으로 열립니다. "우리 세대"가 아니라 "모든 세대"가 살 만한 곳을 만드는 것, 그 방향을 함께 잡아가면 어떨까요.</p>
 
 <div style="background:#fef9e7;border:1px solid #fde68a;border-radius:6px;padding:8px 12px;margin-top:14px;font-size:12px;color:#78350f;">
 📮 시민 기고 환영합니다 → jcjwk54@gmail.com
 </div>
 
-<p style="font-size:12px;color:#888;padding-top:8px;">김준철 편집장 | 설악시민뉴스 제7호 | 2026.07.27</p>`
+<p style="font-size:12px;color:#888;padding-top:8px;">김준철 편집장 | 설악시민뉴스 제8호 | 2026.08.03</p>`
   },
 
   /* ─── 이슈&토론 ─── */
-  issue7: {
-    cat: '💬 이슈&토론 No.8 | 경제·노동 | 2026.07.27',
-    title: '주 4일 근무제, 도입해야 하나',
-    meta: '설악시민뉴스 편집부 | 2026.07.27',
+  issue8: {
+    cat: '💬 이슈&토론 No.9 | 인구·가족·젠더 | 2026.08.03',
+    title: '노인 요양을 가족에게 맡겨야 하나',
+    meta: '설악시민뉴스 편집부 | 2026.08.03',
     badge: '토론',
-    body: `<div style="background:#F5F0E0;border-radius:6px;padding:6px 12px;font-size:11px;font-weight:700;color:#7a5b00;margin-bottom:10px;display:inline-block;">💼 경제·노동 시즌 — 여름 끝·2학기 시작 준비</div>
-<p>2학기가 시작되는 8월 말, 직장인들은 주 5일의 일상으로 돌아갑니다. 그런데 세계 곳곳에서 주 4일 근무 실험이 진행 중입니다. 영국 61개 기업 시범 사업 결과, 직원 수입 감소 없이 생산성이 유지됐고 결근율은 65% 감소했습니다. 설악 지역 관광업·소상공인에게는 어떤 영향이 있을까요.</p>
-<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👍 주 4일제를 도입해야 한다</div>
-<p style="background:#EAF5EE;border:1px solid #7DB87D;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;">영국·아이슬란드·일본의 시범 사업은 생산성 유지 또는 향상을 보고했습니다. 과도한 노동 시간은 번아웃·우울증을 유발하며 장기적으로 경제 손실이 큽니다. 육아·돌봄 시간이 늘어 저출생 문제 해소에도 기여할 수 있습니다. 미래에는 AI가 반복 업무를 대체하므로 인간의 노동 시간 자체가 줄어드는 것이 자연스러운 방향입니다.</p>
-<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👎 아직 현실적이지 않다</div>
-<p style="background:#FFF0F0;border:1px solid #D97C7C;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;">한국의 제조업·서비스업 현장에서는 주 4일이 사실상 불가능합니다. 인력이 부족한 중소기업에서 하루를 줄이면 업무가 적체되거나 남은 4일의 노동 강도만 높아집니다. 글로벌 경쟁 기업들이 주 5일 이상 일할 때 혼자 줄이면 국제 경쟁력에서 뒤처집니다. 업종별·직종별로 차등 적용하는 유연한 접근이 필요합니다.</p>
+    body: `<div style="background:#F5F0E0;border-radius:6px;padding:6px 12px;font-size:11px;font-weight:700;color:#7a5b00;margin-bottom:10px;display:inline-block;">👨‍👩‍👧 인구·가족 시즌 — 추석 연휴 앞 · 가족·복지</div>
+<p>추석을 앞두면 온 가족이 모입니다. 그 자리에서 가장 자주 나오는 대화 중 하나가 부모님 요양을 어떻게 할 것인가입니다. 한국은 2025년 초고령사회에 진입했고, 노인 돌봄은 이제 국가적 의제가 됐습니다. 강원도는 전국에서도 고령화가 빠른 지역으로, 이 이슈는 더욱 절박합니다.</p>
+<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👍 가족 돌봄에 수당을 지급해야 한다</div>
+<p style="background:#EAF5EE;border:1px solid #7DB87D;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;">가족이 돌봄을 맡으면 노인의 심리적 안정감이 높고 삶의 질이 향상된다는 연구가 많습니다. 시설보다 비용이 적게 든다는 경제적 장점도 있습니다. 정부가 가족 돌봄에 수당을 지급한다면, 돌봄을 위해 일을 줄인 가족의 경력 단절과 경제적 손실을 일정 보전할 수 있습니다. 지역 공동체 내 돌봄 문화를 복원하는 효과도 기대됩니다.</p>
+<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👎 사회적 돌봄 체계를 확충해야 한다</div>
+<p style="background:#FFF0F0;border:1px solid #D97C7C;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;">가족 돌봄의 짐은 대부분 여성에게 집중되어 성별 불평등을 심화시킵니다. 비전문가가 중증 노인을 돌보면 의료적 위험이 있습니다. 돌봄 서비스를 전문화·직업화해야 일자리도 늘고 서비스 질도 높아집니다. 국가가 책임지는 보편적 돌봄 체계가 개인과 가족의 과부하를 막는 근본 해법입니다.</p>
 <div style="background:linear-gradient(135deg,#1B3A6B,#2E75B6);border-radius:8px;padding:14px 16px;color:#fff;margin-top:14px;">
 <div style="font-size:10px;font-weight:700;opacity:.7;margin-bottom:6px;">✏️ 편집자의 관점</div>
-<p style="font-size:13px;line-height:1.75;">일하는 시간이 줄어야 삶이 나아지는가, 아니면 더 많이 일해야 더 잘 살게 되는가. 설악 지역 관광업·소상공인에게는 어떤 영향이 있을까 — 이 질문들이 지역 시민의 생활과 직결됩니다.</p>
+<p style="font-size:13px;line-height:1.75;">노인 돌봄을 가족의 의무로 볼 것인가, 국가의 책임으로 볼 것인가. 추석 명절에 세대 간 대화로 풀어가야 할 주제입니다. 시민의 경험과 목소리가 답을 만듭니다.</p>
 </div>
 <div style="margin-top:20px;border-top:2px solid #e2e8f0;padding-top:16px;">
-<div style="font-size:13px;font-weight:700;color:#1a2744;margin-bottom:10px;">📊 주 4일 근무제, 지금 도입해야 할까요?</div>
+<div style="font-size:13px;font-weight:700;color:#1a2744;margin-bottom:10px;">📊 노인 요양, 가족이 맡아야 할까요?</div>
 <div style="display:flex;gap:8px;">
-<button id="vbtn-no7-pro" onclick="castVote('no7','pro',this)" style="flex:1;background:#EAF5EE;border:2px solid #1F7A4D;border-radius:6px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;color:#1F7A4D;">👍 도입해야 한다 <span id="vcnt-no7-pro" style="background:rgba(31,122,77,.15);border-radius:10px;padding:1px 8px;">0</span></button>
-<button id="vbtn-no7-con" onclick="castVote('no7','con',this)" style="flex:1;background:#FFF0F0;border:2px solid #B03030;border-radius:6px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;color:#B03030;">👎 아직 이르다 <span id="vcnt-no7-con" style="background:rgba(176,48,48,.15);border-radius:10px;padding:1px 8px;">0</span></button>
+<button id="vbtn-no8-pro" onclick="castVote('no8','pro',this)" style="flex:1;background:#EAF5EE;border:2px solid #1F7A4D;border-radius:6px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;color:#1F7A4D;">👍 가족 돌봄 수당 지급 <span id="vcnt-no8-pro" style="background:rgba(31,122,77,.15);border-radius:10px;padding:1px 8px;">0</span></button>
+<button id="vbtn-no8-con" onclick="castVote('no8','con',this)" style="flex:1;background:#FFF0F0;border:2px solid #B03030;border-radius:6px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;color:#B03030;">👎 사회적 돌봄 확충 <span id="vcnt-no8-con" style="background:rgba(176,48,48,.15);border-radius:10px;padding:1px 8px;">0</span></button>
 </div>
-<div id="vresult-no7" style="margin-top:8px;font-size:12px;color:#888;"></div>
+<div id="vresult-no8" style="margin-top:8px;font-size:12px;color:#888;"></div>
 </div>`
   },
 
   /* ─── 편집자 레터 ─── */
   letter: {
-    cat: '✒ 편집자 레터 | 2026.07.27 제7호',
-    title: '진상이 안개 속에 있다 — 제7호',
-    meta: '김준철 편집장 | 설악시민뉴스 제7호 | 2026.07.27',
+    cat: '✒ 편집자 레터 | 2026.08.03 제8호',
+    title: '노인과 아이가 함께 웃는 설악권 — 제8호',
+    meta: '김준철 편집장 | 설악시민뉴스 제8호 | 2026.08.03',
     badge: '레터',
-    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">설악시민뉴스 제7호 편집자 레터 | 2026.07.27</p>
-<p>이번 호 사설(C-06)과 이슈&토론(No.8)은 겹치는 결이 있습니다. 하나는 설악권에 들어설 대규모 공사 현장 노동자의 임금을, 다른 하나는 전국적으로 논의되는 근무 시간 자체를 다룹니다. 둘 다 결국 "일하는 사람의 삶이 어떻게 지켜지는가"라는 물음으로 이어집니다. 반면 두 번째 사설(P-03, 시의회 감시)은 이번 호에서 독립적으로 소개했습니다 — 지방자치 감시라는 다른 결의 주제이기 때문입니다.</p>
-<p>전국적으로는 국회가 검찰 보완수사권 폐지를 둘러싸고 다시 격돌했고, 미국발 강제노동 관세 12.5%가 확정되면서 수출 기업들의 셈법이 복잡해졌습니다. 인천에서는 쿠팡 물류센터 화재가 진화되자마자 인근 물류센터에서 또 불이 나, 반복되는 물류 안전 문제를 다시 드러냈습니다. 이번 주 풍향계에서 고른 사자성어 五里霧中(오리무중)은 이 흐름과 통합니다 — 진상과 책임 소재가 좀처럼 드러나지 않는 한 주였습니다.</p>
-<p>한국갤럽 제670호에 따르면 대통령 직무 긍정률은 51%로 소폭 하락했고, 부동산 정책에 대한 부정 평가 이유가 11%p나 급등했습니다. 이번 주 풍향계가 다룬 부동산 대토론회의 실효성 논쟁과 정확히 같은 방향입니다.</p>
-<p>설악권에서는 새 단체장들의 취임 이후 첫 여름이 본격화되고 있습니다. 양양의 여름 축제, 고성의 청년 지원 사업, 인제의 모터스포츠 축제까지 — 각 시군이 저마다의 방식으로 여름 성수기를 준비하고 있습니다. 다만 인제 최상기 군수가 계속 제기하는 한강수계기금 배분 문제처럼, 화려한 성수기 이면에 풀리지 않은 재정 현안도 함께 살펴야 할 것입니다.</p>
-<p>다음 호(제8호, 8월 3일)는 사설 S-05(노인과 아이가 함께 웃는 설악권을 꿈꿉니다)와 이슈&토론 No.9(노인 요양, 가족 부담 어디까지인가)로 준비합니다.</p>
-<p style="text-align:right;font-style:italic;color:#1B3A6B;margin-top:16px;">— 편집장 김준철 드림<br>2026.07.27, 제7호</p>`
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">설악시민뉴스 제8호 편집자 레터 | 2026.08.03</p>
+<p>이번 호 사설(S-05)과 이슈&토론(No.9)은 같은 결의 질문을 던집니다. 사설은 노인과 아이가 함께 웃는 설악권을 위한 세대 통합 복지를, 이슈&토론은 그 노인 돌봄의 책임을 가족이 질 것인가 사회가 질 것인가를 묻습니다. 두 콘텐츠가 함께 짚은 질문입니다.</p>
+<p>전국적으로는 국회가 형사소송법에 공소기각 조항을 뒤늦게 추가하며 법무부 장관의 사의로까지 이어졌고, 조정식 국회의장의 "현직 대통령 연임은 국민의 선택 문제"라는 발언이 5대 신문 모두의 비판을 받았습니다. 이번 주 풍향계가 고른 사자성어 自中之亂(자중지란)은 이 흐름과 통합니다 — 같은 편 안에서 벌어지는 다툼과 혼란이 유독 두드러진 한 주였습니다. 코스피는 장중 6000선이 무너질 만큼 출렁였고, 신임 스틸 주한미국대사의 부임은 한미관계에 낀 이상기류 속에 이례적인 주목을 받았습니다.</p>
+<p>이번 호 여론동향은 NBS 전국지표조사 제185호를 단독 자료로 삼았습니다. 한국갤럽이 향후 2주간(8.7까지) 정기 조사를 쉬고 8월 14일 제671호로 돌아오기 때문입니다. NBS 조사에서 대통령 국정운영 긍정 평가는 53%로 취임 이후 가장 낮은 수준을 기록했습니다.</p>
+<p>설악권에서는 속초·양양의 여름 축제가 절정으로 치닫고, 고성은 국비 확보를 위한 발걸음을 이어가고 있습니다. 인제의 한강수계기금 배분 개선 요구처럼, 화려한 성수기 이면의 재정 현안도 함께 짚어야 할 것입니다.</p>
+<p>다음 호(제9호, 8월 10일, 광복절 특집)는 사설 C-01(고성 DMZ, 설악권의 독점 콘텐츠입니다)로 준비합니다.</p>
+<p style="text-align:right;font-style:italic;color:#1B3A6B;margin-top:16px;">— 편집장 김준철 드림<br>2026.08.03, 제8호</p>`
   },
 
 
