@@ -51,9 +51,16 @@
     },
     {
       "no": 8,
-      "filename": "index.html",
+      "filename": "20260803.html",
       "headline": "노인과 아이가 함께 웃는 설악권을 꿈꿉니다 · 노인 요양 이슈&토론",
       "date": "2026년 8월 3일",
+      "en_filename": "en_20260803.html"
+    },
+    {
+      "no": 9,
+      "filename": "index.html",
+      "headline": "고성 DMZ, 설악권의 독점 콘텐츠입니다 · 역사 교과서 국정화 이슈&토론 (광복절 특집)",
+      "date": "2026년 8월 10일",
       "en_filename": "en.html"
     }
   ]
