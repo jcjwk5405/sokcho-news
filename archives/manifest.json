@@ -72,9 +72,23 @@
     },
     {
       "no": 11,
-      "filename": "index.html",
+      "filename": "20260824.html",
       "headline": "광역 의제는 합의로 시작됩니다 · 최저임금 업종별 차등 적용 이슈&토론",
       "date": "2026년 8월 24일",
+      "en_filename": "en_20260824.html"
+    },
+    {
+      "no": 12,
+      "filename": "20260831.html",
+      "headline": "산부인과 하나가 왜 이렇게 어렵습니까 · 건강보험 민영화 이슈&토론",
+      "date": "2026년 8월 31일",
+      "en_filename": "en_20260831.html"
+    },
+    {
+      "no": 13,
+      "filename": "index.html",
+      "headline": "지역 정체성이 관광의 경쟁력입니다 · 광화문 현판 이슈&토론",
+      "date": "2026년 9월 7일",
       "en_filename": "en.html"
     }
   ]
