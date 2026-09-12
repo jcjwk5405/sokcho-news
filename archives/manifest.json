@@ -86,9 +86,16 @@
     },
     {
       "no": 13,
-      "filename": "index.html",
+      "filename": "20260907.html",
       "headline": "지역 정체성이 관광의 경쟁력입니다 · 광화문 현판 이슈&토론",
       "date": "2026년 9월 7일",
+      "en_filename": "en_20260907.html"
+    },
+    {
+      "no": 14,
+      "filename": "index.html",
+      "headline": "학교가 줄면 사람도 떠납니다 · 수능 절대평가 전환 이슈&토론",
+      "date": "2026년 9월 14일",
       "en_filename": "en.html"
     }
   ]
