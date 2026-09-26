@@ -74,7 +74,7 @@ async function loadArchive() {
         <a class="archive-item${isCurrent ? ' current' : ''}"
            href="${isCurrent ? './' : 'archives/' + issue.filename}">
           <div class="archive-num">
-            ${isCurrent ? '현재호' : '제' + issue.no + '호'}
+            ${isCurrent ? '현재호' : (typeof issue.no === 'string' ? issue.no : '제' + issue.no + '호')}
             ${isCurrent ? '<span class="archive-badge">최신</span>' : ''}
           </div>
           <div class="archive-headline">${issue.headline}</div>
@@ -1455,6 +1455,12 @@ footer {
   </a>
 </div>
 
+<!-- 호외 발행 안내 배너 (9/28 호외 기간 한정 노출) -->
+<a href="archives/20260928.html" style="display:block;background:linear-gradient(90deg,#9a3412 0%,#c2410c 100%);color:#fff;text-align:center;padding:11px 16px;text-decoration:none;">
+  <span style="font-size:13px;font-weight:700;letter-spacing:.02em;">📰 호외 발행 — 정당이 아니라 사람이었다, 2026 설악권 선거 네 가지 진단</span>
+  <span style="display:block;font-size:11px;opacity:.9;margin-top:3px;">'설악권 6·3 선거결과 분석 완결판' 전문 읽기 →</span>
+</a>
+
 <!-- PUBLISH SCHEDULE -->
 
 <!-- NAV -->
@@ -1923,7 +1929,13 @@ footer {
     <div style="background:#fff7ed;border:1px solid #fdba74;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
       <div style="font-size:12px;font-weight:700;color:#9a3412;margin-bottom:8px;">📢 추석 연휴 휴간 안내</div>
       <div style="font-size:12px;line-height:1.7;color:#475569;">추석 연휴를 맞아 <strong>9월 28일(월)자 신문은 휴간</strong>합니다. 독자 여러분, 풍성하고 편안한 한가위 보내십시오.</div>
-      <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #fdba74;font-size:12px;line-height:1.7;color:#475569;">📰 <strong>호외 발간 예정</strong> — 휴간 기간에는 준비해 온 <strong style="color:#9a3412;">'설악권 6·3 선거결과 분석 완결판'</strong>을 호외로 발간할 예정입니다.<br><strong>[설악시민뉴스 6.3 선거특집 완결판] 정당이 아니라 사람이었다 — 2026 설악권 선거, 네 가지 진단</strong></div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #fdba74;font-size:12px;line-height:1.7;color:#475569;">
+        📰 <strong>호외 발간</strong> — 휴간 기간 동안 준비해 온 <strong style="color:#9a3412;">'설악권 6·3 선거결과 분석 완결판'</strong>을 호외로 발간했습니다.<br>
+        <strong>[설악시민뉴스 6.3 선거특집 완결판] 정당이 아니라 사람이었다 — 2026 설악권 선거, 네 가지 진단</strong>
+        <div style="margin-top:8px;">
+          <a href="archives/20260928.html" style="display:inline-block;background:#9a3412;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:6px;text-decoration:none;">📖 호외 전문 읽기 →</a>
+        </div>
+      </div>
     </div>
 
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
