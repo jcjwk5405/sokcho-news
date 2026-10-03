@@ -100,10 +100,10 @@
     },
     {
       "no": 15,
-      "filename": "index.html",
+      "filename": "20260921.html",
       "headline": "공약은 예산이 증명합니다 · 전술핵 재배치 이슈&토론",
       "date": "2026년 9월 21일",
-      "en_filename": "en.html"
+      "en_filename": "en_20260921.html"
     },
     {
       "no": "호외",
@@ -112,6 +112,13 @@
       "date": "2026년 9월 28일",
       "en_filename": null,
       "type": "extra"
+    },
+    {
+      "no": 16,
+      "filename": "index.html",
+      "headline": "대학 없는 설악권, 평생학습도시로 배움을 이어갑시다 · AI 저작권 이슈&토론",
+      "date": "2026년 10월 5일",
+      "en_filename": "en.html"
     }
   ]
 }
