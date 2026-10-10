@@ -115,9 +115,16 @@
     },
     {
       "no": 16,
-      "filename": "index.html",
+      "filename": "20261005.html",
       "headline": "대학 없는 설악권, 평생학습도시로 배움을 이어갑시다 · AI 저작권 이슈&토론",
       "date": "2026년 10월 5일",
+      "en_filename": "en_20261005.html"
+    },
+    {
+      "no": 17,
+      "filename": "index.html",
+      "headline": "관광소비 6,484억, 얼마나 이 땅에 남았습니까 · 대학 등록금 자율화 이슈&토론",
+      "date": "2026년 10월 12일",
       "en_filename": "en.html"
     }
   ]
