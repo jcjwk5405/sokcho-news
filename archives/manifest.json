@@ -122,9 +122,16 @@
     },
     {
       "no": 17,
-      "filename": "index.html",
+      "filename": "20261012.html",
       "headline": "관광소비 6,484억, 얼마나 이 땅에 남았습니까 · 대학 등록금 자율화 이슈&토론",
       "date": "2026년 10월 12일",
+      "en_filename": "en_20261012.html"
+    },
+    {
+      "no": 18,
+      "filename": "index.html",
+      "headline": "청년 일자리 1,000개, 숫자보다 내용이 중요합니다 · 청년 기본소득 이슈&토론",
+      "date": "2026년 10월 19일",
       "en_filename": "en.html"
     }
   ]
