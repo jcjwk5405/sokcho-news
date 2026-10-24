@@ -129,9 +129,16 @@
     },
     {
       "no": 18,
-      "filename": "index.html",
+      "filename": "20261019.html",
       "headline": "청년 일자리 1,000개, 숫자보다 내용이 중요합니다 · 청년 기본소득 이슈&토론",
       "date": "2026년 10월 19일",
+      "en_filename": "en_20261019.html"
+    },
+    {
+      "no": 19,
+      "filename": "index.html",
+      "headline": "중복 투자를 막는 것도 경쟁력입니다 · 자율주행차 사고 책임 이슈&토론",
+      "date": "2026년 10월 26일",
       "en_filename": "en.html"
     }
   ]

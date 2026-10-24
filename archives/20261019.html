@@ -1,0 +1,2797 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>설악시민뉴스 — 자유·정의·사랑의 시민언론 | 제18호</title>
+<meta name="description" content="강원 설악권(속초·고성·양양·인제) 시민을 위한 독립 주간 인터넷 신문. 제18호(2026.10.19) — 청년 일자리 1,000개 사설, 중수청장 인선·한미 정보 갈등·증시 급락과 국민연금 사설 분석(蕭牆之憂), 한국갤럽 제678호·NBS 제190호, 청년 기본소득 이슈&토론을 다룹니다.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="설악시민뉴스">
+<meta property="og:url" content="https://seorakcitizennews.kr">
+<meta property="og:title" content="설악시민뉴스 제18호 — 청년 일자리 1,000개, 숫자보다 내용이 중요합니다">
+<meta property="og:description" content="청년 일자리 1,000개 사설, 중수청장 인선·증시 급락 사설 분석(蕭牆之憂), 한국갤럽 제678호·NBS 제190호, 청년 기본소득 이슈&토론까지 매주 월요일 발행.">
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a2744">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="설악시민뉴스">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- ===== GoatCounter 접속 통계 =====
+     ① goatcounter.com 무료 가입
+     ② Code 입력: seorakcitizennews
+     ③ 아래 두 줄이 자동으로 작동 시작
+     ================================================ -->
+<script data-goatcounter="https://seorakcitizennews.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+<script>
+
+/* ── 아카이브 기능 ── */
+function toggleArchive() {
+  const panel = document.getElementById('archive-panel');
+  const overlay = document.getElementById('archive-overlay');
+  const isOpen = panel.classList.contains('on');
+  if (isOpen) {
+    panel.classList.remove('on');
+    overlay.classList.remove('on');
+    document.body.style.overflow = '';
+  } else {
+    panel.classList.add('on');
+    overlay.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    loadArchive();
+  }
+}
+
+async function loadArchive() {
+  const listEl = document.getElementById('archive-list');
+  // 이미 로드됐으면 스킵
+  if (listEl.querySelector('.archive-item')) return;
+
+  try {
+    // GitHub raw 경로에서 manifest.json 로드
+    const res = await fetch('/archives/manifest.json');
+    if (!res.ok) throw new Error('manifest 없음');
+    const manifest = await res.json();
+
+    if (!manifest.issues || manifest.issues.length === 0) {
+      listEl.innerHTML = '<div class="archive-loading">아직 지난 호가 없습니다.</div>';
+      return;
+    }
+
+    // 최신호 먼저 (역순)
+    const sorted = [...manifest.issues].reverse();
+    listEl.innerHTML = sorted.map(issue => {
+      const isCurrent = issue.filename === 'index.html';
+      const enHref = issue.en_filename
+        ? (issue.en_filename === 'en.html' ? 'en.html' : 'archives/' + issue.en_filename)
+        : null;
+      return `
+        <a class="archive-item${isCurrent ? ' current' : ''}"
+           href="${isCurrent ? './' : 'archives/' + issue.filename}">
+          <div class="archive-num">
+            ${isCurrent ? '현재호' : (typeof issue.no === 'string' ? issue.no : '제' + issue.no + '호')}
+            ${isCurrent ? '<span class="archive-badge">최신</span>' : ''}
+          </div>
+          <div class="archive-headline">${issue.headline}</div>
+          <div class="archive-date">${issue.date}</div>
+        </a>
+        ${enHref ? `<a class="archive-en-link" href="${enHref}">🌐 English</a>` : ''}`;
+    }).join('');
+  } catch(e) {
+    // manifest가 없을 때 — 최신호만 표시
+    listEl.innerHTML = `
+      <a class="archive-item current" href="./">
+        <div class="archive-num">제18호 <span class="archive-badge">최신</span></div>
+        <div class="archive-headline">청년 일자리 1,000개, 숫자보다 내용이 중요합니다 · 청년 기본소득 이슈&토론</div>
+        <div class="archive-date">2026년 10월 19일</div>
+      </a>
+      <a class="archive-en-link" href="en.html">🌐 English</a>
+      <div class="archive-loading" style="font-size:11px;margin-top:8px;">
+        지난 호는 발행 후 순차적으로 등록됩니다.
+      </div>`;
+  }
+}
+
+// ESC 키로 패널 닫기
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    const panel = document.getElementById('archive-panel');
+    if (panel.classList.contains('on')) toggleArchive();
+  }
+});
+
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: hidden; }
+
+:root {
+  --navy: #1a2744;
+  --navy-dark: #0f1929;
+  --navy-mid: #2c3e6b;
+  --gold: #c8973a;
+  --gold-light: #e8b85a;
+  --red: #c0392b;
+  --green: #27ae60;
+  --blue-chart: #2980b9;
+  --text-dark: #1a1a1a;
+  --text-mid: #444;
+  --text-light: #777;
+  --border: #ddd;
+  --bg: #f5f3ef;
+  --bg-white: #ffffff;
+  --max-w: 720px;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--navy-dark);
+  color: rgba(255,255,255,0.6);
+  font-size: 11px;
+  padding: 6px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topbar-links { display: flex; gap: 12px; }
+.topbar-links a { color: rgba(255,255,255,0.6); }
+.topbar-links a:hover { color: var(--gold-light); }
+
+/* ── PDF 다운로드 바 (마스트헤드 바로 아래) ── */
+.pdf-download-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--navy-mid);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding: 9px 16px;
+  text-align: center;
+}
+.pdf-download-bar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold-light);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+.pdf-download-bar a:hover { color: #fff; }
+.pdf-download-bar .pdf-icon { font-size: 14px; }
+
+/* ── MASTHEAD ── */
+.masthead {
+  background: var(--navy);
+  padding: 20px 16px 16px;
+  text-align: center;
+  border-bottom: 3px solid var(--gold);
+}
+.masthead-logo {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: -1px;
+}
+.masthead-logo span { color: var(--gold); }
+.masthead-en {
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+@media (max-width: 480px) {
+  .masthead-en { font-size: 10px; letter-spacing: 2.5px; }
+}
+@media (min-width: 900px) {
+  .masthead-en { font-size: 14px; letter-spacing: 4.5px; }
+}
+.masthead-tagline {
+  color: rgba(255,255,255,0.92);
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+.masthead-date {
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy-mid);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display: none; }
+nav ul {
+  display: flex;
+  list-style: none;
+  white-space: nowrap;
+  padding: 0 8px;
+  min-width: max-content;
+}
+nav li a {
+  display: block;
+  padding: 12px 12px;
+  color: rgba(255,255,255,0.75);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: all 0.2s;
+  position: relative;
+}
+nav li a:hover, nav li a.active {
+  color: #fff;
+}
+nav li a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+}
+.nav-desc {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  display: block;
+  font-weight: 300;
+  margin-top: 1px;
+}
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--red);
+  color: #fff;
+  font-size: 12px;
+  padding: 7px 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+.ticker-label {
+  background: #8e1a10;
+  padding: 0 12px;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ticker-scroll { flex: 1; overflow: hidden; padding: 0 10px; }
+.ticker-inner {
+  display: flex;
+  gap: 50px;
+  animation: ticker 40s linear infinite;
+  white-space: nowrap;
+}
+.ticker-inner span::before { content: '◆ '; font-size: 8px; opacity: 0.7; }
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── SECTIONS ── */
+.section {
+  background: var(--bg-white);
+  margin: 0 0 8px 0;
+  border-left: 3px solid var(--navy);
+}
+.section.gold-border { border-left-color: var(--gold); }
+.section.red-border { border-left-color: var(--red); }
+.section.green-border { border-left-color: var(--green); }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px 12px;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid var(--border);
+  background: #fafafa;
+}
+.section-header:hover { background: #f0f0f0; }
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.section-title .s-badge {
+  background: var(--navy);
+  color: #fff;
+  font-size: 9px;
+  padding: 2px 6px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border-radius: 2px;
+}
+.section-title .s-badge.gold { background: var(--gold); }
+.section-title .s-badge.red { background: var(--red); }
+.section-title .s-badge.green { background: var(--green); }
+.section-desc {
+  font-size: 10px;
+  color: var(--text-light);
+  font-weight: 300;
+}
+.toggle-icon {
+  font-size: 16px;
+  color: var(--text-light);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.section.collapsed .toggle-icon { transform: rotate(-90deg); }
+.section-body {
+  padding: 16px;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+.section.collapsed .section-body {
+  display: none;
+}
+
+/* ── ARTICLE ── */
+.article {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.article:last-child { border-bottom: none; padding-bottom: 0; }
+.article:first-child { padding-top: 0; }
+.article-cat {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.article-cat.gold { color: var(--gold); }
+.article-cat.green { color: var(--green); }
+.article-cat.blue { color: var(--blue-chart); }
+.article-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.article-body {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.85;
+}
+.article-body p { margin-bottom: 10px; }
+.article-body p:last-child { margin-bottom: 0; }
+.article-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+
+/* ── EDITOR LETTER ── */
+.editor-letter {
+  background: var(--navy);
+  color: #fff;
+  padding: 20px;
+  border-radius: 2px;
+}
+.editor-letter-label {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.editor-letter-body {
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.85);
+}
+.editor-letter-body p { margin-bottom: 10px; }
+.editor-letter-sig {
+  margin-top: 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-align: right;
+}
+
+
+/* ── CHART / DATA VIZ ── */
+.chart-wrap {
+  margin: 14px 0;
+  background: #f8f8f8;
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: 2px;
+}
+.chart-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
+.chart-source {
+  font-size: 10px;
+  color: var(--text-light);
+  margin-top: 10px;
+}
+
+/* Bar chart */
+.bar-item { margin-bottom: 10px; }
+.bar-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-mid);
+  margin-bottom: 4px;
+}
+.bar-pct { font-weight: 700; color: var(--navy); }
+.bar-track { height: 10px; background: #e0e0e0; border-radius: 3px; overflow: hidden; }
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1.2s ease;
+}
+.bar-fill.navy { background: var(--navy); }
+.bar-fill.gold { background: var(--gold); }
+.bar-fill.red { background: var(--red); }
+.bar-fill.green { background: var(--green); }
+.bar-fill.blue { background: var(--blue-chart); }
+.bar-fill.gray { background: #999; }
+.bar-fill.lightblue { background: #5dade2; }
+
+/* Donut / Pie summary */
+.donut-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.donut-item {
+  flex: 1;
+  min-width: 80px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  padding: 12px 10px;
+  text-align: center;
+  border-radius: 2px;
+}
+.donut-val {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.donut-val.navy { color: var(--navy); }
+.donut-val.red { color: var(--red); }
+.donut-val.gold { color: var(--gold); }
+.donut-val.green { color: var(--green); }
+.donut-val.gray { color: #999; }
+.donut-label {
+  font-size: 11px;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+/* Timeline/trend */
+.trend-chart {
+  position: relative;
+  height: 80px;
+  margin: 10px 0;
+}
+.trend-svg { width: 100%; height: 100%; }
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 10px 0;
+}
+.data-table th {
+  background: var(--navy);
+  color: #fff;
+  padding: 7px 10px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 11px;
+}
+.data-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-mid);
+}
+.data-table tr:nth-child(even) td { background: #f9f9f9; }
+.data-table .highlight { color: var(--red); font-weight: 700; }
+.data-table .positive { color: var(--green); font-weight: 700; }
+
+/* Opinion quote */
+.opinion-block {
+  border-left: 3px solid var(--gold);
+  padding: 12px 16px;
+  background: #fffcf5;
+  margin: 10px 0;
+}
+.opinion-block blockquote {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+.opinion-attribution {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+/* Newspaper list items */
+.paper-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 10px;
+}
+.paper-row:last-child { border-bottom: none; }
+.paper-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy);
+  min-width: 55px;
+}
+.paper-summary {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  flex: 1;
+}
+.paper-tag {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.paper-tag.con { background: #fdecea; color: var(--red); }
+.paper-tag.pro { background: #e8f4fd; color: var(--blue-chart); }
+.paper-tag.neutral { background: #f0f0f0; color: #666; }
+
+/* Notice list */
+.notice-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.notice-item:last-child { border-bottom: none; }
+.notice-item .n-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 3px;
+}
+.notice-item .n-meta {
+  font-size: 11px;
+  color: var(--text-light);
+}
+.notice-badge {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  font-size: 9px;
+  padding: 1px 6px;
+  border-radius: 2px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.notice-badge.new { background: var(--red); }
+
+
+
+
+/* Week badge */
+.week-info {
+  background: #f0f4ff;
+  border: 1px solid #c5d3f0;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  font-size: 11px;
+  color: var(--navy-mid);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.week-info span { font-weight: 700; }
+
+/* ── NEWS TAB ── */
+.news-tab-wrap {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.news-tab-wrap::-webkit-scrollbar { display: none; }
+.news-tab {
+  padding: 8px 13px;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  white-space: nowrap;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.news-tab:hover { color: var(--text-dark); }
+.news-tab.active { color: var(--navy); border-bottom-color: var(--navy); font-weight: 700; }
+.news-tab.active.tab-sokcho { color: var(--blue-chart); border-bottom-color: var(--blue-chart); }
+.news-tab.active.tab-goseong { color: var(--green); border-bottom-color: var(--green); }
+.news-tab.active.tab-yangyang { color: var(--gold); border-bottom-color: var(--gold); }
+.news-tab.active.tab-inje { color: #7b4fa6; border-bottom-color: #7b4fa6; }
+
+/* ── 기사 출처 표시 ── */
+.news-source {
+  display: inline-block;
+  font-size: 10px;
+  color: var(--text-light);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 7px;
+  margin-top: 3px;
+}
+.notice-source {
+  font-size: 10px;
+  color: var(--text-light);
+  margin-top: 4px;
+  padding-left: 2px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy-dark);
+  color: rgba(255,255,255,0.45);
+  padding: 24px 16px 16px;
+  border-top: 3px solid var(--gold);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.footer-logo {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.footer-logo span { color: var(--gold); }
+.footer-principle {
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 14px;
+  font-size: 11px;
+}
+.footer-rule {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 14px;
+}
+
+
+
+
+/* ── RESPONSIVE TWEAKS ── */
+@media (max-width: 480px) {
+  .masthead-logo { font-size: 32px; }
+  .article-title { font-size: 16px; }
+  .donut-val { font-size: 22px; }
+}
+
+/* ── PUBLISH SCHEDULE BADGE ── */
+.schedule-strip {
+  background: var(--navy-mid);
+  padding: 8px 16px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.schedule-strip::-webkit-scrollbar { display: none; }
+.sch-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+  background: rgba(255,255,255,0.07);
+  padding: 6px 10px;
+  border-radius: 3px;
+  border-top: 2px solid rgba(255,255,255,0.2);
+}
+.sch-day {
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.sch-content {
+  font-size: 9px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* ── 독자 현황 띠 ── */
+#stats-strip {
+  background: var(--navy);
+  border-top: 2px solid var(--gold);
+  padding: 11px 20px;
+}
+.quote-strip-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+.quote-strip-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--gold);
+  white-space: nowrap;
+  padding-right: 12px;
+  text-transform: uppercase;
+}
+.quote-strip-divider {
+  display: inline-block;
+  width: 1px;
+  height: 28px;
+  background: rgba(255,255,255,0.2);
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+.quote-strip-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+  font-style: italic;
+  margin-right: 10px;
+  line-height: 1.4;
+}
+.quote-strip-source {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .quote-strip-text { font-size: 12px; }
+  .quote-strip-divider { display: none; }
+}
+
+/* ── 팝업 모달 ── */
+.modal-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 2000;
+  overflow-y: auto;
+  padding: 20px 16px;
+}
+.modal-bg.on {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.modal-box {
+  background: #fff;
+  max-width: 680px;
+  width: 100%;
+  margin: auto;
+  border-top: 4px solid var(--navy);
+  border-radius: 2px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.modal-hd {
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.modal-cat {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 7px;
+}
+.modal-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  padding-right: 40px;
+}
+.modal-meta {
+  font-size: 11px;
+  color: var(--text-light);
+  display: flex;
+  justify-content: space-between;
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: 1px solid var(--border);
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  color: var(--text-light);
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+.modal-close:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+.modal-body {
+  padding: 20px 24px 28px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--text-mid);
+}
+.modal-body p { margin-bottom: 12px; }
+.modal-body p:last-child { margin-bottom: 0; }
+.modal-body strong { color: var(--text-dark); }
+.modal-body .chart-wrap { margin: 14px 0; }
+
+/* 전문보기 버튼 */
+.read-more-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-family: inherit;
+  background: none;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+.read-more-btn:hover { background: var(--navy); color: #fff; }
+@media (max-width: 480px) {
+  .modal-title { font-size: 17px; }
+  .modal-body { padding: 16px 16px 24px; }
+  .modal-hd { padding: 16px 16px 12px; }
+}
+
+/* ── 아카이브 트리거 ── */
+.archive-trigger {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.7);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.archive-trigger:hover { background: rgba(255,255,255,0.1); color: var(--gold-light); }
+
+/* ── 아카이브 패널 ── */
+.archive-panel {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 280px;
+  height: 100vh;
+  background: var(--navy-dark);
+  border-left: 3px solid var(--gold);
+  z-index: 1500;
+  overflow-y: auto;
+  box-shadow: -8px 0 32px rgba(0,0,0,0.5);
+}
+.archive-panel.on { display: block; }
+.archive-inner { padding: 0 0 40px; }
+.archive-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: sticky;
+  top: 0;
+  background: var(--navy-dark);
+}
+.archive-title {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.archive-close {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5);
+  width: 26px; height: 26px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: inherit;
+}
+.archive-close:hover { background: var(--red); color: #fff; border-color: var(--red); }
+.archive-loading {
+  color: rgba(255,255,255,0.4);
+  font-size: 12px;
+  padding: 24px 16px;
+  text-align: center;
+}
+.archive-item {
+  display: block;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.archive-item:hover { background: rgba(255,255,255,0.05); }
+.archive-item.current { background: rgba(200,151,58,0.12); }
+.archive-num {
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.archive-headline {
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.archive-date {
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+}
+.archive-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-size: 8px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 2px;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: 0.5px;
+}
+.archive-en-link {
+  display: block;
+  padding: 4px 16px 10px;
+  margin-top: -6px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.archive-en-link:hover { color: var(--gold); }
+/* 패널 열릴 때 배경 오버레이 */
+.archive-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1499;
+}
+.archive-overlay.on { display: block; }
+@media (max-width: 480px) {
+  .archive-panel { width: 100vw; }
+}
+
+/* ═══════════════════════════════════════════
+   이슈와 토론 섹션 전용 스타일
+   ═══════════════════════════════════════════ */
+.issue-label {
+  display: inline-block;
+  background: #1B3A6B;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.issue-question {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1B3A6B;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  border-left: 4px solid #1B3A6B;
+  padding-left: 12px;
+}
+.issue-intro {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.75;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  background: #F4F7FB;
+  border-radius: 8px;
+}
+.debate-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+@media (max-width: 600px) {
+  .debate-wrap { grid-template-columns: 1fr; }
+}
+.debate-card {
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.debate-card.pro {
+  background: #EAF5EE;
+  border: 1px solid #7DB87D;
+}
+.debate-card.con {
+  background: #FFF0F0;
+  border: 1px solid #D97C7C;
+}
+.debate-card-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 7px;
+}
+.debate-card.pro .debate-card-title { color: #1F7A4D; }
+.debate-card.con .debate-card-title { color: #B03030; }
+.debate-card-body {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #333;
+}
+.debate-invite {
+  background: linear-gradient(135deg, #1B3A6B 0%, #2E75B6 100%);
+  border-radius: 8px;
+  padding: 13px 16px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.debate-invite-label {
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.75;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.debate-invite-text {
+  font-size: 13px;
+  line-height: 1.65;
+}
+.debate-invite-text strong { color: #FFD966; }
+.issue-series-list {
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: #F9F9F9;
+  border-radius: 8px;
+  border: 1px solid #E0E0E0;
+}
+.issue-series-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.issue-series-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #EEEEEE;
+  font-size: 12px;
+  color: #555;
+}
+.issue-series-item:last-child { border-bottom: none; }
+.issue-series-item .issue-no {
+  background: #E8EDF5;
+  color: #1B3A6B;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+.issue-series-item .issue-status {
+  font-size: 10px;
+  color: #888;
+  white-space: nowrap;
+}
+.issue-char-guide {
+  font-size: 10px;
+  color: #aaa;
+  text-align: right;
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════
+   전문가 칼럼 대체 표시 스타일
+   ═══════════════════════════════ */
+.column-standby {
+  text-align: center;
+  padding: 28px 20px;
+  background: #F9F9F9;
+  border: 1.5px dashed #C8C8C8;
+  border-radius: 10px;
+  color: #888;
+}
+.column-standby-icon { font-size: 32px; margin-bottom: 8px; }
+.column-standby-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 6px;
+}
+.column-standby-desc { font-size: 12px; line-height: 1.7; }
+.column-standby-cta {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 7px 18px;
+  background: #1B3A6B;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.column-editor-badge {
+  display: inline-block;
+  background: #8B4513;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+.column-editor-note {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════
+   데스크탑 신문형 레이아웃 (768px 이상에서만 적용)
+   모바일(767px 이하)은 전혀 영향 없음
+   ═══════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  /* 전체 폭 확장 */
+  body {
+    max-width: 1080px;
+    background: #e8ecf1;
+  }
+
+  /* masthead 신문 스타일 */
+  .masthead {
+    text-align: center;
+    padding: 28px 24px 20px;
+    border-bottom: 3px double #1B3A6B;
+  }
+  .masthead-logo { font-size: 42px; }
+  .masthead-tagline { font-size: 13px; letter-spacing: 2.5px; color: rgba(255,255,255,0.92); font-weight: 500; }
+
+  /* nav 가로 확장 */
+  #main-nav ul {
+    justify-content: center;
+    gap: 4px;
+  }
+
+  /* 신문 본문 그리드 래퍼 */
+  .newspaper-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "news      news"
+      "punghyang opinion"
+      "voice     voice"
+      "series    series"
+      "letter    letter"
+      "notice    announce";
+    gap: 12px;
+    padding: 12px;
+    background: #e8ecf1;
+  }
+
+  /* 섹션 카드 스타일 */
+  .newspaper-grid .section {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    margin: 0;
+    border-top: 3px solid #1B3A6B;
+  }
+
+  /* 그리드 영역 배치 */
+  #s-letter    { grid-area: letter; }
+  #s-punghyang { grid-area: punghyang; }
+  #s-news      { grid-area: news; }
+  #s-voice     { grid-area: voice; }
+  #s-opinion   { grid-area: opinion; }
+  #s-series    { grid-area: series; }
+  #s-notice    { grid-area: notice; }
+  #s-announce  { grid-area: announce; }
+
+  /* 섹션 헤더 신문 스타일 */
+  .section-header {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 14px 8px;
+  }
+  .section-header h2 { font-size: 14px; }
+
+  /* 섹션 본문 폰트 */
+  .section-body {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  /* 섹션 모두 펼침 (collapsed 무시) */
+  .section.collapsed .section-body {
+    display: block !important;
+    max-height: none !important;
+  }
+
+  /* 섹션 헤더 클릭 비활성화 (데스크탑은 접힘 불필요) */
+  .section-header { cursor: default; }
+  .toggle-icon { display: none; }
+
+  /* ticker 중앙 */
+  .ticker { max-width: 1080px; }
+
+  /* stats-strip */
+  #stats-strip { max-width: 1080px; }
+
+  /* footer */
+  footer { max-width: 1080px; }
+  .footer-inner { max-width: 600px; }
+
+  /* 탑바 */
+  .top-bar { max-width: 1080px; }
+
+  /* article 본문 글씨 */
+  .article-body { font-size: 13px; line-height: 1.75; }
+  .article-title { font-size: 14px; }
+
+  /* 차트 폰트 */
+  .bar-label-row span { font-size: 12px; }
+  .chart-title { font-size: 12px; }
+}
+
+/* ── 찬반 투표 ── */
+.vote-wrap {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 12px 0 4px;
+}
+.vote-label {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.vote-row {
+  display: flex;
+  gap: 8px;
+}
+.vote-btn {
+  flex: 1;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.vote-btn:active { transform: scale(0.97); }
+.vote-btn.voted { opacity: 0.7; cursor: default; }
+.vote-pro { background: #EAF5EE; color: #1F7A4D; border: 1.5px solid #7DB87D; }
+.vote-con { background: #FFF0F0; color: #B03030; border: 1.5px solid #D97C7C; }
+.vote-pro.selected { background: #1F7A4D; color: #fff; }
+.vote-con.selected { background: #B03030; color: #fff; }
+.vote-count {
+  background: rgba(0,0,0,0.12);
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.vote-result {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #64748b;
+  min-height: 16px;
+}
+.vote-bar-wrap { margin-top: 6px; }
+.vote-bar-track {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 2px 0 4px;
+}
+.vote-bar-fill-pro { height: 100%; background: #27ae60; border-radius: 3px; transition: width 0.4s; }
+
+/* ── 공지사항 탭 버튼 ── */
+.tab-btn {
+  padding: 5px 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.tab-btn:hover { background: #e2e8f0; color: #334155; }
+.tab-btn.active { background: #1B3A6B; color: #fff; border-color: #1B3A6B; font-weight: 700; }
+/* ── /공지사항 탭 버튼 ── */
+</style>
+</head>
+<body>
+
+<div class="archive-overlay" id="archive-overlay" onclick="toggleArchive()"></div>
+<!-- TOPBAR -->
+<div class="topbar">
+  <span id="today-date"></span>
+  <div style="display:flex;gap:6px;">
+    <a href="/archives/en_20261019.html" class="archive-trigger" style="text-decoration:none;">🌐 English</a>
+    <button class="archive-trigger" onclick="toggleArchive()" title="이전 신문 보기">
+      📂 이전 신문
+    </button>
+  </div>
+</div>
+
+<!-- ── 아카이브 드롭다운 ── -->
+<div class="archive-panel" id="archive-panel">
+  <div class="archive-inner">
+    <div class="archive-hd">
+      <span class="archive-title">📰 지난 호 신문</span>
+      <button class="archive-close" onclick="toggleArchive()">✕</button>
+    </div>
+    <div class="archive-list" id="archive-list">
+      <div class="archive-loading">불러오는 중...</div>
+    </div>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-logo">설악<span>시민</span>뉴스</div>
+  <div class="masthead-en">SEORAK CITIZENS NEWS</div>
+  <div class="masthead-tagline">고성 <span style="color:var(--gold);">·</span> 속초 <span style="color:var(--gold);">·</span> 양양 <span style="color:var(--gold);">·</span> 인제</div>
+  <div class="masthead-date" id="header-issue"></div>
+</header>
+
+<!-- PDF 다운로드 바 -->
+<div class="pdf-download-bar">
+  <a href="archives/pdf/20261019.pdf" download>
+    <span class="pdf-icon">📄</span>이번 호 지면 PDF 다운로드
+  </a>
+</div>
+
+<!-- PUBLISH SCHEDULE -->
+
+<!-- NAV -->
+<nav id="main-nav">
+  <ul>
+    <li><a href="#" class="active" onclick="goToSection(event,'s-news')">
+      주요뉴스<span class="nav-desc">전국·설악권</span></a></li>
+    <li><a href="#" onclick="goToSection(event,'s-punghyang')">
+      풍향계<span class="nav-desc">5대신문 사설</span></a></li>
+    <li><a href="#" onclick="goToSection(event,'s-opinion')">
+      여론동향<span class="nav-desc">갤럽·NBS</span></a></li>
+    <li><a href="#" onclick="goToSection(event,'s-voice')">
+      시민의 소리<span class="nav-desc">사설 · 시민기고</span></a></li>
+    <li><a href="#" onclick="goToSection(event,'s-series')">
+      이슈와 토론<span class="nav-desc">연중기획</span></a></li>
+    <li><a href="#" onclick="goToSection(event,'s-letter')">
+      편집자레터<span class="nav-desc">Editor's Letter</span></a></li>
+    <li><a href="#" onclick="goToSection(event,'s-notice')">
+      공지사항<span class="nav-desc">속·고·양·인</span></a></li>
+    <li><a href="#" onclick="goToSection(event,'s-announce')">
+      신문사공지<span class="nav-desc">알림·공지</span></a></li>
+  </ul>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-label">속보</div>
+  <div class="ticker-scroll">
+    <div class="ticker-inner">
+      <span>코스피 7.57% 급락 '검은 목요일'…코스피·코스닥 서킷브레이커 발동</span>
+      <span>김지용 초대 중수청장 임명…청문보고서에 적격·부적격 의견 병기</span>
+      <span>중앙행정기관 44곳 세종 2차 이전 계획…2031년까지 공무원 9,929명</span>
+      <span>한국갤럽 제678호 대통령 직무 긍정 39%·부정 52%, NBS 제190호 44%·49%</span>
+      <span>설악시민뉴스 제18호 — 청년 일자리 1,000개, 숫자보다 내용이 중요합니다</span>
+      <span>코스피 7.57% 급락 '검은 목요일'…코스피·코스닥 서킷브레이커 발동</span>
+      <span>김지용 초대 중수청장 임명…청문보고서에 적격·부적격 의견 병기</span>
+      <span>중앙행정기관 44곳 세종 2차 이전 계획…2031년까지 공무원 9,929명</span>
+      <span>한국갤럽 제678호 대통령 직무 긍정 39%·부정 52%, NBS 제190호 44%·49%</span>
+      <span>설악시민뉴스 제18호 — 청년 일자리 1,000개, 숫자보다 내용이 중요합니다</span>
+      </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 1. 편집자 레터 -->
+<!-- ══════════════════════════════════════ -->
+<div class="newspaper-grid">
+
+<!-- ══════════════════════════════════════ -->
+<!-- 3. 주요 뉴스 -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="s-news">
+  <div class="section-header" onclick="toggleSection('s-news')">
+    <div class="section-title">
+      <h2>📰 주요 뉴스</h2>
+      <span class="s-badge red">전국·설악권</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="section-desc">2026.10.19</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div style="background:#1B3A6B;color:#fff;padding:5px 12px;border-radius:4px;font-size:11px;font-weight:700;margin:14px 0 8px;letter-spacing:.04em;">🌐 전국 뉴스</div>
+    <div id="teaser-news-national" class="news-teaser-block"></div>
+    <button class="read-more-btn" onclick="openModById('news-national')">📰 전국 뉴스 전문 보기 ▶</button>
+
+    <div style="background:#C8A84B;color:#1B3A6B;padding:5px 12px;border-radius:4px;font-size:11px;font-weight:700;margin:14px 0 8px;letter-spacing:.04em;">📍 속초시 뉴스</div>
+    <div id="teaser-news-sokcho" class="news-teaser-block"></div>
+    <button class="read-more-btn" onclick="openModById('news-sokcho')">📍 속초 전문 보기 ▶</button>
+
+    <div style="background:#0D7377;color:#fff;padding:5px 12px;border-radius:4px;font-size:11px;font-weight:700;margin:14px 0 8px;letter-spacing:.04em;">📍 고성군 뉴스</div>
+    <div id="teaser-news-goseong" class="news-teaser-block"></div>
+    <button class="read-more-btn" onclick="openModById('news-goseong')">📍 고성 전문 보기 ▶</button>
+
+    <div style="background:#2E75B6;color:#fff;padding:5px 12px;border-radius:4px;font-size:11px;font-weight:700;margin:14px 0 8px;letter-spacing:.04em;">📍 인제군 뉴스</div>
+    <div id="teaser-news-inje" class="news-teaser-block"></div>
+    <button class="read-more-btn" onclick="openModById('news-inje')">📍 인제 전문 보기 ▶</button>
+
+    <div style="background:#2E75B6;color:#fff;padding:5px 12px;border-radius:4px;font-size:11px;font-weight:700;margin:14px 0 8px;letter-spacing:.04em;">📍 양양군 뉴스</div>
+    <div id="teaser-news-yangyang" class="news-teaser-block"></div>
+    <button class="read-more-btn" onclick="openModById('news-yangyang')">📍 양양 전문 보기 ▶</button>
+
+    <p style="color:#aaa;font-size:11px;margin-top:14px;">파이낸셜뉴스·한국일보·경향신문·전자신문·뉴스1·경인일보·강원일보·강원도민일보·아주경제 수집 │ 2026.10.19</p>
+  </div>
+</div>
+
+<div class="section gold-border" id="s-punghyang">
+  <div class="section-header" onclick="toggleSection('s-punghyang')">
+    <div class="section-title">
+      <h2>🧭 풍향계</h2>
+      <span class="s-badge gold">AI分析</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="section-desc">신문 사설 흐름 소개 | 2026.10.12~10.17</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="week-info">
+      <div>분석 기간: <span>2026.10.12(월)~10.17(토)</span></div>
+      <div>분석 대상: <span>정기 사설 발행 국내 주요 5개 종합일간지</span></div>
+    </div>
+
+    <div class="article">
+      <div class="article-cat gold">이번 주 언론 흐름</div>
+      <div class="article-title">중수청장 인선·한미 정보 갈등·증시 급락과 국민연금, 다섯 신문 모두 다뤄</div>
+      <div class="article-body">
+        <p>국정감사가 이어진 주, 5대 신문(조선·동아·중앙·한겨레·경향)은 초대 중수청장 인선과 임은정 광주중수청장 감찰을 둘러싼 공방, 한미 정보 협력 갈등과 정동영 통일부 장관의 발언, 코스피 급락 속 반도체 편중과 국민연금의 운용을 예외 없이 사설로 다뤘다. 국무회의 운영과 대통령의 소통 방식, 전작권 전환 일정, 주택 공급과 부동산 대책, 민주당의 신천지 집단 가입 의혹은 네 매체가 다뤘다. 중수청의 정치적 중립과 독립을 강조한 데는 다섯 신문의 뜻이 같았지만, 한미 정보 갈등의 원인과 전작권 전환의 속도를 보는 시각은 갈렸다.</p>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">🌡 이번 주 언론 의제 순위 (5대 신문 사설 집중도)</div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>초대 중수청장 인선·임은정 감찰</span><span class="bar-pct">100%</span></div>
+        <div class="bar-track"><div class="bar-fill navy" style="width:100%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>한미 정보 협력 갈등·정동영 장관 발언</span><span class="bar-pct">100%</span></div>
+        <div class="bar-track"><div class="bar-fill blue" style="width:100%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>코스피 급락·반도체 편중·국민연금</span><span class="bar-pct">100%</span></div>
+        <div class="bar-track"><div class="bar-fill gold" style="width:100%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>국무회의 운영·대통령 소통 방식</span><span class="bar-pct">80%</span></div>
+        <div class="bar-track"><div class="bar-fill red" style="width:80%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>전작권 전환 일정</span><span class="bar-pct">80%</span></div>
+        <div class="bar-track"><div class="bar-fill navy" style="width:80%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>주택 공급·부동산 대책</span><span class="bar-pct">80%</span></div>
+        <div class="bar-track"><div class="bar-fill blue" style="width:80%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>민주당 신천지 집단 가입 의혹</span><span class="bar-pct">80%</span></div>
+        <div class="bar-track"><div class="bar-fill gold" style="width:80%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>임광현 대통령 비서실장 임명</span><span class="bar-pct">60%</span></div>
+        <div class="bar-track"><div class="bar-fill red" style="width:60%"></div></div>
+      </div>
+      <div class="chart-source">※ 5개 종합일간지(조선·동아·중앙·한겨레·경향) 사설 의제별 집중도(해당 의제를 논지의 중심으로 다룬 사설이 있는 매체 수 기준, 총 86편 검토) | 분석 기간: 2026.10.12~10.17 | 이 밖에 정당 지지율·무당층(동아·중앙·경향)이 60%, 대법원장 와인·격려금과 탄핵론(조선·경향), 국가인구전략(한겨레·경향), 흉악범죄와 치안 공백(중앙·경향), 추미애 지사의 소방 예산 발언(조선·동아), 중앙행정기관 세종 2차 이전(동아·중앙), 한동훈 의원 딸 의혹 수사(조선·한겨레)가 각 2개 매체(40%)</div>
+    </div>
+
+    <!-- ── 주간 사자성어 ── -->
+    <div style="margin:18px 0 10px;padding:12px 16px;background:linear-gradient(135deg,#fefae8 0%,#fdf3c0 100%);border:1px solid #e8c84a;border-left:4px solid #c8a000;border-radius:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+      <div style="font-size:11px;font-weight:700;color:#9a7800;letter-spacing:.08em;white-space:nowrap;">🀄 이번 주 사자성어</div>
+      <span style="font-size:22px;font-weight:900;color:#1B3A6B;font-family:'Noto Serif KR',serif;letter-spacing:.05em;">蕭牆之憂</span>
+      <span style="font-size:13px;font-weight:600;color:#555;font-family:'Noto Serif KR',serif;">소장지우</span>
+      <span style="font-size:12px;color:#6b5a00;">근심은 담장 안에 있다</span>
+      <span style="font-size:11px;color:#9a7800;white-space:nowrap;">출전: 『논어(論語)』 「계씨(季氏)」</span>
+    </div>
+    <!-- ── /주간 사자성어 ── -->
+
+    <!-- ── 이주의 시사용어 (풍향계 연계) ── -->
+    <div style="margin:0 0 10px;padding:12px 16px;background:#f0f6ff;border:1px solid #b8d4f0;border-left:4px solid #2E75B6;border-radius:8px;">
+      <div style="font-size:11px;font-weight:700;color:#1B3A6B;letter-spacing:.08em;margin-bottom:8px;">📖 이주의 시사용어 — 이번 주 사설에 나온 말</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div>
+          <span style="font-size:13px;font-weight:800;color:#1B3A6B;">서킷브레이커</span>
+          <span style="font-size:11px;color:#2E75B6;font-weight:600;">(증권)</span>
+          <span style="font-size:12px;color:#444;"> — 주가지수가 갑자기 크게 떨어질 때 거래를 잠시 멈춰 시장이 숨을 고르게 하는 장치입니다. 코스피나 코스닥 지수가 전 거래일보다 8% 이상 떨어진 상태가 1분간 이어지면 20분 동안 모든 매매를 멈춥니다. 15일 코스피와 코스닥에서 함께 발동됐습니다.</span>
+        </div>
+        <div>
+          <span style="font-size:13px;font-weight:800;color:#1B3A6B;">리밸런싱</span>
+          <span style="font-size:11px;color:#2E75B6;font-weight:600;">(연금·투자)</span>
+          <span style="font-size:12px;color:#444;"> — 주가가 오르내리며 달라진 자산 비중을 처음 정한 목표 비중으로 되돌리는 일입니다. 주식이 많이 올라 비중이 커지면 일부를 팔고, 많이 내리면 사들이는 식입니다. 국민연금이 올해 국내 주식 리밸런싱을 한때 미루고 목표 비중을 높인 판단이 이번 급락장에서 논란이 됐습니다.</span>
+        </div>
+        <div>
+          <span style="font-size:13px;font-weight:800;color:#1B3A6B;">공정성의 외관</span>
+          <span style="font-size:11px;color:#2E75B6;font-weight:600;">(법·행정)</span>
+          <span style="font-size:12px;color:#444;"> — 실제로 공정하게 일하는 것뿐 아니라 '공정해 보이는 것'도 중요하다는 원칙입니다. 법원이나 수사기관처럼 중립이 생명인 기관에 특히 강조됩니다. 이번 주 중수청장·공소청장이 국무회의에 정례적으로 참석하는 문제를 두고 이 개념이 거론됐습니다.</span>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#6b8caf;margin-top:8px;">※ 이번 주 풍향계 분석 사설에서 다룬 용어 중 이해를 돕기 위해 선정. 특정 진영을 겨냥하지 않습니다.</div>
+    </div>
+    <!-- ── /이주의 시사용어 ── -->
+
+    <div class="article-meta">
+      <span>풍향계 v4.2 | 2026.10.12~10.17</span><span>2026.10.19 발행</span>
+    </div>
+    <button class="read-more-btn" onclick="openModById('punghyang')">전문 보기 ▶</button>
+  </div>
+</div>
+
+<div class="section green-border" id="s-opinion">
+  <div class="section-header" onclick="toggleSection('s-opinion')">
+    <div class="section-title">
+      <h2>📊 여론동향</h2>
+      <span class="s-badge green">갤럽678·NBS190</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="section-desc">갤럽 긍정 39%·부정 52%</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="chart-wrap">
+      <div class="chart-title">🇰🇷 대통령 직무 수행 평가 — 한국갤럽 데일리 오피니언 제678호</div>
+      <div class="donut-row">
+        <div class="donut-item">
+          <div class="donut-val green">39%</div>
+          <div class="donut-label">갤럽 · 잘하고 있다</div>
+        </div>
+        <div class="donut-item">
+          <div class="donut-val red">52%</div>
+          <div class="donut-label">갤럽 · 잘못하고 있다</div>
+        </div>
+        <div class="donut-item">
+          <div class="donut-val navy">9%</div>
+          <div class="donut-label">의견 유보</div>
+        </div>
+      </div>
+      <div class="chart-source">* 한국갤럽 데일리 오피니언 제678호 | 조사: 2026.10.13~15 | 전국 만 18세 이상 1,003명 | 표본오차 ±3.1%p(95% 신뢰수준) | 응답률 10.4% | 직전 조사(10월 2주) 긍정 37%·부정 51% | 같은 주 NBS 제190호(10.12~14) 긍정 44%·부정 49%</div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">📉 대통령 직무 긍정률 추이 — 갤럽, 10/3주 39% · 추석 2주 조사 없음</div>
+      <svg viewBox="0 0 320 170" role="img" aria-label="대통령 직무 긍정률 갤럽 추이, 8월 4주 42%에서 9월 3주 37%, 추석 연휴 2주 조사 없음, 10월 2주 37%, 10월 3주 39%" style="width:100%;height:auto;display:block;"><line x1="34" y1="140.0" x2="306" y2="140.0" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="143.0" font-size="9" fill="#94a3b8" text-anchor="end">30</text><line x1="34" y1="111.5" x2="306" y2="111.5" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="114.5" font-size="9" fill="#94a3b8" text-anchor="end">35</text><line x1="34" y1="83.0" x2="306" y2="83.0" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="86.0" font-size="9" fill="#94a3b8" text-anchor="end">40</text><line x1="34" y1="54.5" x2="306" y2="54.5" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="57.5" font-size="9" fill="#94a3b8" text-anchor="end">45</text><line x1="34" y1="26.0" x2="306" y2="26.0" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="29.0" font-size="9" fill="#94a3b8" text-anchor="end">50</text><rect x="170.0" y="26" width="77.7" height="114" fill="#f1f5f9"/><text x="208.9" y="86" font-size="9.5" fill="#64748b" text-anchor="middle">추석 연휴</text><text x="208.9" y="99" font-size="9.5" fill="#64748b" text-anchor="middle">조사 없음</text><polyline points="34.0,71.6 72.9,83.0 111.7,94.4 150.6,100.1" fill="none" stroke="#1B3A6B" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="267.1,100.1 306.0,88.7" fill="none" stroke="#1B3A6B" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="34.0" cy="71.6" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="34.0" y="62.6" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">42%</text><text x="34.0" y="158" font-size="9" fill="#64748b" text-anchor="middle">8/4주</text><circle cx="72.9" cy="83.0" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="72.9" y="74.0" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">40%</text><text x="72.9" y="158" font-size="9" fill="#64748b" text-anchor="middle">9/1주</text><circle cx="111.7" cy="94.4" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="111.7" y="85.4" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">38%</text><text x="111.7" y="158" font-size="9" fill="#64748b" text-anchor="middle">9/2주</text><circle cx="150.6" cy="100.1" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="150.6" y="91.1" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">37%</text><text x="150.6" y="158" font-size="9" fill="#64748b" text-anchor="middle">9/3주</text><text x="189.4" y="128" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="middle">—</text><text x="189.4" y="158" font-size="9" fill="#64748b" text-anchor="middle">9/4주</text><text x="228.3" y="128" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="middle">—</text><text x="228.3" y="158" font-size="9" fill="#64748b" text-anchor="middle">10/1주</text><circle cx="267.1" cy="100.1" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="267.1" y="91.1" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">37%</text><text x="267.1" y="158" font-size="9" fill="#64748b" text-anchor="middle">10/2주</text><circle cx="306.0" cy="88.7" r="5" fill="#B03030" stroke="#fff" stroke-width="1.5"/><text x="300.0" y="79.7" font-size="10.5" font-weight="700" fill="#B03030" text-anchor="middle">39%</text><text x="298.0" y="158" font-size="9" fill="#64748b" text-anchor="middle">10/3주</text></svg>
+      <div class="chart-source">* 한국갤럽 데일리 오피니언 제678호 | 9월 4주·10월 1주는 추석 연휴로 정기 조사 없음(결측을 이어 그리지 않음)</div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">🧭 NBS 제190호 — 이번 주 현안 여론</div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>경제성장이 소득분배보다 중요</span><span class="bar-pct">73%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:73%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>수도권·지방 발전 격차 '심각'</span><span class="bar-pct">83%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:83%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>DMZ 지뢰 사고 '북한에 단호히 대응'</span><span class="bar-pct">65%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:65%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>전기요금 '인상 최대한 늦춰야'</span><span class="bar-pct">64%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:64%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>앞으로 1년 전월세 '오를 것'</span><span class="bar-pct">59%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:59%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>초과세수 '나랏빚 상환에'</span><span class="bar-pct">52%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:52%"></div></div>
+      </div>
+      <div class="chart-source">* NBS 전국지표조사 제190호 | 조사 2026.10.12~14 | 대립 문항의 반대쪽 응답: 소득분배 23%, 남북 군사적 긴장 완화 32%, 전기요금 인상 34%, 초과세수 미래 산업 투자·위기 대비 46% | 전월세는 '변화 없을 것' 28%·'내릴 것' 8%</div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">🗳 정당 지지도 — 더불어민주당 36%, 국민의힘 27%</div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>더불어민주당 (10월 2주 35%)</span><span class="bar-pct">36%</span></div>
+        <div class="bar-track"><div class="bar-fill blue" style="width:72%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>국민의힘 (10월 2주 26%)</span><span class="bar-pct">27%</span></div>
+        <div class="bar-track"><div class="bar-fill red" style="width:54%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label-row"><span>무당층 (10월 2주 31%)</span><span class="bar-pct">29%</span></div>
+        <div class="bar-track"><div class="bar-fill navy" style="width:58%"></div></div>
+      </div>
+      <div class="chart-source">* 갤럽 제678호(조국혁신당 3%·개혁신당 2%·진보당 1%) | 같은 주 NBS 제190호는 더불어민주당 33%·국민의힘 28%·태도유보 29%로, 두 정당 격차(5%p)가 최근 6개월 NBS 조사 가운데 가장 작았음</div>
+    </div>
+
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:10px 12px;font-size:12px;color:#334155;margin-top:4px;line-height:1.7;">
+      <strong>📌 풍향계 연계 지표(5-1단계)</strong><br>이번 주 풍향계 의제 1위군인 코스피 급락·국민연금과 관련해, 갤럽 제678호에서 대통령 직무 부정 평가 이유로 '경제/민생/주식시장 대응'을 꼽은 응답은 12%로 직전 조사보다 5%p 늘었다. 같은 1위군인 중수청장 인선과 맞닿은 '검찰 권한 축소/검찰청 폐지'는 3%로 5%p 줄었다. 이 문항은 응답자가 스스로 꼽은 평가 이유이며, 증시 대응이나 중수청장 인선에 대한 찬반을 직접 물은 것은 아니다. 코스피가 급락한 15일은 갤럽 조사의 마지막 날이었다.
+    </div>
+
+    <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:8px 12px;font-size:11px;color:#92400e;margin-top:8px;">
+      ⚠️ <strong>통계 주의:</strong> 표본오차 ±3.1%p(95% 신뢰수준) | 단일 조사 결과로 단정 금지 | 강원 표본(갤럽 30명, NBS 강원·제주 44명)이 작아 지역 세부수치를 인용하지 않음
+    </div>
+
+    <div class="article-meta">
+      <span>한국갤럽 제678호(10.13~15)·NBS 제190호(10.12~14)</span><span>2026.10.19 발행</span>
+    </div>
+    <button class="read-more-btn" onclick="openModById('opinion')">분석 전문 보기 ▶</button>
+  </div>
+</div>
+<div class="section" id="s-voice">
+  <div class="section-header" onclick="toggleSection('s-voice')">
+    <div class="section-title">
+      <h2>🗣 시민의 소리</h2>
+      <span class="s-badge gold">사설</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="section-desc">사설 | 2026.10.19</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+    <p class="section-lede"><span class="art-cat">🗣 시민의 소리</span>
+      청년 일자리 1,000개, 숫자보다 내용이 중요합니다
+    </p>
+    <p>임기 내 청년 일자리 1,000개라는 목표에, 어떤 일자리이고 어디에서 만들어지는지를 함께 물어야 합니다.</p>
+    <div style="background:#fef9e7;border:1px solid #fde68a;border-radius:6px;padding:8px 12px;margin-top:10px;font-size:12px;color:#78350f;">
+      📮 시민 기고 환영합니다 → jcjwk54@gmail.com
+    </div>
+    <button class="read-more-btn" onclick="openModById('voice')">🗣 사설 전문 보기 ▶</button>
+  </div>
+</div>
+
+<div class="section" id="s-series">
+  <div class="section-header" onclick="toggleSection('s-series')">
+    <div class="section-title">
+      <h2>💬 이슈&amp;토론</h2>
+      <span class="s-badge red">교육·청년</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="section-desc">청년 기본소득, 도입해야 하나</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+    <p class="section-lede"><span class="art-cat">이슈&amp;토론 No.18 | 2026.10.19</span>
+      청년 기본소득, 도입해야 하나
+    </p>
+    <p>청년에게 조건 없이 일정한 소득을 주는 제도를 전국으로 넓힐까요? 진로를 고민하는 청년과 가정에 가까운 질문입니다.</p>
+    <div class="debate-cards" style="display:flex;gap:8px;margin:12px 0;flex-wrap:wrap;">
+      <div style="flex:1;min-width:140px;background:#EAF5EE;border:1px solid #7DB87D;border-radius:6px;padding:10px;font-size:12px;">
+        <div style="font-weight:700;color:#1F7A4D;margin-bottom:5px;">👍 청년 기본소득을 도입해야 한다</div>
+        <div>일자리를 찾는 동안 최소한의 생활을 보장하는 안전망이 필요하다는 입장입니다.</div>
+      </div>
+      <div style="flex:1;min-width:140px;background:#FFF0F0;border:1px solid #D97C7C;border-radius:6px;padding:10px;font-size:12px;">
+        <div style="font-weight:700;color:#B03030;margin-bottom:5px;">👎 신중해야 한다</div>
+        <div>큰 재정 부담에 비해 효과가 불확실하고, 기존 청년 지원을 강화하는 편이 낫다는 입장입니다.</div>
+      </div>
+    </div>
+    <div class="vote-wrap">
+      <div class="vote-label">📊 청년 기본소득 도입에 찬성하십니까?</div>
+      <div class="vote-row">
+        <button id="vbtn-no18-pro" class="vote-btn vote-pro" onclick="castVote('no18','pro',this)">👍 도입 찬성 <span id="vcnt-no18-pro" class="vote-count">0</span></button>
+        <button id="vbtn-no18-con" class="vote-btn vote-con" onclick="castVote('no18','con',this)">👎 신중론 <span id="vcnt-no18-con" class="vote-count">0</span></button>
+      </div>
+      <div id="vresult-no18" class="vote-result">아직 투표 결과가 없습니다 — 첫 투표를 남겨보세요!</div>
+    </div>
+    <button class="read-more-btn" onclick="openModById('issue18')">💬 이슈&amp;토론 전문 + 논거 ▶</button>
+  </div>
+</div>
+<div class="section" id="s-letter">
+  <div class="section-header" onclick="toggleSection('s-letter')">
+    <div class="section-title">
+      <h2>✒ 편집자 레터</h2>
+      <span class="s-badge">제18호</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="section-desc">제18호 | 2026.10.19</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="editor-letter">
+      <div class="editor-letter-label">EDITOR'S LETTER | 2026.10.19 제18호</div>
+      <div class="editor-letter-body">
+        <p style="font-weight:700;color:var(--gold);">담장 안의 근심 — 제18호</p>
+        <p>다섯 신문이 모두 다룬 코스피 급락과 국민연금은 갤럽 부정 평가 이유에서도 '경제/민생/주식시장 대응'이 5%p 늘어 겹쳤습니다. 이번 호 사설은 청년 일자리 1,000개라는 숫자의 내용을 묻습니다.</p>
+      </div>
+      <div class="editor-letter-sig">— 편집장 김준철 | 제18호 | 2026.10.19</div>
+    </div>
+    <button class="read-more-btn" onclick="openModById('letter')" style="margin-top:12px;">✒ 편집자 레터 전문 보기 ▶</button>
+  </div>
+</div>
+
+<div class="section" id="s-notice">
+  <div class="section-header" onclick="toggleSection('s-notice')">
+    <div class="section-title">
+      <h2>📋 설악권 공지사항</h2>
+      <span class="s-badge">속초·고성·양양·인제</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="section-desc">2026.10.19 기준</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="tab-container">
+      <div class="tab-btns">
+        <button class="tab-btn active" onclick="switchTab(event,'nt-sokcho')">속초시</button>
+        <button class="tab-btn" onclick="switchTab(event,'nt-goseong')">고성군</button>
+        <button class="tab-btn" onclick="switchTab(event,'nt-yangyang')">양양군</button>
+        <button class="tab-btn" onclick="switchTab(event,'nt-inje')">인제군</button>
+      </div>
+
+            <div class="tab-panel active" id="nt-sokcho">
+        <div class="notice-item">
+          <div class="notice-tag">🚧 통행주의</div>
+          <div class="notice-title">금호교 보수공사 — 11월 하순까지 일부 구간 부분 통제</div>
+          <div class="notice-body">1994년 준공된 금호교의 신축이음장치 교체와 손상 부위 보수공사가 시작돼 11월 하순 완료를 목표로 진행됩니다. 공사 중 일부 구간이 부분 통제되지만 차량은 지나갈 수 있습니다. 함께 공사에 들어간 청초교(기초 세굴 방지·바닥판 보수)는 통행 제한이 예정돼 있지 않습니다. 공사 구간을 지날 때는 서행해 주시기 바랍니다. 문의: 속초시청 033-639-2114</div>
+        </div>
+        <div class="notice-item">
+          <div class="notice-tag">💳 납부안내</div>
+          <div class="notice-title">지방세·세외수입 체납액 일제정리 — 연말까지, 어려운 소액 체납자는 분할 납부 가능</div>
+          <div class="notice-body">속초시가 연말까지 재산세·지방소득세·자동차세·주민세 등 지방세와 과태료·사용료 같은 세외수입 체납액을 집중 정리합니다. 경제적 어려움을 겪는 소액 체납자는 납부 의지와 사정에 따라 분할 납부나 체납처분 유예를 받을 수 있습니다. 은행 현금인출기, 위택스(wetax.go.kr), 농협 가상계좌로 낼 수 있고, 시청 세무과를 찾으면 신용·체크카드로도 납부할 수 있습니다. 문의: 속초시 세무과(속초시청 033-639-2114)</div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="nt-goseong">
+        <div class="notice-item">
+          <div class="notice-tag">🧾 무료상담</div>
+          <div class="notice-title">찾아가는 마을세무사 — 10월 27일 오후 1~3시, 군청 신관 3층</div>
+          <div class="notice-body">국세·지방세(종합소득세, 상속·증여세, 양도소득세, 취득세, 재산세 등) 고민이 있는 군민은 10월 27일 오후 1시부터 3시까지 고성군청 신관 3층 회의실에서 마을세무사에게 일대일 무료 상담을 받을 수 있습니다. 사전 신청은 15일에 마감됐지만 당일 현장 방문도 가능합니다. 문의: 고성군 세무과 세무팀 033-680-3282</div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="nt-yangyang">
+        <div class="notice-item">
+          <div class="notice-tag">🎬 공모전</div>
+          <div class="notice-title">2026 양양군 영상 공모전 — 11월 12일까지 작품 접수</div>
+          <div class="notice-body">송이연어축제, 관광지, 군정 등 양양의 매력을 보여주는 자유 주제로 일반 영상(가로형, 2분 이내)과 숏폼(세로형, 1분 이내) 두 부문 작품을 받습니다. 부문별 7편씩 모두 14편을 뽑아 상금 1,000만 원을 나눠 줍니다. 참가 자격과 접수 방법은 양양군 누리집 공고를 확인해 주십시오. 문의: 양양군청 033-670-2114</div>
+        </div>
+        <div class="notice-item">
+          <div class="notice-tag">🎉 행사</div>
+          <div class="notice-title">읍·면민 한마당 잔치 — 현북면 21일, 양양읍·손양면 22일, 서면·현남면 23일</div>
+          <div class="notice-body">10월 넷째 주 양양 곳곳에서 읍·면민 잔치가 이어집니다. 현북면(21일), 양양읍(22일, 읍 승격 47주년 기념)·손양면(22일), 서면·현남면(23일) 순입니다. 시간과 장소는 각 읍·면 행정복지센터에 문의해 주십시오. 문의: 양양군청 033-670-2114</div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="nt-inje">
+        <div class="notice-item">
+          <div class="notice-tag">🚌 미리알기</div>
+          <div class="notice-title">2027년 1월부터 농어촌·마을버스 무료 — 탈 때 교통카드는 찍어야</div>
+          <div class="notice-body">내년 1월 1일부터 인제군 정기 노선 농어촌버스와 마을버스를 군민·관광객 누구나 무료로 탈 수 있습니다. 다만 이용 인원을 집계하기 위해 탈 때 교통카드를 찍는 등의 절차는 거쳐야 합니다. 인제 시티투어버스는 무료 대상이 아닙니다. 문의: 인제군청 033-461-2122</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div><div class="section" id="s-announce">
+  <div class="section-header" onclick="toggleSection('s-announce')">
+    <div class="section-title">
+      <h2>📢 신문사 공지</h2>
+      <span class="s-badge navy">설악시민뉴스</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="section-desc">제18호 | 구독·기고 안내</span>
+      <span class="toggle-icon">▼</span>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:700;color:#1B3A6B;margin-bottom:8px;">📮 시민 기고 모집 — 상시</div>
+      <ul style="font-size:12px;line-height:1.8;color:#475569;padding-left:16px;margin:0;">
+        <li><strong>시민의 소리:</strong> 지역 이슈 시민 칼럼 (600~1,000자)</li>
+        <li><strong>이슈&amp;토론 제안:</strong> 설악권 현안 토론 주제 제안</li>
+        <li><strong>제보·독자 투고:</strong> 지역 사실 제보 환영</li>
+      </ul>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid #e2e8f0;font-size:12px;color:#64748b;">
+        📞 전화: <strong>0502-1949-1230</strong>&nbsp;&nbsp;📧 투고: <strong>jcjwk54@gmail.com</strong>
+      </div>
+    </div>
+
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:700;color:#166534;margin-bottom:6px;">🗳 제18호 이슈&amp;토론 투표 참여해 주세요</div>
+      <div style="font-size:12px;color:#475569;line-height:1.6;">No.18 '청년 기본소득, 도입해야 하나' 찬반 투표가 진행 중입니다.</div>
+    </div>
+
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:700;color:#166534;margin-bottom:6px;">📲 앱처럼 설치하세요 — 무료·광고없음</div>
+      <div style="font-size:12px;color:#475569;line-height:1.6;margin-bottom:10px;">홈 화면에 추가하면 앱처럼 바로 실행됩니다. 앱스토어 불필요, 개인정보 수집 없음.</div>
+      <button onclick="document.getElementById('pwa-modal').classList.add('on')" style="background:#166534;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:700;cursor:pointer;">📲 설치 방법 보기</button>
+    </div>
+
+    <div style="background:#fff7ed;border:1px solid #fdba74;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:700;color:#9a3412;margin-bottom:8px;">📊 이번 호 여론동향 — 갤럽·NBS 함께 읽기</div>
+      <div style="font-size:12px;line-height:1.7;color:#475569;">이번 호 여론동향은 <strong>한국갤럽 제678호(10.13~15)</strong>와 <strong>NBS 전국지표조사 제190호(10.12~14)</strong>를 함께 반영했습니다. 두 조사는 질문 방식과 조사 기간이 달라 수치를 직접 비교하지 않습니다.</div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #fdba74;font-size:12px;line-height:1.7;color:#475569;">
+        📰 <strong>호외 다시 읽기</strong> — 2026 설악권 선거, 네 가지 진단
+        <div style="margin-top:8px;">
+          <a href="archives/20260928.html" style="display:inline-block;background:#9a3412;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:6px;text-decoration:none;">📖 호외 전문 읽기 →</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:700;color:#1B3A6B;margin-bottom:8px;">📅 다음 호 — 제19호 (2026.10.26 월)</div>
+      <ul style="font-size:12px;line-height:1.8;color:#475569;padding-left:16px;margin:0;">
+        <li>사설: 중복 투자를 막는 것도 경쟁력입니다</li>
+        <li>이슈&amp;토론: No.19 자율주행차 사고, 누가 책임지나</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- PWA 설치 안내 모달 -->
+<div class="modal-bg" id="pwa-modal" onclick="if(event.target===this)document.getElementById('pwa-modal').classList.remove('on')">
+  <div class="modal-box">
+    <div class="modal-hd">
+      <span>📲 앱 설치 방법</span>
+      <button class="modal-close" onclick="document.getElementById('pwa-modal').classList.remove('on')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="pwa-tab-and" style="display:block;">
+        <div style="display:flex;gap:8px;margin-bottom:16px;">
+          <button onclick="document.getElementById('pwa-tab-and').style.display='block';document.getElementById('pwa-tab-ios').style.display='none';this.style.background='#1B3A6B';this.style.color='#fff';document.getElementById('pwa-btn-ios').style.background='#f1f5f9';document.getElementById('pwa-btn-ios').style.color='#1B3A6B';" id="pwa-btn-and" style="flex:1;padding:8px;border-radius:6px;border:1px solid #1B3A6B;background:#1B3A6B;color:#fff;font-weight:700;font-size:13px;cursor:pointer;">🤖 안드로이드</button>
+          <button onclick="document.getElementById('pwa-tab-ios').style.display='block';document.getElementById('pwa-tab-and').style.display='none';this.style.background='#1B3A6B';this.style.color='#fff';document.getElementById('pwa-btn-and').style.background='#f1f5f9';document.getElementById('pwa-btn-and').style.color='#1B3A6B';" id="pwa-btn-ios" style="flex:1;padding:8px;border-radius:6px;border:1px solid #1B3A6B;background:#f1f5f9;color:#1B3A6B;font-weight:700;font-size:13px;cursor:pointer;">🍎 아이폰</button>
+        </div>
+        <ol style="font-size:14px;line-height:2;color:#1a1a1a;padding-left:20px;margin:0;">
+          <li>크롬 브라우저로 <strong>seorakcitizennews.kr</strong> 접속</li>
+          <li>오른쪽 위 <strong>⋮ (점 세 개)</strong> 메뉴 터치</li>
+          <li><strong>"홈 화면에 추가"</strong> 선택</li>
+          <li><strong>"추가"</strong> 확인 → 설치 완료</li>
+        </ol>
+      </div>
+      <div id="pwa-tab-ios" style="display:none;">
+        <div style="display:flex;gap:8px;margin-bottom:16px;">
+          <button onclick="document.getElementById('pwa-tab-and').style.display='block';document.getElementById('pwa-tab-ios').style.display='none';this.style.background='#f1f5f9';this.style.color='#1B3A6B';document.getElementById('pwa-btn-ios').style.background='#1B3A6B';document.getElementById('pwa-btn-ios').style.color='#fff';" id="pwa-btn-and2" style="flex:1;padding:8px;border-radius:6px;border:1px solid #1B3A6B;background:#f1f5f9;color:#1B3A6B;font-weight:700;font-size:13px;cursor:pointer;">🤖 안드로이드</button>
+          <button id="pwa-btn-ios2" style="flex:1;padding:8px;border-radius:6px;border:1px solid #1B3A6B;background:#1B3A6B;color:#fff;font-weight:700;font-size:13px;cursor:pointer;">🍎 아이폰</button>
+        </div>
+        <ol style="font-size:14px;line-height:2;color:#1a1a1a;padding-left:20px;margin:0;">
+          <li>사파리 브라우저로 <strong>seorakcitizennews.kr</strong> 접속</li>
+          <li>하단 가운데 <strong>□↑ 공유 버튼</strong> 터치</li>
+          <li><strong>"홈 화면에 추가"</strong> 선택</li>
+          <li>오른쪽 위 <strong>"추가"</strong> 터치 → 설치 완료</li>
+        </ol>
+      </div>
+      <div style="margin-top:16px;padding:10px 14px;background:#f8fafc;border-radius:6px;font-size:12px;color:#64748b;line-height:1.6;">
+        ✅ 앱스토어 불필요 &nbsp;|&nbsp; ✅ 광고 없음 &nbsp;|&nbsp; ✅ 개인정보 수집 없음
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="art-modal" onclick="if(event.target===this)closeMod()">
+  <div class="modal-box">
+    <div class="modal-hd">
+      <div class="modal-cat" id="mod-cat"></div>
+      <div class="modal-title" id="mod-title"></div>
+      <div class="modal-meta">
+        <span id="mod-meta"></span>
+        <span id="mod-badge"></span>
+      </div>
+      <button class="modal-close" onclick="closeMod()">✕</button>
+    </div>
+    <div class="modal-body" id="mod-body"></div>
+  </div>
+</div>
+
+<div id="stats-strip">
+  <div class="quote-strip-inner">
+    <span class="quote-strip-label">이 주의 문장</span>
+    <span class="quote-strip-divider"></span>
+    <span class="quote-strip-text" id="weekly-quote">"최고선을 소유에 두느냐 사용에 두느냐, 상태에 두느냐 활동에 두느냐는 아마 적지 않은 차이를 낳는다." (But it makes, perhaps, no small difference whether we place the chief good in possession or in use, in state of mind or in activity.)</span>
+    <span class="quote-strip-source" id="weekly-quote-source">— 아리스토텔레스 『니코마코스 윤리학』 제1권 8장(1098b) · 영문은 W. D. Ross 번역 · 좋은 삶은 가진 것보다 하는 일에서 드러난다는 뜻</span>
+  </div>
+</div>
+
+<div id="scripture-strip" style="max-width:720px;margin:0 auto;background:#f4f5f7;border-top:2px solid #b9c2cf;padding:14px 16px;">
+  <div class="scripture-strip-inner" style="max-width:1080px;margin:0 auto;">
+    <div style="font-size:11px;font-weight:700;color:#556072;letter-spacing:.06em;margin-bottom:8px;">📖 사자성어와 함께 읽는 말씀</div>
+    <div class="scripture-kr" id="weekly-scripture-kr" style="font-size:13px;color:#333;line-height:1.7;margin-bottom:4px;">"너희 중에 싸움이 어디로부터 다툼이 어디로부터 나느냐 너희 지체 중에서 싸우는 정욕으로부터 나는 것이 아니냐" — 『야고보서』 4:1</div>
+    <div class="scripture-en" id="weekly-scripture-en" style="font-size:12px;color:#666;line-height:1.6;margin-bottom:8px;">"What causes fights and quarrels among you? Don't they come from your desires that battle within you?" (NIV) — James 4:1</div>
+    <div class="scripture-note" id="weekly-scripture-note" style="font-size:12px;color:#475569;line-height:1.7;margin-bottom:6px;">蕭牆之憂(소장지우)가 경계한 담장 안의 근심은, 다툼이 어디서 나오는지 먼저 자기 안을 들여다보라는 야고보서의 물음과 통한다 — 바깥을 탓하기 전에 안을 살피는 것이 해법의 시작이다.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+
+    <!-- 로고 + 슬로건 -->
+    <div class="footer-logo">설악<span>시민</span>뉴스</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:14px;">
+      자유 민주주의 · 시장자본주의 · 정의와 사랑을 원칙으로 사실 기반 보도
+    </div>
+
+    <!-- 등록 정보 (우측 정렬) -->
+    <div class="footer-rule">
+      등록번호: 강원 아00423 | 등록일: 2026.05.14<br>
+      발행인·편집인: 김준철 | 발행소: 강원특별자치도 속초시 청봉로3길 70<br>
+      전화: <a href="tel:050219491230" style="color:var(--gold);">0502-1949-1230</a><br>
+      기사제보: <a href="mailto:jcjwk54@gmail.com" style="color:var(--gold);">jcjwk54@gmail.com</a><br>
+      © 2026 설악시민뉴스. All rights reserved.
+    </div>
+
+  </div>
+
+  <!-- 속초관광가이드 배너 -->
+  <div style="margin-top:14px;padding:9px 16px;background:linear-gradient(90deg,#0a7a5a 0%,#0fa87a 100%);display:flex;align-items:center;justify-content:space-between;gap:8px;">
+    <div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.08em;color:rgba(255,255,255,0.6);margin-bottom:3px;">설악시민뉴스가 제작·배포하는</div>
+      <div style="font-size:12px;font-weight:700;color:#fff;">
+        🏔 속초 관광 가이드
+        <span style="font-size:10px;font-weight:400;opacity:0.7;margin-left:3px;">(https://www.visitsokcho.kr)</span>
+      </div>
+    </div>
+    <a href="https://www.visitsokcho.kr" target="_blank" rel="noopener"
+       style="flex-shrink:0;background:#fff;color:#0a7a5a;font-size:11px;font-weight:700;padding:5px 11px;border-radius:20px;text-decoration:none;white-space:nowrap;">
+      바로가기 →
+    </a>
+  </div>
+</footer>
+
+
+
+<script>
+// Date
+const now = new Date();
+const kdate = now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' });
+document.getElementById('today-date').textContent = kdate;
+const issueNo = 18; // ← 매주 발행 시 숫자만 변경 (창간호=1, 제2호=2, ...)
+const issueLabel = issueNo === 1 ? '창간호' : `제${issueNo}호`;
+document.getElementById('header-issue').textContent = `제18호 · 주간 | 2026년 10월 19일 (월) | 강원 아00423`;
+
+// News Tab Switch
+function switchNewsTab(active) {
+  const tabs = ['national','sokcho','goseong','yangyang','inje'];
+  const colorMap = {
+    national: 'var(--navy)',
+    sokcho:   'var(--blue-chart)',
+    goseong:  'var(--green)',
+    yangyang: 'var(--gold)',
+    inje:     '#7b4fa6'
+  };
+  tabs.forEach(t => {
+    const btn  = document.getElementById('ntab-' + t);
+    const pane = document.getElementById('npane-' + t);
+    if (t === active) {
+      btn.classList.add('active');
+      btn.classList.remove('tab-sokcho','tab-goseong','tab-yangyang','tab-inje');
+      if (t !== 'national') btn.classList.add('tab-' + t);
+      pane.style.display = 'block';
+    } else {
+      btn.classList.remove('active','tab-sokcho','tab-goseong','tab-yangyang','tab-inje');
+      pane.style.display = 'none';
+    }
+  });
+}
+
+// Notice Tab Switch
+function switchNoticeTab(active) {
+  const tabs = ['sokcho','goseong','yangyang','inje'];
+  tabs.forEach(t => {
+    const btn  = document.getElementById('ntab-notice-' + t);
+    const pane = document.getElementById('npane-notice-' + t);
+    if (t === active) {
+      btn.classList.add('active');
+      btn.classList.remove('tab-sokcho','tab-goseong','tab-yangyang','tab-inje');
+      btn.classList.add('tab-' + t);
+      pane.style.display = 'block';
+    } else {
+      btn.classList.remove('active','tab-sokcho','tab-goseong','tab-yangyang','tab-inje');
+      pane.style.display = 'none';
+    }
+  });
+}
+
+// Section toggle
+// Generic Tab Switch (공지사항 등 범용 탭)
+function switchTab(e, panelId) {
+  var btn = e.currentTarget || e.target;
+  var container = btn.closest('.tab-container');
+  if (!container) return;
+  container.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  container.querySelectorAll('.tab-panel').forEach(function(p) {
+    p.style.display = 'none';
+  });
+  btn.classList.add('active');
+  var panel = document.getElementById(panelId);
+  if (panel) panel.style.display = 'block';
+}
+
+function toggleSection(id) {
+  const sec = document.getElementById(id);
+  sec.classList.toggle('collapsed');
+}
+
+// Smooth scroll to section
+function goToSection(e, id) {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  if (el) {
+    el.classList.remove('collapsed');
+    setTimeout(() => {
+      const navHeight = document.getElementById('main-nav').offsetHeight;
+      const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 4;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }, 50);
+  }
+  document.querySelectorAll('nav li a').forEach(a => a.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+}
+
+// ── 팝업 모달 데이터 ──
+const ARTICLES = {
+
+  /* ─── 전국뉴스 ─── */
+  'news-national': {
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">①</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">코스피 7.57% 급락 '검은 목요일'…코스피·코스닥 서킷브레이커 발동<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">5,554.22로 마감, 외국인 3조 5천억 원 순매도. 금융위 긴급회의. [파이낸셜뉴스 | 10.15]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">15일 코스피는 전 거래일보다 454.59포인트(7.57%) 내린 5,554.22, 코스닥은 63.06포인트(7.65%) 내린 760.82로 장을 마쳤다. 프로그램 매매를 멈추는 사이드카에 이어 모든 매매를 잠시 중단하는 서킷브레이커가 발동됐다. 외국인은 이날 코스피에서 3조 5,281억 원을 순매도해 8거래일 연속 매도 우위를 이어갔다. 미국 9월 소비자물가가 예상보다 높게 나오고 인공지능(AI) 투자의 수익성 우려가 겹친 영향으로 풀이됐다. 이억원 금융위원장은 금융감독원·한국거래소 등과 긴급회의를 열고 시장 안정 조치를 적극 강구하겠다고 밝혔다. [파이낸셜뉴스 2026.10.15]</div>
+      </div>
+    </div>
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">②</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">김지용 초대 중수청장 임명…청문보고서에 적격·부적격 의견 병기<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">행안위 여야 합의로 보고서 채택 뒤 같은 날 대통령 재가. 지명 37일 만. [한국일보·경향신문 | 10.15]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">국회 행정안전위원회는 15일 김지용 초대 중대범죄수사청장 후보자의 인사청문 보고서를 여야 합의로 채택했다. 보고서에는 적격 의견과 부적격 의견이 함께 실렸다. 이재명 대통령은 같은 날 저녁 임명안을 재가했고, 김 청장은 지명 37일 만에 임명됐다. 조국혁신당은 임명에 반대하며 앞으로 검찰개혁 의지를 지켜보겠다고 밝혔다. [한국일보 2026.10.15 · 경향신문 2026.10.15]</div>
+      </div>
+    </div>
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">③</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">중앙행정기관 44곳 세종 2차 이전 계획…2031년까지 공무원 9,929명<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">내년 27개 기관 먼저, 외교·통일·국방부는 청사 신축 뒤. 공공기관 이전안은 4분기 발표. [전자신문 | 10.13]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">정부는 13일 수도권에 남은 44개 중앙행정기관, 공무원 정원 9,929명을 세종으로 옮기는 2차 이전 계획을 발표했다. 독립 청사가 필요 없는 27개 기관(2,995명)은 2027년 임차 청사로 먼저 옮기고, 외교부·통일부·국방부와 감사원·경찰청 등 17개 기관(6,934명)은 청사를 새로 지은 뒤 2031년까지 이전한다. 청사 신축에는 약 3조 1천억 원이 들 것으로 추산됐다. 법무부와 성평등가족부는 행정중심복합도시법을 고쳐야 이전 시기가 정해진다. 수도권 공공기관 이전 계획은 올해 4분기에 따로 발표된다. [전자신문 2026.10.13]</div>
+      </div>
+    </div>
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">④</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">제1차 국가인구전략 기본계획…출산율 대신 '삶의 만족도'를 목표로<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">2030년 삶의 만족도 7.0점·경제활동참가율 74% 목표. 117개 기본과제. [파이낸셜뉴스·뉴스1 | 10.14]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">대통령 직속 인구전략위원회는 14일 제1차 국가인구전략 기본계획을 발표했다. 합계출산율 대신 국민 삶의 만족도(지난해 6.6점→2030년 7.0점)와 경제활동참가율(71.8%→74.0%)을 목표 지표로 삼고, 완화·적응·도약 3대 전략 아래 7개 도전과제와 117개 기본과제를 담았다. 아이맞이지원금은 첫째 1,000만 원, 둘째 1,200만 원, 셋째 이상 1,500만 원이며 지방우대 지역은 최대 2,000만 원이다. 청년·신혼·양육 가구에 공공주택 57만 1천 가구를 공급하는 계획도 포함됐다. [파이낸셜뉴스 2026.10.14 · 뉴스1 2026.10.14]</div>
+      </div>
+    </div>
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#1B3A6B;font-weight:700;font-size:13px;min-width:18px;">⑤</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">대통령, 강력범죄에 '전쟁 선포' 각오로 대책 지시…범정부 대응기구 구성<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">13일 인천 복합상가 흉기 난동으로 8명 부상. 15일 수석보좌관회의 지시. [경인일보·파이낸셜뉴스 | 10.13~10.15]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">13일 오후 1시 52분께 인천 남동구 구월동의 한 복합상가에서 흉기 난동이 벌어져 8명이 다쳤고, 이 가운데 20대 여성 1명은 심정지 상태로 병원에 옮겨져 수술을 받았다. 붙잡힌 59세 남성은 살인미수죄로 복역한 뒤 위치추적 전자장치(전자발찌)를 찬 상태였다. 이재명 대통령은 15일 청와대 수석보좌관회의에서 관계성 범죄와 무차별 범죄에 대해 특단의 대책을 서둘러 세우라며 범정부 합동 대응기구 구성과 전자발찌 착용자 등 고위험군 관리 실태 점검을 지시했다. [경인일보 2026.10.13 · 파이낸셜뉴스 2026.10.15]</div>
+      </div>
+    </div>`,
+    cat: '📰 전국 뉴스 전문 | 2026.10.19',
+    title: '코스피 급락·초대 중수청장 임명·세종 2차 이전·국가인구전략·강력범죄 대응',
+    meta: '파이낸셜뉴스·한국일보·경향신문·전자신문·뉴스1·경인일보 | 2026.10.19 | 전국뉴스 v2.0',
+    badge: '전국',
+    body: `<p style="font-size:11px;color:#888;margin-bottom:10px;">맥락과 의미 중심 | 선정기준: 시의성·영향성·중요성·근접성 | 전국뉴스 v2.0 | 대상 기간 2026.10.12~10.17</p>
+<p><strong>① 코스피 7.57% 급락 '검은 목요일'…코스피·코스닥 서킷브레이커 발동</strong><br>15일 코스피는 전 거래일보다 454.59포인트(7.57%) 내린 5,554.22, 코스닥은 63.06포인트(7.65%) 내린 760.82로 장을 마쳤다. 프로그램 매매를 멈추는 사이드카에 이어 모든 매매를 잠시 중단하는 서킷브레이커가 발동됐다. 외국인은 이날 코스피에서 3조 5,281억 원을 순매도해 8거래일 연속 매도 우위를 이어갔다. 미국 9월 소비자물가가 예상보다 높게 나오고 인공지능(AI) 투자의 수익성 우려가 겹친 영향으로 풀이됐다. 이억원 금융위원장은 금융감독원·한국거래소 등과 긴급회의를 열고 시장 안정 조치를 적극 강구하겠다고 밝혔다. [파이낸셜뉴스 2026.10.15]</p>
+<p><strong>② 김지용 초대 중수청장 임명…청문보고서에 적격·부적격 의견 병기</strong><br>국회 행정안전위원회는 15일 김지용 초대 중대범죄수사청장 후보자의 인사청문 보고서를 여야 합의로 채택했다. 보고서에는 적격 의견과 부적격 의견이 함께 실렸다. 이재명 대통령은 같은 날 저녁 임명안을 재가했고, 김 청장은 지명 37일 만에 임명됐다. 조국혁신당은 임명에 반대하며 앞으로 검찰개혁 의지를 지켜보겠다고 밝혔다. [한국일보 2026.10.15 · 경향신문 2026.10.15]</p>
+<p><strong>③ 중앙행정기관 44곳 세종 2차 이전 계획…2031년까지 공무원 9,929명</strong><br>정부는 13일 수도권에 남은 44개 중앙행정기관, 공무원 정원 9,929명을 세종으로 옮기는 2차 이전 계획을 발표했다. 독립 청사가 필요 없는 27개 기관(2,995명)은 2027년 임차 청사로 먼저 옮기고, 외교부·통일부·국방부와 감사원·경찰청 등 17개 기관(6,934명)은 청사를 새로 지은 뒤 2031년까지 이전한다. 청사 신축에는 약 3조 1천억 원이 들 것으로 추산됐다. 법무부와 성평등가족부는 행정중심복합도시법을 고쳐야 이전 시기가 정해진다. 수도권 공공기관 이전 계획은 올해 4분기에 따로 발표된다. [전자신문 2026.10.13]</p>
+<p><strong>④ 제1차 국가인구전략 기본계획…출산율 대신 '삶의 만족도'를 목표로</strong><br>대통령 직속 인구전략위원회는 14일 제1차 국가인구전략 기본계획을 발표했다. 합계출산율 대신 국민 삶의 만족도(지난해 6.6점→2030년 7.0점)와 경제활동참가율(71.8%→74.0%)을 목표 지표로 삼고, 완화·적응·도약 3대 전략 아래 7개 도전과제와 117개 기본과제를 담았다. 아이맞이지원금은 첫째 1,000만 원, 둘째 1,200만 원, 셋째 이상 1,500만 원이며 지방우대 지역은 최대 2,000만 원이다. 청년·신혼·양육 가구에 공공주택 57만 1천 가구를 공급하는 계획도 포함됐다. [파이낸셜뉴스 2026.10.14 · 뉴스1 2026.10.14]</p>
+<p><strong>⑤ 대통령, 강력범죄에 '전쟁 선포' 각오로 대책 지시…범정부 대응기구 구성</strong><br>13일 오후 1시 52분께 인천 남동구 구월동의 한 복합상가에서 흉기 난동이 벌어져 8명이 다쳤고, 이 가운데 20대 여성 1명은 심정지 상태로 병원에 옮겨져 수술을 받았다. 붙잡힌 59세 남성은 살인미수죄로 복역한 뒤 위치추적 전자장치(전자발찌)를 찬 상태였다. 이재명 대통령은 15일 청와대 수석보좌관회의에서 관계성 범죄와 무차별 범죄에 대해 특단의 대책을 서둘러 세우라며 범정부 합동 대응기구 구성과 전자발찌 착용자 등 고위험군 관리 실태 점검을 지시했다. [경인일보 2026.10.13 · 파이낸셜뉴스 2026.10.15]</p>
+<p style="font-size:10px;color:#aaa;border-top:1px dashed #eee;padding-top:8px;">전국뉴스 v2.0 | 도메인: 금융·사법·행정·인구·치안 | 2026.10.19</p>
+`
+  },
+
+  /* ─── 설악권뉴스 4개 탭 ─── */
+  'news-sokcho': {
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#C8A84B;font-weight:700;font-size:13px;min-width:18px;">①</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">속초 청년 창업기업 6,115곳…상반기 4.0% 늘어<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">전체 사업체 2만 6,989곳으로 3.1% 증가. 청년 창업 등록이 폐업보다 많아. [강원일보 | 10.14]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">속초시가 통계 당국의 '지역키움통계'를 분석한 결과, 지역 사업체 수는 1월 2만 6,188곳에서 6월 2만 6,989곳으로 801곳(3.1%) 늘었다. 대표자가 18~49세이고 등록한 지 7년 이내인 청년 창업기업은 5,881곳에서 6,115곳으로 234곳(4.0%) 늘었다. 상반기 청년 창업 신규 등록은 535건, 폐업 신고는 318건으로 여섯 달 모두 신규가 폐업보다 많았다. 시는 첫 창업 지원금(50곳 지원)과 중소기업·소상공인 이자 지원(2분기까지 약 3억 5,900만 원)이 도움이 됐다고 설명했다. [강원일보 2026.10.14]</div>
+      </div>
+    </div>
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#C8A84B;font-weight:700;font-size:13px;min-width:18px;">②</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">속초시 제9기 주민참여예산 시민위원회 출범…시민위원 39명 위촉<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">15일 시청 대회의실에서 전체회의. 시민제안사업 심의 맡아. [강원도민일보 | 10.15]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">속초시는 15일 시청 대회의실에서 제9기 주민참여예산 시민위원회 전체회의를 열고 시민위원 39명에게 위촉장을 전달했다. 시민위원회는 시민이 낸 제안사업을 심의하고 예산 편성에 대한 주민 의견을 모으는 기구다. 시는 앞서 6월부터 8월 14일까지 2027년도 주민참여예산 시민제안사업을 공모했으며, 관련 부서 검토와 시민위원회 심의를 거쳐 선정된 사업을 최대 20억 원 범위에서 2027년도 본예산에 반영할 계획이라고 밝힌 바 있다. 직전 제8기는 2024년 6월 시민 공모와 기관·단체 추천으로 40명이 위촉돼 2년간 활동했다. [강원도민일보 2026.10.15 · 배경: 아주경제 2026.06.15, 2024.06.17]</div>
+      </div>
+    </div>`,
+    cat: '📍 속초 뉴스 전문 | 2026.10.19',
+    title: '청년 창업기업 상반기 4.0% 증가·제9기 주민참여예산 시민위원회 출범',
+    meta: '강원일보·강원도민일보 | 2026.10.19',
+    badge: '속초',
+    body: `<p style="font-size:11px;color:#888;margin-bottom:10px;">수집 매체: 강원일보·강원도민일보 | 2026.10.12~10.17</p>
+<p><strong>① 속초 청년 창업기업 6,115곳…상반기 4.0% 늘어</strong><br>속초시가 통계 당국의 '지역키움통계'를 분석한 결과, 지역 사업체 수는 1월 2만 6,188곳에서 6월 2만 6,989곳으로 801곳(3.1%) 늘었다. 대표자가 18~49세이고 등록한 지 7년 이내인 청년 창업기업은 5,881곳에서 6,115곳으로 234곳(4.0%) 늘었다. 상반기 청년 창업 신규 등록은 535건, 폐업 신고는 318건으로 여섯 달 모두 신규가 폐업보다 많았다. 시는 첫 창업 지원금(50곳 지원)과 중소기업·소상공인 이자 지원(2분기까지 약 3억 5,900만 원)이 도움이 됐다고 설명했다. [강원일보 2026.10.14]</p>
+<p><strong>② 속초시 제9기 주민참여예산 시민위원회 출범…시민위원 39명 위촉</strong><br>속초시는 15일 시청 대회의실에서 제9기 주민참여예산 시민위원회 전체회의를 열고 시민위원 39명에게 위촉장을 전달했다. 시민위원회는 시민이 낸 제안사업을 심의하고 예산 편성에 대한 주민 의견을 모으는 기구다. 시는 앞서 6월부터 8월 14일까지 2027년도 주민참여예산 시민제안사업을 공모했으며, 관련 부서 검토와 시민위원회 심의를 거쳐 선정된 사업을 최대 20억 원 범위에서 2027년도 본예산에 반영할 계획이라고 밝힌 바 있다. 직전 제8기는 2024년 6월 시민 공모와 기관·단체 추천으로 40명이 위촉돼 2년간 활동했다. [강원도민일보 2026.10.15 · 배경: 아주경제 2026.06.15, 2024.06.17]</p>
+`
+  },
+
+  'news-goseong': {
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#0D7377;font-weight:700;font-size:13px;min-width:18px;">①</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">주민자치회 15일 법제화…고성·인제 전면 전환, 속초는 내년 초<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">개정 지방자치법 시행. 양양은 구체 계획 미정. [강원도민일보 | 10.12]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">읍·면·동에 주민자치회를 둘 수 있는 근거를 담은 개정 지방자치법(제17조의2)이 15일부터 시행됐다. 2013년 시범 실시 이후 13년 만이며, 법적 요건을 갖춘 기존 주민자치위원회는 주민자치회로 인정된다. 설악권에서는 고성(5개 읍·면)과 인제(6개 읍·면)가 이미 전면 전환했고, 속초는 내년 초 전면 전환을 계획하고 있다. 양양은 구체적인 전환 계획이 확정되지 않았다. [강원도민일보 2026.10.12]</div>
+      </div>
+    </div>
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#0D7377;font-weight:700;font-size:13px;min-width:18px;">②</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">고성군, 11월부터 재난안전상황실 24시간 전담 운영<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">야간·휴일 포함 기상특보·화재·풍수해 상시 감시. [강원도민일보 | 10.14]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">고성군은 재난안전상황실을 11월부터 전담 인력 체계로 바꿔 야간과 휴일을 포함해 24시간 운영한다. 기상특보와 화재, 풍수해 상황을 상시 감시하는 체계로, 전담 인력 배치는 마쳤고 10월 한 달 동안 감시 장비와 접수·보고, 유관기관 연계 체계를 갖춘다. [강원도민일보 2026.10.14]</div>
+      </div>
+    </div>`,
+    cat: '📍 고성 뉴스 전문 | 2026.10.19',
+    title: '주민자치회 법제화 시행·재난안전상황실 24시간 전담 운영',
+    meta: '강원도민일보 | 2026.10.19',
+    badge: '고성',
+    body: `<p style="font-size:11px;color:#888;margin-bottom:10px;">수집 매체: 강원도민일보 | 2026.10.12~10.17</p>
+<p><strong>① 주민자치회 15일 법제화…고성·인제 전면 전환, 속초는 내년 초</strong><br>읍·면·동에 주민자치회를 둘 수 있는 근거를 담은 개정 지방자치법(제17조의2)이 15일부터 시행됐다. 2013년 시범 실시 이후 13년 만이며, 법적 요건을 갖춘 기존 주민자치위원회는 주민자치회로 인정된다. 설악권에서는 고성(5개 읍·면)과 인제(6개 읍·면)가 이미 전면 전환했고, 속초는 내년 초 전면 전환을 계획하고 있다. 양양은 구체적인 전환 계획이 확정되지 않았다. [강원도민일보 2026.10.12]</p>
+<p><strong>② 고성군, 11월부터 재난안전상황실 24시간 전담 운영</strong><br>고성군은 재난안전상황실을 11월부터 전담 인력 체계로 바꿔 야간과 휴일을 포함해 24시간 운영한다. 기상특보와 화재, 풍수해 상황을 상시 감시하는 체계로, 전담 인력 배치는 마쳤고 10월 한 달 동안 감시 장비와 접수·보고, 유관기관 연계 체계를 갖춘다. [강원도민일보 2026.10.14]</p>
+`
+  },
+
+  'news-inje': {
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#7b4fa6;font-weight:700;font-size:13px;min-width:18px;">①</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">인제군, 내년부터 농어촌·마을버스 요금 '0원'<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">군민·관광객 모두 무료. 내년 비용 약 3억 9,600만 원. [강원도민일보 | 10.14]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">인제군은 2027년 1월 1일부터 정기 노선을 다니는 농어촌버스와 마을버스 요금을 받지 않는다. 거주지나 나이와 관계없이 군민과 관광객 모두 무료로 탈 수 있으며, 인제 시티투어버스는 대상에서 빠진다. 군은 내년 비용을 약 3억 9,600만 원으로 추산하고, 실제 이용 인원을 바탕으로 운송사업자의 요금 손실을 보전한다. 넓은 면적에 마을 사이 거리가 멀어 대중교통 의존도가 높은 여건을 고려했으며, 동서고속화철도 역과 읍내를 잇는 효과도 기대한다고 밝혔다. [강원도민일보 2026.10.14]</div>
+      </div>
+    </div>
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#7b4fa6;font-weight:700;font-size:13px;min-width:18px;">②</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">제44회 합강문화제·평생학습박람회 16~18일<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">인제잔디구장·합강정, 하늘내린센터 일대. 18일 건강체험한마당. [강원일보 | 10.15]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">제44회 합강문화제가 16~18일 인제잔디구장과 합강정 일원에서 합강제례, 전통문화 체험, 군민 체육대회 등으로 열리는 일정이 마련됐다. 17일 오후 6시 개막식에는 축하공연과 불꽃놀이가 준비됐다. 같은 기간 하늘내린센터 광장 일대에서는 제12회 인제군 평생학습박람회(17~18일)가, 18일에는 인제체육관 주차장에서 2026 하늘내린인제 건강체험한마당이 함께 열리는 일정이다. [강원일보 2026.10.15]</div>
+      </div>
+    </div>`,
+    cat: '📍 인제 뉴스 전문 | 2026.10.19',
+    title: '내년부터 농어촌·마을버스 무료·합강문화제와 평생학습박람회',
+    meta: '강원도민일보·강원일보 | 2026.10.19',
+    badge: '인제',
+    body: `<p style="font-size:11px;color:#888;margin-bottom:10px;">수집 매체: 강원도민일보·강원일보 | 2026.10.12~10.17</p>
+<p><strong>① 인제군, 내년부터 농어촌·마을버스 요금 '0원'</strong><br>인제군은 2027년 1월 1일부터 정기 노선을 다니는 농어촌버스와 마을버스 요금을 받지 않는다. 거주지나 나이와 관계없이 군민과 관광객 모두 무료로 탈 수 있으며, 인제 시티투어버스는 대상에서 빠진다. 군은 내년 비용을 약 3억 9,600만 원으로 추산하고, 실제 이용 인원을 바탕으로 운송사업자의 요금 손실을 보전한다. 넓은 면적에 마을 사이 거리가 멀어 대중교통 의존도가 높은 여건을 고려했으며, 동서고속화철도 역과 읍내를 잇는 효과도 기대한다고 밝혔다. [강원도민일보 2026.10.14]</p>
+<p><strong>② 제44회 합강문화제·평생학습박람회 16~18일</strong><br>제44회 합강문화제가 16~18일 인제잔디구장과 합강정 일원에서 합강제례, 전통문화 체험, 군민 체육대회 등으로 열리는 일정이 마련됐다. 17일 오후 6시 개막식에는 축하공연과 불꽃놀이가 준비됐다. 같은 기간 하늘내린센터 광장 일대에서는 제12회 인제군 평생학습박람회(17~18일)가, 18일에는 인제체육관 주차장에서 2026 하늘내린인제 건강체험한마당이 함께 열리는 일정이다. [강원일보 2026.10.15]</p>
+`
+  },
+
+  'news-yangyang': {
+    teaser: `<div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#2E75B6;font-weight:700;font-size:13px;min-width:18px;">①</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">양양송이연어축제 16~18일…사전예약 매진, 체험 40%는 현장 접수<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">송이값 급등에 등외품·4등급 함께 쓰는 방식으로 체험 운영. [강원일보 | 10.12]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">양양송이연어축제가 16~18일 양양남대천 일원에서 열리는 일정으로 마련됐다. 송이·연어 체험 사전예약분은 모두 팔렸고, 전체 체험 정원의 40%는 축제 당일 오전 9시부터 현장 선착순으로 받는다. 4등급 송이 낙찰가가 100만 원을 넘는 등 값이 오르자 등외품과 4등급 송이를 함께 쓰는 방식으로 송이 체험을 운영하기로 했다. 양양 관내에서 3만 원 이상 쓴 영수증을 가져오면 축제 캐릭터 티셔츠 만들기에 참여할 수 있다. [강원일보 2026.10.12]</div>
+      </div>
+    </div>
+    <div class="news-item" onclick="toggleNewsDetail(this)" style="display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;">
+      <span style="color:#2E75B6;font-weight:700;font-size:13px;min-width:18px;">②</span>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;line-height:1.4;color:#1a1a1a;">양양군 임업기계장비 경영센터 가동<span class="news-item-arrow" style="float:right;color:#94a3b8;font-size:11px;font-weight:400;">▼</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px;line-height:1.4;">굴착기·고소작업차·기계톱 등 보관·정비 일원화. [강원일보 | 10.14]</div>
+        <div class="news-item-detail" style="display:none;font-size:12.5px;color:#334155;line-height:1.6;margin-top:8px;padding:8px 10px;background:#f8fafc;border-radius:4px;">양양군은 양양읍 내곡리 부산물처리장 안에 임업기계장비 경영센터를 마련해 본격 가동했다. 그동안 굴착기와 고소작업차 같은 대형 장비는 야외에, 기계톱 같은 소형 장비는 좁은 창고에 보관해 왔는데, 이를 한곳에 모아 보관·정비해 부식과 고장을 막고 장비 수명을 늘려 유지비를 줄인다는 계획이다. 정기 점검·수리 체계도 갖춰 산림 현장에 장비를 빠르게 투입할 수 있게 한다. [강원일보 2026.10.14]</div>
+      </div>
+    </div>`,
+    cat: '📍 양양 뉴스 전문 | 2026.10.19',
+    title: '양양송이연어축제 체험 운영·임업기계장비 경영센터 가동',
+    meta: '강원일보 | 2026.10.19',
+    badge: '양양',
+    body: `<p style="font-size:11px;color:#888;margin-bottom:10px;">수집 매체: 강원일보 | 2026.10.12~10.17</p>
+<p><strong>① 양양송이연어축제 16~18일…사전예약 매진, 체험 40%는 현장 접수</strong><br>양양송이연어축제가 16~18일 양양남대천 일원에서 열리는 일정으로 마련됐다. 송이·연어 체험 사전예약분은 모두 팔렸고, 전체 체험 정원의 40%는 축제 당일 오전 9시부터 현장 선착순으로 받는다. 4등급 송이 낙찰가가 100만 원을 넘는 등 값이 오르자 등외품과 4등급 송이를 함께 쓰는 방식으로 송이 체험을 운영하기로 했다. 양양 관내에서 3만 원 이상 쓴 영수증을 가져오면 축제 캐릭터 티셔츠 만들기에 참여할 수 있다. [강원일보 2026.10.12]</p>
+<p><strong>② 양양군 임업기계장비 경영센터 가동</strong><br>양양군은 양양읍 내곡리 부산물처리장 안에 임업기계장비 경영센터를 마련해 본격 가동했다. 그동안 굴착기와 고소작업차 같은 대형 장비는 야외에, 기계톱 같은 소형 장비는 좁은 창고에 보관해 왔는데, 이를 한곳에 모아 보관·정비해 부식과 고장을 막고 장비 수명을 늘려 유지비를 줄인다는 계획이다. 정기 점검·수리 체계도 갖춰 산림 현장에 장비를 빠르게 투입할 수 있게 한다. [강원일보 2026.10.14]</p>
+`
+  },
+
+  /* ─── 풍향계 ─── */
+  'punghyang': {
+    cat: '풍향계 — 5대 신문 사설 흐름 소개 | 2026.10.19',
+    title: '중수청장 인선·한미 정보 갈등·증시 급락과 국민연금, 다섯 신문 모두 다뤄',
+    meta: '조선일보·동아일보·중앙일보·한겨레·경향신문 | 풍향계 v4.2 | 2026.10.19',
+    badge: '언론흐름',
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">분석 기간: 2026.10.12(월)~10.17(토) | 풍향계 v4.2 | 분석 매체: 조선일보·동아일보·중앙일보·한겨레·경향신문(5대 종합일간지)</p>
+
+<p><strong>【1단계 — 신문별 주장】</strong><br>
+조선일보는 중수청이 수장도 없이 출범한 상태에서 '임은정 감찰'이 첫 사건이 됐다며, 여권이 누가 우리 편인지를 두고 다투는 사이 수사 체계 정비는 뒷전이 됐다고 비판했다. 수사기관장의 국무회의 참석은 위법은 아니어도 사법 독립을 해칠 수 있어 부적절하다고 했다. 한미 정보 공유 제한의 출발점으로 정동영 장관의 발언을 지목했고, 대통령의 자주 실용 외교 선언이 우리 위치와 국익을 충분히 따진 것인지 물었다. 국민연금이 주가 급등기에 국내 주식 비중을 높였다가 폭락장에서 안전판 기능을 잃었다며 주가지수를 정책 성적표로 삼지 말라고 했다. 10·15 대책 1년을 맞아 규제가 집값을 잡지 못하고 세입자 부담만 키웠다고 평가했고, 민주당의 대법원장 탄핵 추진에는 기각되면 그 책임을 져야 한다고 경고했다.<br><br>
+동아일보는 무당층이 31%로 3년여 만에 가장 많아진 것은 여야가 지지층만 바라본 결과라고 진단했다. 김지용 중수청장에게는 정치 중립과 조직 정상화로 적격을 입증하라고 주문했다. 정동영 장관이 정보 공유 제한을 미국 탓으로 돌리고 주미 대사는 소통 단절을 남의 일처럼 말한다고 비판했고, 주한미군사령관의 '새 기준' 발언을 들어 전작권 전환 시간표를 다시 검토하라고 했다. 코스피의 큰 변동성과 빚을 내 투자하는 위험을 경고하며 재정 운용의 무게를 부채 관리로 옮기라고 했고, 국민연금에는 중장기 출구전략을 요구했다. 주택 공급을 두고 정부와 서울시가 서로 탓만 하면 '집 한 채도 못 짓는다'고 했고, 신천지의 민주당 입당 의혹은 국민의힘 사건과 같은 강도로 수사하라고 했다.<br><br>
+중앙일보는 중수청이 출범부터 진흙탕 싸움판이 됐다며 진영 다툼을 멈추고 조직의 틀부터 잡으라고 했고, 초대 청장의 과제는 "살아 있는 권력으로부터 독립"이라고 썼다. 정 장관의 '미국 착오' 주장으로는 정보 공백을 풀 수 없다며 한미 정보 협력 복원이야말로 국익이자 실용이라고 했다. 전작권 전환은 자신감만으로는 어렵다며 정치적 합의보다 군 당국 간 이견을 좁히는 것이 순서라고 했다. 중국발 반도체 쇼크를 들어 반도체 호황을 전제로 짠 경제·재정 정책을 손질하라고 했고, 국민연금은 원칙을 바꾼 대가로 손발이 묶였다고 했다. 대통령의 SNS 소통과 국무회의 운영이 '모두의 대통령'에 맞는지 물었고, 신천지 문제에는 야당에 들이댄 잣대를 여당에도 똑같이 적용하라고 했다.<br><br>
+한겨레는 임은정 감찰 사태에 대해 감찰을 지시한 장관과 공개 비판을 이어 간 임 청장 모두 무거운 책임을 느껴야 한다고 했고, 김지용 후보자는 청문회에서 적격성 우려를 다 해소하지 못했다고 평가했다. 중수청장·공소청장의 국무회의 정례 참석은 '공정성의 외관'을 해칠 수 있다며 재고를 요구했다. 대통령의 국익 외교 원칙을 평가하면서도 한미 정보 갈등은 적극적인 소통으로 풀라고 했고, 미국이 쿠팡 문제 같은 경제 현안을 정보 협력과 연계하는 데는 비판적이었다. 전작권 전환에서 미국이 기준을 바꾸는 데는 정상 간 설득으로 치밀하게 대응하라고 했다. 중국의 반도체 추격을 들어 호황에 취해 있을 때가 아니라고 했고, 초과세수를 재정으로 직접 넣어 공공임대주택을 크게 늘리자고 제안했다.<br><br>
+경향신문은 김지용 중수청장에게 독립성·중립성 확보에 명운을 걸라고 했고, 장관들의 국무회의 중계 축소 요청을 계기로 지시 위주의 국정 소통을 바꾸라고 했다. 민주당 지지율이 정부 출범 후 최저로 떨어진 데는 김민석 대표의 통합·조정 부재 책임이 작지 않다고 했다. 한미 관계에서는 한국도 국익에 맞는 동맹의 기준을 세워야 한다며 장관 경질을 요구하는 국민의힘의 태도를 굴종적이라고 비판했다. 중국의 약진과 AI 수익성 논란 속 증시 폭락을 반도체 편중 경제에 대한 경고로 읽었다. 신천지 가입 의혹은 조사 결과를 모두 공개하라고 했고, 대법원장 탄핵론에는 국민이 공감하겠느냐며 신중론을 폈다. 청해부대 작전 범위 확대가 호르무즈 해협 '우회 파병'의 수순이 돼선 안 된다고도 했다.</p>
+
+<div class="chart-wrap" style="margin-top:14px;">
+<div class="chart-title">📊 핵심어 매트릭스</div>
+<table style="width:100%;font-size:11.5px;border-collapse:collapse;">
+<tr style="border-bottom:1px solid #e2e8f0;"><th style="text-align:left;padding:6px 4px;">의제</th><th style="padding:6px 4px;">조선</th><th style="padding:6px 4px;">동아</th><th style="padding:6px 4px;">중앙</th><th style="padding:6px 4px;">한겨레</th><th style="padding:6px 4px;">경향</th></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">초대 중수청장 인선·임은정 감찰</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">한미 정보 협력 갈등·정동영 장관</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">코스피 급락·반도체·국민연금</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">국무회의 운영·대통령 소통 방식</td><td style="text-align:center;">🔴</td><td style="text-align:center;">—</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">전작권 전환 일정</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">—</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">주택 공급·부동산 대책</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
+<tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:6px 4px;">민주당 신천지 집단 가입 의혹</td><td style="text-align:center;">—</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
+<tr><td style="padding:6px 4px;">임광현 비서실장 임명</td><td style="text-align:center;">🔴</td><td style="text-align:center;">—</td><td style="text-align:center;">🟡</td><td style="text-align:center;">🔴</td><td style="text-align:center;">🔴</td></tr>
+</table>
+<div class="chart-source">🔴 집중적으로 다룸 · 🟡 일부·간접 언급(중앙일보는 대통령 소통·국무회의 운영을 다룬 사설에서 부동산 정책과 비서실장 인선을 언급) · — 이번 주 다루지 않음</div>
+</div>
+
+<p style="margin-top:14px;"><strong>【3단계 — 갈린 지점】</strong><br>
+<strong>① 한미 정보 협력 갈등의 원인:</strong> 정보 공유 제한 문제를 조선·동아·중앙은 정동영 장관의 발언과 정부의 안이한 대응에서 비롯된 것으로 보고 장관의 거취까지 거론했다. 한겨레·경향은 미국이 경제 현안과 연계하거나 '동맹의 기준'을 앞세우는 태도를 짚으며, 국익과 자율성을 지키는 협의를 강조했다.<br>
+<strong>② 전작권 전환의 속도:</strong> 조선·동아·중앙은 북한군 역량 변화와 한미 간 검증 이견을 들어 시간표를 앞세운 전환을 다시 검토하거나 군 당국 간 이견부터 좁히라고 했다. 한겨레는 미국이 기준을 바꾸는 것을 그대로 받아들이면 환수가 사실상 어려워질 수 있다며 정상 간 설득으로 일정을 관철하라고 했다.</p>
+
+<p style="margin-top:14px;"><strong>【4단계 — 아무도 묻지 않은 질문】</strong><br>
+<strong>국민연금이 181조 원 줄었다는데, 내 연금도 줄어드나?</strong> <span style="font-size:11px;color:#8B4513;font-weight:700;">[생활형]</span><br>
+<strong>· 무엇이 빠졌나:</strong> 조선·동아·중앙은 국민연금이 주가 급등기에 국내 주식 비중을 늘렸다가 급락장에서 안전판 구실을 하지 못한다며 운용 원칙과 출구전략을 따졌다. 그러나 이 손실이 가입자와 수급자가 받을 연금액과 어떤 관계인지 설명한 사설은 검토한 사설 86편 범위에서 확인되지 않았다.<br>
+<strong>· 왜 중요한가:</strong> '노후자금 증발'이라는 표현은 연금을 내거나 받는 시민에게 곧바로 '내 몫이 줄었나'라는 걱정으로 읽힌다. 조기 수령처럼 되돌리기 어려운 선택 전에 알아 둘 사실이 있다.<br>
+<strong>· 확인된 사실:</strong> 기금 감소분은 보유 주식·채권의 장부상 평가액이 줄어든 것으로, 팔아서 확정한 손실과는 다르다. 개인의 연금액은 기금 수익률이 아니라 가입 기간과 소득을 바탕으로 법에 정한 산식으로 정해지고, 받기 시작한 뒤에는 물가에 맞춰 조정된다(한국사회복지저널 10.16). 2026년 1월 시행된 개정 국민연금법은 국가가 연금급여 지급을 보장한다는 조항(제3조의2)을 담았다. 다만 저조한 수익이 길어지면 기금 소진이 앞당겨질 수 있다.<br>
+<strong>· 지금 할 수 있는 일:</strong> 국민연금공단 앱 '내 곁에 국민연금'이나 중앙노후준비지원센터 누리집의 '내 연금 알아보기'에서 가입 기록과 예상 연금액을 확인할 수 있다. 궁금한 점은 국번 없이 1355로 물을 수 있다.<br>
+<strong>· 제안:</strong> 공단이 기금 평가손익을 공시할 때 '개인 연금액에는 직접 영향이 없다'는 설명을 한 줄씩 덧붙이면 불필요한 불안을 줄일 수 있겠다. 연금을 받는 부모님과 예상 연금액 조회를 함께 해 보자.<br>
+<strong>· 남는 질문:</strong> 손실이 길어질 때 기금 소진 시점이 얼마나 달라지는지는 이번 주 공개된 공식 추계로 확인하지 못했다. 설악권 수급자 규모도 확인하지 못했다.<br>
+<span style="font-size:10.5px;color:#999;">확인 출처: 한국사회복지저널(10.16, 평가손실과 연금액 산식의 관계) · 이투데이(10.14, 김성주 국민연금공단 이사장 국감 답변) · 국민연금법 제3조의2(2025.3 국회 통과, 2026.1 시행, 국가 지급 보장) · 일반 기사에는 같은 설명이 보도됨</span></p>
+
+<p style="margin-top:14px;">【이번 주 사자성어 — 蕭牆之憂(소장지우) 선정 이유】<br>
+이번 주 다섯 신문이 다룬 일 가운데 상당수는 바깥이 아니라 안에서 생긴 다툼과 엇박자였다. 중수청장 인선을 둘러싼 여권 안의 공방(다섯 신문), 신천지 의혹을 둘러싼 민주당 계파 갈등(동아·중앙·한겨레·경향), 주택 공급을 두고 서로 탓하는 정부와 서울시(동아), 대통령에게 반론을 내기 어렵다며 국무회의 중계 축소를 건의한 장관들(중앙·경향)이 그렇다. 증시 급락은 바깥에서 온 충격이었지만, 신문들은 반도체 편중과 국민연금의 원칙 변경이라는 안의 약점을 함께 짚었다. 『논어』 「계씨」에서 공자는 계손씨의 근심이 바깥의 전유(顓臾)가 아니라 담장 안에 있을까 두렵다고 했다. 신문마다 처방은 달랐지만, 근심의 뿌리를 먼저 안에서 살피자는 문제의식이 겹쳤다는 점에서 이 성어를 골랐다.</p>
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:10px 12px;margin-top:10px;font-size:12px;color:#475569;">
+蕭牆之憂(소장지우) | 蕭(소 / 엄숙하다)·牆(장 / 담)·之(지 / ~의)·憂(우 / 근심) — 근심이 담장 안에 있다, 곧 걱정거리가 바깥이 아니라 안에서 생긴다는 뜻. 蕭牆은 궁궐 안에 세운 가림담이다 | 출전: 『논어(論語)』 「계씨(季氏)」의 '吾恐季孫之憂 不在顓臾 而在蕭牆之內也(오공계손지우 부재전유 이재소장지내야)'에서 나온 성어<br>
+※ 사자성어는 해당 주 풍향계 분석 내용을 바탕으로 선정하며, 특정 진영을 겨냥하지 않습니다.
+</div>
+
+<p style="font-size:10px;color:#aaa;margin-top:14px;border-top:1px dashed #eee;padding-top:8px;">방법론: 조선(18)·동아(18)·중앙(16)·한겨레(17)·경향(17) 5대 종합일간지 사설 원문(2026.10.12~10.17 게재분, 전날 저녁 온라인 선공개분 포함, 총 86건)을 직접 검토했습니다. '아무도 묻지 않은 질문'은 이 86편 원문을 다시 대조해 판정했으며, 일반 기사와 칼럼은 판정 대상에 넣지 않았습니다. 이념 레이블을 붙이지 않고 각 신문의 주장을 있는 그대로 소개하는 것을 원칙으로 합니다. | 풍향계 v4.2 | 2026.10.19</p>`
+  },
+
+  /* ─── 여론동향 ─── */
+  'opinion': {
+    cat: '📊 여론동향 전문 | 한국갤럽 제678호·NBS 전국지표조사 제190호 | 2026.10.19',
+    title: '갤럽 39%/52%·NBS 44%/49% — 부정 이유 \'경제·주식시장 대응\' 12%로 5%p 늘어',
+    meta: '한국갤럽 데일리 오피니언 제678호(조사 2026.10.13~15, n=1,003) · NBS 전국지표조사 제190호(조사 2026.10.12~14, n=1,000)',
+    badge: '여론',
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">여론동향 | 2026년 10월 3주차 기준 | 한국갤럽 데일리 오피니언 제678호(조사 10.13~15) · NBS 전국지표조사 제190호(조사 10.12~14)</p>
+
+<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:6px;padding:10px 12px;margin-bottom:14px;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:center;">
+  <div style="background:#fff;border-radius:6px;padding:10px;">
+    <div style="font-size:10px;color:#888;margin-bottom:4px;">직무 긍정 (갤럽)</div>
+    <div style="font-size:28px;font-weight:900;color:#1F7A4D;">39%</div>
+    <div style="font-size:11px;color:#64748b;">10월 2주 37%에서 2%p 상승</div>
+  </div>
+  <div style="background:#fff;border-radius:6px;padding:10px;">
+    <div style="font-size:10px;color:#888;margin-bottom:4px;">직무 부정 (갤럽)</div>
+    <div style="font-size:28px;font-weight:900;color:#B03030;">52%</div>
+    <div style="font-size:11px;color:#64748b;">10월 2주 51%에서 1%p 상승</div>
+  </div>
+</div>
+</div>
+
+<p><strong>【① 핵심 수치】</strong><br>
+한국갤럽 데일리 오피니언 제678호(조사 10.13~15, n=1,003, ±3.1%p): 대통령 직무 수행 긍정 39%/부정 52%/의견 유보 9% | 정당 지지도 더불어민주당 36%·국민의힘 27%·조국혁신당 3%·개혁신당 2%·진보당 1%·무당층 29% | 다음 국회의원선거 기대 '정부 견제 위해 야당 다수 당선' 47%·'정부 지원 위해 여당 다수 당선' 34%. NBS 전국지표조사 제190호(조사 10.12~14, n=1,000, ±3.1%p): 국정운영 긍정 44%/부정 49% | 국정운영 신뢰 47%/불신 48% | 정당 지지도 더불어민주당 33%·국민의힘 28%·조국혁신당 4%·개혁신당 2%·진보당 1%·태도유보 29%.</p>
+
+<p><strong>【② 전회차 대비 변화】</strong><br>
+갤럽 직무 긍정률은 직전 조사(10월 2주) 37%에서 39%로, 부정률은 51%에서 52%로 움직여 변동 폭이 표본오차 안이었다. 의견 유보는 12%에서 9%로 줄었다. 정당 지지도도 더불어민주당 35%→36%, 국민의힘 26%→27%로 비슷했다. NBS에서도 직전 조사(10월 1주)보다 국정운영 긍정이 43%→44%, 부정이 50%→49%로 비슷했고, 두 정당의 격차는 10%p에서 5%p로 좁혀졌다. 이번 호 사설과 이슈&토론이 청년을 다루는 만큼 덧붙이면, 갤럽에서 18~29세의 직무 긍정률은 31%였고 이 연령대의 무당층은 47%로 모든 연령대 가운데 가장 많았다. 연령별로 긍정이 부정보다 많은 연령대는 40대(53%)뿐이었다.</p>
+
+<div class="chart-wrap">
+      <div class="chart-title">📉 대통령 직무 긍정률 추이 — 갤럽, 10/3주 39% · 추석 2주 조사 없음</div>
+      <svg viewBox="0 0 320 170" role="img" aria-label="대통령 직무 긍정률 갤럽 추이, 8월 4주 42%에서 9월 3주 37%, 추석 연휴 2주 조사 없음, 10월 2주 37%, 10월 3주 39%" style="width:100%;height:auto;display:block;"><line x1="34" y1="140.0" x2="306" y2="140.0" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="143.0" font-size="9" fill="#94a3b8" text-anchor="end">30</text><line x1="34" y1="111.5" x2="306" y2="111.5" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="114.5" font-size="9" fill="#94a3b8" text-anchor="end">35</text><line x1="34" y1="83.0" x2="306" y2="83.0" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="86.0" font-size="9" fill="#94a3b8" text-anchor="end">40</text><line x1="34" y1="54.5" x2="306" y2="54.5" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="57.5" font-size="9" fill="#94a3b8" text-anchor="end">45</text><line x1="34" y1="26.0" x2="306" y2="26.0" stroke="#e2e8f0" stroke-width="1"/><text x="29" y="29.0" font-size="9" fill="#94a3b8" text-anchor="end">50</text><rect x="170.0" y="26" width="77.7" height="114" fill="#f1f5f9"/><text x="208.9" y="86" font-size="9.5" fill="#64748b" text-anchor="middle">추석 연휴</text><text x="208.9" y="99" font-size="9.5" fill="#64748b" text-anchor="middle">조사 없음</text><polyline points="34.0,71.6 72.9,83.0 111.7,94.4 150.6,100.1" fill="none" stroke="#1B3A6B" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="267.1,100.1 306.0,88.7" fill="none" stroke="#1B3A6B" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="34.0" cy="71.6" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="34.0" y="62.6" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">42%</text><text x="34.0" y="158" font-size="9" fill="#64748b" text-anchor="middle">8/4주</text><circle cx="72.9" cy="83.0" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="72.9" y="74.0" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">40%</text><text x="72.9" y="158" font-size="9" fill="#64748b" text-anchor="middle">9/1주</text><circle cx="111.7" cy="94.4" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="111.7" y="85.4" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">38%</text><text x="111.7" y="158" font-size="9" fill="#64748b" text-anchor="middle">9/2주</text><circle cx="150.6" cy="100.1" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="150.6" y="91.1" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">37%</text><text x="150.6" y="158" font-size="9" fill="#64748b" text-anchor="middle">9/3주</text><text x="189.4" y="128" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="middle">—</text><text x="189.4" y="158" font-size="9" fill="#64748b" text-anchor="middle">9/4주</text><text x="228.3" y="128" font-size="10.5" font-weight="700" fill="#94a3b8" text-anchor="middle">—</text><text x="228.3" y="158" font-size="9" fill="#64748b" text-anchor="middle">10/1주</text><circle cx="267.1" cy="100.1" r="4" fill="#1B3A6B" stroke="#fff" stroke-width="1.5"/><text x="267.1" y="91.1" font-size="10.5" font-weight="700" fill="#1B3A6B" text-anchor="middle">37%</text><text x="267.1" y="158" font-size="9" fill="#64748b" text-anchor="middle">10/2주</text><circle cx="306.0" cy="88.7" r="5" fill="#B03030" stroke="#fff" stroke-width="1.5"/><text x="300.0" y="79.7" font-size="10.5" font-weight="700" fill="#B03030" text-anchor="middle">39%</text><text x="298.0" y="158" font-size="9" fill="#64748b" text-anchor="middle">10/3주</text></svg>
+      <div class="chart-source">* 한국갤럽 데일리 오피니언 제678호 | 9월 4주·10월 1주는 추석 연휴로 정기 조사 없음(결측을 이어 그리지 않음)</div>
+    </div>
+
+<p><strong>【③ 평가 이유】</strong><br>
+긍정 평가 이유(긍정 평가자 387명, 가중 기준)는 '외교' 20%, '경제/민생' 11% 순이었다. 부정 평가 이유(부정 평가자 524명)는 '부동산 정책' 19%, '경제/민생/주식시장 대응' 12%, '국방/안보/대북' 11% 순이었다. 직전 조사보다 '경제/민생/주식시장 대응'은 5%p 늘었고, '검찰 권한 축소/검찰청 폐지'(3%)는 5%p, '국방/안보/대북'은 4%p 줄었다. 긍정 이유 가운데 '소통'은 7%로 3%p 늘었다.</p>
+
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:10px 12px;margin:14px 0;font-size:12px;color:#334155;">
+<strong>【5-1단계 — 풍향계 연계 지표】</strong><br>
+이번 주 풍향계 의제 1위군인 코스피 급락·국민연금과 관련해, 갤럽 제678호에서 대통령 직무 부정 평가 이유로 '경제/민생/주식시장 대응'을 꼽은 응답은 12%로 직전 조사보다 5%p 늘었다. 같은 1위군인 중수청장 인선과 맞닿은 '검찰 권한 축소/검찰청 폐지'는 3%로 5%p 줄었다. 이 문항은 응답자가 스스로 꼽은 평가 이유이며, 증시 대응이나 중수청장 인선에 대한 찬반을 직접 물은 것은 아니다. 코스피가 급락한 15일은 갤럽 조사의 마지막 날이었다.
+</div>
+
+<p><strong>【④ NBS 현안 문항】</strong><br>
+NBS 제190호에서는 경제성장이 소득분배보다 중요하다는 응답(73%)이 소득분배(23%)보다 많았다. 사회 양극화가 '심각하다'는 응답은 수도권과 지방의 발전 격차 83%, 빈부 격차 80%, 디지털 활용 능력에 따른 정보 격차 63%, 교육 수준의 격차 62% 순이었다. 올해 약 63조 원으로 예상되는 초과 세수의 쓰임은 '나랏빚 상환' 52%, '별도 기금으로 미래 산업 투자·위기 대비' 46%로 의견이 엇갈렸다. 4분기 전기요금 동결과 관련해서는 '인상을 최대한 늦춰야' 64%가 '올려야' 34%보다 많았다. 앞으로 1년 거주 지역 전월세 가격은 59%가 오를 것으로 봤고, DMZ 지뢰 폭발 사고 대응은 '북한에 단호한 대응' 65%, '남북 간 군사적 긴장 완화' 32%였다.</p>
+
+<p><strong>【⑤ 통계적 유의성】</strong><br>
+두 조사 모두 표본오차는 ±3.1%p(95% 신뢰수준)다. 갤럽은 직무 평가의 95% 신뢰구간을 긍정 36~42%, 부정 49~55%로 제시했다. 응답률은 10.4%(총 통화 9,669명 중 1,003명 응답), 접촉률 43.0%이며, 이동통신 3사 무선전화 가상번호를 무작위 추출해 전화조사원 인터뷰(CATI)로 조사했고 가중값은 2026년 6월 말 행정안전부 주민등록인구 기준이다. NBS는 긍정 41~47%, 부정 46~52%를 신뢰구간으로 제시했으며, 응답률 16.8%(5,951명과 통화해 1,000명 응답), 접촉률 31.5%, 가중값은 2026년 9월 말 주민등록인구 기준이다. 두 조사의 직무 긍정률 차이(39% 대 44%)는 질문 방식(갤럽 2점 척도·재질문, NBS 4점 척도)과 조사 기간이 달라 생길 수 있어 직접 비교하지 않는다. 강원 표본(갤럽 30명, NBS 강원·제주 44명)이 작아 지역 수치는 인용하지 않는다.</p>
+
+<p><strong>【⑥ 설악권 시사점】</strong><br>
+NBS에서 '수도권과 지방의 발전 격차'가 심각하다는 응답(83%)은 양극화 네 분야 가운데 가장 높았다. 이번 주 정부가 발표한 중앙행정기관 세종 2차 이전과 4분기로 예고된 수도권 공공기관 이전 계획이 설악권에 무엇을 남길지와 맞닿은 지표다. 지역 표본이 작아 강원 수치로 확인할 수는 없다.</p>
+
+<div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:8px 12px;font-size:11px;color:#92400e;margin-top:8px;">
+⚠️ <strong>통계 주의:</strong> 표본오차 ±3.1%p(95% 신뢰수준) | 단일 조사 결과로 단정 금지 | 50사례 미만 지역 세부수치는 인용하지 않음
+</div>
+
+<p style="font-size:10px;color:#aaa;margin-top:12px;border-top:1px dashed #eee;padding-top:8px;">한국갤럽 데일리 오피니언 제678호(조사 2026.10.13~15, 1,003명, ±3.1%p, 응답률 10.4%, 접촉률 43.0%) | 한국갤럽조사연구소 자체 조사 · NBS 전국지표조사 제190호(조사 2026.10.12~14, 1,000명, ±3.1%p, 응답률 16.8%, 접촉률 31.5%) | 엠브레인퍼블릭·케이스탯리서치·코리아리서치·한국리서치 공동 조사 | 두 조사 모두 휴대전화 가상번호 무작위 추출, 전화면접조사<br>자세한 내용: 한국갤럽 홈페이지(gallup.co.kr) · 전국지표조사 홈페이지(nbsurvey.kr)</p>`
+  },
+
+  /* ─── 시민의 소리 — 사설 ─── */
+  'voice': {
+    cat: '🗣 시민의 소리 — 사설 | 2026.10.19',
+    title: '청년 일자리 1,000개, 숫자보다 내용이 중요합니다',
+    meta: '김준철 편집장 | 설악시민뉴스 제18호 | 2026.10.19',
+    badge: '사설',
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">시민의 소리 | 사설(편집장 집필) | 2026.10.19</p>
+
+<div style="background:#f0f6ff;border:1px solid #b8d4f0;border-radius:6px;padding:8px 12px;margin-bottom:14px;font-size:11px;color:#1B3A6B;">📝 케이스 ② 편집장 직접 제작 — 이번 호는 시민 기고 미수신으로 편집장이 사설을 게재합니다.</div>
+
+<p style="font-weight:800;color:#1B3A6B;font-size:15px;">사설 | 청년 일자리 1,000개, 숫자보다 내용이 중요합니다</p>
+<p>임기 내 청년 일자리 1,000개 창출이 목표입니다. 이 숫자에 두 가지를 물어봐야 합니다. 어떤 일자리입니까? 어디에서 만들어집니까?</p>
+<p>공공 근로, 단기 계약직, 정규직 — 모두 "일자리"이지만 청년이 설악권에 뿌리내리게 만드는 힘은 전혀 다릅니다. 시청이 직접 고용하는 공공일자리인지, 민간 기업이 들어와서 만드는 지속 가능한 일자리인지도 다릅니다. 숫자 1,000을 채우는 것과, 청년이 10년 뒤에도 이 지역에 있게 만드는 것은 전혀 다른 목표입니다.</p>
+<p>관광 스타트업 창업 인큐베이터, 원격근무 지원센터, 수산식품 가공업체 육성 — 방향은 좋습니다. 이것이 실제로 얼마나 실행됐는지가 중요합니다. 청년이 설악권을 고향으로 선택하는 것이 진짜 목표입니다. 이 차이를 기억하고, 임기가 끝날 때 숫자의 내용을 함께 들여다봐 주시면 어떨까요.</p>
+
+<div style="background:#fef9e7;border:1px solid #fde68a;border-radius:6px;padding:8px 12px;margin-top:14px;font-size:12px;color:#78350f;">
+📮 시민 기고 환영합니다 → jcjwk54@gmail.com
+</div>
+
+<p style="font-size:12px;color:#888;padding-top:8px;">김준철 편집장 | 설악시민뉴스 제18호 | 2026.10.19</p>`
+  },
+
+  /* ─── 이슈&토론 ─── */
+  'issue18': {
+    cat: '💬 이슈&토론 No.18 | 교육·청년 | 2026.10.19',
+    title: '청년 기본소득, 도입해야 하나',
+    meta: '설악시민뉴스 편집부 | 2026.10.19',
+    badge: '토론',
+    body: `<div style="background:#F5F0E0;border-radius:6px;padding:6px 12px;font-size:11px;font-weight:700;color:#7a5b00;margin-bottom:10px;display:inline-block;">🎓 교육·청년 — 사회 안전망 강화 vs. 재정 부담·근로 의욕</div>
+<p>경기도는 만 24세 청년에게 분기마다 25만 원씩, 한 해 최대 100만 원을 지역화폐로 주는 청년기본소득을 올해도 이어가고 있습니다. 이처럼 청년에게 조건 없이 일정한 소득을 주는 제도를 전국으로 넓힐지를 두고 의견이 갈립니다. 다음 달 19일 수능을 앞둔 수험생부터 졸업 뒤 일자리를 찾는 청년까지, 진로를 고민하는 가정에 가까운 질문입니다.</p>
+<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👍 청년 기본소득을 도입해야 한다</div>
+<p style="background:#EAF5EE;border:1px solid #7DB87D;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;">이 입장은 일자리를 찾는 동안 최소한의 생활을 보장하는 안전망이 있어야 청년이 조급하게 아무 일자리나 고르지 않고 진로를 준비할 수 있다고 봅니다. 지역화폐로 주면 지역 안에서 소비가 늘어 골목상권에도 도움이 되고, 경제적 기반이 생겨야 결혼과 출산도 생각할 수 있다는 주장입니다. 소득이 생기면 오히려 더 나은 일자리를 찾는 데 시간을 쓸 수 있다는 것도 이 입장의 논리입니다.</p>
+<div style="background:#E8EDF5;border-radius:6px;padding:8px 12px;font-size:11px;font-weight:700;color:#1B3A6B;margin:14px 0 6px;">👎 신중해야 한다</div>
+<p style="background:#FFF0F0;border:1px solid #D97C7C;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.75;">이 입장은 전국의 청년에게 매달 일정액을 주려면 해마다 막대한 재정이 필요하다고 봅니다. 일하지 않아도 소득이 생기면 근로 의욕이 떨어질 수 있다는 우려도 제기합니다. 같은 돈이라면 직업훈련과 취업 연계, 주거 지원처럼 이미 있는 청년 지원 제도를 강화하는 편이 더 효과적이라는 주장입니다.</p>
+<div style="background:linear-gradient(135deg,#1B3A6B,#2E75B6);border-radius:8px;padding:14px 16px;color:#fff;margin-top:14px;">
+<div style="font-size:10px;font-weight:700;opacity:.7;margin-bottom:6px;">✏️ 편집자의 관점</div>
+<p style="font-size:13px;line-height:1.75;">청년이 사회의 미래라면, 그 미래에 돈을 쓰는 것은 낭비인가, 투자인가. <strong style="color:#FFD966;">진로를 고민하는 설악권 청년과 그 가족의 목소리를 직접 듣고 싶습니다.</strong></p>
+</div>
+<div style="margin-top:16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px 14px;font-size:12.5px;color:#334155;line-height:1.7;">
+🙋 <strong>시민에게 묻습니다:</strong> 청년이라면, 기본소득이 생긴다면 무엇을 하겠습니까? 어른이라면, 세금으로 청년 기본소득을 지원하는 데 동의하시나요?
+</div>
+<div style="margin-top:20px;border-top:2px solid #e2e8f0;padding-top:16px;">
+<div style="font-size:13px;font-weight:700;color:#1a2744;margin-bottom:10px;">📊 청년 기본소득 도입에 찬성하십니까?</div>
+<div style="display:flex;gap:8px;">
+<button id="vbtn-no18-pro" onclick="castVote('no18','pro',this)" style="flex:1;background:#EAF5EE;border:2px solid #1F7A4D;border-radius:6px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;color:#1F7A4D;">👍 도입 찬성 <span id="vcnt-no18-pro" style="background:rgba(31,122,77,.15);border-radius:10px;padding:1px 8px;">0</span></button>
+<button id="vbtn-no18-con" onclick="castVote('no18','con',this)" style="flex:1;background:#FFF0F0;border:2px solid #B03030;border-radius:6px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;color:#B03030;">👎 신중론 <span id="vcnt-no18-con" style="background:rgba(176,48,48,.15);border-radius:10px;padding:1px 8px;">0</span></button>
+</div>
+<div id="vresult-no18" style="margin-top:8px;font-size:12px;color:#888;">아직 투표 결과가 없습니다 — 첫 투표를 남겨보세요!</div>
+</div>
+<p style="font-size:10px;color:#aaa;margin-top:12px;">도입부 수치: 경기일보(2026.1.26, 경기도 청년기본소득 만 24세·분기 25만 원·연 최대 100만 원 지역화폐) · 수능 일정: 뉴시스(2026.3.31, 2027학년도 수능 11월 19일)</p>`
+  },
+
+  /* ─── 편집자 레터 ─── */
+  'letter': {
+    cat: '✒ 편집자 레터 | 2026.10.19 제18호',
+    title: '담장 안의 근심 — 제18호',
+    meta: '김준철 편집장 | 설악시민뉴스 제18호 | 2026.10.19',
+    badge: '레터',
+    body: `<p style="font-size:11px;color:#888;margin-bottom:14px;">설악시민뉴스 제18호 편집자 레터 | 2026.10.19</p>
+<p>설악시민뉴스 제18호를 발행합니다. 국정감사가 이어진 한 주, 코스피가 하루 만에 7% 넘게 떨어지며 서킷브레이커가 발동됐고 초대 중대범죄수사청장이 임명됐습니다.</p>
+<p>이번 주 풍향계와 여론동향을 나란히 보니, 신문이 주목한 것과 시민이 평가의 이유로 꼽은 것이 겹친 곳과 엇갈린 곳이 함께 보입니다. 다섯 신문이 모두 다룬 증시 급락과 국민연금 문제는, 갤럽 조사에서 대통령 직무 부정 평가 이유로 '경제/민생/주식시장 대응'을 꼽은 응답이 12%로 5%p 늘어난 것과 겹칩니다. 반면 다섯 신문이 모두 다룬 중수청장 인선 공방과 맞닿은 '검찰 권한 축소/검찰청 폐지'는 3%로 5%p 줄었고, 네 신문이 문제를 짚은 대통령의 소통 방식은 긍정 평가 이유에서 '소통'이 7%로 3%p 늘었습니다. 변화 폭이 작아 단정할 수는 없지만, 지면을 많이 차지한 의제가 곧 시민이 평가의 이유로 꼽는 의제는 아니라는 점을 보여 줍니다. 직무 긍정률은 갤럽 39%, NBS 44%로 지난 조사와 비슷했습니다.</p>
+<p>이번 주 풍향계가 고른 사자성어 蕭牆之憂(소장지우)는 근심이 바깥이 아니라 담장 안에 있다는 뜻입니다. 여권 안의 중수청장 공방, 신천지 의혹을 둘러싼 계파 갈등, 주택 공급을 두고 서로 탓하는 정부와 서울시, 국무회의 생중계를 두고 장관들이 낸 건의까지, 안에서 생긴 엇박자가 많았던 한 주였습니다. 이번 주 풍향계 「아무도 묻지 않은 질문」은 국민연금 기금이 크게 줄었다는 소식에 '내 연금도 줄어드나'를 물었습니다.</p>
+<p>이번 호 사설 '청년 일자리 1,000개, 숫자보다 내용이 중요합니다'는 일자리의 숫자보다 어떤 일자리이고 어디에서 만들어지는지를 묻습니다. 마침 속초의 청년 창업기업은 상반기 6,115곳으로 4.0% 늘었습니다. 늘어난 숫자가 10년 뒤에도 이 지역에 남는 일자리로 이어지는지 함께 지켜볼 일입니다. 이 주의 문장도 좋은 삶을 가진 것보다 하는 일에서 찾은 아리스토텔레스의 말로 골랐습니다. 이슈&토론(No.18)은 청년 기본소득을 다룹니다. 사설과 같은 청년 주제를 다른 각도에서 묻는 연계형이며, 찬반 카드와 투표로 독자의 판단에 맡긴다는 원칙은 같습니다.</p>
+<p>설악권에서는 15일부터 주민자치회가 법에 근거를 두고 시행됐습니다. 고성과 인제는 이미 전면 전환했고, 속초는 내년 초 전환을 계획하고 있습니다. 인제군은 내년 1월부터 군내 농어촌·마을버스 요금을 받지 않기로 했습니다. 정부의 국가인구전략은 지방우대 지역에 출생 지원금을 더 주기로 했고, 수도권 공공기관 이전 계획은 4분기에 발표될 예정입니다. 고성 마을세무사 무료 상담(10월 27일)과 양양 영상 공모전(11월 12일까지) 등 공지사항도 확인해 주십시오.</p>
+<p style="text-align:right;font-style:italic;color:#1B3A6B;margin-top:16px;">— 편집장 김준철 드림<br>2026.10.19, 제18호</p>`
+  },
+
+};
+
+
+
+
+
+
+
+/* ── 뉴스 티저 단일소스 렌더링 ──────────────────────
+   ARTICLES[id].teaser → 섹션 placeholder 자동 주입
+   다음 호 제작 시 ARTICLES만 수정하면 티저·모달 동시 반영
+   ──────────────────────────────────────────────── */
+function renderTeasers() {
+  ['news-national','news-sokcho','news-goseong','news-inje','news-yangyang'].forEach(function(id) {
+    var el = document.getElementById('teaser-' + id);
+    if (el && ARTICLES[id] && ARTICLES[id].teaser) {
+      el.innerHTML = ARTICLES[id].teaser;
+    }
+  });
+}
+
+function openModById(id) {
+  const a = ARTICLES[id];
+  if (!a) return;
+  document.getElementById('mod-cat').textContent = a.cat;
+  document.getElementById('mod-title').textContent = a.title;
+  document.getElementById('mod-meta').textContent = a.meta;
+  document.getElementById('mod-badge').textContent = a.badge;
+  document.getElementById('mod-body').innerHTML = a.body;
+  document.getElementById('art-modal').classList.add('on');
+  document.body.style.overflow = 'hidden';
+  // 이슈 전문 모달에서 기존 투표 상태 복원
+  if (id.startsWith('issue')) {
+    if (typeof showVoteResult === 'function') showVoteResult(id);
+  }
+}
+function closeMod() {
+  document.getElementById('art-modal').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+/* ── [테스트] 전국·설악권 뉴스 항목별 클릭-펼침(아코디언) ──────────
+   news-item 클릭 시 그 안의 news-item-detail만 토글.
+   기존 openModById·전문보기 버튼과는 완전히 별개 기능. ──────── */
+function toggleNewsDetail(el) {
+  const detail = el.querySelector('.news-item-detail');
+  const arrow = el.querySelector('.news-item-arrow');
+  if (!detail) return;
+  const isOpen = detail.style.display === 'block';
+  detail.style.display = isOpen ? 'none' : 'block';
+  if (arrow) arrow.textContent = isOpen ? '▼' : '▲';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMod(); });
+
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.bar-fill').forEach(bar => {
+        const w = bar.style.width; bar.style.width = '0';
+        setTimeout(() => { bar.style.width = w; }, 100);
+      });
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.chart-wrap').forEach(el => observer.observe(el));
+
+// Mobile: collapse all sections by default (except first)
+if (window.innerWidth <= 600) {
+  const sections = ['s-news','s-punghyang','s-opinion','s-voice','s-series','s-letter','s-notice','s-announce'];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('collapsed');
+  });
+}
+
+/* GoatCounter — 방문자 수동 업데이트 방식으로 전환 */
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+/* ── Firebase 초기화 ── */
+(function() {
+  try {
+    var cfg = {
+      apiKey: "AIzaSyCHY5-_H22YgTGAbbp_NMcPE4QjwwwtfwE",
+      databaseURL: "https://eorak-citizen-news-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "eorak-citizen-news",
+      appId: "1:367212604918:web:740d0156bc6043649a2bd7",
+      messagingSenderId: "367212604918"
+    };
+    if (typeof firebase === 'undefined') { throw new Error('Firebase SDK 로드 실패'); }
+    if (!firebase.apps.length) { firebase.initializeApp(cfg); }
+    window._fbDb = firebase.database();
+  } catch (e) {
+    console.warn('Firebase 초기화 실패 — 투표는 로컬 저장으로 대체됩니다:', e);
+    window._fbDb = null;
+  }
+})();
+
+/* ── 찬반 투표 ── */
+
+  /* 투표 실행 — 전역 함수 */
+  function castVote(issueId, side) {
+    var storageKey = 'vote_' + issueId;
+
+    /* 중복 투표 방지 (localStorage) */
+    var already;
+    try { already = localStorage.getItem(storageKey); } catch(e) {}
+    if (!already) {
+      try { already = (window._localVotes || {})[issueId]; } catch(e) {}
+    }
+    if (already) { alert('이미 투표하셨습니다.'); return; }
+
+    /* Firebase transaction으로 누적 */
+    if (window._fbDb) {
+      var ref = window._fbDb.ref('votes/' + issueId + '/' + side);
+      ref.transaction(function(cur) { return (cur || 0) + 1; }, function(err) {
+        if (err) { console.warn('Firebase 투표 오류:', err); _localVoteFallback(issueId, side); }
+      });
+    } else {
+      _localVoteFallback(issueId, side);
+    }
+
+    /* 중복 방지 마킹 */
+    try { localStorage.setItem(storageKey, side); } catch(e) {
+      if (!window._localVotes) window._localVotes = {};
+      window._localVotes[issueId] = side;
+    }
+  }
+
+  /* Firebase 불가 환경 폴백 */
+  function _localVoteFallback(issueId, side) {
+    var countKey = 'vcount_' + issueId;
+    try {
+      var stored = localStorage.getItem(countKey);
+      var counts = stored ? JSON.parse(stored) : {pro:0, con:0};
+      counts[side] = (counts[side] || 0) + 1;
+      localStorage.setItem(countKey, JSON.stringify(counts));
+      renderVote(issueId, counts, side);
+    } catch(e) {}
+  }
+
+  function updateVoteUI(issueId, counts, voted) {
+    var pro = counts.pro || 0;
+    var con = counts.con || 0;
+    var total = pro + con;
+
+    var elPro = document.getElementById('vcnt-' + issueId + '-pro');
+    var elCon = document.getElementById('vcnt-' + issueId + '-con');
+    if (elPro) elPro.textContent = pro;
+    if (elCon) elCon.textContent = con;
+
+    var btnPro = document.getElementById('vbtn-' + issueId + '-pro');
+    var btnCon = document.getElementById('vbtn-' + issueId + '-con');
+    if (btnPro) btnPro.style.opacity = voted === 'pro' ? '1' : '0.5';
+    if (btnCon) btnCon.style.opacity = voted === 'con' ? '1' : '0.5';
+
+    var pct = total > 0 ? Math.round(pro / total * 100) : 0;
+    var resultEl = document.getElementById('vresult-' + issueId);
+    if (resultEl) {
+      resultEl.innerHTML =
+        '<div style="margin-top:10px;">' +
+        '<div style="display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:6px;">' +
+        '<div style="background:#1F7A4D;width:' + pct + '%;transition:width .4s;"></div>' +
+        '<div style="background:#B03030;flex:1;transition:width .4s;"></div>' +
+        '</div>' +
+        '👍 찬성 ' + pro + '표 (' + pct + '%) &nbsp; 👎 반대 ' + con + '표 (' + (100-pct) + '%) &nbsp; 총 ' + total + '표' +
+        '</div>';
+    }
+  }
+
+  /* 결과 렌더링 */
+  function renderVote(issueId, counts, voted) {
+    var pro = counts.pro | 0;
+    var con = counts.con | 0;
+    var total = pro + con;
+    var proPct = total ? Math.round(pro / total * 100) : 50;
+    var conPct = total ? (100 - proPct) : 50;
+
+    /* 숫자 뱃지 업데이트 */
+    var elPro = document.getElementById('vcnt-' + issueId + '-pro');
+    var elCon = document.getElementById('vcnt-' + issueId + '-con');
+    if (elPro) elPro.textContent = pro;
+    if (elCon) elCon.textContent = con;
+
+    /* 버튼 상태 */
+    var btnPro = document.getElementById('vbtn-' + issueId + '-pro');
+    var btnCon = document.getElementById('vbtn-' + issueId + '-con');
+    if (btnPro) {
+      btnPro.classList.add('voted');
+      btnPro.disabled = false;
+      if (voted === 'pro') btnPro.classList.add('selected');
+    }
+    if (btnCon) {
+      btnCon.classList.add('voted');
+      btnCon.disabled = false;
+      if (voted === 'con') btnCon.classList.add('selected');
+    }
+
+    /* 결과 바 */
+    var resultEl = document.getElementById('vresult-' + issueId);
+    if (resultEl) {
+      resultEl.innerHTML =
+        '<div class="vote-bar-wrap">' +
+          '<div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:4px;">' +
+            '<span style="color:#1F7A4D;">👍 찬성 ' + proPct + '% <small>(' + pro + '명)</small></span>' +
+            '<span style="color:#B03030;">👎 반대 ' + conPct + '% <small>(' + con + '명)</small></span>' +
+          '</div>' +
+          '<div class="vote-bar-track">' +
+            '<div class="vote-bar-fill-pro" style="width:' + proPct + '%;transition:width 0.5s;"></div>' +
+          '</div>' +
+          '<div style="color:#94a3b8;font-size:11px;text-align:center;margin-top:4px;">총 ' + total + '명 참여</div>' +
+        '</div>';
+    }
+  }
+
+  /* 기존 결과 표시 */
+  function showVoteResult(issueId) {
+    var counts = JSON.parse(localStorage.getItem('vcount_' + issueId) || '{"pro":0,"con":0}');
+    var voted  = localStorage.getItem('vote_' + issueId);
+    renderVote(issueId, counts, voted);
+  }
+
+  /* 페이지 로드 시 Firebase에서 실시간 투표 수 복원 */
+  function initVotes() {
+    var ids = ['issue1','issue2','issue3','issue4','no4','no5','no6','no7','no8','no9','no10','no11','no12','no13','no14','no15','no16','no17','no18'];
+    ids.forEach(function(id) {
+      var voted;
+      try { voted = localStorage.getItem('vote_' + id); } catch(e) {
+        voted = (window._localVotes || {})[id];
+      }
+      /* Firebase 실시간 리스너 */
+      if (window._fbDb) {
+        window._fbDb.ref('votes/' + id).on('value', function(snap) {
+          var data = snap.val() || {};
+          var counts = { pro: data.pro || 0, con: data.con || 0 };
+          if (voted || counts.pro > 0 || counts.con > 0) {
+            renderVote(id, counts, voted);
+          }
+        });
+      } else {
+        /* 폴백: localStorage */
+        var counts;
+        try { counts = JSON.parse(localStorage.getItem('vcount_' + id) || '{"pro":0,"con":0}'); }
+        catch(e) { counts = {pro:0, con:0}; }
+        if (voted || counts.pro > 0 || counts.con > 0) {
+          renderVote(id, counts, voted);
+        }
+      }
+    });
+  }
+
+  /* DOM 준비 후 실행 */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      renderTeasers();
+      initVotes();
+    });
+  } else {
+    renderTeasers();
+    initVotes();
+  }
+
+  // 공지사항 탭 초기화
+  (function() {
+    var panels = document.querySelectorAll('#s-notice .tab-panel');
+    panels.forEach(function(p, i) {
+      p.style.display = i === 0 ? 'block' : 'none';
+    });
+  })();
+
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    // 기존 서비스워커 강제 업데이트
+    navigator.serviceWorker.getRegistrations().then(regs => {
+      regs.forEach(reg => reg.update());
+    });
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => {
+        reg.update();
+        console.log('SW 등록:', reg.scope);
+      })
+      .catch(err => console.log('SW 실패:', err));
+  });
+}
+</script>
+</body>
+</html>
