@@ -143,9 +143,16 @@
     },
     {
       "no": 20,
-      "filename": "index.html",
+      "filename": "20261102.html",
       "headline": "주민자치, 관광 거버넌스의 뿌리입니다 · 동성결혼 법제화 이슈&토론",
       "date": "2026년 11월 2일",
+      "en_filename": "en_20261102.html"
+    },
+    {
+      "no": 21,
+      "filename": "index.html",
+      "headline": "관광세 논의, '시장이 왜 실패하는가'부터 묻읍시다 · 가상자산 과세 이슈&토론",
+      "date": "2026년 11월 9일",
       "en_filename": "en.html"
     }
   ]
